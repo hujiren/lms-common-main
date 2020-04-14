@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: apl-lms-common-service
+
+  profiles:
+    include:
+      common, wms-base-service
+  cloud:
+    consul:
+      config:
+        fail-fast: false
+

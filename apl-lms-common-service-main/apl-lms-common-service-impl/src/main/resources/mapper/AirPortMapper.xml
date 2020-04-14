@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apl.lms.common.mapper.AirPortMapper">
+
+
+
+    <!-- 查找详情 2020-04-13-->
+    <select id="getById" resultType="com.apl.lms.common.dto.AirPortKeyDto">
+        SELECT
+          id, 
+          port_code, 
+          name_cn, 
+          name_en, 
+          country_code
+        FROM
+          air_port
+        where
+          id = #{id}
+    </select>
+
+    <!-- 查找列表 2020-04-13-->
+    <select id="getList" resultType="com.apl.lms.common.dto.AirPortKeyDto">
+        SELECT
+           id, 
+           port_code, 
+           name_cn, 
+           name_en, 
+           country_code
+        FROM
+           air_port
+        where
+        1 = 1
+        order by id desc
+    </select>
+
+
+</mapper>

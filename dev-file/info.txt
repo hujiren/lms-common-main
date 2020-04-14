@@ -1,0 +1,7 @@
+login
+  http://192.168.1.185:9004/swagger-ui.html
+
+  登录注册验证码
+     /share/login/email
+     pgs   admin@qq.com  123123 phone
+     显示服务http://192.168.1.185:9034/ui/dc1/

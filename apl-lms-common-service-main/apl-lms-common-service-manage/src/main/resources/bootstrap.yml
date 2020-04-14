@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: apl-lms-common-service-manage
+
+  profiles:
+    include:
+      common, lms-common-service-manage
+
+  cloud:
+    consul:
+      config:
+        fail-fast: false
+
