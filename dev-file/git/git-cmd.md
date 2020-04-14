@@ -15,7 +15,7 @@
 
 
 从git库拉取代码
-  git pull origin master
+  git pull   origin master
 
 
 合并代码

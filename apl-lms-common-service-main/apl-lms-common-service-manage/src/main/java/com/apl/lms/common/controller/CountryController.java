@@ -2,9 +2,7 @@ package com.apl.lms.common.controller;
 import com.apl.lib.utils.ResultUtils;
 import com.apl.lms.common.dto.CountryKeyDto;
 import com.apl.lms.common.service.CountryService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.apl.lib.pojo.dto.PageDto;
 import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
+import java.sql.ResultSet;
 
 /**
  *
@@ -53,7 +53,6 @@ public class CountryController {
 
         return countryService.delById(id);
     }
-
 
 
 
