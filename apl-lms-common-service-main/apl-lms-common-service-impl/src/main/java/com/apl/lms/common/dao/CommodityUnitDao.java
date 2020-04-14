@@ -1,10 +1,8 @@
-package com.apl.org.sys.dao;
+package com.apl.lms.common.dao;
 
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lib.utils.DBUtils;
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
 import com.apl.org.sys.pojo.vo.CommodityUnitVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,14 +28,14 @@ public class CommodityUnitDao {
     }
 
     // 添加
-    public Long add(DBUtils.DBInfo dbInfo, CommodityUnitPo commodityUnit) throws Exception {
+    public Long add(DBUtils.DBInfo dbInfo, com.apl.devops.pojo.po.CommodityUnitPo commodityUnit) throws Exception {
 
         return dbUtils.insert(dbInfo, commodityUnit, "commodity_unit", "id");
     }
 
 
     // 修改
-    public Integer upd(DBUtils.DBInfo dbInfo, CommodityUnitPo commodityUnit) throws Exception {
+    public Integer upd(DBUtils.DBInfo dbInfo, com.apl.devops.pojo.po.CommodityUnitPo commodityUnit) throws Exception {
 
         return  dbUtils.updateById(dbInfo, commodityUnit, "commodity_unit");
     }
@@ -61,7 +59,7 @@ public class CommodityUnitDao {
 
 
     // 分页查询
-    public List<CommodityUnitVo> getList(DBUtils.DBInfo dbInfo, PageDto pageDto, CommodityUnitKeyDto keyDto){
+    public List<CommodityUnitVo> getList(DBUtils.DBInfo dbInfo, PageDto pageDto, com.apl.devops.pojo.dto.CommodityUnitKeyDto keyDto){
 
         String sql = " SELECT  id, unit_code, unit_name FROM commodity_unit";
         List<CommodityUnitVo>  list = dbUtils.queryPage(
