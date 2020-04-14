@@ -1,20 +1,21 @@
-package com.apl.wms.lib.controller;
+package com.apl.lms.common.controller;
 
 
 import com.apl.lib.utils.ResultUtils;
-import com.apl.wms.lib.dto.CountWayDto;
+import com.apl.lib.validate.ApiParamValidate;
+import com.apl.lms.common.dto.CountWayDto;
+import com.apl.lms.common.po.CountWayPo;
+import com.apl.lms.common.service.CountWayService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import com.apl.wms.lib.service.CountWayService;
-import com.apl.wms.lib.po.CountWayPo;
-import com.apl.lib.validate.ApiParamValidate;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.List;

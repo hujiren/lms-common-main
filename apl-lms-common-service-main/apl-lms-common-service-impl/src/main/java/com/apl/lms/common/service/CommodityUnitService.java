@@ -1,10 +1,10 @@
-package com.apl.org.sys.service;
+package com.apl.lms.common.service;
 
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtils;
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
+import com.apl.lms.common.dto.CommodityUnitKeyDto;
+import com.apl.lms.common.po.CommodityUnitPo;
+import com.apl.lms.common.vo.CommodityUnitVo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -55,6 +55,6 @@ public interface CommodityUnitService extends IService<CommodityUnitPo> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Page<CommodityUnitVo>>getList(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception;
+        ResultUtils<Page<CommodityUnitVo>> getList(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception;
 
 }

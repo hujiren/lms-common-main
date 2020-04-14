@@ -1,4 +1,4 @@
-package com.apl.devops.pojo.po;
+package com.apl.lms.common.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
@@ -27,16 +26,20 @@ import java.io.Serializable;
 @ApiModel(value="CommodityUnitPo对象", description="商品单位")
 public class CommodityUnitPo extends Model<CommodityUnitPo> {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(name = "id" , value = "单位id" , required = true)
-    @Min(value = 0 , message = "单位id 不能小于1")
+    @ApiModelProperty(name = "id" , value = "单位id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(name = "commodityUnit" , value = "单位" , required = true)
+    @ApiModelProperty(name = "unitCode" , value = "单位code" , required = true)
     @NotEmpty(message = "单位 不能为空")
-    private String commodityUnit;
+    private String unitCode;
+
+
+    @ApiModelProperty(name = "unitName" , value = "单位名称" , required = true)
+    @NotEmpty(message = "单位名称不能为空")
+    private String unitName;
 
 
     @Override

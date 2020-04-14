@@ -1,16 +1,16 @@
-package com.apl.org.sys.service.impl;
+package com.apl.lms.common.service.impl;
 
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.exception.AplException;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.DBUtils;
 import com.apl.lib.utils.ResultUtils;
-import com.apl.org.sys.dao.CommodityUnitDao;
-import com.apl.org.sys.mapper.CommodityUnitMapper;
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
-import com.apl.org.sys.service.CommodityUnitService;
+import com.apl.lms.common.dao.CommodityUnitDao;
+import com.apl.lms.common.dto.CommodityUnitKeyDto;
+import com.apl.lms.common.mapper.CommodityUnitMapper;
+import com.apl.lms.common.po.CommodityUnitPo;
+import com.apl.lms.common.service.CommodityUnitService;
+import com.apl.lms.common.vo.CommodityUnitVo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.util.CollectionUtils;
+
 import java.util.List;
 
 
@@ -122,7 +123,7 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
     }
 
 
-    void exists(DBUtils.DBInfo dbInfo, Long id,  String unitCode,   String unitName ) {
+    void exists(DBUtils.DBInfo dbInfo, Long id, String unitCode, String unitName ) {
 
         List<CommodityUnitVo> list = commodityUnitDao.exists(dbInfo, id, unitCode,  unitName );
         if (!CollectionUtils.isEmpty(list)) {

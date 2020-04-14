@@ -1,8 +1,9 @@
-package com.apl.org.sys.mapper;
+package com.apl.lms.common.mapper;
 
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
+
+import com.apl.lms.common.dto.CommodityUnitKeyDto;
+import com.apl.lms.common.po.CommodityUnitPo;
+import com.apl.lms.common.vo.CommodityUnitVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
@@ -24,14 +25,14 @@ public interface CommodityUnitMapper extends BaseMapper<CommodityUnitPo> {
      * @Author: ${cfg.author}
      * @Date: 2019-12-19
      */
-    public CommodityUnitVo getById(@Param("id" ) Long id);
+    public CommodityUnitVo getById(@Param("id") Long id);
 
     /**
      * @Desc: 查找列表
      * @Author: ${cfg.author}
      * @Date: 2019-12-19
      */
-    List<CommodityUnitVo> getList(Page page, @Param("kd" ) CommodityUnitKeyDto keyDto);
+    List<CommodityUnitVo> getList(Page page, @Param("kd") CommodityUnitKeyDto keyDto);
 
 
     /**
@@ -39,6 +40,6 @@ public interface CommodityUnitMapper extends BaseMapper<CommodityUnitPo> {
      * @Author: ${cfg.author}
      * @Date: 2019-12-19
      */
-    List<CommodityUnitVo> exists(@Param("id" ) Long id, @Param("unitCode" ) String unitCode, @Param("unitName" ) String unitName);
+    List<CommodityUnitVo> exists(@Param("id") Long id, @Param("unitCode") String unitCode, @Param("unitName") String unitName);
 
 }

@@ -1,4 +1,4 @@
-package com.apl.wms.lib.dto;
+package com.apl.lms.common.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -23,7 +23,7 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("by_the_piece_method")
+@TableName("count_way")
 @ApiModel(value=" 持久化对象", description=" 持久化对象")
 public class CountWayDto extends Model<CountWayDto> {
 

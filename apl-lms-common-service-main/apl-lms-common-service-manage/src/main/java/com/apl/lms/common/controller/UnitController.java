@@ -1,14 +1,13 @@
-package com.apl.inner.sys.controller;
+package com.apl.lms.common.controller;
 
 
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtils;
 import com.apl.lib.validate.ApiParamValidate;
-import com.apl.org.sys.service.CommodityUnitService;
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
-import com.apl.sys.lib.constants.url.InnerUrlConstants;
+import com.apl.lms.common.dto.CommodityUnitKeyDto;
+import com.apl.lms.common.po.CommodityUnitPo;
+import com.apl.lms.common.service.CommodityUnitService;
+import com.apl.lms.common.vo.CommodityUnitVo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -25,11 +24,11 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author cy
+ * @author arran
  * @since 2019-12-19
  */
 @RestController
-@RequestMapping(InnerUrlConstants.INNER_ROOT_PATH+"/commodity_unit")
+@RequestMapping("/commodity-unit")
 @Validated
 @Api(value = "单位管理",tags = "单位管理")
 @Slf4j

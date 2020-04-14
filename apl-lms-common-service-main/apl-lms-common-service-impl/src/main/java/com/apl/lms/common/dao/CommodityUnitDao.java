@@ -1,13 +1,14 @@
-package com.apl.org.sys.dao;
+package com.apl.lms.common.dao;
 
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lib.utils.DBUtils;
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
+import com.apl.lms.common.dto.CommodityUnitKeyDto;
+import com.apl.lms.common.po.CommodityUnitPo;
+import com.apl.lms.common.vo.CommodityUnitVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -1,7 +1,8 @@
 package com.apl.lms.common.service;
-import com.apl.lib.utils.ResultUtils;
 
-import com.apl.lms.common.dto.CountWayKeyDto;
+import com.apl.lib.utils.ResultUtils;
+import com.apl.lms.common.dto.CountWayDto;
+import com.apl.lms.common.po.CountWayPo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -14,14 +15,14 @@ import java.util.List;
  * @author arran
  * @since 2020-03-30
  */
-public interface CountWayService extends IService<CountWayKeyDto> {
+public interface CountWayService extends IService<CountWayPo> {
 
         /**
          * @Desc: 添加一个CountWayPo实体
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<Integer> add(CountWayKeyDto countWayKeyDto);
+        ResultUtils<Integer> add(CountWayPo countWayPo);
 
 
         /**
@@ -29,7 +30,7 @@ public interface CountWayService extends IService<CountWayKeyDto> {
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<Boolean> updById(CountWayKeyDto countWayKeyDto);
+        ResultUtils<Boolean> updById(CountWayPo countWayPo);
 
 
         /**
@@ -45,7 +46,7 @@ public interface CountWayService extends IService<CountWayKeyDto> {
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<CountWayKeyDto> selectById(Long id);
+        ResultUtils<CountWayDto> selectById(Long id);
 
 
         /**
@@ -53,6 +54,6 @@ public interface CountWayService extends IService<CountWayKeyDto> {
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<List<CountWayKeyDto>>getList();
+        ResultUtils<List<CountWayDto>>getList();
 
 }
