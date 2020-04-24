@@ -1,6 +1,7 @@
 package com.apl.lms.common.controller;
 
 
+import com.apl.lms.common.dto.SeaCarrierDto;
 import com.apl.lms.common.dto.SeaCarrierKeyDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -27,30 +28,35 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/sea-carrier")
 @Validated
-@Api(value = "般公司",tags = "般公司")
+@Api(value = "船舶公司",tags = "船舶公司")
 @Slf4j
 public class SeaCarrierController {
 
     @Autowired
     public SeaCarrierService seaCarrierService;
 
-
     @PostMapping(value = "/add")
-    @ApiOperation(value =  "添加", notes ="")
-    public ResultUtils<Integer> add(SeaCarrierKeyDto seaCarrierKeyDto) {
-        ApiParamValidate.validate(seaCarrierKeyDto);
-
-        return seaCarrierService.add(seaCarrierKeyDto);
+    @ApiOperation(value =  "添加", notes ="CODE_EXIST -> code已经存在\n"+
+            "NAME_CN_EXIST -> nameCn已经存在\n"+
+            "NAME_EN_EXIST -> nameEn已经存在")
+    public ResultUtils<Integer> add(SeaCarrierDto seaCarrierDto) {
+        ApiParamValidate.validate(seaCarrierDto);
+        String carrierCode = seaCarrierDto.getCarrierCode().toUpperCase();
+        seaCarrierDto.setCarrierCode(carrierCode);
+        return seaCarrierService.add(seaCarrierDto);
     }
 
 
     @PostMapping(value = "/upd")
-    @ApiOperation(value =  "更新",  notes ="")
-    public ResultUtils<Boolean> updById(SeaCarrierKeyDto seaCarrierKeyDto) {
-        ApiParamValidate.notEmpty("id", seaCarrierKeyDto.getId());
-        ApiParamValidate.validate(seaCarrierKeyDto);
-
-        return seaCarrierService.updById(seaCarrierKeyDto);
+    @ApiOperation(value =  "更新",  notes ="CODE_EXIST -> code已经存在\n"+
+            "NAME_CN_EXIST -> nameCn已经存在\n"+
+            "NAME_EN_EXIST -> nameEn已经存在")
+    public ResultUtils<Boolean> updById(SeaCarrierDto seaCarrierDto) {
+        ApiParamValidate.validate(seaCarrierDto);
+        ApiParamValidate.notEmpty("id", seaCarrierDto.getId());
+        String carrierCode = seaCarrierDto.getCarrierCode().toUpperCase();
+        seaCarrierDto.setCarrierCode(carrierCode);
+        return seaCarrierService.updById(seaCarrierDto);
     }
 
 
@@ -58,7 +64,7 @@ public class SeaCarrierController {
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "id",value = " id",required = true  , paramType = "query")
     public ResultUtils<Boolean> delById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
-
+        ApiParamValidate.notEmpty("id", id);
         return seaCarrierService.delById(id);
     }
 
@@ -66,16 +72,15 @@ public class SeaCarrierController {
     @PostMapping(value = "/get")
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "id",value = "id",required = true  , paramType = "query")
-    public ResultUtils<SeaCarrierKeyDto> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
-
+    public ResultUtils<SeaCarrierDto> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+        ApiParamValidate.notEmpty("id", id);
         return seaCarrierService.selectById(id);
     }
 
 
     @PostMapping("/get-list")
     @ApiOperation(value =  "分页查找" , notes = "分页查找")
-    public ResultUtils<Page<SeaCarrierKeyDto>> getList(PageDto pageDto, @Validated SeaCarrierKeyDto seaCarrierKeyDto) {
-
+    public ResultUtils<Page<SeaCarrierDto>> getList(PageDto pageDto, @Validated SeaCarrierKeyDto seaCarrierKeyDto) {
         return seaCarrierService.getList(pageDto , seaCarrierKeyDto);
     }
 

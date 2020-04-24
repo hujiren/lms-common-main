@@ -5,14 +5,16 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * 般公司 持久化对象
+ * 般公司 分页对象
  * </p>
  *
  * @author hjr
@@ -21,25 +23,18 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sea_carrier")
-@ApiModel(value="般公司 持久化对象", description="般公司 持久化对象")
+@ApiModel(value="SeaCarrierKeyDto 分页对象", description="般公司")
 public class SeaCarrierKeyDto extends Model<SeaCarrierKeyDto> {
 
+    @ApiModelProperty(name = "keyword", value = "关键词")
+    private String keyword;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    public String getKeyword() {
+        if (keyword == null || StringUtils.isEmpty(keyword.trim())){
+            return  null;
+        }
 
-    private String carrierCode;
-
-    private String nameCn;
-
-    private String nameEn;
-
-    private static final long serialVersionUID=1L;
-
-
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
+        return keyword.trim();
     }
 
 }

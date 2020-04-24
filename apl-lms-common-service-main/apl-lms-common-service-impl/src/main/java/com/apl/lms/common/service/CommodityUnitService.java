@@ -1,10 +1,9 @@
-package com.apl.org.sys.service;
+package com.apl.lms.common.service;
 
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtils;
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
+import com.apl.lms.common.dto.CommodityUnitDto;
+import com.apl.lms.common.dto.CommodityUnitKeyDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -16,14 +15,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author cy
  * @since 2019-12-10
  */
-public interface CommodityUnitService extends IService<CommodityUnitPo> {
+public interface CommodityUnitService extends IService<CommodityUnitDto> {
 
         /**
          * @Desc: 添加一个CommodityUnitPo实体
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Long> add(CommodityUnitPo commodityUnit) throws Exception;
+        ResultUtils<Integer> add(CommodityUnitDto commodityUnitDto) throws Exception;
 
 
         /**
@@ -31,7 +30,7 @@ public interface CommodityUnitService extends IService<CommodityUnitPo> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Boolean> updById(CommodityUnitPo commodityUnit) throws Exception;
+        ResultUtils<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception;
 
 
         /**
@@ -39,7 +38,7 @@ public interface CommodityUnitService extends IService<CommodityUnitPo> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Boolean> delById(Long id) throws Exception;
+        ResultUtils<Boolean> deleteUnitById(Long id) throws Exception;
 
 
         /**
@@ -47,7 +46,7 @@ public interface CommodityUnitService extends IService<CommodityUnitPo> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<CommodityUnitVo> selectById(Long id);
+        ResultUtils<CommodityUnitDto> selectUnitById(Long id);
 
 
         /**
@@ -55,6 +54,6 @@ public interface CommodityUnitService extends IService<CommodityUnitPo> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Page<CommodityUnitVo>>getList(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception;
+        ResultUtils<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception;
 
 }

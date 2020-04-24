@@ -1,5 +1,7 @@
 package com.apl.lms.common.service.impl;
+import com.apl.lib.exception.AplException;
 import com.apl.lib.utils.ResultUtils;
+import com.apl.lms.common.dto.SeaCarrierDto;
 import com.apl.lms.common.dto.SeaCarrierKeyDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.List;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.util.CollectionUtils;
 
 
 /**
@@ -24,7 +27,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  */
 @Service
 @Slf4j
-public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarrierKeyDto> implements SeaCarrierService {
+public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarrierDto> implements SeaCarrierService {
 
     //状态code枚举
     /*enum SeaCarrierServiceCode {
@@ -41,14 +44,13 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
     }*/
 
 
-
     @Override
-    public ResultUtils<Integer> add(SeaCarrierKeyDto seaCarrierKeyDto){
+    public ResultUtils<Integer> add(SeaCarrierDto seaCarrierDto){
 
-
-        Integer flag = baseMapper.insert(seaCarrierKeyDto);
-        if(flag.equals(1)){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaCarrierKeyDto.getId());
+        this.exists(0L, seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
+        Integer flag = baseMapper.insert(seaCarrierDto);
+        if(flag > 0){
+            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaCarrierDto.getId());
         }
 
         return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
@@ -56,11 +58,11 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
 
 
     @Override
-    public ResultUtils<Boolean> updById(SeaCarrierKeyDto seaCarrierKeyDto){
+    public ResultUtils<Boolean> updById(SeaCarrierDto seaCarrierDto){
 
-
-        Integer flag = baseMapper.updateById(seaCarrierKeyDto);
-        if(flag.equals(1)){
+        this.exists(seaCarrierDto.getId(), seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
+        Integer flag = baseMapper.updateById(seaCarrierDto);
+        if(flag > 0){
             return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
@@ -81,26 +83,40 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
 
 
     @Override
-    public ResultUtils<SeaCarrierKeyDto> selectById(Long id){
+    public ResultUtils<SeaCarrierDto> selectById(Long id){
 
-        SeaCarrierKeyDto seaCarrierInfoVo = baseMapper.getById(id);
+        SeaCarrierDto seaCarrierDto = baseMapper.getById(id);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, seaCarrierInfoVo);
+        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, seaCarrierDto);
     }
 
 
     @Override
-    public ResultUtils<Page<SeaCarrierKeyDto>> getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto){
+    public ResultUtils<Page<SeaCarrierDto>> getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto){
 
-        Page<SeaCarrierKeyDto> page = new Page();
+        Page<SeaCarrierDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
 
-        List<SeaCarrierKeyDto> list = baseMapper.getList(page , seaCarrierKeyDto);
+        List<SeaCarrierDto> list = baseMapper.getList(page , seaCarrierKeyDto);
         page.setRecords(list);
 
         return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
     }
 
+    void exists(Long id,  String carrierCode,   String nameCn,   String nameEn ) {
 
+        List<SeaCarrierDto> list = baseMapper.exists(id, carrierCode, nameCn, nameEn);
+        if (!CollectionUtils.isEmpty(list)) {
+            for(SeaCarrierDto  seaCarrierDto : list) {
+
+                if(seaCarrierDto.getCarrierCode().equals(carrierCode))
+                    throw new AplException("CODE_EXIST", "code已经存在");
+                if(seaCarrierDto.getNameCn().equals(nameCn))
+                    throw new AplException("NAME_CN_EXIST", "nameCn已经存在");
+                if(seaCarrierDto.getNameEn().equals(nameEn))
+                    throw new AplException("NAME_EN_EXIST", "nameEn已经存在");
+            }
+        }
+    }
 }

@@ -1,14 +1,12 @@
-package com.apl.inner.sys.controller;
+package com.apl.lms.common.controller;
 
 
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtils;
 import com.apl.lib.validate.ApiParamValidate;
-import com.apl.org.sys.service.CommodityUnitService;
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
-import com.apl.sys.lib.constants.url.InnerUrlConstants;
+import com.apl.lms.common.dto.CommodityUnitDto;
+import com.apl.lms.common.dto.CommodityUnitKeyDto;
+import com.apl.lms.common.service.CommodityUnitService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -25,11 +23,11 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author cy
+ * @author arran
  * @since 2019-12-19
  */
 @RestController
-@RequestMapping(InnerUrlConstants.INNER_ROOT_PATH+"/commodity_unit")
+@RequestMapping("/commodity-unit")
 @Validated
 @Api(value = "单位管理",tags = "单位管理")
 @Slf4j
@@ -41,48 +39,49 @@ public class UnitController {
 
     @PostMapping(value = "/add")
     @ApiOperation(value =  "添加", notes ="UNIT_CODE_EXIST -> unitCode已经存在\n"+
-                                         "UNIT_NAME_EXIST -> unitName已经存在")
-    public ResultUtils<Long> add(CommodityUnitPo commodityUnitPo) throws Exception {
-        ApiParamValidate.validate(commodityUnitPo);
-
-        return commodityUnitService.add(commodityUnitPo);
+                                            "UNIT_NAME_EXIST -> unitName已经存在")
+    public ResultUtils<Integer> add(CommodityUnitDto commodityUnitDto) throws Exception {
+        ApiParamValidate.validate(commodityUnitDto);
+        String str = commodityUnitDto.getUnitCode().toUpperCase();
+        commodityUnitDto.setUnitCode(str);
+        return commodityUnitService.add(commodityUnitDto);
     }
 
 
     @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新",  notes ="UNIT_CODE_EXIST -> unitCode已经存在\n"+
-                                          "UNIT_NAME_EXIST -> unitName已经存在")
-    public ResultUtils<Boolean> updById(CommodityUnitPo commodityUnitPo) throws Exception {
-        ApiParamValidate.notEmpty("id", commodityUnitPo.getId());
-        ApiParamValidate.validate(commodityUnitPo);
-
-        return commodityUnitService.updById(commodityUnitPo);
+                                                "UNIT_NAME_EXIST -> unitName已经存在")
+    public ResultUtils<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception {
+        ApiParamValidate.notEmpty("id", commodityUnitDto.getId());
+        ApiParamValidate.validate(commodityUnitDto);
+        String str = commodityUnitDto.getUnitCode().toUpperCase();
+        commodityUnitDto.setUnitCode(str);
+        return commodityUnitService.updateUnitById(commodityUnitDto);
     }
 
 
     @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "id",value = " id",required = true  , paramType = "query")
-    public ResultUtils<Boolean> delById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) throws Exception {
-
-        return commodityUnitService.delById(id);
+    public ResultUtils<Boolean> deleteUnitById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) throws Exception {
+        ApiParamValidate.notEmpty("id", id);
+        return commodityUnitService.deleteUnitById(id);
     }
 
 
     @PostMapping(value = "/get")
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "id",value = "id",required = true  , paramType = "query")
-    public ResultUtils<CommodityUnitVo> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
-
-        return commodityUnitService.selectById(id);
+    public ResultUtils<CommodityUnitDto> selectUnitById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+        ApiParamValidate.notEmpty("id", id);
+        return commodityUnitService.selectUnitById(id);
     }
 
 
     @PostMapping("/get-list")
     @ApiOperation(value =  "分页查找" , notes = "分页查找")
-    public ResultUtils<Page<CommodityUnitVo>> getList(PageDto pageDto, @Validated CommodityUnitKeyDto keyDto) throws Exception {
-
-        return commodityUnitService.getList(pageDto , keyDto);
+    public ResultUtils<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, @Validated CommodityUnitKeyDto keyDto) throws Exception {
+        return commodityUnitService.getUnitByPage(pageDto , keyDto);
     }
 
 }

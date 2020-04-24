@@ -1,6 +1,10 @@
 package com.apl.lms.common.service.impl;
+import com.apl.lib.exception.AplException;
 import com.apl.lib.utils.ResultUtils;
+import com.apl.lms.common.dto.AirCarrierDto;
 import com.apl.lms.common.dto.AirCarrierKeyDto;
+import com.apl.lms.common.dto.CountryDto;
+import com.apl.lms.common.dto.CountryKeyDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import com.apl.lib.constants.CommonStatusCode;
@@ -12,6 +16,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.List;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.util.CollectionUtils;
 
 
 /**
@@ -24,50 +29,63 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  */
 @Service
 @Slf4j
-public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarrierKeyDto> implements AirCarrierService {
+public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarrierDto> implements AirCarrierService {
 
     //状态code枚举
-    enum AirCarrierServiceCode {
+//    enum AirCarrierServiceCode {
+//
+//
+//        ;
+//
+//        private String code;
+//        private String msg;
+//
+//        AirCarrierServiceCode(String code, String msg) {
+//             this.code = code;
+//             this.msg = msg;
+//        }
+//    }
 
 
-        ;
-
-        private String code;
-        private String msg;
-
-        AirCarrierServiceCode(String code, String msg) {
-             this.code = code;
-             this.msg = msg;
-        }
-    }
-
-
-
+    /**
+     * 添加
+     * @param airCarrierDto
+     * @return
+     */
     @Override
-    public ResultUtils<Integer> add(AirCarrierKeyDto airCarrierKeyDto){
+    public ResultUtils<Integer> add(AirCarrierDto airCarrierDto){
 
-
-        Integer flag = baseMapper.insert(airCarrierKeyDto);
-        if(flag.equals(1)){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airCarrierKeyDto.getId());
+        this.exists(0L, airCarrierDto.getCarrierCode(),  airCarrierDto.getNameCn(),  airCarrierDto.getNameEn() );
+        Integer flag = baseMapper.insert(airCarrierDto);
+        if(flag > 0){
+            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airCarrierDto.getId());
         }
 
         return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
-
+    /**
+     * 根据Id更新
+     * @param airCarrierDto
+     * @return
+     */
     @Override
-    public ResultUtils<Boolean> updById(AirCarrierKeyDto airCarrier){
+    public ResultUtils<Boolean> updById(AirCarrierDto airCarrierDto){
 
-        Integer flag = baseMapper.updateById(airCarrier);
-        if(flag.equals(1)){
+        this.exists(airCarrierDto.getId(), airCarrierDto.getCarrierCode(),  airCarrierDto.getNameCn(),  airCarrierDto.getNameEn() );
+        Integer flag = baseMapper.updateById(airCarrierDto);
+        if(flag > 0){
             return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
         return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
-
+    /**
+     * 通过id删除
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtils<Boolean> delById(Long id){
 
@@ -79,28 +97,52 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
         return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
-
+    /**
+     * 通过id查询
+     * @param id
+     * @return
+     */
     @Override
-    public ResultUtils<AirCarrierKeyDto> selectById(Long id){
+    public ResultUtils<AirCarrierDto> selectById(Long id){
 
-        AirCarrierKeyDto airCarrierInfoVo = baseMapper.getById(id);
+        AirCarrierDto airCarrierDto = baseMapper.getById(id);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, airCarrierInfoVo);
+        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, airCarrierDto);
     }
 
-
+    /**
+     *
+     * @param pageDto
+     * @param airCarrierKeyDto
+     * @return 分页查询
+     */
     @Override
-    public ResultUtils<Page<AirCarrierKeyDto>> getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto){
+    public ResultUtils<Page<AirCarrierDto>> getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto){
 
-        Page<AirCarrierKeyDto> page = new Page();
+        Page<AirCarrierDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
 
-        List<AirCarrierKeyDto> list = baseMapper.getList(page , airCarrierKeyDto);
+        List<AirCarrierDto> list = baseMapper.getList(page , airCarrierKeyDto);
         page.setRecords(list);
 
         return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
     }
 
+    void exists(Long id, String carrierCode, String nameCn, String nameEn) {
+
+        List<AirCarrierDto> list = baseMapper.exists(id, carrierCode,  nameCn,  nameEn );
+        if (!CollectionUtils.isEmpty(list)) {
+            for(AirCarrierDto  airCarrierDto : list) {
+
+                if(airCarrierDto.getCarrierCode().equals(carrierCode))
+                    throw new AplException("CODE_EXIST", "code已经存在");
+                if(airCarrierDto.getNameCn().equals(nameCn))
+                    throw new AplException("NAME_CN_EXIST", "nameCn已经存在");
+                if(airCarrierDto.getNameEn().equals(nameEn))
+                    throw new AplException("NAME_EN_EXIST", "nameEn已经存在");
+            }
+        }
+    }
 
 }

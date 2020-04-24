@@ -1,6 +1,8 @@
 package com.apl.lms.common.mapper;
 
+import com.apl.lms.common.dto.SeaPortDto;
 import com.apl.lms.common.dto.SeaPortKeyDto;
+import com.apl.lms.common.vo.SeaPortListVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -14,22 +16,22 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author cy
  * @since 2020-04-13
  */
-public interface SeaPortMapper extends BaseMapper<SeaPortKeyDto> {
+public interface SeaPortMapper extends BaseMapper<SeaPortDto> {
 
     /**
      * @Desc: 根据id 查找详情
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
-    public SeaPortKeyDto getById(@Param("id" ) Long id);
+    public SeaPortDto getById(@Param("id" ) Long id);
 
     /**
      * @Desc: 查找列表
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
-    List<SeaPortKeyDto> getList(Page page, @Param("kd" ) SeaPortKeyDto seaPortKeyDto);
+    List<SeaPortListVo> getList(Page page, @Param("key" ) SeaPortKeyDto seaPortKeyDto);
 
 
-
+    List<SeaPortDto> exists(@Param("id") Long id,  @Param("portCode") String portCode,   @Param("nameCn") String nameCn,   @Param("nameEn") String nameEn );
 }

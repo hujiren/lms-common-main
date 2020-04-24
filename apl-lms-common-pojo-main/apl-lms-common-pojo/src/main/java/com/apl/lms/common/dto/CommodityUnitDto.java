@@ -1,4 +1,4 @@
-package com.apl.devops.pojo.po;
+package com.apl.lms.common.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -8,14 +8,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
  * <p>
- * 商品单位
+ * 商品单位 持久化对象
  * </p>
  *
  * @author cy
@@ -24,20 +25,24 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("commodity_unit")
-@ApiModel(value="CommodityUnitPo对象", description="商品单位")
-public class CommodityUnitPo extends Model<CommodityUnitPo> {
+@ApiModel(value="CommodityUnitPo实体对象", description="商品单位")
+public class CommodityUnitDto extends Model<CommodityUnitDto> {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(name = "id" , value = "单位id" , required = true)
-    @Min(value = 0 , message = "单位id 不能小于1")
+    @ApiModelProperty(name = "id" , value = "单位id")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(name = "commodityUnit" , value = "单位" , required = true)
+    @ApiModelProperty(name = "unitCode" , value = "单位")
     @NotEmpty(message = "单位 不能为空")
-    private String commodityUnit;
+    @Length(max = 10, message = "单位长度不能超过10")
+    private String unitCode;
 
+    @ApiModelProperty(name = "unitName" , value = "单位名称")
+    @NotEmpty(message = "单位名称不能为空")
+    @Length(max = 11, message = "单位名称长度不能超过11")
+    private String unitName;
 
     @Override
     protected Serializable pkVal() {

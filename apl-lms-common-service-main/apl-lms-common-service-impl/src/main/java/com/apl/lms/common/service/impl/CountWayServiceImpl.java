@@ -1,12 +1,14 @@
 package com.apl.lms.common.service.impl;
+
+import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.utils.ResultUtils;
-import com.apl.lms.common.dto.CountWayKeyDto;
+import com.apl.lms.common.dto.CountWayDto;
+import com.apl.lms.common.mapper.CountWayMapper;
+import com.apl.lms.common.po.CountWayPo;
+import com.apl.lms.common.service.CountWayService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import com.apl.lib.constants.CommonStatusCode;
-import com.apl.lms.common.mapper.CountWayMapper;
-import com.apl.lms.common.service.CountWayService;
 
 import java.util.List;
 
@@ -21,7 +23,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayKeyDto> implements CountWayService {
+public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto> implements CountWayService {
 
     //状态code枚举
     /*enum CountWayServiceCode {
@@ -40,11 +42,13 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayKey
 
 
     @Override
-    public ResultUtils<Integer> add(CountWayKeyDto countWayKeyDto){
+    public ResultUtils<Integer> add(CountWayDto countWayDto){
 
-        Integer flag = baseMapper.insert(countWayKeyDto);
+
+        Integer flag = baseMapper.insert(countWayDto);
+
         if(flag.equals(1)){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countWayKeyDto.getId());
+            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countWayDto.getId());
         }
 
         return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
@@ -52,10 +56,10 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayKey
 
 
     @Override
-    public ResultUtils<Boolean> updById(CountWayKeyDto countWayKeyDto){
+    public ResultUtils<Boolean> updById(CountWayDto countWayDto){
 
 
-        Integer flag = baseMapper.updateById(countWayKeyDto);
+        Integer flag = baseMapper.updateById(countWayDto);
         if(flag.equals(1)){
             return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
@@ -77,17 +81,18 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayKey
 
 
     @Override
-    public ResultUtils<CountWayKeyDto> selectById(Long id){
+    public ResultUtils<CountWayDto> selectById(Long id){
 
-        CountWayKeyDto countWayKeyDto = baseMapper.getById(id);
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, countWayKeyDto);
+        CountWayDto countWayDto = baseMapper.getById(id);
+
+        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, countWayDto);
     }
 
 
     @Override
-    public ResultUtils<List<CountWayKeyDto>> getList(){
+    public ResultUtils<List<CountWayDto>> getList(){
 
-        List<CountWayKeyDto> list = baseMapper.getList();
+        List<CountWayDto> list = baseMapper.getList();
 
 
         return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, list);

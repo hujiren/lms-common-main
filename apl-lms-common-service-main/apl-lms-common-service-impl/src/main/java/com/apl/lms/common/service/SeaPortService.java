@@ -1,7 +1,9 @@
 package com.apl.lms.common.service;
 import com.apl.lib.utils.ResultUtils;
 
+import com.apl.lms.common.dto.SeaPortDto;
 import com.apl.lms.common.dto.SeaPortKeyDto;
+import com.apl.lms.common.vo.SeaPortListVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -13,14 +15,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author hjr
  * @since 2020-04-13
  */
-public interface SeaPortService extends IService<SeaPortKeyDto> {
+public interface SeaPortService extends IService<SeaPortDto> {
 
         /**
          * @Desc: 添加一个SeaPortPo实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Integer> add(SeaPortKeyDto seaPortKeyDto);
+        ResultUtils<Integer> add(SeaPortDto seaPortDto);
 
 
         /**
@@ -28,7 +30,7 @@ public interface SeaPortService extends IService<SeaPortKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> updById(SeaPortKeyDto seaPortKeyDto);
+        ResultUtils<Boolean> updById(SeaPortDto seaPortDto);
 
 
         /**
@@ -44,7 +46,7 @@ public interface SeaPortService extends IService<SeaPortKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<SeaPortKeyDto> selectById(Long id);
+        ResultUtils<SeaPortDto> selectById(Long id);
 
 
         /**
@@ -52,6 +54,6 @@ public interface SeaPortService extends IService<SeaPortKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<SeaPortKeyDto>>getList(PageDto pageDto, SeaPortKeyDto seaPortKeyDto);
+        ResultUtils<Page<SeaPortListVo>>getList(PageDto pageDto, SeaPortKeyDto seaPortKeyDto);
 
 }

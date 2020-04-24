@@ -1,7 +1,9 @@
 package com.apl.lms.common.controller;
 
 
+import com.apl.lms.common.dto.SeaPortDto;
 import com.apl.lms.common.dto.SeaPortKeyDto;
+import com.apl.lms.common.vo.SeaPortListVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -27,38 +29,47 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/sea-port")
 @Validated
-@Api(value = "海港",tags = "海港")
+@Api(value = "海运港口",tags = "海运港口")
 @Slf4j
 public class SeaPortController {
 
     @Autowired
     public SeaPortService seaPortService;
 
-
     @PostMapping(value = "/add")
-    @ApiOperation(value =  "添加", notes ="")
-    public ResultUtils<Integer> add(SeaPortKeyDto seaPortKeyDto) {
-        ApiParamValidate.validate(seaPortKeyDto);
-
-        return seaPortService.add(seaPortKeyDto);
+    @ApiOperation(value =  "添加", notes ="CODE_EXIST -> code已经存在\n"+
+            "NAME_CN_EXIST -> nameCn已经存在\n"+
+            "NAME_EN_EXIST -> nameEn已经存在")
+    public ResultUtils<Integer> add(SeaPortDto seaPortDto) {
+        ApiParamValidate.validate(seaPortDto);
+        String portCode = seaPortDto.getPortCode().toUpperCase();
+        String homeCountry =  seaPortDto.getHomeCountry().toUpperCase();
+        seaPortDto.setHomeCountry(homeCountry);
+        seaPortDto.setPortCode(portCode);
+        return seaPortService.add(seaPortDto);
     }
 
 
     @PostMapping(value = "/upd")
-    @ApiOperation(value =  "更新",  notes ="")
-    public ResultUtils<Boolean> updById(SeaPortKeyDto seaPortKeyDto) {
-        ApiParamValidate.notEmpty("id", seaPortKeyDto.getId());
-        ApiParamValidate.validate(seaPortKeyDto);
-
-        return seaPortService.updById(seaPortKeyDto);
+    @ApiOperation(value =  "更新",  notes ="CODE_EXIST -> code已经存在\n"+
+            "NAME_CN_EXIST -> nameCn已经存在\n"+
+            "NAME_EN_EXIST -> nameEn已经存在")
+    public ResultUtils<Boolean> updById(SeaPortDto seaPortDto) {
+        ApiParamValidate.validate(seaPortDto);
+        ApiParamValidate.notEmpty("id", seaPortDto.getId());
+        String homeCountry = seaPortDto.getHomeCountry().toUpperCase();
+        String portCode = seaPortDto.getPortCode().toUpperCase();
+        seaPortDto.setPortCode(portCode);
+        seaPortDto.setHomeCountry(homeCountry);
+        return seaPortService.updById(seaPortDto);
     }
 
 
     @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "删除")
-    @ApiImplicitParam(name = "id",value = " id",required = true  , paramType = "query")
+    @ApiImplicitParam(name = "id",value = " id",paramType = "query")
     public ResultUtils<Boolean> delById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
-
+        ApiParamValidate.notEmpty("id", id);
         return seaPortService.delById(id);
     }
 
@@ -66,16 +77,15 @@ public class SeaPortController {
     @PostMapping(value = "/get")
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "id",value = "id",required = true  , paramType = "query")
-    public ResultUtils<SeaPortKeyDto> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
-
+    public ResultUtils<SeaPortDto> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+        ApiParamValidate.notEmpty("id", id);
         return seaPortService.selectById(id);
     }
 
 
     @PostMapping("/get-list")
     @ApiOperation(value =  "分页查找" , notes = "分页查找")
-    public ResultUtils<Page<SeaPortKeyDto>> getList(PageDto pageDto, @Validated com.apl.lms.common.dto.SeaPortKeyDto seaPortKeyDto) {
-
+    public ResultUtils<Page<SeaPortListVo>> getList(PageDto pageDto, SeaPortKeyDto seaPortKeyDto) {
         return seaPortService.getList(pageDto , seaPortKeyDto);
     }
 

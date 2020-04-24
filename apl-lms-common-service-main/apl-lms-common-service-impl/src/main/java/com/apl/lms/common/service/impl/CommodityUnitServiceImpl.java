@@ -1,16 +1,15 @@
-package com.apl.org.sys.service.impl;
+package com.apl.lms.common.service.impl;
 
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.exception.AplException;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.DBUtils;
 import com.apl.lib.utils.ResultUtils;
-import com.apl.org.sys.dao.CommodityUnitDao;
-import com.apl.org.sys.mapper.CommodityUnitMapper;
-import com.apl.org.sys.pojo.dto.CommodityUnitKeyDto;
-import com.apl.org.sys.pojo.po.CommodityUnitPo;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
-import com.apl.org.sys.service.CommodityUnitService;
+import com.apl.lms.common.dao.CommodityUnitDao;
+import com.apl.lms.common.dto.CommodityUnitDto;
+import com.apl.lms.common.dto.CommodityUnitKeyDto;
+import com.apl.lms.common.mapper.CommodityUnitMapper;
+import com.apl.lms.common.service.CommodityUnitService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.util.CollectionUtils;
+
 import java.util.List;
 
 
@@ -31,45 +31,35 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, CommodityUnitPo> implements CommodityUnitService {
+public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, CommodityUnitDto> implements CommodityUnitService {
+
 
     @Autowired
-    CommodityUnitDao commodityUnitDao;
-
-
+    CommodityUnitMapper commodityUnitMapper;
     @Override
-    public ResultUtils<Long> add(CommodityUnitPo commodityUnit) {
+    public ResultUtils<Integer> add(CommodityUnitDto commodityUnitDto) {
 
-        DBUtils.DBInfo dbInfo = commodityUnitDao.createDBinfo();
 
-        this.exists(dbInfo, 0L, commodityUnit.getUnitCode(),  commodityUnit.getUnitName() );
+        this.exists(0L, commodityUnitDto.getUnitCode(),  commodityUnitDto.getUnitName() );
 
-        Long id =0l;
-        try {
-            // 开启事务
-            dbInfo.dbUtils.beginTrans(dbInfo, TransactionDefinition.ISOLATION_READ_COMMITTED);
-            id = commodityUnitDao.add(dbInfo, commodityUnit);
-
-            // 提交事务
-            dbInfo.dbUtils.commit(dbInfo);
-        }
-        catch (Exception e){
-            // 回滚事务
-            dbInfo.dbUtils.rollback(dbInfo);
+        Integer flag = commodityUnitMapper.insert(commodityUnitDto);
+        if(flag.equals(1)){
+            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS, commodityUnitDto.getId());
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , id);
+            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
+
+
     }
 
 
     @Override
-    public ResultUtils<Boolean> updById(CommodityUnitPo commodityUnit) throws Exception {
+    public ResultUtils<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception {
 
-        DBUtils.DBInfo dbInfo = commodityUnitDao.createDBinfo();
+        this.exists(commodityUnitDto.getId(), commodityUnitDto.getUnitCode(),  commodityUnitDto.getUnitName() );
 
-        this.exists(dbInfo, commodityUnit.getId(), commodityUnit.getUnitCode(),  commodityUnit.getUnitName() );
+        Integer flag = commodityUnitMapper.updateById(commodityUnitDto);
 
-        Integer flag = commodityUnitDao.upd(dbInfo, commodityUnit);
         if(flag.equals(1)){
             return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
@@ -79,60 +69,50 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
 
 
     @Override
-    public ResultUtils<Boolean> delById(Long id) throws Exception {
+    public ResultUtils<Boolean> deleteUnitById(Long id) throws Exception {
 
-        DBUtils.DBInfo dbInfo = commodityUnitDao.createDBinfo();
+        Integer flag = commodityUnitMapper.deleteById(id);
 
-        Integer flag = commodityUnitDao.del(dbInfo, id);
-        if(flag.equals(1)){
+        if(flag > 0){
             return ResultUtils.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }
-
         return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
 
     @Override
-    public ResultUtils<CommodityUnitVo> selectById(Long id){
+    public ResultUtils<CommodityUnitDto> selectUnitById(Long id){
 
-        DBUtils.DBInfo dbInfo = commodityUnitDao.createDBinfo();
+        CommodityUnitDto commodityUnitDto = commodityUnitMapper.selectById(id);
 
-        CommodityUnitVo commodityUnitInfoVo = commodityUnitDao.selectById(dbInfo, id);
-
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, commodityUnitInfoVo);
+        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, commodityUnitDto);
     }
 
 
     @Override
-    public ResultUtils<Page<CommodityUnitVo>> getList(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception {
+    public ResultUtils<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception {
 
-        Page<CommodityUnitVo> page = new Page();
+        Page<CommodityUnitDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
-
-        DBUtils.DBInfo dbInfo = commodityUnitDao.createDBinfo();
-
-        List<CommodityUnitVo>  list = commodityUnitDao.getList(dbInfo, pageDto, keyDto);
-
-        page.setTotal(dbInfo.rsCount);
-
+        List<CommodityUnitDto> list = commodityUnitMapper.getList(page, keyDto);
         page.setRecords(list);
 
         return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS , page);
     }
 
 
-    void exists(DBUtils.DBInfo dbInfo, Long id,  String unitCode,   String unitName ) {
+    void exists(Long id,  String unitCode,   String unitName ) {
 
-        List<CommodityUnitVo> list = commodityUnitDao.exists(dbInfo, id, unitCode,  unitName );
+        List<CommodityUnitDto> list = baseMapper.exists(id, unitCode,  unitName );
         if (!CollectionUtils.isEmpty(list)) {
-           for(CommodityUnitVo  commodityUnitInfoVo : list) {
+            for(CommodityUnitDto  commodityUnitDto : list) {
 
-              if(commodityUnitInfoVo.getUnitCode().equals(unitCode))
-                 throw new AplException("UNIT_CODE_EXIST", "unitCode已经存在");
-              if(commodityUnitInfoVo.getUnitName().equals(unitName))
-                 throw new AplException("UNIT_NAME_EXIST", "unitName已经存在");
-           }
+                if(commodityUnitDto.getUnitCode().equals(unitCode))
+                    throw new AplException("UNIT_CODE_EXIST", "unitCode已经存在");
+                if(commodityUnitDto.getUnitName().equals(unitName))
+                    throw new AplException("UNIT_NAME_EXIST", "unitName已经存在");
+            }
         }
     }
 }

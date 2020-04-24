@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.apl.org.sys.mapper.CommodityUnitMapper">
-
+<mapper namespace="com.apl.lms.common.mapper.CommodityUnitMapper">
 
 
     <!-- 查找详情 2019-12-19-->
-    <select id="getById" resultType="com.apl.org.sys.pojo.vo.CommodityUnitVo">
+    <select id="getById" resultType="com.apl.lms.common.dto.CommodityUnitDto">
         SELECT
           id,
           unit_code,
-          unit_name, 
-          inner_org_id
+          unit_name
         FROM
           commodity_unit
         where
@@ -18,31 +16,37 @@
     </select>
 
     <!-- 查找列表 2019-12-19-->
-    <select id="getList" resultType="com.apl.org.sys.pojo.vo.CommodityUnitVo">
+    <select id="getList" resultType="com.apl.lms.common.dto.CommodityUnitDto">
         SELECT
            id, 
            unit_code, 
            unit_name
         FROM
            commodity_unit
-        where
-        1 = 1
-        order by id desc
+        <where>
+            <if test="key.keyword != null and key.keyword != ''">
+                (unit_code like concat('%' , #{key.keyword} , '%')
+                or unit_name like concat('%' , #{key.keyword} , '%'))
+            </if>
+        </where>
+
+        order by unit_code
     </select>
 
-    <!-- 检查记录是否重复 -->
-    <select id="exists" resultType="com.apl.org.sys.pojo.vo.CommodityUnitVo">
+    <select id="exists" resultType="com.apl.lms.common.dto.CommodityUnitDto">
         SELECT
-           id,
-           unit_code, 
-           unit_name
+        id,
+        unit_code,
+        unit_name
         FROM
-           commodity_unit
-        WHERE
-           (unit_code = #{unitCode} OR unit_name = #{unitName})
-        <if test="id != null and id>0">
-            AND id !=  #{id}
-        </if>
+        commodity_unit
+        <where>
+            (unit_code = #{unitCode} OR unit_name = #{unitName})
+            <if test="id != null and id > 0">
+                AND id !=  #{id}
+            </if>
+        </where>
+        order by unit_code
     </select>
 
 </mapper>

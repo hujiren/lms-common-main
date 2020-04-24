@@ -1,6 +1,7 @@
 package com.apl.lms.common.service;
 import com.apl.lib.utils.ResultUtils;
 
+import com.apl.lms.common.dto.SeaCarrierDto;
 import com.apl.lms.common.dto.SeaCarrierKeyDto;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.apl.lib.pojo.dto.PageDto;
@@ -13,14 +14,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author hjr
  * @since 2020-04-13
  */
-public interface SeaCarrierService extends IService<SeaCarrierKeyDto> {
+public interface SeaCarrierService extends IService<SeaCarrierDto> {
 
         /**
          * @Desc: 添加一个SeaCarrierPo实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Integer> add(SeaCarrierKeyDto seaCarrierKeyDto);
+        ResultUtils<Integer> add(SeaCarrierDto seaCarrierDto);
 
 
         /**
@@ -28,7 +29,7 @@ public interface SeaCarrierService extends IService<SeaCarrierKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> updById(SeaCarrierKeyDto seaCarrierKeyDto);
+        ResultUtils<Boolean> updById(SeaCarrierDto seaCarrierDto);
 
 
         /**
@@ -44,7 +45,7 @@ public interface SeaCarrierService extends IService<SeaCarrierKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<SeaCarrierKeyDto> selectById(Long id);
+        ResultUtils<SeaCarrierDto> selectById(Long id);
 
 
         /**
@@ -52,6 +53,6 @@ public interface SeaCarrierService extends IService<SeaCarrierKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<SeaCarrierKeyDto>>getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto);
+        ResultUtils<Page<SeaCarrierDto>>getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto);
 
 }

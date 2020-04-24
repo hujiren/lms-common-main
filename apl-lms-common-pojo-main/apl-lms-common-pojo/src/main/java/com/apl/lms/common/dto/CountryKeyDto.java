@@ -8,13 +8,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 /**
  * <p>
- * 国家 持久化对象
+ * 国家 分页对象
  * </p>
  *
  * @author hjr
@@ -23,46 +25,38 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("country")
-@ApiModel(value="国家 持久化对象", description="国家 持久化对象")
+@ApiModel(value="CountryKeyDto 分页对象", description="国家")
 public class CountryKeyDto extends Model<CountryKeyDto> {
 
+    @ApiModelProperty(name = "keyword", value = "关键词")
+    @Length(max = 100, message = "关键词长度不能超过100")
+    private String keyword;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @ApiModelProperty(name = "type", value = "地区类型")
+    @NotEmpty(message = "地区类型不能为空")
+    private int type;
 
-    @ApiModelProperty(name = "countryCode" , value = "国家代码" , required = true)
-    @NotEmpty(message = "国家代码不能为空")
-    private String countryCode;
+    @ApiModelProperty(name = "homeCountry", value = "所属国家")
+    @Length(max = 3, message = "所属国家长度不能超过3")
+    private String homeCountry;
 
-    @ApiModelProperty(name = "areaCode" , value = "地区代码" , required = true)
-    @NotEmpty(message = "地区代码不能为空")
-    private String areaCode;
-
-    @ApiModelProperty(name = "nameCn" , value = "中文名" , required = true)
-    @NotEmpty(message = "中文名不能为空")
-    private String nameCn;
-
-    @ApiModelProperty(name = "nameEn" , value = "英文名" , required = true)
-    @NotEmpty(message = "英文名不能为空")
-    private String nameEn;
-
-    @ApiModelProperty(name = "startZip" , value = "起始邮编" , required = true)
-    @NotEmpty(message = "起始邮编不能为空")
-    private String startZip;
-
-    @ApiModelProperty(name = "endZip" , value = "截止邮编" , required = true)
-    @NotEmpty(message = "截止邮编不能为空")
-    private String endZip;
-
-    @ApiModelProperty(name = "type" , value = "分类：1国家  2地区" , required = true)
-    private Boolean type;
-
-    private static final long serialVersionUID=1L;
-
-
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
+    public String getKeyword() {
+        if (keyword == null || StringUtils.isEmpty(keyword.trim())){
+            return  null;
+        }
+        return keyword.trim();
+    }
+    public String getHomeCountry() {
+        if (homeCountry == null || StringUtils.isEmpty(homeCountry.trim())){
+            return  null;
+        }
+        return homeCountry.trim().toUpperCase();
     }
 
+    public Integer getType(){
+        if(type != 1 && type != 2){
+            type = 0;
+        }
+        return type;
+    }
 }

@@ -1,7 +1,10 @@
 package com.apl.lms.common.service;
 import com.apl.lib.utils.ResultUtils;
 
+import com.apl.lms.common.dto.AirCarrierDto;
 import com.apl.lms.common.dto.AirCarrierKeyDto;
+import com.apl.lms.common.dto.CountryDto;
+import com.apl.lms.common.dto.CountryKeyDto;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -14,14 +17,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author hjr
  * @since 2020-04-13
  */
-public interface AirCarrierService extends IService<AirCarrierKeyDto> {
+public interface AirCarrierService extends IService<AirCarrierDto> {
 
         /**
          * @Desc: 添加一个AirCarrierPo实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Integer> add(AirCarrierKeyDto airCarrierKeyDto);
+        ResultUtils<Integer> add(AirCarrierDto airCarrierDto);
 
 
         /**
@@ -29,7 +32,7 @@ public interface AirCarrierService extends IService<AirCarrierKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> updById(AirCarrierKeyDto airCarrierKeyDto);
+        ResultUtils<Boolean> updById(AirCarrierDto airCarrierDto);
 
 
         /**
@@ -45,7 +48,7 @@ public interface AirCarrierService extends IService<AirCarrierKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<AirCarrierKeyDto> selectById(Long id);
+        ResultUtils<AirCarrierDto> selectById(Long id);
 
 
         /**
@@ -53,6 +56,5 @@ public interface AirCarrierService extends IService<AirCarrierKeyDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<AirCarrierKeyDto>>getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto);
-
+        ResultUtils<Page<AirCarrierDto>>getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto);
 }

@@ -1,10 +1,15 @@
 package com.apl.lms.common.service;
 import com.apl.lib.utils.ResultUtils;
 
+import com.apl.lms.common.dto.AirPortDto;
 import com.apl.lms.common.dto.AirPortKeyDto;
+import com.apl.lms.common.dto.AirPortUpdDto;
+import com.apl.lms.common.vo.AirPortListVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
+
 /**
  * <p>
  * 机场 service接口
@@ -13,45 +18,41 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author hjr
  * @since 2020-04-13
  */
-public interface AirPortService extends IService<AirPortKeyDto> {
+public interface AirPortService extends IService<AirPortDto> {
 
         /**
          * @Desc: 添加一个AirPortPo实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Integer> add(AirPortKeyDto airPort);
-
+        ResultUtils<String> add(AirPortDto airPortDto);
 
         /**
-         * @Desc: 根据id 更新一个AirPortPo 实体
+         * @Desc: 更新
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> updById(AirPortKeyDto airPort);
-
+        public ResultUtils<Boolean> updByCode(AirPortUpdDto airPortUpdDto);
 
         /**
          * @Desc: 根据id 查找一个AirPortPo 实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> delById(Long id);
-
+        ResultUtils<Boolean> delByCode(String portCode);
 
         /**
          * @Desc: 根据id 查找一个 AirPortPo 实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<AirPortKeyDto> selectById(Long id);
-
+        ResultUtils<AirPortDto> selectByCode(String portCode);
 
         /**
          * @Desc: 分页查找 AirPortPo 列表
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<AirPortKeyDto>>getList(PageDto pageDto, AirPortKeyDto airPortKeyDto);
+        ResultUtils<Page<AirPortListVo>>getList(PageDto pageDto, AirPortKeyDto airPortKeyDto);
 
 }

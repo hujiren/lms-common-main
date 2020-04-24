@@ -3,9 +3,10 @@ package com.apl.lms.common.dao;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lib.utils.DBUtils;
-import com.apl.org.sys.pojo.vo.CommodityUnitVo;
+import com.apl.lms.common.dto.CommodityUnitDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,14 +29,14 @@ public class CommodityUnitDao {
     }
 
     // 添加
-    public Long add(DBUtils.DBInfo dbInfo, com.apl.devops.pojo.po.CommodityUnitPo commodityUnit) throws Exception {
+    public Long add(DBUtils.DBInfo dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
         return dbUtils.insert(dbInfo, commodityUnit, "commodity_unit", "id");
     }
 
 
     // 修改
-    public Integer upd(DBUtils.DBInfo dbInfo, com.apl.devops.pojo.po.CommodityUnitPo commodityUnit) throws Exception {
+    public Integer upd(DBUtils.DBInfo dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
         return  dbUtils.updateById(dbInfo, commodityUnit, "commodity_unit");
     }
@@ -49,24 +50,24 @@ public class CommodityUnitDao {
 
 
     // 查询单个
-    public CommodityUnitVo selectById(DBUtils.DBInfo dbInfo, Long id){
+    public CommodityUnitDto selectById(DBUtils.DBInfo dbInfo, Long id){
 
         String sql = "select id,unit_code,unit_name FROM commodity_unit where id="+id.toString();
-        CommodityUnitVo commodityUnitInfoVo = dbUtils.queryObj(dbInfo, sql, id, CommodityUnitVo.class);
+        CommodityUnitDto commodityUnitInfoVo = dbUtils.queryObj(dbInfo, sql, id, CommodityUnitDto.class);
 
         return commodityUnitInfoVo;
     }
 
 
     // 分页查询
-    public List<CommodityUnitVo> getList(DBUtils.DBInfo dbInfo, PageDto pageDto, com.apl.devops.pojo.dto.CommodityUnitKeyDto keyDto){
+    public List<CommodityUnitDto> getList(DBUtils.DBInfo dbInfo, PageDto pageDto, com.apl.lms.common.dto.CommodityUnitKeyDto keyDto){
 
         String sql = " SELECT  id, unit_code, unit_name FROM commodity_unit";
-        List<CommodityUnitVo>  list = dbUtils.queryPage(
+        List<CommodityUnitDto>  list = dbUtils.queryPage(
                 dbInfo,
                 sql,
                 keyDto,
-                CommodityUnitVo.class,
+                CommodityUnitDto.class,
                 "id",
                 pageDto.getPageIndex(),
                 pageDto.getPageSize());
@@ -76,7 +77,7 @@ public class CommodityUnitDao {
 
 
     // 检测是否存在
-    public List<CommodityUnitVo> exists(DBUtils.DBInfo dbInfo, Long id, String unitCode, String unitName){
+    public List<CommodityUnitDto> exists(DBUtils.DBInfo dbInfo, Long id, String unitCode, String unitName){
 
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
@@ -89,11 +90,11 @@ public class CommodityUnitDao {
         if(id!=null && id>0)
             sql.append(" and id<>"+id.toString());
 
-        List<CommodityUnitVo>   list = dbUtils.queryList(
+        List<CommodityUnitDto>   list = dbUtils.queryList(
                 dbInfo,
                 sql.toString(),
                 paramMap,
-                CommodityUnitVo.class);
+                CommodityUnitDto.class);
 
         return  list;
     }

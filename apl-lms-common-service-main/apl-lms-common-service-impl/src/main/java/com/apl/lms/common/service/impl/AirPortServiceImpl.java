@@ -1,17 +1,23 @@
 package com.apl.lms.common.service.impl;
+import com.apl.lib.exception.AplException;
 import com.apl.lib.utils.ResultUtils;
+import com.apl.lms.common.dto.AirPortDto;
 import com.apl.lms.common.dto.AirPortKeyDto;
+import com.apl.lms.common.dto.AirPortUpdDto;
+import com.apl.lms.common.vo.AirPortListVo;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.apl.lib.constants.CommonStatusCode;
-
 import com.apl.lms.common.mapper.AirPortMapper;
 import com.apl.lms.common.service.AirPortService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
 import java.util.List;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.util.CollectionUtils;
 
 
 /**
@@ -24,7 +30,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  */
 @Service
 @Slf4j
-public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortKeyDto> implements AirPortService {
+public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> implements AirPortService {
 
     //状态code枚举
     /*enum AirPortServiceCode {
@@ -39,70 +45,90 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortKeyDto
              this.msg = msg;
         }
     }*/
-
-
+    @Autowired
+    AirPortMapper airPortMapper;
 
     @Override
-    public ResultUtils<Integer> add(AirPortKeyDto airPortKeyDto){
+    public ResultUtils<String> add(AirPortDto airPortDto){
 
+        this.exists(null, airPortDto.getPortCode(),  airPortDto.getNameCn(),  airPortDto.getNameEn());
+        Integer flag = baseMapper.insert(airPortDto);
 
-        Integer flag = baseMapper.insert(airPortKeyDto);
-        if(flag.equals(1)){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortKeyDto.getId());
+        if(flag > 0){
+            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortDto.getPortCode());
         }
+            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
-
     @Override
-    public ResultUtils<Boolean> updById(AirPortKeyDto airPortKeyDto){
+    public ResultUtils<Boolean> updByCode(AirPortUpdDto airPortUpdDto){
 
+        this.exists(airPortUpdDto.getOldCode(),  airPortUpdDto.getPortCode(),  airPortUpdDto.getNameCn(),  airPortUpdDto.getNameEn() );
 
-        Integer flag = baseMapper.updateById(airPortKeyDto);
-        if(flag.equals(1)){
+        AirPortDto apt = new AirPortDto();
+        BeanUtils.copyProperties(airPortUpdDto, apt);
+        UpdateWrapper<AirPortDto> wrapper = new UpdateWrapper<>();
+        wrapper.eq("port_code", airPortUpdDto.getOldCode());
+        Integer flag = baseMapper.update(apt, wrapper);
+
+        if(flag > 0){
             return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
+            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
-
     @Override
-    public ResultUtils<Boolean> delById(Long id){
+    public ResultUtils<Boolean> delByCode(String portCode){
 
-        boolean flag = removeById(id);
-        if(flag){
+        Integer flag = airPortMapper.delByCode(portCode);
+
+        if(flag > 0){
             return ResultUtils.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+        }else{
+            return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
         }
-
-        return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
-
     @Override
-    public ResultUtils<AirPortKeyDto> selectById(Long id){
+    public ResultUtils<AirPortDto> selectByCode(String portCode){
 
-        AirPortKeyDto airPortKeyDto = baseMapper.getById(id);
+        AirPortDto airPortDto = airPortMapper.selectByCode(portCode);
 
+        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, airPortDto);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, airPortKeyDto);
     }
 
-
     @Override
-    public ResultUtils<Page<AirPortKeyDto>> getList(PageDto pageDto, AirPortKeyDto airPortKeyDto){
+    public ResultUtils<Page<AirPortListVo>> getList(PageDto pageDto, AirPortKeyDto airPortKeyDto){
 
-        Page<AirPortKeyDto> page = new Page();
+        Page<AirPortListVo> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
 
-        List<AirPortKeyDto> list = baseMapper.getList(page , airPortKeyDto);
+        List<AirPortListVo> list = airPortMapper.getList(page , airPortKeyDto);
         page.setRecords(list);
 
         return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
 
     }
 
+    void exists(String oldCode, String portCode, String nameCn, String nameEn) {
 
+        List<AirPortDto> list = airPortMapper.exists(portCode,  nameCn,  nameEn );
+        if (!CollectionUtils.isEmpty(list)) {
+            for(AirPortDto  airPortInfoVo : list) {
+
+                if (oldCode == null || !airPortInfoVo.getPortCode().equals(oldCode)) {
+                    if(airPortInfoVo.getPortCode().equals(portCode))
+                        throw new AplException("CODE_EXIST", "code已经存在");
+                    if(airPortInfoVo.getNameCn().equals(nameCn))
+                        throw new AplException("NAME_CN_EXIST", "nameCn已经存在");
+                    if(airPortInfoVo.getNameEn().equals(nameEn))
+                        throw new AplException("NAME_EN_EXIST", "nameEn已经存在");
+                }
+            }
+        }
+    }
 }
