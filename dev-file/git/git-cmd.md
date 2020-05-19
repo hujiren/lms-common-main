@@ -15,7 +15,7 @@
 
 
 从git库拉取代码
-  git pull   origin master
+  git pull     origin master
 
 
 合并代码
@@ -24,7 +24,7 @@
 
 
 推送代码到git库
-  git push -u origin master
+  git push      -u origin master
 
 
 
