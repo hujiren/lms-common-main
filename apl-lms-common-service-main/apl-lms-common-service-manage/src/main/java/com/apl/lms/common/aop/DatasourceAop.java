@@ -7,6 +7,7 @@ import com.apl.lib.exception.AplException;
 import com.apl.lib.security.SecurityUser;
 import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lib.utils.StringUtil;
+import com.apl.lms.common.utils.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
@@ -38,6 +40,12 @@ public class DatasourceAop {
         Object proceed = null;
         try {
             String token = CommonContextHolder.getHeader(CommonAplConstants.TOKEN_FLAG);
+            if(StringUtil.isEmpty(token)){
+                Map<String, String[]> urlParams = CommonContextHolder.getRequest().getParameterMap();
+                String[] arr = urlParams.get("token");
+                if(arr.length>0)
+                    token = arr[0];
+            }
             SecurityUser securityUser = CommonContextHolder.getSecurityUser(redisTemplate, token);
 
             CommonContextHolder.securityUserContextHolder.set(securityUser);

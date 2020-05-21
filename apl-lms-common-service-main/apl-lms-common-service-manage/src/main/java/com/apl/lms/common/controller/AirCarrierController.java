@@ -3,7 +3,6 @@ package com.apl.lms.common.controller;
 
 import com.apl.lms.common.dto.AirCarrierDto;
 import com.apl.lms.common.dto.AirCarrierKeyDto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -83,6 +82,12 @@ public class AirCarrierController {
     @ApiOperation(value =  "分页查找" , notes = "分页查找")
     public ResultUtils<Page<AirCarrierDto>> getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto) {
         return airCarrierService.getList(pageDto , airCarrierKeyDto);
+    }
+
+    @GetMapping("/print")
+    @ApiOperation(value =  "print")
+    public void print(String ids) throws Exception {
+        airCarrierService.print(ids);
     }
 
 }
