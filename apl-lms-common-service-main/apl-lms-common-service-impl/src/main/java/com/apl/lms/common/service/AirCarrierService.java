@@ -3,11 +3,12 @@ import com.apl.lib.utils.ResultUtils;
 
 import com.apl.lms.common.dto.AirCarrierDto;
 import com.apl.lms.common.dto.AirCarrierKeyDto;
-import com.apl.lms.common.dto.CountryDto;
-import com.apl.lms.common.dto.CountryKeyDto;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
+
+import java.io.IOException;
 
 /**
  * <p>
@@ -57,4 +58,6 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
          * @since 2020-04-13
          */
         ResultUtils<Page<AirCarrierDto>>getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto);
+
+        void print(String ids)  throws Exception;
 }

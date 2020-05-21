@@ -104,7 +104,7 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> i
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
 
-        List<CountryDto> list = baseMapper.getListCountryByPage(page , keyDto);
+        List<CountryDto> list = countryMapper.getListCountryByPage(page , keyDto);
         page.setRecords(list);
 
         return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS , page);

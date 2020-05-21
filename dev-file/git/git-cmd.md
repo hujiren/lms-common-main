@@ -1,3 +1,5 @@
+查看
+git status
 
 初始
   git init
@@ -5,7 +7,7 @@
   git add .
 
 ## 连接git库
-   git remote add origin https://github.com/arranapl/apl-lms-common-main.git
+   git remote add origin git https://github.com/arranapl/apl-lms-common-main.git
 
 
 
@@ -15,7 +17,7 @@
 
 
 从git库拉取代码
-  git pull   origin master
+  git pull     origin master
 
 
 合并代码
@@ -24,7 +26,7 @@
 
 
 推送代码到git库
-  git push -u origin master
+  git push      -u origin master
 
 
 
