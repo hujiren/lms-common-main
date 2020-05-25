@@ -59,5 +59,5 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
          */
         ResultUtils<Page<AirCarrierDto>>getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto);
 
-        void print(String ids)  throws Exception;
+        void print()  throws Exception;
 }

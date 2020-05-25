@@ -13,11 +13,11 @@ git status
 
 提交描述
 
-  git commit -m " "
+  git commit -m " " .
 
 
 从git库拉取代码
-  git pull     origin master
+  git pull origin master
 
 
 合并代码

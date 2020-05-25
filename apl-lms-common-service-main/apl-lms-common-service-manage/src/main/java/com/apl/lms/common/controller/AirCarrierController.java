@@ -86,8 +86,8 @@ public class AirCarrierController {
 
     @GetMapping("/print")
     @ApiOperation(value =  "print")
-    public void print(String ids) throws Exception {
-        airCarrierService.print(ids);
+    public void print() throws Exception {
+        airCarrierService.print();
     }
 
 }
