@@ -5,12 +5,26 @@
     <artifactId>apl-lms-common-service-impl</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-
+    <properties>
+        <!-- 报表核心包 -->
+        <jasperreports.version>6.3.0</jasperreports.version>
+        <!--如果打印模板用到条形码需要依赖以下两种条形码生成的jar包-->
+        <barcode4j.version>2.1</barcode4j.version>
+        <barbecue.version>1.5-beta1</barbecue.version>
+        <!--将.jrxml打印模板定义编译成.jasper文件-->
+        <groovy.version>2.4.5</groovy.version>
+        <!--解析.jrxml-->
+        <commons-digester3.version>3.2</commons-digester3.version>
+        <!--SVG文档操作相关-->
+        <batik-bridge.version>1.8</batik-bridge.version>
+        <!--XML与图形进行转换-->
+        <xmlgraphics-commons.version>2.1</xmlgraphics-commons.version>
+    </properties>
     <dependencies>
 
 
         <!-- 报表打印 jasperreports-start  -->
-        <dependency>
+        <!--<dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>6.0.0</version>
@@ -19,6 +33,58 @@
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.0.0</version>
+        </dependency>
+
+        -->
+        <dependency>
+            <groupId>net.sourceforge.barbecue</groupId>
+            <artifactId>barbecue</artifactId>
+            <version>${barbecue.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.barcode4j</groupId>
+            <artifactId>barcode4j</artifactId>
+            <version>${barcode4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.apl</groupId>
+            <artifactId>apl-lms-common-pojo</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+
+        <dependency>
+            <!-- 报表核心包 -->
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>${jasperreports.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-bridge</artifactId>
+            <version>${batik-bridge.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>xmlgraphics-commons</artifactId>
+            <version>${xmlgraphics-commons.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-digester3</artifactId>
+            <version>${commons-digester3.version}</version>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
@@ -34,33 +100,6 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>itext-asian</artifactId>
             <version>5.2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sourceforge.barbecue</groupId>
-            <artifactId>barbecue</artifactId>
-            <version>1.5-beta1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.barcode4j</groupId>
-            <artifactId>barcode4j-light</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <!--  报表打印 jasperreports-end -->
-
-
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>2.5.7</version>
-            <type>pom</type>
-        </dependency>
-
-        <dependency>
-            <groupId>com.apl</groupId>
-            <artifactId>apl-lms-common-pojo</artifactId>
-            <version>1.0.0</version>
         </dependency>
 
 
