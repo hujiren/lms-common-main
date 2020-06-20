@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: apl-lms-common-query-app
+
+  profiles:
+    include:
+      common, lms-common-service-query
+
+  cloud:
+    consul:
+      config:
+        fail-fast: false
+

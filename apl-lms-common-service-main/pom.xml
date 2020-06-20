@@ -8,8 +8,8 @@
 
     <modules>
         <module>apl-lms-common-service-impl</module>
-        <module>apl-lms-common-service-manage</module>
-        <module>apl-lms-common-service-query</module>
+        <module>apl-lms-common-manage-app</module>
+        <module>apl-lms-common-query-app</module>
     </modules>
 
 </project>

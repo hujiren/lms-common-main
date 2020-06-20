@@ -1,18 +1,14 @@
 package com.apl.lms.common.service.impl;
 import com.apl.lib.exception.AplException;
-import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lib.utils.ResultUtils;
 import com.apl.lms.common.dto.AirCarrierDto;
 import com.apl.lms.common.dto.AirCarrierKeyDto;
-import com.apl.lms.common.utils.JasperHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lms.common.mapper.AirCarrierMapper;
 import com.apl.lms.common.service.AirCarrierService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import java.io.File;
-import java.util.HashMap;
 import java.util.List;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -144,65 +140,4 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
             }
         }
     }
-
-
-    public void print() throws Exception {
-
-        Page<AirCarrierDto> page = new Page();
-        page.setCurrent(1);
-        page.setSize(3);
-        AirCarrierKeyDto airCarrierKeyDto = new AirCarrierKeyDto();
-        List<AirCarrierDto> list = baseMapper.getList(page , airCarrierKeyDto);
-
-        String sysPath = System.getProperty("user.dir").replace("\\","/");
-        System.out.println(System.getProperty("user.dir"));
-        File reportFile = new File(sysPath + "/report/demo.jasper");
-        System.out.println(reportFile);
-        JasperHelper.export("pdf", "barcode.pdf", reportFile, CommonContextHolder.getRequest(), CommonContextHolder.httpServletResponse(), new HashMap(), list);
-    }
-
-//    private void buttonExport_Click(Object sender, RoutedEventArgs e) {
-//
-//        StiReport report = new StiReport();
-//        report.RegData(dataSet1);
-//
-//        report.Load("..\\" + ((ListBoxItem)lbReports.SelectedItem).Content as string + ".mrt");
-//        report.RenderWithWpf(false);
-//
-////        然后，选择要将报表导出到的文件格式：
-//
-//
-//        String file = ((ListBoxItem)lbReports.SelectedItem).Content as string + ".";
-//
-//        if (rbPdf.IsChecked.GetValueOrDefault())
-//        {
-//            file += "pdf";
-//            report.ExportDocument(StiExportFormat.Pdf, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//        else if (rbHtml.IsChecked.GetValueOrDefault())
-//        {
-//            file += "html";
-//            report.ExportDocument(StiExportFormat.HtmlTable, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//        else if (rbXls.IsChecked.GetValueOrDefault())
-//        {
-//            file += "xls";
-//            report.ExportDocument(StiExportFormat.Excel, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//        else if (rbTxt.IsChecked.GetValueOrDefault())
-//        {
-//            file += "txt";
-//            report.ExportDocument(StiExportFormat.Text, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//        else if (rbRtf.IsChecked.GetValueOrDefault())
-//        {
-//            file += "rtf";
-//            report.ExportDocument(StiExportFormat.RtfTable, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//    }
 }
