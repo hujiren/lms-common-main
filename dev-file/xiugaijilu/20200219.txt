@@ -1,0 +1,4 @@
+
+   apl2-lms-common-service-manage     =>   apl-lms-common-manage-app
+
+   apl2-lms-common-service-query    =>   apl-lms-common-query-app

@@ -19,7 +19,7 @@ git status
 从git库拉取代码
   git pull origin master
 
-
+github: apl0219  aa0219pp
 合并代码
    自动合并
    解决冲突  vcs/git

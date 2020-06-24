@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date 2020/4/17 - 17:33
  */
 @Component
-@FeignClient(value = "apl-lms-common-service-manage" , fallback = LmsCommonFeignImpl.class)
+@FeignClient(value = "apl-lms-common-manage-app" , fallback = LmsCommonFeignImpl.class)
 public interface LmsCommonFeign {
 
     @PostMapping("/cache/add-country-cache")
