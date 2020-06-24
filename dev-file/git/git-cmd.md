@@ -7,7 +7,7 @@ git status
   git add .
 
 ## 连接git库
-   git remote add origin git https://github.com/arranapl/apl-lms-common-main.git
+   git remote add origin https://github.com/arranapl/apl-lms-common-main.git
 
 
 
