@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apl.lms.common.mapper.CountWayMapper">
+
+
+
+    <!-- 查找详情 2020-03-30-->
+    <select id="getById" resultType="com.apl.lms.common.query.manage.dto.CountWayDto">
+        SELECT
+          id, 
+          way_code,
+          name_cn, 
+          name_en, 
+          piece_upper_carry,
+          total_upper_carry, 
+          small_cargo_carry, 
+          big_cargo_carry, 
+          bulky_code
+        FROM
+          count_way
+        where
+          id = #{id}
+    </select>
+
+    <!-- 查找列表 2020-03-30-->
+    <select id="getList" resultType="com.apl.lms.common.query.manage.dto.CountWayDto">
+        SELECT
+           id, 
+           way_code,
+           name_cn, 
+           name_en, 
+           way,
+           piece_upper_carry, 
+           total_upper_carry, 
+           small_cargo_carry, 
+           big_cargo_carry, 
+           bulky_code
+        FROM
+           count_way
+        where
+        1 = 1
+        order by id desc
+    </select>
+
+
+</mapper>

@@ -2,14 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.apl</groupId>
-    <artifactId>apl-lms-common-main</artifactId>
+    <artifactId>apl-lms-common-lib-master</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>apl-lms-common-lib-master</module>
-        <module>apl-lms-common-pojo-master</module>
-        <module>apl-lms-common-impl-master</module>
+        <module>apl-lms-common-lib</module>
     </modules>
 
 </project>
