@@ -55,21 +55,7 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-            <!-- 使用spring boot的maven插件进行打包 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.apl.lms.order.inner.WmsOrderInnerApplication</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
         </plugins>
     </build>
 
