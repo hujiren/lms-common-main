@@ -40,6 +40,7 @@ public class DatasourceAop {
                 Map<String, String[]> urlParams = CommonContextHolder.getRequest().getParameterMap();
                 String[] arr = urlParams.get("token");
                 if(arr.length>0)
+
                     token = arr[0];
             }
             SecurityUser securityUser = CommonContextHolder.getSecurityUser(redisTemplate, token);

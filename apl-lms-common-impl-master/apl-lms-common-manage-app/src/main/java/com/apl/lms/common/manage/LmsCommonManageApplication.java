@@ -14,7 +14,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication(scanBasePackages = {"com.apl.lib","com.apl.lms.common"},exclude = {DataSourceAutoConfiguration.class, MyBatisPlusConfig.class})
 @MapperScan(basePackages = {"com.apl.lms.common.mapper"})
 @EnableSwagger2
-@EnableFeignClients(basePackages = {"com.apl.lms.common.lib.feign"})
 @EnableDiscoveryClient
 public class LmsCommonManageApplication {
 
