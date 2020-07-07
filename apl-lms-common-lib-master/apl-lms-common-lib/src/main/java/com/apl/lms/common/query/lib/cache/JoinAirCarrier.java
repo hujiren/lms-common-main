@@ -2,7 +2,7 @@ package com.apl.lms.common.query.lib.cache;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.datasource.DataSourceContextHolder;
 import com.apl.lib.join.JoinBase;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.lib.feign.LmsCommonFeign;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -27,8 +27,8 @@ public class JoinAirCarrier extends JoinBase<AirCarrierCacheBo> {
 
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey) {
-        ResultUtils<Boolean> resultUtils = lmsCommonFeign.addAirCarrierCacheById(keys, minKey, maxKey);
-        if(resultUtils.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code)){
+        ResultUtil<Boolean> ResultUtil = lmsCommonFeign.addAirCarrierCacheById(keys, minKey, maxKey);
+        if(ResultUtil.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code)){
             return true;
         }
         return false;

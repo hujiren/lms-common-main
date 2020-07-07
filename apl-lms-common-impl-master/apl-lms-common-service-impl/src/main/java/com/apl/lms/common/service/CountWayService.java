@@ -1,6 +1,6 @@
 package com.apl.lms.common.service;
 
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.CountWayDto;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -21,7 +21,7 @@ public interface CountWayService extends IService<CountWayDto> {
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<Integer> add(CountWayDto countWayDto);
+        ResultUtil<Integer> add(CountWayDto countWayDto);
 
 
         /**
@@ -29,7 +29,7 @@ public interface CountWayService extends IService<CountWayDto> {
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<Boolean> updById(CountWayDto countWayDto);
+        ResultUtil<Boolean> updById(CountWayDto countWayDto);
 
 
         /**
@@ -37,7 +37,7 @@ public interface CountWayService extends IService<CountWayDto> {
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<Boolean> delById(Long id);
+        ResultUtil<Boolean> delById(Long id);
 
 
         /**
@@ -45,7 +45,7 @@ public interface CountWayService extends IService<CountWayDto> {
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<CountWayDto> selectById(Long id);
+        ResultUtil<CountWayDto> selectById(Long id);
 
 
         /**
@@ -53,6 +53,6 @@ public interface CountWayService extends IService<CountWayDto> {
          * @author arran
          * @since 2020-03-30
          */
-        ResultUtils<List<CountWayDto>>getList();
+        ResultUtil<List<CountWayDto>>getList();
 
 }

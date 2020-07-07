@@ -1,6 +1,6 @@
 package com.apl.lms.common.service.impl;
 import com.apl.lib.exception.AplException;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.SeaCarrierDto;
 import com.apl.lms.common.query.manage.dto.SeaCarrierKeyDto;
 import com.apl.lms.common.mapper.SeaCarrierMapper;
@@ -45,54 +45,54 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
 
 
     @Override
-    public ResultUtils<Integer> add(SeaCarrierDto seaCarrierDto){
+    public ResultUtil<Integer> add(SeaCarrierDto seaCarrierDto){
 
         this.exists(0L, seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
         Integer flag = baseMapper.insert(seaCarrierDto);
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaCarrierDto.getId());
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaCarrierDto.getId());
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
 
     @Override
-    public ResultUtils<Boolean> updById(SeaCarrierDto seaCarrierDto){
+    public ResultUtil<Boolean> updById(SeaCarrierDto seaCarrierDto){
 
         this.exists(seaCarrierDto.getId(), seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
         Integer flag = baseMapper.updateById(seaCarrierDto);
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
 
     @Override
-    public ResultUtils<Boolean> delById(Long id){
+    public ResultUtil<Boolean> delById(Long id){
 
         boolean flag = removeById(id);
         if(flag){
-            return ResultUtils.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
 
     @Override
-    public ResultUtils<SeaCarrierDto> selectById(Long id){
+    public ResultUtil<SeaCarrierDto> selectById(Long id){
 
         SeaCarrierDto seaCarrierDto = baseMapper.getById(id);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, seaCarrierDto);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, seaCarrierDto);
     }
 
 
     @Override
-    public ResultUtils<Page<SeaCarrierDto>> getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto){
+    public ResultUtil<Page<SeaCarrierDto>> getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto){
 
         Page<SeaCarrierDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
@@ -101,7 +101,7 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
         List<SeaCarrierDto> list = baseMapper.getList(page , seaCarrierKeyDto);
         page.setRecords(list);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
     }
 
     void exists(Long id,  String carrierCode,   String nameCn,   String nameEn ) {

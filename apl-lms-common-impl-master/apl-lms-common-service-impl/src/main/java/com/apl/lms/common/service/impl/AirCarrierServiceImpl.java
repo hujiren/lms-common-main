@@ -1,6 +1,6 @@
 package com.apl.lms.common.service.impl;
 import com.apl.lib.exception.AplException;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.AirCarrierDto;
 import com.apl.lms.common.query.manage.dto.AirCarrierKeyDto;
 import com.apl.lms.common.mapper.AirCarrierMapper;
@@ -50,15 +50,15 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
      * @return
      */
     @Override
-    public ResultUtils<Integer> add(AirCarrierDto airCarrierDto){
+    public ResultUtil<Integer> add(AirCarrierDto airCarrierDto){
 
         this.exists(0L, airCarrierDto.getCarrierCode(),  airCarrierDto.getNameCn(),  airCarrierDto.getNameEn() );
         Integer flag = baseMapper.insert(airCarrierDto);
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airCarrierDto.getId());
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airCarrierDto.getId());
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
     /**
@@ -67,15 +67,15 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
      * @return
      */
     @Override
-    public ResultUtils<Boolean> updById(AirCarrierDto airCarrierDto){
+    public ResultUtil<Boolean> updById(AirCarrierDto airCarrierDto){
 
         this.exists(airCarrierDto.getId(), airCarrierDto.getCarrierCode(),  airCarrierDto.getNameCn(),  airCarrierDto.getNameEn() );
         Integer flag = baseMapper.updateById(airCarrierDto);
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
     /**
@@ -84,14 +84,14 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
      * @return
      */
     @Override
-    public ResultUtils<Boolean> delById(Long id){
+    public ResultUtil<Boolean> delById(Long id){
 
         boolean flag = removeById(id);
         if(flag){
-            return ResultUtils.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
     /**
@@ -100,11 +100,11 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
      * @return
      */
     @Override
-    public ResultUtils<AirCarrierDto> selectById(Long id){
+    public ResultUtil<AirCarrierDto> selectById(Long id){
 
         AirCarrierDto airCarrierDto = baseMapper.getById(id);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, airCarrierDto);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, airCarrierDto);
     }
 
     /**
@@ -114,7 +114,7 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
      * @return 分页查询
      */
     @Override
-    public ResultUtils<Page<AirCarrierDto>> getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto){
+    public ResultUtil<Page<AirCarrierDto>> getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto){
 
         Page<AirCarrierDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
@@ -123,7 +123,7 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
         List<AirCarrierDto> list = baseMapper.getList(page , airCarrierKeyDto);
         page.setRecords(list);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
     }
 
     void exists(Long id, String carrierCode, String nameCn, String nameEn) {

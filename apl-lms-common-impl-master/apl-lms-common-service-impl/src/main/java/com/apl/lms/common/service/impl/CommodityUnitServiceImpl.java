@@ -3,7 +3,7 @@ package com.apl.lms.common.service.impl;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.exception.AplException;
 import com.apl.lib.pojo.dto.PageDto;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.CommodityUnitDto;
 import com.apl.lms.common.query.manage.dto.CommodityUnitKeyDto;
 import com.apl.lms.common.service.CommodityUnitService;
@@ -34,60 +34,60 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
     @Autowired
     CommodityUnitMapper commodityUnitMapper;
     @Override
-    public ResultUtils<Integer> add(CommodityUnitDto commodityUnitDto) {
+    public ResultUtil<Integer> add(CommodityUnitDto commodityUnitDto) {
 
 
         this.exists(0L, commodityUnitDto.getUnitCode(),  commodityUnitDto.getUnitName() );
 
         Integer flag = commodityUnitMapper.insert(commodityUnitDto);
         if(flag.equals(1)){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS, commodityUnitDto.getId());
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, commodityUnitDto.getId());
         }
 
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
 
 
     }
 
 
     @Override
-    public ResultUtils<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception {
+    public ResultUtil<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception {
 
         this.exists(commodityUnitDto.getId(), commodityUnitDto.getUnitCode(),  commodityUnitDto.getUnitName() );
 
         Integer flag = commodityUnitMapper.updateById(commodityUnitDto);
 
         if(flag.equals(1)){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
 
     @Override
-    public ResultUtils<Boolean> deleteUnitById(Long id) throws Exception {
+    public ResultUtil<Boolean> deleteUnitById(Long id) throws Exception {
 
         Integer flag = commodityUnitMapper.deleteById(id);
 
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }
-        return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
 
     @Override
-    public ResultUtils<CommodityUnitDto> selectUnitById(Long id){
+    public ResultUtil<CommodityUnitDto> selectUnitById(Long id){
 
         CommodityUnitDto commodityUnitDto = commodityUnitMapper.selectById(id);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, commodityUnitDto);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, commodityUnitDto);
     }
 
 
     @Override
-    public ResultUtils<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception {
+    public ResultUtil<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception {
 
         Page<CommodityUnitDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
@@ -95,7 +95,7 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
         List<CommodityUnitDto> list = commodityUnitMapper.getList(page, keyDto);
         page.setRecords(list);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS , page);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS , page);
     }
 
 

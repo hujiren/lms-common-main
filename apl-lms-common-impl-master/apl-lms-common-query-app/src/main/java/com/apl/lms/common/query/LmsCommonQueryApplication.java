@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@SpringBootApplication(scanBasePackages = {"com.apl.lib","com.apl.lms.common"},exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages = {"com.apl.lib", "com.apl.datasource", "com.apl.lms.common"},exclude = {DataSourceAutoConfiguration.class})
 @MapperScan(basePackages = {"com.apl.lms.common.mapper"})
 @EnableSwagger2
 @EnableFeignClients(basePackages = {"com.apl.lms.common.lib.feign"})

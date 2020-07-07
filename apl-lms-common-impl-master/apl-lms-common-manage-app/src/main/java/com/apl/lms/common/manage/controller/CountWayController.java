@@ -1,7 +1,7 @@
 package com.apl.lms.common.manage.controller;
 
 
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lib.validate.ApiParamValidate;
 import com.apl.lms.common.query.manage.dto.CountWayDto;
 import com.apl.lms.common.service.CountWayService;
@@ -37,7 +37,7 @@ public class CountWayController {
 
     @PostMapping(value = "/add")
     @ApiOperation(value =  "添加", notes ="")
-    public ResultUtils<Integer> add(CountWayDto countWayDto) {
+    public ResultUtil<Integer> add(CountWayDto countWayDto) {
         ApiParamValidate.validate(countWayDto);
 
         return countWayService.add(countWayDto);
@@ -46,7 +46,7 @@ public class CountWayController {
 
     @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新",  notes ="")
-    public ResultUtils<Boolean> updById(CountWayDto countWayDto) {
+    public ResultUtil<Boolean> updById(CountWayDto countWayDto) {
         ApiParamValidate.notEmpty("id", countWayDto.getId());
         ApiParamValidate.validate(countWayDto);
 
@@ -57,7 +57,7 @@ public class CountWayController {
     @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "id",value = " id",required = true  , paramType = "query")
-    public ResultUtils<Boolean> delById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+    public ResultUtil<Boolean> delById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
         ApiParamValidate.notEmpty("id", id);
         return countWayService.delById(id);
     }
@@ -66,7 +66,7 @@ public class CountWayController {
     @PostMapping(value = "/get")
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "id",value = "id",required = true  , paramType = "query")
-    public ResultUtils<CountWayDto> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+    public ResultUtil<CountWayDto> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
         ApiParamValidate.notEmpty("id", id);
         return countWayService.selectById(id);
     }
@@ -74,7 +74,7 @@ public class CountWayController {
 
     @PostMapping("/get-list")
     @ApiOperation(value =  "列表")
-    public ResultUtils<List<CountWayDto>> getList() {
+    public ResultUtil<List<CountWayDto>> getList() {
         return countWayService.getList();
     }
 

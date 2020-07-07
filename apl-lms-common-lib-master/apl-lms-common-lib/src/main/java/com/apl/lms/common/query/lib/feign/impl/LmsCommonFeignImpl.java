@@ -1,7 +1,7 @@
 package com.apl.lms.common.query.lib.feign.impl;
 
 import com.apl.lib.constants.CommonStatusCode;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.lib.feign.LmsCommonFeign;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -12,48 +12,48 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LmsCommonFeignImpl implements LmsCommonFeign {
 
     @Override
-    public ResultUtils<Boolean> addCountryCacheByCode(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addCountryCacheByCode(@RequestParam("keys") String keys,
                                                       @RequestParam("minKey") Long minKey,
                                                       @RequestParam("maxKey") Long maxKey) {
-        return ResultUtils.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
 
     @Override
-    public ResultUtils<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys,
                                                        @RequestParam("minKey") Long minKey,
                                                        @RequestParam("maxKey") Long maxKey) {
-        return ResultUtils.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
 
     @Override
-    public ResultUtils<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys,
                                                       @RequestParam("minKey") Long minKey,
                                                       @RequestParam("maxKey") Long maxKey) {
-        return ResultUtils.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode(), CommonStatusCode.SERVER_INVOKE_FAIL.getMsg(), null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode(), CommonStatusCode.SERVER_INVOKE_FAIL.getMsg(), null);
     }
 
 
     @Override
-    public ResultUtils<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys,
                                                       @RequestParam("minKey") Long minKey,
                                                       @RequestParam("maxKey") Long maxKey) {
-        return ResultUtils.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
 
     @Override
-    public ResultUtils<Boolean> addSeaCarrierCacheById(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addSeaCarrierCacheById(@RequestParam("keys") String keys,
                                                        @RequestParam("minKey") Long minKey,
                                                        @RequestParam("maxKey") Long maxKey) {
-        return ResultUtils.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
     @Override
-    public ResultUtils<Boolean> addCommodityUnitCacheById(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addCommodityUnitCacheById(@RequestParam("keys") String keys,
                                                           @RequestParam("minKey") Long minKey,
                                                           @RequestParam("maxKey") Long maxKey) {
-        return ResultUtils.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 }

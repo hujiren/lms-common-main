@@ -1,10 +1,10 @@
 package com.apl.lms.common.manage.aop;
 
+import com.apl.datasource.DataSourceContextHolder;
+import com.apl.lib.config.MyBatisPlusConfig;
 import com.apl.lib.constants.CommonAplConstants;
-import com.apl.lib.datasource.DataSourceContextHolder;
 import com.apl.lib.security.SecurityUser;
 import com.apl.lib.utils.CommonContextHolder;
-import com.apl.lib.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -36,25 +36,21 @@ public class DatasourceAop {
         Object proceed = null;
         try {
             String token = CommonContextHolder.getHeader(CommonAplConstants.TOKEN_FLAG);
-            if(StringUtil.isEmpty(token)){
-                Map<String, String[]> urlParams = CommonContextHolder.getRequest().getParameterMap();
-                String[] arr = urlParams.get("token");
-                if(arr.length>0)
 
-                    token = arr[0];
-            }
+            // 安全用户上下文
             SecurityUser securityUser = CommonContextHolder.getSecurityUser(redisTemplate, token);
-
             CommonContextHolder.securityUserContextHolder.set(securityUser);
 
+            // 动态数据源切换 信息
             DataSourceContextHolder.set(securityUser.getTenantGroup(), securityUser.getInnerOrgCode(), securityUser.getInnerOrgId());
+
+            // 多租户ID值
+            MyBatisPlusConfig.tenantIdContextHolder.set(securityUser.getInnerOrgId());
 
             Object[] args = pjp.getArgs();
             proceed = pjp.proceed(args);
 
         } catch (Throwable e) {
-            //log.error(this.getClass().getName()+".doInvoke "+ e.getMessage());
-            //throw new AplException(ExceptionEnum.SYSTEM_ERROR);
             throw e;
         } finally {
             CommonContextHolder.securityUserContextHolder.remove();

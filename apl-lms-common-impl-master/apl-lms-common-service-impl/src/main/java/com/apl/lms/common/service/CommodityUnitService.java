@@ -1,7 +1,7 @@
 package com.apl.lms.common.service;
 
 import com.apl.lib.pojo.dto.PageDto;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.CommodityUnitDto;
 import com.apl.lms.common.query.manage.dto.CommodityUnitKeyDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -22,7 +22,7 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Integer> add(CommodityUnitDto commodityUnitDto) throws Exception;
+        ResultUtil<Integer> add(CommodityUnitDto commodityUnitDto) throws Exception;
 
 
         /**
@@ -30,7 +30,7 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception;
+        ResultUtil<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception;
 
 
         /**
@@ -38,7 +38,7 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Boolean> deleteUnitById(Long id) throws Exception;
+        ResultUtil<Boolean> deleteUnitById(Long id) throws Exception;
 
 
         /**
@@ -46,7 +46,7 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<CommodityUnitDto> selectUnitById(Long id);
+        ResultUtil<CommodityUnitDto> selectUnitById(Long id);
 
 
         /**
@@ -54,6 +54,6 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
          * @author cy
          * @since 2019-12-19
          */
-        ResultUtils<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception;
+        ResultUtil<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception;
 
 }

@@ -3,7 +3,7 @@ package com.apl.lms.common.service.impl;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.exception.AplException;
 import com.apl.lib.pojo.dto.PageDto;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.CountryDto;
 import com.apl.lms.common.query.manage.dto.CountryKeyDto;
 import com.apl.lms.common.query.manage.dto.CountryUpdDto;
@@ -50,21 +50,21 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> i
     private CountryMapper countryMapper;
 
     @Override
-    public ResultUtils<String> addCountry(CountryDto countryDto){
+    public ResultUtil<String> addCountry(CountryDto countryDto){
 
         this.exists(null, countryDto.getCountryCode(), countryDto.getNameCn(),  countryDto.getNameEn() );
 
         Integer flag = countryMapper.insert(countryDto);
 
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countryDto.getCountryCode());
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countryDto.getCountryCode());
         }
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
 
     @Override
-    public ResultUtils<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto){
+    public ResultUtil<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto){
 
         this.exists(countryUpdDto.getOldCode(),  countryUpdDto.getCountryCode(), countryUpdDto.getNameCn(),  countryUpdDto.getNameEn() );
 
@@ -76,27 +76,27 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> i
         Integer flag = countryMapper.update(countryDto, wrapper);
 
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
 
     @Override
-    public ResultUtils<Boolean> deleteCountryByCode(String countryCode){
+    public ResultUtil<Boolean> deleteCountryByCode(String countryCode){
 
         Boolean flag = countryMapper.deleteCountryByCode(countryCode);
 
         if(flag){
-            return ResultUtils.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
     @Override
-    public ResultUtils<Page<CountryDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto){
+    public ResultUtil<Page<CountryDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto){
 
         Page<CountryDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
@@ -105,7 +105,7 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> i
         List<CountryDto> list = countryMapper.getListCountryByPage(page , keyDto);
         page.setRecords(list);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS , page);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS , page);
     }
 
 

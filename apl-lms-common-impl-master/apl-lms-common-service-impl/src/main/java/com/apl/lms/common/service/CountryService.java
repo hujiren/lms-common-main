@@ -1,5 +1,5 @@
 package com.apl.lms.common.service;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 
 import com.apl.lms.common.query.manage.dto.CountryDto;
 import com.apl.lms.common.query.manage.dto.CountryKeyDto;
@@ -23,7 +23,7 @@ public interface CountryService extends IService<CountryDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<String> addCountry(CountryDto countryDto);
+        ResultUtil<String> addCountry(CountryDto countryDto);
 
 
         /**
@@ -31,7 +31,7 @@ public interface CountryService extends IService<CountryDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto);
+        ResultUtil<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto);
 
 
         /**
@@ -39,7 +39,7 @@ public interface CountryService extends IService<CountryDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> deleteCountryByCode(String countryCode);
+        ResultUtil<Boolean> deleteCountryByCode(String countryCode);
 
 
         /**
@@ -47,6 +47,6 @@ public interface CountryService extends IService<CountryDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<CountryDto>>getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto);
+        ResultUtil<Page<CountryDto>>getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto);
 
 }

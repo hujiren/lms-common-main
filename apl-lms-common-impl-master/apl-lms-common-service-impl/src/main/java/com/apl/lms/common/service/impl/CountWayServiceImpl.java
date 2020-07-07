@@ -1,7 +1,7 @@
 package com.apl.lms.common.service.impl;
 
 import com.apl.lib.constants.CommonStatusCode;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.CountWayDto;
 import com.apl.lms.common.mapper.CountWayMapper;
 import com.apl.lms.common.service.CountWayService;
@@ -41,60 +41,60 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
 
 
     @Override
-    public ResultUtils<Integer> add(CountWayDto countWayDto){
+    public ResultUtil<Integer> add(CountWayDto countWayDto){
 
 
         Integer flag = baseMapper.insert(countWayDto);
 
         if(flag.equals(1)){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countWayDto.getId());
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countWayDto.getId());
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
 
     @Override
-    public ResultUtils<Boolean> updById(CountWayDto countWayDto){
+    public ResultUtil<Boolean> updById(CountWayDto countWayDto){
 
 
         Integer flag = baseMapper.updateById(countWayDto);
         if(flag.equals(1)){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
 
     @Override
-    public ResultUtils<Boolean> delById(Long id){
+    public ResultUtil<Boolean> delById(Long id){
 
         boolean flag = removeById(id);
         if(flag){
-            return ResultUtils.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }
 
-        return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
 
     @Override
-    public ResultUtils<CountWayDto> selectById(Long id){
+    public ResultUtil<CountWayDto> selectById(Long id){
 
         CountWayDto countWayDto = baseMapper.getById(id);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, countWayDto);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, countWayDto);
     }
 
 
     @Override
-    public ResultUtils<List<CountWayDto>> getList(){
+    public ResultUtil<List<CountWayDto>> getList(){
 
         List<CountWayDto> list = baseMapper.getList();
 
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, list);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, list);
     }
 
 

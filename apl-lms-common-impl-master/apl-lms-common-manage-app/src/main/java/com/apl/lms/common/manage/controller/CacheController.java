@@ -1,6 +1,6 @@
 package com.apl.lms.common.manage.controller;
 
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.service.CacheService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +22,7 @@ public class CacheController {
 
     @PostMapping("/add-country-cache")
     @ApiOperation(value = "添加国家缓存")
-    public ResultUtils<Boolean> addCountryCache(@RequestParam("keys") String codes){
+    public ResultUtil<Boolean> addCountryCache(@RequestParam("keys") String codes){
 
         return cacheService.addCountryCache(codes);
     }
@@ -30,7 +30,7 @@ public class CacheController {
 
     @PostMapping(value = "/add-air-carrier-cache")
     @ApiOperation(value = "添加航空公司缓存")
-    public ResultUtils<Boolean> addAirCarrierCache(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addAirCarrierCache(@RequestParam("keys") String keys,
                                                    @RequestParam("minKey") Long minKey,
                                                    @RequestParam("maxKey") Long maxKey){
 
@@ -40,14 +40,14 @@ public class CacheController {
 
     @PostMapping(value = "/add-air-port-cache")
     @ApiOperation(value = "添加机场缓存")
-    public ResultUtils<Boolean> addAirPortCache(@RequestParam("keys") String codes){
+    public ResultUtil<Boolean> addAirPortCache(@RequestParam("keys") String codes){
         return cacheService.addAirPortCache(codes);
     }
 
 
     @PostMapping(value = "/add-sea-port-cache")
     @ApiOperation(value = "添加港口缓存")
-    public ResultUtils<Boolean> addSeaPortCache(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addSeaPortCache(@RequestParam("keys") String keys,
                                                 @RequestParam("minKey") Long minKey,
                                                 @RequestParam("maxKey") Long maxKey){
         return cacheService.addSeaPortCache(keys, maxKey, minKey);
@@ -56,7 +56,7 @@ public class CacheController {
 
     @PostMapping(value = "/add-sea-carrier-cache")
     @ApiOperation(value = "添加船舶公司缓存")
-    public ResultUtils<Boolean> addSeaCarrierCache(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addSeaCarrierCache(@RequestParam("keys") String keys,
                                                 @RequestParam("minKey") Long minKey,
                                                 @RequestParam("maxKey") Long maxKey){
         return cacheService.addSeaCarrierCache(keys, maxKey, minKey);
@@ -65,7 +65,7 @@ public class CacheController {
 
     @PostMapping(value = "/add-commodity-unit-cache")
     @ApiOperation(value = "添加单位管理缓存")
-    public ResultUtils<Boolean> addCommodityUnitCache(@RequestParam("keys") String keys,
+    public ResultUtil<Boolean> addCommodityUnitCache(@RequestParam("keys") String keys,
                                                    @RequestParam("minKey") Long minKey,
                                                    @RequestParam("maxKey") Long maxKey){
         return cacheService.addCommodityUnitCache(keys, maxKey, minKey);

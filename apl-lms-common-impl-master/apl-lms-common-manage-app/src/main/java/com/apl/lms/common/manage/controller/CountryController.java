@@ -1,5 +1,5 @@
 package com.apl.lms.common.manage.controller;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lib.validate.ApiParamValidate;
 import com.apl.lms.common.query.manage.dto.CountryDto;
 import com.apl.lms.common.query.manage.dto.CountryKeyDto;
@@ -37,7 +37,7 @@ public class CountryController {
     @ApiOperation(value =  "添加", notes ="CODE_EXIST -> countryCode已经存在\n"+
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
-    public ResultUtils<String> addCountry(CountryDto countryDto) {
+    public ResultUtil<String> addCountry(CountryDto countryDto) {
         ApiParamValidate.validate(countryDto);
         String countryCode = countryDto.getCountryCode().toUpperCase();
         countryDto.setCountryCode(countryCode);
@@ -52,7 +52,7 @@ public class CountryController {
     @ApiOperation(value =  "更新",  notes ="CODE_EXIST -> countryCode已经存在\n"+
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
-    public ResultUtils<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto) {
+    public ResultUtil<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto) {
         ApiParamValidate.validate(countryUpdDto);
         countryUpdDto.getOldCode().toUpperCase();
         countryUpdDto.getCountryCode().toUpperCase();
@@ -65,7 +65,7 @@ public class CountryController {
     @PostMapping(value = "/delete-country")
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "countryCode",value = " 国家简码", required = true)
-    public ResultUtils<Boolean> deleteCountryById(String countryCode) {
+    public ResultUtil<Boolean> deleteCountryById(String countryCode) {
         ApiParamValidate.notEmpty("countryCode", countryCode);
         String s = countryCode.toUpperCase();
         return countryService.deleteCountryByCode(s);
@@ -73,7 +73,7 @@ public class CountryController {
 
     @PostMapping("/getList-country")
     @ApiOperation(value =  "国家分页查找" , notes = "国家分页查找")
-    public ResultUtils<Page<CountryDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto) {
+    public ResultUtil<Page<CountryDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto) {
         return countryService.getListCountryByPage(pageDto, keyDto);
     }
 

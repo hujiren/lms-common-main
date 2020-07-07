@@ -1,5 +1,5 @@
 package com.apl.lms.common.service;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 
 import com.apl.lms.common.query.manage.dto.SeaCarrierDto;
 import com.apl.lms.common.query.manage.dto.SeaCarrierKeyDto;
@@ -21,7 +21,7 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Integer> add(SeaCarrierDto seaCarrierDto);
+        ResultUtil<Integer> add(SeaCarrierDto seaCarrierDto);
 
 
         /**
@@ -29,7 +29,7 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> updById(SeaCarrierDto seaCarrierDto);
+        ResultUtil<Boolean> updById(SeaCarrierDto seaCarrierDto);
 
 
         /**
@@ -37,7 +37,7 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> delById(Long id);
+        ResultUtil<Boolean> delById(Long id);
 
 
         /**
@@ -45,7 +45,7 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<SeaCarrierDto> selectById(Long id);
+        ResultUtil<SeaCarrierDto> selectById(Long id);
 
 
         /**
@@ -53,6 +53,6 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<SeaCarrierDto>>getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto);
+        ResultUtil<Page<SeaCarrierDto>>getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto);
 
 }

@@ -3,7 +3,7 @@ package com.apl.lms.common.service.impl;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.security.SecurityUser;
 import com.apl.lib.utils.CommonContextHolder;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.lib.cache.*;
 import com.apl.lms.common.mapper.CacheMapper;
 import com.apl.lms.common.service.CacheService;
@@ -47,73 +47,73 @@ public class CacheServiceImpl implements CacheService {
 
     //添加仓库缓存
     @Override
-    public ResultUtils<Boolean> addCountryCache(String codes){
+    public ResultUtil<Boolean> addCountryCache(String codes){
         codes = codes.toUpperCase();
         SecurityUser securityUser = CommonContextHolder.getSecurityUser();
         Map<String, CountryCacheBo> maps = cacheMapper.addCountryCache(codes, securityUser.getInnerOrgId());
         if(null != maps && maps.size()>0) {
             redisTemplate.opsForValue().multiSet(maps);
-            return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, false);
     }
 
     @Override
-    public ResultUtils<Boolean> addAirCarrierCache(String keys, Long minKey, Long maxKey) {
+    public ResultUtil<Boolean> addAirCarrierCache(String keys, Long minKey, Long maxKey) {
         SecurityUser securityUser = CommonContextHolder.getSecurityUser();
         Map<String , AirCarrierCacheBo> maps = cacheMapper.addAirCarrierCache(keys, minKey, maxKey, securityUser.getInnerOrgId());
         if(null != maps && maps.size() > 0){
             redisTemplate.opsForValue().multiSet(maps);
-            return ResultUtils.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_SUCCESS, true);
+            return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_SUCCESS, true);
         }
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_FAIL, false);
     }
 
     @Override
-    public ResultUtils<Boolean> addAirPortCache(String codes) {
+    public ResultUtil<Boolean> addAirPortCache(String codes) {
         codes = codes.toUpperCase();
         SecurityUser securityUser = CommonContextHolder.getSecurityUser();
         Map<String, AirPortCacheBo> maps = cacheMapper.addAirPortCache(codes, securityUser.getInnerOrgId());
         if(null != maps && maps.size() > 0){
             redisTemplate.opsForValue().multiSet(maps);
-            return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
     }
 
 
     @Override
-    public ResultUtils<Boolean> addSeaPortCache(String keys, Long minKey, Long maxKey) {
+    public ResultUtil<Boolean> addSeaPortCache(String keys, Long minKey, Long maxKey) {
         SecurityUser securityUser = CommonContextHolder.getSecurityUser();
         Map<String, SeaPortCacheBo> maps = cacheMapper.addSeaPortCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
         if(null != maps && maps.size() > 0){
             redisTemplate.opsForValue().multiSet(maps);
-            return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
     }
 
 
     @Override
-    public ResultUtils<Boolean> addSeaCarrierCache(String keys, Long maxKey, Long minKey) {
+    public ResultUtil<Boolean> addSeaCarrierCache(String keys, Long maxKey, Long minKey) {
         SecurityUser securityUser = CommonContextHolder.getSecurityUser();
         Map<String, SeaCarrierCacheBo> maps = cacheMapper.addSeaCarrierCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
         if(null != maps && maps.size() > 0){
             redisTemplate.opsForValue().multiSet(maps);
-            return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
     }
 
 
     @Override
-    public ResultUtils<Boolean> addCommodityUnitCache(String keys, Long maxKey, Long minKey) {
+    public ResultUtil<Boolean> addCommodityUnitCache(String keys, Long maxKey, Long minKey) {
         SecurityUser securityUser = CommonContextHolder.getSecurityUser();
         Map<String, CommodityUnitCacheBo> maps = cacheMapper.addCommodityUnitCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
         if(null != maps && maps.size() > 0){
             redisTemplate.opsForValue().multiSet(maps);
-            return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtils.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
     }
 }

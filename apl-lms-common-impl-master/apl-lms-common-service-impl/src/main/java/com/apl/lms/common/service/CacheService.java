@@ -1,18 +1,18 @@
 package com.apl.lms.common.service;
 
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 
 public interface CacheService {
 
-    ResultUtils<Boolean> addCountryCache(String codes);
+    ResultUtil<Boolean> addCountryCache(String codes);
 
-    ResultUtils<Boolean> addAirCarrierCache(String keys, Long minKey, Long maxKey);
+    ResultUtil<Boolean> addAirCarrierCache(String keys, Long minKey, Long maxKey);
 
-    ResultUtils<Boolean> addAirPortCache(String codes);
+    ResultUtil<Boolean> addAirPortCache(String codes);
 
-    ResultUtils<Boolean> addSeaPortCache(String keys, Long minKey, Long maxKey);
+    ResultUtil<Boolean> addSeaPortCache(String keys, Long minKey, Long maxKey);
 
-    ResultUtils<Boolean> addSeaCarrierCache(String keys, Long maxKey, Long minKey);
+    ResultUtil<Boolean> addSeaCarrierCache(String keys, Long maxKey, Long minKey);
 
-    ResultUtils<Boolean> addCommodityUnitCache(String keys, Long maxKey, Long minKey);
+    ResultUtil<Boolean> addCommodityUnitCache(String keys, Long maxKey, Long minKey);
 }

@@ -1,5 +1,5 @@
 package com.apl.lms.common.service;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 
 import com.apl.lms.common.query.manage.dto.AirCarrierDto;
 import com.apl.lms.common.query.manage.dto.AirCarrierKeyDto;
@@ -22,7 +22,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Integer> add(AirCarrierDto airCarrierDto);
+        ResultUtil<Integer> add(AirCarrierDto airCarrierDto);
 
 
         /**
@@ -30,7 +30,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> updById(AirCarrierDto airCarrierDto);
+        ResultUtil<Boolean> updById(AirCarrierDto airCarrierDto);
 
 
         /**
@@ -38,7 +38,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> delById(Long id);
+        ResultUtil<Boolean> delById(Long id);
 
 
         /**
@@ -46,7 +46,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<AirCarrierDto> selectById(Long id);
+        ResultUtil<AirCarrierDto> selectById(Long id);
 
 
         /**
@@ -54,7 +54,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<AirCarrierDto>>getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto);
+        ResultUtil<Page<AirCarrierDto>>getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto);
 
 
 }

@@ -1,5 +1,5 @@
 package com.apl.lms.common.service;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 
 import com.apl.lms.common.query.manage.dto.AirPortDto;
 import com.apl.lms.common.query.manage.dto.AirPortKeyDto;
@@ -24,34 +24,34 @@ public interface AirPortService extends IService<AirPortDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<String> add(AirPortDto airPortDto);
+        ResultUtil<String> add(AirPortDto airPortDto);
 
         /**
          * @Desc: 更新
          * @author cy
          * @since 2020-04-13
          */
-        public ResultUtils<Boolean> updByCode(AirPortUpdDto airPortUpdDto);
+        public ResultUtil<Boolean> updByCode(AirPortUpdDto airPortUpdDto);
 
         /**
          * @Desc: 根据id 查找一个AirPortPo 实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> delByCode(String portCode);
+        ResultUtil<Boolean> delByCode(String portCode);
 
         /**
          * @Desc: 根据id 查找一个 AirPortPo 实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<AirPortDto> selectByCode(String portCode);
+        ResultUtil<AirPortDto> selectByCode(String portCode);
 
         /**
          * @Desc: 分页查找 AirPortPo 列表
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<AirPortListVo>>getList(PageDto pageDto, AirPortKeyDto airPortKeyDto);
+        ResultUtil<Page<AirPortListVo>>getList(PageDto pageDto, AirPortKeyDto airPortKeyDto);
 
 }

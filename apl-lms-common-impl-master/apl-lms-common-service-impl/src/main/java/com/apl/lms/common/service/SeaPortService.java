@@ -1,5 +1,5 @@
 package com.apl.lms.common.service;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 
 import com.apl.lms.common.query.manage.dto.SeaPortDto;
 import com.apl.lms.common.query.manage.dto.SeaPortKeyDto;
@@ -22,7 +22,7 @@ public interface SeaPortService extends IService<SeaPortDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Integer> add(SeaPortDto seaPortDto);
+        ResultUtil<Integer> add(SeaPortDto seaPortDto);
 
 
         /**
@@ -30,7 +30,7 @@ public interface SeaPortService extends IService<SeaPortDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> updById(SeaPortDto seaPortDto);
+        ResultUtil<Boolean> updById(SeaPortDto seaPortDto);
 
 
         /**
@@ -38,7 +38,7 @@ public interface SeaPortService extends IService<SeaPortDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Boolean> delById(Long id);
+        ResultUtil<Boolean> delById(Long id);
 
 
         /**
@@ -46,7 +46,7 @@ public interface SeaPortService extends IService<SeaPortDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<SeaPortDto> selectById(Long id);
+        ResultUtil<SeaPortDto> selectById(Long id);
 
 
         /**
@@ -54,6 +54,6 @@ public interface SeaPortService extends IService<SeaPortDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtils<Page<SeaPortListVo>>getList(PageDto pageDto, SeaPortKeyDto seaPortKeyDto);
+        ResultUtil<Page<SeaPortListVo>>getList(PageDto pageDto, SeaPortKeyDto seaPortKeyDto);
 
 }

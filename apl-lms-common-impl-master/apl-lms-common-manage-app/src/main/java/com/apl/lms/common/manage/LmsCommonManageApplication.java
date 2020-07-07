@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@SpringBootApplication(scanBasePackages = {"com.apl.lib","com.apl.lms.common"},exclude = {DataSourceAutoConfiguration.class, MyBatisPlusConfig.class})
+@SpringBootApplication(scanBasePackages = {"com.apl.lib", "com.apl.datasource", "com.apl.lms.common"},exclude = {DataSourceAutoConfiguration.class, MyBatisPlusConfig.class})
 @MapperScan(basePackages = {"com.apl.lms.common.mapper"})
 @EnableSwagger2
 @EnableDiscoveryClient

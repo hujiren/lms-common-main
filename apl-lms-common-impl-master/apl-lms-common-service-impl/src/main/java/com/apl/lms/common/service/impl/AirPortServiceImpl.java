@@ -1,6 +1,6 @@
 package com.apl.lms.common.service.impl;
 import com.apl.lib.exception.AplException;
-import com.apl.lib.utils.ResultUtils;
+import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.AirPortDto;
 import com.apl.lms.common.query.manage.dto.AirPortKeyDto;
 import com.apl.lms.common.query.manage.dto.AirPortUpdDto;
@@ -49,20 +49,20 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> i
     AirPortMapper airPortMapper;
 
     @Override
-    public ResultUtils<String> add(AirPortDto airPortDto){
+    public ResultUtil<String> add(AirPortDto airPortDto){
 
         this.exists(null, airPortDto.getPortCode(),  airPortDto.getNameCn(),  airPortDto.getNameEn());
         Integer flag = baseMapper.insert(airPortDto);
 
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortDto.getPortCode());
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortDto.getPortCode());
         }
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
 
     }
 
     @Override
-    public ResultUtils<Boolean> updByCode(AirPortUpdDto airPortUpdDto){
+    public ResultUtil<Boolean> updByCode(AirPortUpdDto airPortUpdDto){
 
         this.exists(airPortUpdDto.getOldCode(),  airPortUpdDto.getPortCode(),  airPortUpdDto.getNameCn(),  airPortUpdDto.getNameEn() );
 
@@ -73,35 +73,35 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> i
         Integer flag = baseMapper.update(apt, wrapper);
 
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
-            return ResultUtils.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
 
     }
 
     @Override
-    public ResultUtils<Boolean> delByCode(String portCode){
+    public ResultUtil<Boolean> delByCode(String portCode){
 
         Integer flag = airPortMapper.delByCode(portCode);
 
         if(flag > 0){
-            return ResultUtils.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }else{
-            return ResultUtils.APPRESULT(CommonStatusCode.DEL_FAIL , false);
+            return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
         }
     }
 
     @Override
-    public ResultUtils<AirPortDto> selectByCode(String portCode){
+    public ResultUtil<AirPortDto> selectByCode(String portCode){
 
         AirPortDto airPortDto = airPortMapper.selectByCode(portCode);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, airPortDto);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, airPortDto);
 
     }
 
     @Override
-    public ResultUtils<Page<AirPortListVo>> getList(PageDto pageDto, AirPortKeyDto airPortKeyDto){
+    public ResultUtil<Page<AirPortListVo>> getList(PageDto pageDto, AirPortKeyDto airPortKeyDto){
 
         Page<AirPortListVo> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
@@ -110,7 +110,7 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> i
         List<AirPortListVo> list = airPortMapper.getList(page , airPortKeyDto);
         page.setRecords(list);
 
-        return ResultUtils.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
 
     }
 
