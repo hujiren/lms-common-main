@@ -1,6 +1,6 @@
 package com.apl.lms.common.query.lib.cache;
+import com.apl.lib.config.MyBatisPlusConfig;
 import com.apl.lib.constants.CommonStatusCode;
-import com.apl.lib.datasource.DataSourceContextHolder;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.lib.feign.LmsCommonFeign;
@@ -16,12 +16,13 @@ public class JoinAirCarrier extends JoinBase<AirCarrierCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
+
     public JoinAirCarrier(int joinStyle, LmsCommonFeign lmsCommonFeign, RedisTemplate redisTemplate){
         this.lmsCommonFeign = lmsCommonFeign;
         this.redisTemplate = redisTemplate;
         this.joinStyle = joinStyle;
         this.tabName = "air_carrier";
-        this.innerOrgId = DataSourceContextHolder.getInnerOrgId();
+        this.innerOrgId = MyBatisPlusConfig.tenantIdContextHolder.get();
         this.cacheKeyNamePrefix = "JOIN_CACHE:" + this.tabName + "_" + this.innerOrgId.toString() + "_";
     }
 
@@ -31,6 +32,8 @@ public class JoinAirCarrier extends JoinBase<AirCarrierCacheBo> {
         if(ResultUtil.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code)){
             return true;
         }
+
+
         return false;
     }
 }

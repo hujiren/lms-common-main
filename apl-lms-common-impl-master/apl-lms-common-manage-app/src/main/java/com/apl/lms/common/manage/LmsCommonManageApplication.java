@@ -19,7 +19,7 @@ public class LmsCommonManageApplication {
 
     public static void main(String[] args) {
 
-        //com.apl.lib.datasource.DataSourceConfig
+        //com.apl.datasource.DataSourceConfig
 
         SpringApplication.run(LmsCommonManageApplication.class , args);
     }

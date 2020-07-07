@@ -1,7 +1,7 @@
 package com.apl.lms.common.query.lib.cache;
 
+import com.apl.lib.config.MyBatisPlusConfig;
 import com.apl.lib.constants.CommonStatusCode;
-import com.apl.lib.datasource.DataSourceContextHolder;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.lib.feign.LmsCommonFeign;
@@ -23,7 +23,7 @@ public class JoinCommodityUnit extends JoinBase<CommodityUnitCacheBo> {
         this.redisTemplate = redisTemplate;
         this.tabName = "commodity_unit";
         this.joinStyle = joinStyle;
-        this.innerOrgId = DataSourceContextHolder.getInnerOrgId();
+        this.innerOrgId = MyBatisPlusConfig.tenantIdContextHolder.get();
         this.cacheKeyNamePrefix = "JOIN_CACHE:" + this.tabName + "_" + this.innerOrgId.toString() + "_";
     }
 
