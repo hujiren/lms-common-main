@@ -1,10 +1,10 @@
 package com.apl.lms.common.query.lib.cache;
 
-import com.apl.lib.config.MyBatisPlusConfig;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.lib.feign.LmsCommonFeign;
+import com.apl.db.mybatis.MyBatisPlusConfig;
 import org.springframework.data.redis.core.RedisTemplate;
 
 /**

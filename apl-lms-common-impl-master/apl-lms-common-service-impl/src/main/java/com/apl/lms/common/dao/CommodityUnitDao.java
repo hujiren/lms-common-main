@@ -1,11 +1,16 @@
 package com.apl.lms.common.dao;
 
-import com.apl.lib.config.MyBatisPlusConfig;
+import com.alibaba.druid.pool.DruidDataSource;
+import com.apl.db.datasource.DataSourceConfig;
+import com.apl.db.datasource.DynamicDataSource;
 import com.apl.lib.pojo.dto.PageDto;
+import com.apl.lib.security.SecurityUser;
+import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lib.utils.DBUtil;
 import com.apl.lms.common.query.manage.dto.CommodityUnitDto;
 import com.apl.lms.common.query.manage.dto.CommodityUnitKeyDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -16,37 +21,47 @@ import java.util.Map;
 public class CommodityUnitDao {
 
     @Autowired
-    DBUtil DBUtil;
+    DBUtil dbUtil;
 
-    // 创建数据库操作信息对象
+    @Autowired
+    RedisTemplate redisTemplate;
+
+
     public DBUtil.DBInfo createDBinfo(){
-        //DBUtil.DBInfo dbInfo = DBUtil.createDBinfo("basic");
-        DBUtil.DBInfo dbInfo = DBUtil.createDBinfo();
-        dbInfo.setTenantValue(MyBatisPlusConfig.tenantIdContextHolder.get());
+        // 创建数据库连接信息
+        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
 
-        dbInfo.dbUtil = this.DBUtil;
+        DruidDataSource druidDataSource = DynamicDataSource.getDruidDataSource(securityUser.getTenantGroup(),
+                DataSourceConfig.sysProduct,
+                "wms_stocks_history",
+                redisTemplate);
+        DBUtil.DBInfo dbInfo = dbUtil.connect(druidDataSource);
+        dbInfo.setTenantValue(securityUser.getInnerOrgId());
+        DBUtil.DBInfo.tenantIdName = "inner_org_id";
 
-        return  dbInfo;
+        dbInfo.dbUtil = dbUtil;
+
+        return dbInfo;
     }
 
     // 添加
     public Long add(DBUtil.DBInfo dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
-        return DBUtil.insert(dbInfo, commodityUnit, "commodity_unit", "id");
+        return dbUtil.insert(dbInfo, commodityUnit, "commodity_unit", "id");
     }
 
 
     // 修改
     public Integer upd(DBUtil.DBInfo dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
-        return  DBUtil.updateById(dbInfo, commodityUnit, "commodity_unit");
+        return  dbUtil.updateById(dbInfo, commodityUnit, "commodity_unit");
     }
 
 
     // 删除
     public Integer del(DBUtil.DBInfo dbInfo, Long id) throws Exception {
 
-        return DBUtil.delById(dbInfo, "commodity_unit", id);
+        return dbUtil.delById(dbInfo, "commodity_unit", id);
     }
 
 
@@ -54,7 +69,7 @@ public class CommodityUnitDao {
     public CommodityUnitDto selectById(DBUtil.DBInfo dbInfo, Long id){
 
         String sql = "select id,unit_code,unit_name FROM commodity_unit where id="+id.toString();
-        CommodityUnitDto commodityUnitInfoVo = DBUtil.queryObj(dbInfo, sql, id, CommodityUnitDto.class);
+        CommodityUnitDto commodityUnitInfoVo = dbUtil.queryObj(dbInfo, sql, id, CommodityUnitDto.class);
 
         return commodityUnitInfoVo;
     }
@@ -64,7 +79,7 @@ public class CommodityUnitDao {
     public List<CommodityUnitDto> getList(DBUtil.DBInfo dbInfo, PageDto pageDto, CommodityUnitKeyDto keyDto){
 
         String sql = " SELECT  id, unit_code, unit_name FROM commodity_unit";
-        List<CommodityUnitDto>  list = DBUtil.queryPage(
+        List<CommodityUnitDto>  list = dbUtil.queryPage(
                 dbInfo,
                 sql,
                 keyDto,
@@ -91,7 +106,7 @@ public class CommodityUnitDao {
         if(id!=null && id>0)
             sql.append(" and id<>"+id.toString());
 
-        List<CommodityUnitDto>   list = DBUtil.queryList(
+        List<CommodityUnitDto>   list = dbUtil.queryList(
                 dbInfo,
                 sql.toString(),
                 paramMap,
