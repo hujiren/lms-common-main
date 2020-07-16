@@ -6,6 +6,7 @@ import com.apl.lms.common.query.manage.dto.CommodityUnitKeyDto;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
  * @author cy
  * @since 2019-12-19
  */
+@Repository
 public interface CommodityUnitMapper extends BaseMapper<CommodityUnitDto> {
 
     /**
