@@ -1,6 +1,6 @@
-package com.apl.lms.common.query.lib.feign;
+package com.apl.lms.common.lib.feign;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.query.lib.feign.impl.LmsCommonFeignImpl;
+import com.apl.lms.common.lib.feign.impl.LmsCommonFeignImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;

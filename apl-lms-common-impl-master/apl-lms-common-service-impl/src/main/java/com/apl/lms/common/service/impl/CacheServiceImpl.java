@@ -4,7 +4,7 @@ import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.security.SecurityUser;
 import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.query.lib.cache.*;
+import com.apl.lms.common.lib.cache.*;
 import com.apl.lms.common.mapper.CacheMapper;
 import com.apl.lms.common.service.CacheService;
 import lombok.extern.slf4j.Slf4j;

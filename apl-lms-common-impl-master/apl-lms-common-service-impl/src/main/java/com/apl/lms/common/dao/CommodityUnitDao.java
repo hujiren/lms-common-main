@@ -1,12 +1,14 @@
 package com.apl.lms.common.dao;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.apl.cache.AplCacheUtil;
 import com.apl.db.datasource.DataSourceConfig;
 import com.apl.db.datasource.DynamicDataSource;
+import com.apl.db.utils.DBUtil;
+import com.apl.lib.cachebase.BaseCacheUtil;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.security.SecurityUser;
 import com.apl.lib.utils.CommonContextHolder;
-import com.apl.lib.utils.DBUtil;
 import com.apl.lms.common.query.manage.dto.CommodityUnitDto;
 import com.apl.lms.common.query.manage.dto.CommodityUnitKeyDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ public class CommodityUnitDao {
     DBUtil dbUtil;
 
     @Autowired
-    RedisTemplate redisTemplate;
+    AplCacheUtil aplCacheUtil;
 
 
     public DBUtil.DBInfo createDBinfo(){
@@ -34,7 +36,7 @@ public class CommodityUnitDao {
         DruidDataSource druidDataSource = DynamicDataSource.getDruidDataSource(securityUser.getTenantGroup(),
                 DataSourceConfig.sysProduct,
                 "wms_stocks_history",
-                redisTemplate);
+                aplCacheUtil);
         DBUtil.DBInfo dbInfo = dbUtil.connect(druidDataSource);
         dbInfo.setTenantValue(securityUser.getInnerOrgId());
         DBUtil.DBInfo.tenantIdName = "inner_org_id";
@@ -47,7 +49,7 @@ public class CommodityUnitDao {
     // 添加
     public Long add(DBUtil.DBInfo dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
-        return dbUtil.insert(dbInfo, commodityUnit, "commodity_unit", "id");
+        return dbUtil.insertReturnId(dbInfo, commodityUnit, "commodity_unit");
     }
 
 

@@ -4,7 +4,7 @@
 
 
     <!-- 添加仓库缓存 -->
-    <select id="addCountryCache" resultType="com.apl.lms.common.query.lib.cache.CountryCacheBo">
+    <select id="addCountryCache" resultType="com.apl.lms.common.lib.cache.CountryCacheBo">
         SELECT
             concat('JOIN_CACHE:country_', #{innerOrgId}, '_', country_code) AS cache_key,
             country_code,
@@ -16,7 +16,7 @@
             country_code in(#{codes})
     </select>
 
-    <select id="addAirCarrierCache" resultType="com.apl.lms.common.query.lib.cache.AirCarrierCacheBo">
+    <select id="addAirCarrierCache" resultType="com.apl.lms.common.lib.cache.AirCarrierCacheBo">
         select
             concat('JOIN_CACHE:airCarrier_', #{innerOrgId}, '_', carrier_code) as cache_key,
             carrier_code,
@@ -28,7 +28,7 @@
             id in(#{keys})
     </select>
 
-    <select id="addAirPortCache" resultType="com.apl.lms.common.query.lib.cache.AirPortCacheBo">
+    <select id="addAirPortCache" resultType="com.apl.lms.common.lib.cache.AirPortCacheBo">
         select
             concat('JOIN_CACHE:airPort_' , #{innerOrgId}, '_', port_code) as cache_key,
             port_code,
@@ -42,7 +42,7 @@
 
     </select>
 
-    <select id="addSeaPortCache" resultType="com.apl.lms.common.query.lib.cache.SeaPortCacheBo">
+    <select id="addSeaPortCache" resultType="com.apl.lms.common.lib.cache.SeaPortCacheBo">
         select
             concat('JOIN_CACHE:seaPort_', #{innerOrgId}, '_', port_code) as cache_key,
             port_code,
@@ -55,7 +55,7 @@
             id in(#{keys})
     </select>
 
-    <select id="addSeaCarrierCache" resultType="com.apl.lms.common.query.lib.cache.SeaCarrierCacheBo">
+    <select id="addSeaCarrierCache" resultType="com.apl.lms.common.lib.cache.SeaCarrierCacheBo">
         select
             concat('JOIN_CACHE:seaCarrier_', #{innerOrgId}, '_', carrier_code) as cache_key,
             carrier_code,
@@ -67,7 +67,7 @@
             id in(#{keys})
     </select>
 
-    <select id="addCommodityUnitCache" resultType="com.apl.lms.common.query.lib.cache.CommodityUnitCacheBo">
+    <select id="addCommodityUnitCache" resultType="com.apl.lms.common.lib.cache.CommodityUnitCacheBo">
         select
             concat('JOIN_CACHE:commodity_unit', #{innerOrgId}, '_', unit_code) as cache_key,
             unit_code,

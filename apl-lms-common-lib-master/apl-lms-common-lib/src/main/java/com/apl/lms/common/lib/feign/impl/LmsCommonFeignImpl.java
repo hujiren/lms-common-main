@@ -1,8 +1,8 @@
-package com.apl.lms.common.query.lib.feign.impl;
+package com.apl.lms.common.lib.feign.impl;
 
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.query.lib.feign.LmsCommonFeign;
+import com.apl.lms.common.lib.feign.LmsCommonFeign;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**

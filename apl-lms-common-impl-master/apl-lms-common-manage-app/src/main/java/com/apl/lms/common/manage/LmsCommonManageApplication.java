@@ -11,7 +11,11 @@ import org.springframework.context.annotation.Bean;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(
-        scanBasePackages = {"com.apl.lib", "com.apl.db.datasource", "com.apl.lms.common"},
+        scanBasePackages = {
+                "com.apl.lib",
+                "com.apl.db",
+                "com.apl.cache",
+                "com.apl.lms.common"},
         exclude = {DataSourceAutoConfiguration.class, MyBatisPlusConfig.class})
 @MapperScan(basePackages = {"com.apl.lms.common.mapper"})
 @EnableSwagger2

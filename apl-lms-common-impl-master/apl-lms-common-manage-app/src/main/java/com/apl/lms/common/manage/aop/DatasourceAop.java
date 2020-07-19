@@ -1,5 +1,6 @@
 package com.apl.lms.common.manage.aop;
 
+import com.apl.cache.AplCacheUtil;
 import com.apl.db.datasource.DataSourceContextHolder;
 import com.apl.lib.constants.CommonAplConstants;
 import com.apl.lib.security.SecurityUser;
@@ -24,7 +25,7 @@ public class DatasourceAop {
 
 
     @Autowired
-    RedisTemplate redisTemplate;
+    AplCacheUtil aplCacheUtil;
 
     @Pointcut("execution(public * com.apl.lms.common.manage.controller.*.* (..))")
     public void datasourceAop() {
@@ -38,7 +39,7 @@ public class DatasourceAop {
             String token = CommonContextHolder.getHeader(CommonAplConstants.TOKEN_FLAG);
 
             // 安全用户上下文
-            SecurityUser securityUser = CommonContextHolder.getSecurityUser(redisTemplate, token);
+            SecurityUser securityUser = CommonContextHolder.getSecurityUser(aplCacheUtil, token);
             CommonContextHolder.securityUserContextHolder.set(securityUser);
 
             // 动态数据源切换 信息
