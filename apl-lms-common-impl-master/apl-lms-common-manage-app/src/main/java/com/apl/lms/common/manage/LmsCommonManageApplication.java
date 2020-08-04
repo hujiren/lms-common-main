@@ -1,6 +1,6 @@
 package com.apl.lms.common.manage;
 
-import com.apl.db.mybatis.MyBatisPlusConfig;
+import com.apl.db.abatis.MyBatisPlusConfig;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

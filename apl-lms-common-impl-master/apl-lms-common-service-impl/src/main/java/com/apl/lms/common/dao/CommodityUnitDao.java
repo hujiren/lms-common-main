@@ -2,11 +2,11 @@ package com.apl.lms.common.dao;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.apl.cache.AplCacheUtil;
+import com.apl.db.adb.AdbContext;
+import com.apl.db.adb.AdbPersistent;
+import com.apl.db.adb.AdbQuery;
 import com.apl.db.datasource.DataSourceConfig;
 import com.apl.db.datasource.DynamicDataSource;
-import com.apl.db.orm.AplDBInfo;
-import com.apl.db.orm.AplDBPersistent;
-import com.apl.db.orm.AplDBQuery;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.security.SecurityUser;
 import com.apl.lib.utils.CommonContextHolder;
@@ -25,7 +25,7 @@ public class CommodityUnitDao {
     AplCacheUtil aplCacheUtil;
 
 
-    public AplDBInfo connectDb(){
+    public AdbContext connectDb(){
         // 创建数据库连接信息
         SecurityUser securityUser = CommonContextHolder.getSecurityUser();
 
@@ -33,49 +33,49 @@ public class CommodityUnitDao {
                 DataSourceConfig.sysProduct,
                 "wms_stocks_history",
                 aplCacheUtil);
-        AplDBInfo dbInfo = new AplDBInfo(druidDataSource);
+        AdbContext dbInfo = new AdbContext(druidDataSource);
         dbInfo.setTenantValue(securityUser.getInnerOrgId());
-        AplDBInfo.tenantIdName = "inner_org_id";
+        AdbContext.tenantIdName = "inner_org_id";
 
         return dbInfo;
     }
 
     // 添加
-    public Long add(AplDBInfo dbInfo, CommodityUnitDto commodityUnit) throws Exception {
+    public Long add(AdbContext dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
-        return AplDBPersistent.insertReturnId(dbInfo, commodityUnit, "commodity_unit");
+        return AdbPersistent.insertReturnId(dbInfo, commodityUnit, "commodity_unit");
     }
 
 
     // 修改
-    public Integer upd(AplDBInfo dbInfo, CommodityUnitDto commodityUnit) throws Exception {
+    public Integer upd(AdbContext dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
-        return  AplDBPersistent.updateById(dbInfo, commodityUnit, "commodity_unit");
+        return  AdbPersistent.updateById(dbInfo, commodityUnit, "commodity_unit");
     }
 
 
     // 删除
-    public Integer del(AplDBInfo dbInfo, Long id) throws Exception {
+    public Integer del(AdbContext dbInfo, Long id) throws Exception {
 
-        return AplDBPersistent.delById(dbInfo, "commodity_unit", id);
+        return AdbPersistent.delById(dbInfo, "commodity_unit", id);
     }
 
 
     // 查询单个
-    public CommodityUnitDto selectById(AplDBInfo dbInfo, Long id){
+    public CommodityUnitDto selectById(AdbContext dbInfo, Long id){
 
         String sql = "select id,unit_code,unit_name FROM commodity_unit where id="+id.toString();
-        CommodityUnitDto commodityUnitInfoVo = AplDBQuery.queryObj(dbInfo, sql, id, CommodityUnitDto.class);
+        CommodityUnitDto commodityUnitInfoVo = AdbQuery.queryObj(dbInfo, sql, id, CommodityUnitDto.class);
 
         return commodityUnitInfoVo;
     }
 
 
     // 分页查询
-    public List<CommodityUnitDto> getList(AplDBInfo dbInfo, PageDto pageDto, CommodityUnitKeyDto keyDto){
+    public List<CommodityUnitDto> getList(AdbContext dbInfo, PageDto pageDto, CommodityUnitKeyDto keyDto){
 
         String sql = " SELECT  id, unit_code, unit_name FROM commodity_unit";
-        List<CommodityUnitDto>  list = AplDBQuery.queryPage(
+        List<CommodityUnitDto>  list = AdbQuery.queryPage(
                 dbInfo,
                 sql,
                 keyDto,
@@ -89,7 +89,7 @@ public class CommodityUnitDao {
 
 
     // 检测是否存在
-    public List<CommodityUnitDto> exists(AplDBInfo dbInfo, Long id, String unitCode, String unitName){
+    public List<CommodityUnitDto> exists(AdbContext dbInfo, Long id, String unitCode, String unitName){
 
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
@@ -102,7 +102,7 @@ public class CommodityUnitDao {
         if(id!=null && id>0)
             sql.append(" and id<>"+id.toString());
 
-        List<CommodityUnitDto>   list = AplDBQuery.queryList(
+        List<CommodityUnitDto>   list = AdbQuery.queryList(
                 dbInfo,
                 sql.toString(),
                 paramMap,
