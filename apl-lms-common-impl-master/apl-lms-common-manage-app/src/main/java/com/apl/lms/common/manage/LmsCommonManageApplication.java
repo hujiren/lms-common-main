@@ -15,7 +15,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
                 "com.apl.lib",
                 "com.apl.db",
                 "com.apl.cache",
-                "com.apl.lms.common"},
+                "com.apl.lms.common",
+                "com.apl.lms.common.manage"},
         exclude = {DataSourceAutoConfiguration.class, MyBatisPlusConfig.class})
 @MapperScan(basePackages = {"com.apl.lms.common.mapper"})
 @EnableSwagger2
@@ -25,6 +26,7 @@ public class LmsCommonManageApplication {
     public static void main(String[] args) {
 
         //com.apl.db.datasource.DataSourceConfig
+//        com.apl.db.adb
 
         SpringApplication.run(LmsCommonManageApplication.class , args);
     }
