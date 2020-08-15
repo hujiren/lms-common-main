@@ -1,5 +1,4 @@
 package com.apl.lms.common.manage.controller;
-
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.*;
@@ -13,7 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.validation.constraints.NotNull;
 
 /**
@@ -53,7 +51,7 @@ public class WeightWayController {
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增计泡方式")
-    public ResultUtil<Long> insert( @Validated WeightWayInsertDto weightWayInsertDto){
+    public ResultUtil<String> insert( @Validated WeightWayInsertDto weightWayInsertDto){
 
         return weightWayService.addWeightWay(weightWayInsertDto);
     }

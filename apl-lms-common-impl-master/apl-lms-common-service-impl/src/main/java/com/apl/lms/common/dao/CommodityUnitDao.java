@@ -26,16 +26,8 @@ public class CommodityUnitDao {
 
 
     public AdbContext connectDb(){
-        // 创建数据库连接信息
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
 
-        DruidDataSource druidDataSource = DynamicDataSource.getDruidDataSource(securityUser.getTenantGroup(),
-                DataSourceConfig.sysProduct,
-                "wms_stocks_history",
-                aplCacheUtil);
-        AdbContext dbInfo = new AdbContext(druidDataSource);
-        dbInfo.setTenantValue(securityUser.getInnerOrgId());
-        AdbContext.tenantIdName = "inner_org_id";
+        AdbContext dbInfo = new AdbContext("wms_stocks_history", aplCacheUtil );
 
         return dbInfo;
     }

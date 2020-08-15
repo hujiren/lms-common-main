@@ -13,7 +13,7 @@
         where
             1=1
         <if test="key.keyword != null">
-            and (locate(#{kd.keyword}, weight_way_name)>0
+            and locate(#{key.keyword}, weight_way_name)>0
         </if>
     </select>
 

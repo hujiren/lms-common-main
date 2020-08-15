@@ -42,6 +42,6 @@ public interface WeightWayService extends IService<WeightWayDto> {
          * @author hjr
          * @since 2020-08-08
          */
-        ResultUtil<Long> addWeightWay(WeightWayInsertDto weightWayInsertDto);
+        ResultUtil<String> addWeightWay(WeightWayInsertDto weightWayInsertDto);
 
 }

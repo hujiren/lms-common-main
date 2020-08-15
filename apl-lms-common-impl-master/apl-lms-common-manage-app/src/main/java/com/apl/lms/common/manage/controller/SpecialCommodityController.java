@@ -53,7 +53,7 @@ public class SpecialCommodityController {
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增特殊物品")
-    public ResultUtil<Long> insert( @Validated SpecialCommodityInsertDto specialCommodityInsertDto){
+    public ResultUtil<String> insert( @Validated SpecialCommodityInsertDto specialCommodityInsertDto){
 
         return specialCommodityService.addSpecialCommodity(specialCommodityInsertDto);
     }

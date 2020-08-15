@@ -29,7 +29,7 @@ public class SurchargeDto {
     private Long id;
 
     @ApiModelProperty(name = "chargeName", value = "附加费名称", required = true)
-    @NotBlank(message = "特殊物品名称不能为空")
+    @NotBlank(message = "附加费名称不能为空")
     private String chargeName;
 
     @ApiModelProperty(name = "computingFormula", value = "计算公式", required = true)

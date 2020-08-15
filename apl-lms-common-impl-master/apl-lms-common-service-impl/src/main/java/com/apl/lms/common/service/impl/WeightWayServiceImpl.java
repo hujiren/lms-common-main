@@ -77,7 +77,7 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
      * @return
      */
     @Override
-    public ResultUtil<Long> addWeightWay(WeightWayInsertDto weightWayInsertDto) {
+    public ResultUtil<String> addWeightWay(WeightWayInsertDto weightWayInsertDto) {
 
         WeightWayDto weightWayDto = new WeightWayDto();
         BeanUtils.copyProperties(weightWayInsertDto, weightWayDto);
@@ -87,6 +87,6 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, weightWayDto.getId());
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, weightWayDto.getId().toString());
     }
 }

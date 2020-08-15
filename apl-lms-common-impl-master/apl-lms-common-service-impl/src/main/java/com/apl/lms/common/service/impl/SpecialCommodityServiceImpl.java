@@ -75,7 +75,7 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
      * @return
      */
     @Override
-    public ResultUtil<Long> addSpecialCommodity(SpecialCommodityInsertDto specialCommodityInsertDto) {
+    public ResultUtil<String> addSpecialCommodity(SpecialCommodityInsertDto specialCommodityInsertDto) {
 
         SpecialCommodityDto specialCommodityDto = new SpecialCommodityDto();
         specialCommodityDto.setId(SnowflakeIdWorker.generateId());
@@ -85,6 +85,6 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, specialCommodityDto.getId());
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, specialCommodityDto.getId().toString());
     }
 }
