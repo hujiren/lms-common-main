@@ -44,4 +44,10 @@ public interface SurchargeService extends IService<SurchargeDto> {
          */
         ResultUtil<Long> addSurcharge(SurchargeInsertDto surchargeInsertDto);
 
+        /**
+         * 获取详情
+         * @param id
+         * @return
+         */
+        ResultUtil<SurchargeDto> getSurchargeInfo(Long id);
 }

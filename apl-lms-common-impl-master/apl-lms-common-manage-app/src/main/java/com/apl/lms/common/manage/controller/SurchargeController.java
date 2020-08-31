@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -44,17 +45,25 @@ public class SurchargeController {
         return surchargeService.delSurcharge(id);
     }
 
-    @PostMapping(value = "/update")
-    @ApiOperation(value =  "更新" , notes = "根据id更新附加费")
-    public ResultUtil<Boolean> update( @Validated SurchargeDto surchargeDto){
-
-        return surchargeService.updSurcharge(surchargeDto);
-    }
+//    @PostMapping(value = "/update")
+//    @ApiOperation(value =  "更新" , notes = "根据id更新附加费")
+//    public ResultUtil<Boolean> update( @Validated SurchargeDto surchargeDto){
+//
+//        return surchargeService.updSurcharge(surchargeDto);
+//    }
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增附加费")
     public ResultUtil<Long> insert( @Validated SurchargeInsertDto surchargeInsertDto){
 
         return surchargeService.addSurcharge(surchargeInsertDto);
+    }
+
+    @PostMapping(value = "/get")
+    @ApiOperation(value =  "获取附加费详细" , notes = "获取附加费详细")
+    @ApiImplicitParam(name = "id", value = "附加费Id", required = true, paramType = "query")
+    public ResultUtil<SurchargeDto> get(@NotNull(message = "id不能为空") @Min(value = 1, message = "id不能小于1") Long id){
+
+        return surchargeService.getSurchargeInfo(id);
     }
 }

@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author hjr start
@@ -24,4 +25,8 @@ public class SurchargeInsertDto {
     @ApiModelProperty(name = "currency", value = "币制", required = true)
     @NotBlank(message = "币制不能为空")
     private String currency;
+
+    @ApiModelProperty(name = "code", value = "附加费代码", required = true)
+    @NotNull(message = "附加费代码")
+    private Integer code;
 }

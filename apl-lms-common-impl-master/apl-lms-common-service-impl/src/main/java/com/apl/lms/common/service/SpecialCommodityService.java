@@ -17,35 +17,40 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface SpecialCommodityService extends IService<SpecialCommodityDto> {
 
 
-        /**
-         * @Desc: 分页查找 特殊物品 列表
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<Page<SpecialCommodityDto>>getList(PageDto pageDto, SpecialCommodityKeyDto specialCommodityKeyDto);
+    /**
+     * @Desc: 分页查找 特殊物品 列表
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<Page<SpecialCommodityDto>> getList(PageDto pageDto, SpecialCommodityKeyDto specialCommodityKeyDto);
+
+    /**
+     * @Desc: 根据Id删除特殊物品
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<Boolean> delSpecialCommodity(Long id);
+
+
+    /**
+     * @Desc: 更新特殊物品
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityDto specialCommodityDto);
+
+
+    /**
+     * @Desc: 新增特殊物品
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<String> addSpecialCommodity(SpecialCommodityInsertDto specialCommodityInsertDto);
 
         /**
-         * @Desc: 根据Id删除特殊物品
-         * @author hjr
-         * @since 2020-08-08
+         * 获取详情
+         * @param id
+         * @return
          */
-        ResultUtil<Boolean> delSpecialCommodity(Long id);
-
-
-        /**
-         * @Desc: 更新特殊物品
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityDto specialCommodityDto);
-
-
-        /**
-         * @Desc: 新增特殊物品
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<String> addSpecialCommodity(SpecialCommodityInsertDto specialCommodityInsertDto);
-
-
+    ResultUtil<SpecialCommodityDto> getSpecialCommodityInfo(Long id);
 }

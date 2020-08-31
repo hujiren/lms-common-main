@@ -7,7 +7,8 @@
         SELECT
             id,
             weight_way_name,
-            computing_formula
+            computing_formula,
+            code
         FROM
             weight_way
         where
@@ -24,11 +25,11 @@
 
     <!--更新附加费-->
     <update id="updWeightWay">
-        update weight_way set weight_way_name = #{po.weightWayName}, computing_formula = #{po.computingFormula} where id = #{po.id}
+        update weight_way set weight_way_name = #{po.weightWayName}, computing_formula = #{po.computingFormula}, code = #{po.code} where id = #{po.id}
     </update>
 
     <!--插入附加费-->
     <insert id="addWeightWay">
-        insert into weight_way (id, weight_way_name, computing_formula) values (#{po.id}, #{po.weightWayName}, #{po.computingFormula})
+        insert into weight_way (id, weight_way_name, computing_formula, code) values (#{po.id}, #{po.weightWayName}, #{po.computingFormula}, #{po.codes})
     </insert>
 </mapper>

@@ -1,5 +1,6 @@
 package com.apl.lms.common.manage.aop;
 
+
 import com.apl.cache.AplCacheUtil;
 import com.apl.db.abatis.MyBatisPlusConfig;
 import com.apl.db.datasource.DataSourceContextHolder;
@@ -13,6 +14,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 @Aspect
 @Component
 @Slf4j
@@ -36,12 +38,6 @@ public class DatasourceAop {
             // 安全用户上下文
             SecurityUser securityUser = CommonContextHolder.getSecurityUser(aplCacheUtil, token);
             CommonContextHolder.securityUserContextHolder.set(securityUser);
-
-            // 动态数据源切换 信息
-            DataSourceContextHolder.set(securityUser.getTenantGroup(), securityUser.getInnerOrgCode(), securityUser.getInnerOrgId());
-
-            // 多租户ID值
-            MyBatisPlusConfig.tenantIdContextHolder.set(securityUser.getInnerOrgId());
 
             Object[] args = pjp.getArgs();
             proceed = pjp.proceed(args);

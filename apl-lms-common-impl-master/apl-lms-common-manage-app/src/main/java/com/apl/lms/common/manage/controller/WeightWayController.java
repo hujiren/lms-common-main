@@ -12,6 +12,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -42,17 +44,25 @@ public class WeightWayController {
         return weightWayService.delWeightWay(id);
     }
 
-    @PostMapping(value = "/update")
-    @ApiOperation(value =  "更新" , notes = "根据id更新计泡方式")
-    public ResultUtil<Boolean> update( @Validated WeightWayDto weightWayDto){
-
-        return weightWayService.updWeightWay(weightWayDto);
-    }
+//    @PostMapping(value = "/update")
+//    @ApiOperation(value =  "更新" , notes = "根据id更新计泡方式")
+//    public ResultUtil<Boolean> update( @Validated WeightWayDto weightWayDto){
+//
+//        return weightWayService.updWeightWay(weightWayDto);
+//    }
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增计泡方式")
     public ResultUtil<String> insert( @Validated WeightWayInsertDto weightWayInsertDto){
 
         return weightWayService.addWeightWay(weightWayInsertDto);
+    }
+
+    @PostMapping(value = "/get")
+    @ApiOperation(value =  "获取计泡方式详细" , notes = "获取计泡方式详细")
+    @ApiImplicitParam(name = "id", value = "计泡方式Id", required = true, paramType = "query")
+    public ResultUtil<WeightWayDto> get(@NotNull(message = "id不能为空") @Min(value = 1, message = "id不能小于1") Long id){
+
+        return weightWayService.getWeightWayInfo(id);
     }
 }

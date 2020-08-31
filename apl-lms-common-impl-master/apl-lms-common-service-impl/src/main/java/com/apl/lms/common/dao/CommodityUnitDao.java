@@ -2,9 +2,7 @@ package com.apl.lms.common.dao;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.apl.cache.AplCacheUtil;
-import com.apl.db.adb.AdbContext;
-import com.apl.db.adb.AdbPersistent;
-import com.apl.db.adb.AdbQuery;
+import com.apl.db.adb.*;
 import com.apl.db.datasource.DataSourceConfig;
 import com.apl.db.datasource.DynamicDataSource;
 import com.apl.lib.pojo.dto.PageDto;
@@ -23,6 +21,9 @@ public class CommodityUnitDao {
 
     @Autowired
     AplCacheUtil aplCacheUtil;
+
+    @Autowired
+    AdbHelper adbHelper;
 
 
     public AdbContext connectDb(){
@@ -67,14 +68,15 @@ public class CommodityUnitDao {
     public List<CommodityUnitDto> getList(AdbContext dbInfo, PageDto pageDto, CommodityUnitKeyDto keyDto){
 
         String sql = " SELECT  id, unit_code, unit_name FROM commodity_unit";
-        List<CommodityUnitDto>  list = AdbQuery.queryPage(
-                dbInfo,
+        AdbPageVo<CommodityUnitDto> adbPageVo = adbHelper.queryPage(
                 sql,
                 keyDto,
                 CommodityUnitDto.class,
                 "id",
                 pageDto.getPageIndex(),
                 pageDto.getPageSize());
+
+        List<CommodityUnitDto>  list = adbPageVo.getList();
 
         return list;
     }

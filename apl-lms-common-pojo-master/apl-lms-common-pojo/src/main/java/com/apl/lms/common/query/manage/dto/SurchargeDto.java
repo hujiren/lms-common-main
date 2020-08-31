@@ -39,4 +39,8 @@ public class SurchargeDto {
     @ApiModelProperty(name = "currency", value = "币制", required = true)
     @NotBlank(message = "币制不能为空")
     private String currency;
+
+    @ApiModelProperty(name = "code", value = "附加费代码", required = true)
+    @NotNull(message = "附加费代码")
+    private Integer code;
 }

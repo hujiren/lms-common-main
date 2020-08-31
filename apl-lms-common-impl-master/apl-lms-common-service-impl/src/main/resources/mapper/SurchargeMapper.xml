@@ -8,7 +8,8 @@
             id,
             charge_name,
             computing_formula,
-            currency
+            currency,
+            code
         FROM
             surcharge
         where
@@ -25,11 +26,11 @@
 
     <!--更新附加费-->
     <update id="updSurcharge">
-        update surcharge set charge_name = #{po.chargeName}, computing_formula = #{po.computingFormula}, currency = #{po.currency} where id = #{po.id}
+        update surcharge set charge_name = #{po.chargeName}, computing_formula = #{po.computingFormula}, currency = #{po.currency}, code = #{po.code} where id = #{po.id}
     </update>
 
     <!--插入附加费-->
     <insert id="addSurcharge">
-        insert into surcharge(id, charge_name, computing_formula, currency) values (#{po.id}, #{po.chargeName}, #{po.computingFormula}, #{po.currency})
+        insert into surcharge(id, charge_name, computing_formula, currency, code) values (#{po.id}, #{po.chargeName}, #{po.computingFormula}, #{po.currency}, #{po.code})
     </insert>
 </mapper>

@@ -16,32 +16,38 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface WeightWayService extends IService<WeightWayDto> {
 
-        /**
-         * @Desc: 分页查找 计泡方式列表
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<Page<WeightWayDto>> getList(PageDto pageDto, WeightWayKeyDto weightWayKeyDto);
+    /**
+     * @Desc: 分页查找 计泡方式列表
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<Page<WeightWayDto>> getList(PageDto pageDto, WeightWayKeyDto weightWayKeyDto);
+
+    /**
+     * @Desc: 根据Id删除计泡方式
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<Boolean> delWeightWay(Long id);
+
+    /**
+     * @Desc: 更新计泡方式
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<Boolean> updWeightWay(WeightWayDto weightWayDto);
+
+    /**
+     * @Desc: 新增计泡方式
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<String> addWeightWay(WeightWayInsertDto weightWayInsertDto);
 
         /**
-         * @Desc: 根据Id删除计泡方式
-         * @author hjr
-         * @since 2020-08-08
+         * 获取详情
+         * @param id
+         * @return
          */
-        ResultUtil<Boolean> delWeightWay(Long id);
-
-        /**
-         * @Desc: 更新计泡方式
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<Boolean> updWeightWay(WeightWayDto weightWayDto);
-
-        /**
-         * @Desc: 新增计泡方式
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<String> addWeightWay(WeightWayInsertDto weightWayInsertDto);
-
+    ResultUtil<WeightWayDto> getWeightWayInfo(Long id);
 }

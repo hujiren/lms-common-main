@@ -15,4 +15,8 @@ public interface CacheService {
     ResultUtil<Boolean> addSeaCarrierCache(String keys, Long maxKey, Long minKey);
 
     ResultUtil<Boolean> addCommodityUnitCache(String keys, Long maxKey, Long minKey);
+
+    ResultUtil<Boolean> addSpecialCommodityCache(String keys, Long maxKey, Long minKey);
+
+    ResultUtil<Boolean> addSurchargeCache(String keys, Long maxKey, Long minKey);
 }

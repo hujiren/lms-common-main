@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author hjr start
@@ -21,4 +22,7 @@ public class WeightWayInsertDto {
     @NotBlank(message = "计算公式不能为空")
     private String computingFormula;
 
+    @ApiModelProperty(name = "code", value = "计泡方式代码", required = true)
+    @NotNull(message = "计泡方式代码")
+    private Integer code;
 }

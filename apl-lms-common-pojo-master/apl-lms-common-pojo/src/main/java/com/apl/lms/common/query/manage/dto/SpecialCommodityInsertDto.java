@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author hjr start
@@ -16,4 +17,8 @@ public class SpecialCommodityInsertDto {
     @ApiModelProperty(name = "specialCommodityName", value = "特殊物品名称", required = true)
     @NotBlank(message = "特殊物品名称不能为空")
     private String specialCommodityName;
+
+    @ApiModelProperty(name = "code", value = "特殊物品代码", required = true)
+    @NotNull(message = "特殊物品代码")
+    private Integer code;
 }

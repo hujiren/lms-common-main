@@ -36,4 +36,7 @@ public class WeightWayDto {
     @NotBlank(message = "计算公式不能为空")
     private String computingFormula;
 
+    @ApiModelProperty(name = "code", value = "计泡方式代码", required = true)
+    @NotNull(message = "计泡方式代码")
+    private Integer code;
 }

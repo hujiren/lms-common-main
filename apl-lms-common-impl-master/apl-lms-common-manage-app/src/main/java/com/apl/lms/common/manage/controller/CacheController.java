@@ -70,4 +70,20 @@ public class CacheController {
                                                    @RequestParam("maxKey") Long maxKey){
         return cacheService.addCommodityUnitCache(keys, maxKey, minKey);
     }
+
+    @PostMapping(value = "/add-special-commodity-cache")
+    @ApiOperation(value = "添加特殊物品缓存")
+    public ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys,
+                                                     @RequestParam("minKey") Long minKey,
+                                                     @RequestParam("maxKey") Long maxKey){
+        return cacheService.addSpecialCommodityCache(keys, maxKey, minKey);
+    }
+
+    @PostMapping(value = "/add-surcharge-cache")
+    @ApiOperation(value = "添加附加费缓存")
+    public ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys,
+                                                        @RequestParam("minKey") Long minKey,
+                                                        @RequestParam("maxKey") Long maxKey){
+        return cacheService.addSurchargeCache(keys, maxKey, minKey);
+    }
 }

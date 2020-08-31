@@ -2,12 +2,12 @@ spring:
   application:
     name: apl-lms-common-manage-app
 
+  main:
+    allow-bean-definition-overriding:true
+
   profiles:
     include:
       common, apl-lms-common-manage-app
 
-  cloud:
-    consul:
-      config:
-        fail-fast: false
+
 

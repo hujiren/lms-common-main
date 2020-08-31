@@ -87,4 +87,18 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, specialCommodityDto.getId().toString());
     }
+
+    /**
+     * 获取详情
+     * @param id
+     * @return
+     */
+    @Override
+    public ResultUtil<SpecialCommodityDto> getSpecialCommodityInfo(Long id) {
+        SpecialCommodityDto specialCommodityDto = baseMapper.selectById(id);
+        if(specialCommodityDto == null){
+            return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL, null);
+        }
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, specialCommodityDto);
+    }
 }

@@ -47,5 +47,8 @@ public interface CacheMapper extends BaseMapper {
     @MapKey("cacheKey")
     Map<String, CommodityUnitCacheBo> addCommodityUnitCache(@Param("keys") String keys,
                                                             @Param("innerOrgId") Long innerOrgId, @Param("minKey") Long minKey, @Param("maxKey") Long maxKey);
+    @MapKey("cacheKey")
+    Map<String, SpecialCommodityCacheBo> addSpecialCommodityCache(@Param("keys") String keys,
+                                                                  @Param("innerOrgId") Long innerOrgId, @Param("minKey") Long minKey, @Param("maxKey") Long maxKey);
 }
 

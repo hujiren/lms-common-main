@@ -6,7 +6,8 @@
     <select id="getList" resultType="com.apl.lms.common.query.manage.dto.SpecialCommodityDto">
         SELECT
             id,
-            special_commodity_name
+            special_commodity_name,
+            code
         FROM
             special_commodity
         where
@@ -23,11 +24,11 @@
 
     <!--更新特殊物品-->
     <update id="updSpecialCommodity">
-        update special_commodity set special_commodity_name = #{po.specialCommodityName} where id = #{po.id}
+        update special_commodity set special_commodity_name = #{po.specialCommodityName}, code = #{po.code} where id = #{po.id}
     </update>
 
     <!--插入特殊物品-->
     <insert id="addSpecialCommodity">
-        insert into special_commodity(id, special_commodity_name) values (#{po.id}, #{po.specialCommodityName})
+        insert into special_commodity(id, special_commodity_name, code) values (#{po.id}, #{po.specialCommodityName}, #{po.code})
     </insert>
 </mapper>

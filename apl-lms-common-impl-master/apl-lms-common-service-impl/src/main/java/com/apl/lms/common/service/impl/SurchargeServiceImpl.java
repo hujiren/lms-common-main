@@ -89,4 +89,18 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, surchargeDto.getId());
     }
+
+    /**
+     * 获取详情
+     * @param id
+     * @return
+     */
+    @Override
+    public ResultUtil<SurchargeDto> getSurchargeInfo(Long id) {
+        SurchargeDto surchargeDto = baseMapper.selectById(id);
+        if(surchargeDto == null){
+            return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL, null);
+        }
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, surchargeDto);
+    }
 }

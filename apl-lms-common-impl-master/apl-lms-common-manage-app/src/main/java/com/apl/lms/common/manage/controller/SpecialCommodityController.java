@@ -4,6 +4,7 @@ import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.SpecialCommodityDto;
 import com.apl.lms.common.query.manage.dto.SpecialCommodityInsertDto;
 import com.apl.lms.common.query.manage.dto.SpecialCommodityKeyDto;
+import com.apl.lms.common.query.manage.dto.SurchargeDto;
 import com.apl.lms.common.service.SpecialCommodityService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
@@ -14,6 +15,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -44,17 +47,25 @@ public class SpecialCommodityController {
         return specialCommodityService.delSpecialCommodity(id);
     }
 
-    @PostMapping(value = "/update")
-    @ApiOperation(value =  "更新" , notes = "根据id更新特殊物品")
-    public ResultUtil<Boolean> update( @Validated SpecialCommodityDto specialCommodityDto){
-
-        return specialCommodityService.updSpecialCommodity(specialCommodityDto);
-    }
+//    @PostMapping(value = "/update")
+//    @ApiOperation(value =  "更新" , notes = "根据id更新特殊物品")
+//    public ResultUtil<Boolean> update( @Validated SpecialCommodityDto specialCommodityDto){
+//
+//        return specialCommodityService.updSpecialCommodity(specialCommodityDto);
+//    }
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增特殊物品")
     public ResultUtil<String> insert( @Validated SpecialCommodityInsertDto specialCommodityInsertDto){
 
         return specialCommodityService.addSpecialCommodity(specialCommodityInsertDto);
+    }
+
+    @PostMapping(value = "/get")
+    @ApiOperation(value =  "获取特殊物品详细" , notes = "获取特殊物品详细")
+    @ApiImplicitParam(name = "id", value = "特殊物品Id", required = true, paramType = "query")
+    public ResultUtil<SpecialCommodityDto> get(@NotNull(message = "id不能为空") @Min(value = 1, message = "id不能小于1") Long id){
+
+        return specialCommodityService.getSpecialCommodityInfo(id);
     }
 }

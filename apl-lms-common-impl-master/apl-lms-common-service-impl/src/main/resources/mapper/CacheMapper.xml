@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.apl.lms.common.mapper.CacheMapper">
 
-
     <!-- 添加仓库缓存 -->
     <select id="addCountryCache" resultType="com.apl.lms.common.lib.cache.CountryCacheBo">
         SELECT
@@ -74,6 +73,17 @@
             unit_name
         from
             commodity_unit
+        where
+            id in(#{keys})
+    </select>
+
+    <select id="addSpecialCommodityCache" resultType="com.apl.lms.common.lib.cache.SpecialCommodityCacheBo">
+        select
+            concat('JOIN_CACHE:commodity_unit', #{innerOrgId}, '_', code) as cache_key,
+            id,
+            special_commodity_name
+        from
+            special_commodity
         where
             id in(#{keys})
     </select>
