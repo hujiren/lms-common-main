@@ -4,14 +4,6 @@
     <groupId>com.apl</groupId>
     <artifactId>apl-lms-common-impl-master</artifactId>
     <version>1.0.0</version>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.2.7.RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
     <packaging>pom</packaging>
 
     <modules>

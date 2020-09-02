@@ -1,12 +1,10 @@
 package com.apl.lms.common.lib.cache;
-
-
-import com.apl.db.abatis.MyBatisPlusConfig;
 import com.apl.lib.cachebase.BaseCacheUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.lib.feign.LmsCommonFeign;
+import com.apl.tenant.AplTenantConfig;
 
 /**
  * @author hjr start
@@ -24,7 +22,7 @@ public class JoinSeaPort extends JoinBase<SeaPortCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "sea_port";
         this.joinStyle = joinStyle;
-        this.innerOrgId = MyBatisPlusConfig.tenantIdContextHolder.get();
+        this.innerOrgId = AplTenantConfig.tenantIdContextHolder.get();
         this.cacheKeyNamePrefix = "JOIN_CACHE:" + this.tabName + "_" + this.innerOrgId.toString() + "_";
     }
 

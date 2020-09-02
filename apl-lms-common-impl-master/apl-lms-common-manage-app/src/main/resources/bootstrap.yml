@@ -2,8 +2,8 @@ spring:
   application:
     name: apl-lms-common-manage-app
 
-  main:
-    allow-bean-definition-overriding:true
+#  main:
+#    allow-bean-definition-overriding:true
 
   profiles:
     include:
