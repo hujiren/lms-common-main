@@ -14,6 +14,9 @@
             surcharge
         where
             1=1
+        <if test="key.code > 0">
+            and code = #{key.code}
+        </if>
         <if test="key.keyword != null">
             and locate(#{key.keyword}, charge_name)>0
         </if>
