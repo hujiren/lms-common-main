@@ -1,13 +1,7 @@
 package com.apl.lms.common.dao;
-
-import com.alibaba.druid.pool.DruidDataSource;
 import com.apl.cache.AplCacheUtil;
 import com.apl.db.adb.*;
-import com.apl.db.datasource.DataSourceConfig;
-import com.apl.db.datasource.DynamicDataSource;
 import com.apl.lib.pojo.dto.PageDto;
-import com.apl.lib.security.SecurityUser;
-import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lms.common.query.manage.dto.CommodityUnitDto;
 import com.apl.lms.common.query.manage.dto.CommodityUnitKeyDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,31 +20,24 @@ public class CommodityUnitDao {
     AdbHelper adbHelper;
 
 
-    public AdbContext connectDb(){
-
-        AdbContext dbInfo = new AdbContext("wms_stocks_history", aplCacheUtil );
-
-        return dbInfo;
-    }
-
     // 添加
     public Long add(AdbContext dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
-        return AdbPersistent.insertReturnId(dbInfo, commodityUnit, "commodity_unit");
+        return adbHelper.insertReturnId(commodityUnit, "commodity_unit");
     }
 
 
     // 修改
     public Integer upd(AdbContext dbInfo, CommodityUnitDto commodityUnit) throws Exception {
 
-        return  AdbPersistent.updateById(dbInfo, commodityUnit, "commodity_unit");
+        return  adbHelper.updateById(commodityUnit, "commodity_unit");
     }
 
 
     // 删除
     public Integer del(AdbContext dbInfo, Long id) throws Exception {
 
-        return AdbPersistent.delById(dbInfo, "commodity_unit", id);
+        return adbHelper.delById( "commodity_unit", id);
     }
 
 
@@ -58,7 +45,7 @@ public class CommodityUnitDao {
     public CommodityUnitDto selectById(AdbContext dbInfo, Long id){
 
         String sql = "select id,unit_code,unit_name FROM commodity_unit where id="+id.toString();
-        CommodityUnitDto commodityUnitInfoVo = AdbQuery.queryObj(dbInfo, sql, id, CommodityUnitDto.class);
+        CommodityUnitDto commodityUnitInfoVo = adbHelper.queryObj( sql, id, CommodityUnitDto.class);
 
         return commodityUnitInfoVo;
     }
@@ -96,8 +83,7 @@ public class CommodityUnitDao {
         if(id!=null && id>0)
             sql.append(" and id<>"+id.toString());
 
-        List<CommodityUnitDto>   list = AdbQuery.queryList(
-                dbInfo,
+        List<CommodityUnitDto>   list = adbHelper.queryList(
                 sql.toString(),
                 paramMap,
                 CommodityUnitDto.class);
