@@ -79,11 +79,36 @@
 
     <select id="addSpecialCommodityCache" resultType="com.apl.lms.common.lib.cache.SpecialCommodityCacheBo">
         select
-            concat('JOIN_CACHE:commodity_unit', #{innerOrgId}, '_', code) as cache_key,
+            concat('JOIN_CACHE:special_commodity', #{innerOrgId}, '_', code) as cache_key,
             id,
             special_commodity_name
         from
             special_commodity
+        where
+            id in(#{keys})
+    </select>
+
+    <select id="addSurchargeCache" resultType="com.apl.lms.common.lib.cache.SurchargeCacheBo">
+        select
+            concat('JOIN_CACHE:surcharge', #{innerOrgId}, '_', code) as cache_key,
+            id,
+            charge_name,
+            computing_formula,
+            currency
+        from
+            surcharge
+        where
+            id in(#{keys})
+    </select>
+
+    <select id="addWeightWayCache">
+        select
+            concat('JOIN_CACHE:weight_way', #{innerOrgId}, '_', code) as cache_key,
+            id,
+            weight_way_name,
+            computing_formula
+        from
+            weight_way
         where
             id in(#{keys})
     </select>

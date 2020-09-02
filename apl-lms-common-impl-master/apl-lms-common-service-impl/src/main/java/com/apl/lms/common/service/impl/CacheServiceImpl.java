@@ -132,7 +132,18 @@ public class CacheServiceImpl implements CacheService {
     @Override
     public ResultUtil<Boolean> addSurchargeCache(String keys, Long maxKey, Long minKey) {
         SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, SpecialCommodityCacheBo> maps = cacheMapper.addSpecialCommodityCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
+        Map<String, SurchargeCacheBo> maps = cacheMapper.addSurchargeCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
+        if (null != maps && maps.size() > 0) {
+            redisTemplate.opsForValue().multiSet(maps);
+            return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
+        }
+        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+    }
+
+    @Override
+    public ResultUtil<Boolean> addWeightWayCache(String keys, Long maxKey, Long minKey) {
+        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
+        Map<String, WeightWayCacheBo> maps = cacheMapper.addWeightWayCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);

@@ -19,4 +19,6 @@ public interface CacheService {
     ResultUtil<Boolean> addSpecialCommodityCache(String keys, Long maxKey, Long minKey);
 
     ResultUtil<Boolean> addSurchargeCache(String keys, Long maxKey, Long minKey);
+
+    ResultUtil<Boolean> addWeightWayCache(String keys, Long maxKey, Long minKey);
 }

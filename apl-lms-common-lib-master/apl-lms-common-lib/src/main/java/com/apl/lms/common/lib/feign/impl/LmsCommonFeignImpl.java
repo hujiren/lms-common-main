@@ -56,4 +56,25 @@ public class LmsCommonFeignImpl implements LmsCommonFeign {
                                                           @RequestParam("maxKey") Long maxKey) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
+
+    @Override
+    public ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys,
+                                                        @RequestParam("minKey") Long minKey,
+                                                        @RequestParam("maxKey") Long maxKey) {
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
+    }
+
+    @Override
+    public ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys,
+                                                 @RequestParam("minKey") Long minKey,
+                                                 @RequestParam("maxKey") Long maxKey) {
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
+    }
+
+    @Override
+    public ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys,
+                                                 @RequestParam("minKey") Long minKey,
+                                                 @RequestParam("maxKey") Long maxKey) {
+        return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
+    }
 }

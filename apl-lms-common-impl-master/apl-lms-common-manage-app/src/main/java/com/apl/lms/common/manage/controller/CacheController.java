@@ -86,4 +86,12 @@ public class CacheController {
                                                         @RequestParam("maxKey") Long maxKey){
         return cacheService.addSurchargeCache(keys, maxKey, minKey);
     }
+
+    @PostMapping(value = "/add-weight-way-cache")
+    @ApiOperation(value = "添加计泡方式缓存")
+    public ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys,
+                                                 @RequestParam("minKey") Long minKey,
+                                                 @RequestParam("maxKey") Long maxKey){
+        return cacheService.addWeightWayCache(keys, maxKey, minKey);
+    }
 }

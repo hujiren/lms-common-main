@@ -46,5 +46,20 @@ public interface LmsCommonFeign {
     ResultUtil<Boolean> addCommodityUnitCacheById(@RequestParam("keys") String keys,
                                                @RequestParam("minKey") Long minKey,
                                                @RequestParam("maxKey") Long maxKey);
+
+    @PostMapping("/cache/add-special-commodity-cache")
+    ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys,
+                                                  @RequestParam("minKey") Long minKey,
+                                                  @RequestParam("maxKey") Long maxKey);
+
+    @PostMapping("/cache/add-surcharge-cache")
+    ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys,
+                                                 @RequestParam("minKey") Long minKey,
+                                                 @RequestParam("maxKey") Long maxKey);
+
+    @PostMapping("/cache/add-weight-way-cache")
+    ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys,
+                                          @RequestParam("minKey") Long minKey,
+                                          @RequestParam("maxKey") Long maxKey);
 }
 
