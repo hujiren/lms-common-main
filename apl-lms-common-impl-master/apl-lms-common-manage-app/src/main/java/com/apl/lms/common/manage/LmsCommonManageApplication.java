@@ -39,26 +39,3 @@ public class LmsCommonManageApplication {
     }
 }
 
-
-/*
-@SpringBootApplication(
-        scanBasePackages = {
-                "com.apl.lib",
-                "com.apl.db.adb",
-                "com.apl.cache",
-                "com.apl.lms.common",
-                "com.apl.lms.common.manage.controller"})
-@MapperScan(basePackages = {"com.apl.lms.common.mapper"})
-@EnableSwagger2
-@EnableDiscoveryClient
-public class LmsCommonManageApplication {
-
-    public static void main(String[] args) {
-
-        SpringApplication.run(LmsCommonManageApplication.class , args);
-    }
-
-
-
-}
-*/

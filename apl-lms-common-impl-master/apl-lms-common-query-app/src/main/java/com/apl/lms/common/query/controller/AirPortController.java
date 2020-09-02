@@ -36,7 +36,6 @@ public class AirPortController {
     public AirPortService airPortService;
 
 
-
     @PostMapping("/get-list")
     @ApiOperation(value =  "分页查找" , notes = "分页查找")
     public ResultUtil<Page<AirPortListVo>> getList(PageDto pageDto, @Validated AirPortKeyDto airPortKeyDto) {
