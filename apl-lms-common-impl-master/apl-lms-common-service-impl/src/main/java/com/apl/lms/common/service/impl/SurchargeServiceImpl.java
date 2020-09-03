@@ -35,7 +35,9 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
         Page<SurchargeDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
-
+        if(null == surchargeKeyDto.getCode() || surchargeKeyDto.getCode() < 0){
+            surchargeKeyDto.setCode(0);
+        }
         List<SurchargeDto> surchargeDtoList = baseMapper.getList(page, surchargeKeyDto);
 
         page.setRecords(surchargeDtoList);
