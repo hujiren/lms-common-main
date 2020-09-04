@@ -26,14 +26,14 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/weight-way")
 @Validated
-@Api(value = "计泡方式",tags = "计泡方式")
+@Api(value = "公共计泡方式",tags = "公共计泡方式")
 public class WeightWayController {
 
     @Autowired
     WeightWayService weightWayService;
 
     @PostMapping(value = "/get-list")
-    @ApiOperation(value =  "分页获取特殊物品列表" , notes = "根据关键字来查询")
+    @ApiOperation(value =  "分页获取计泡方式列表" , notes = "根据关键字来查询")
     public ResultUtil<Page<WeightWayDto>> getList(PageDto pageDto ,
                                                   @Validated WeightWayKeyDto weightWayKeyDto){
         return weightWayService.getList(pageDto, weightWayKeyDto);

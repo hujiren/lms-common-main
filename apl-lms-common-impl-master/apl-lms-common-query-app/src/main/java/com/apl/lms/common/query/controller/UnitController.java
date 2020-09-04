@@ -29,7 +29,7 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/commodity-unit")
 @Validated
-@Api(value = "单位管理",tags = "单位管理")
+@Api(value = "公共单位管理",tags = "公共单位管理")
 @Slf4j
 public class UnitController {
 

@@ -29,7 +29,7 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/sea-carrier")
 @Validated
-@Api(value = "船舶公司",tags = "船舶公司")
+@Api(value = "公共船舶公司",tags = "公共船舶公司")
 @Slf4j
 public class SeaCarrierController {
 

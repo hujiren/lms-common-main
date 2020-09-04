@@ -25,7 +25,7 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/special-commodity")
 @Validated
-@Api(value = "特殊物品",tags = "特殊物品")
+@Api(value = "公共特殊物品",tags = "公共特殊物品")
 public class SpecialCommodityController {
 
     @Autowired

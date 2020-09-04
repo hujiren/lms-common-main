@@ -27,7 +27,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/count-way")
 @Validated
-@Api(value = "计件方式",tags = "计件方式")
+@Api(value = "公共计件方式",tags = "公共计件方式")
 @Slf4j
 public class CountWayController {
 

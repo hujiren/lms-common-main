@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/air-carrier")
 @Validated
-@Api(value = "航空公司",tags = "航空公司")
+@Api(value = "公共航空公司",tags = "公共航空公司")
 @Slf4j
 public class AirCarrierController {
 

@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/country")
 @Validated
-@Api(value = "国家",tags = "国家")
+@Api(value = "公共国家",tags = "公共国家")
 @Slf4j
 public class CountryController {
 

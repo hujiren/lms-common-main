@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/sea-port")
 @Validated
-@Api(value = "海运港口",tags = "海运港口")
+@Api(value = "公共海运港口",tags = "公共海运港口")
 @Slf4j
 public class SeaPortController {
 

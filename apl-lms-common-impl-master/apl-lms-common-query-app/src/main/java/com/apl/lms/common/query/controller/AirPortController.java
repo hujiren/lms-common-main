@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/air-port")
 @Validated
-@Api(value = "空运机场",tags = "空运机场")
+@Api(value = "公共空运机场",tags = "公共空运机场")
 @Slf4j
 public class AirPortController {
 

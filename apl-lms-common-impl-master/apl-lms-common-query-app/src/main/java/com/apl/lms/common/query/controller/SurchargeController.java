@@ -26,14 +26,14 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/surcharge")
 @Validated
-@Api(value = "附加费",tags = "附加费")
+@Api(value = "公共附加费",tags = "公共附加费")
 public class SurchargeController {
 
     @Autowired
     SurchargeService surchargeService;
 
     @PostMapping(value = "/get-list")
-    @ApiOperation(value =  "分页获取特殊物品列表" , notes = "根据关键字来查询")
+    @ApiOperation(value =  "分页获取附加费列表" , notes = "根据关键字来查询")
     public ResultUtil<Page<SurchargeDto>> getList(PageDto pageDto ,
                                                          @Validated SurchargeKeyDto surchargeKeyDto){
         return surchargeService.getList(pageDto, surchargeKeyDto);
