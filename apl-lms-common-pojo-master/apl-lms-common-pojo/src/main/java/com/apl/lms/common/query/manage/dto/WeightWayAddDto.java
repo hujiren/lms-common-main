@@ -12,11 +12,15 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @ApiModel(value = "计泡方式插入对象", description = "计泡方式插入对象")
-public class WeightWayInsertDto {
+public class WeightWayAddDto {
 
     @ApiModelProperty(name = "weightWayName", value = "计泡方式名称", required = true)
     @NotBlank(message = "计泡方式名称不能为空")
     private String weightWayName;
+
+    @ApiModelProperty(name = "weightWayNameEn", value = "计泡方式英文名称", required = true)
+    @NotBlank(message = "计泡方式英文名称不能为空")
+    private String weightWayNameEn;
 
     @ApiModelProperty(name = "computingFormula", value = "计算公式", required = true)
     @NotBlank(message = "计算公式不能为空")

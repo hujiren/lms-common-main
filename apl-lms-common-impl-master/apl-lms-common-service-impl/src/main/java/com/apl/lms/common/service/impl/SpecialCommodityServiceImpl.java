@@ -49,7 +49,7 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
      */
     @Override
     public ResultUtil<Boolean> delSpecialCommodity(Long id) {
-        Integer integer = baseMapper.delById(id);
+        Integer integer = baseMapper.deleteById(id);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL, false);
         }
@@ -64,7 +64,7 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
     @Override
     public ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityDto specialCommodityDto) {
 
-        Integer integer = baseMapper.updSpecialCommodity(specialCommodityDto);
+        Integer integer = baseMapper.updateById(specialCommodityDto);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, false);
         }
@@ -73,17 +73,17 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
 
     /**
      * 添加特殊物品
-     * @param specialCommodityInsertDto
+     * @param specialCommodityAddDto
      * @return
      */
     @Override
-    public ResultUtil<String> addSpecialCommodity(SpecialCommodityInsertDto specialCommodityInsertDto) {
+    public ResultUtil<String> addSpecialCommodity(SpecialCommodityAddDto specialCommodityAddDto) {
 
         SpecialCommodityDto specialCommodityDto = new SpecialCommodityDto();
         specialCommodityDto.setId(SnowflakeIdWorker.generateId());
-        specialCommodityDto.setSpecialCommodityName(specialCommodityInsertDto.getSpecialCommodityName());
-
-        Integer integer = baseMapper.addSpecialCommodity(specialCommodityDto);
+        specialCommodityDto.setSpecialCommodityName(specialCommodityAddDto.getSpecialCommodityName());
+        specialCommodityDto.setSpecialCommodityNameEn(specialCommodityAddDto.getSpecialCommodityNameEn());
+        Integer integer = baseMapper.insert(specialCommodityDto);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }

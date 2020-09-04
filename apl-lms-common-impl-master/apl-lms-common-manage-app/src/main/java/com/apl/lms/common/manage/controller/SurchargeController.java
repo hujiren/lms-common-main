@@ -2,7 +2,6 @@ package com.apl.lms.common.manage.controller;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.*;
-import com.apl.lms.common.service.SpecialCommodityService;
 import com.apl.lms.common.service.SurchargeService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
@@ -40,7 +39,7 @@ public class SurchargeController {
     @PostMapping(value = "/delete")
     @ApiOperation(value =  "删除" , notes = "根据id删除")
     @ApiImplicitParam(name = "id", value = "特殊物品Id", required = true, paramType = "query")
-    public ResultUtil<Boolean> delete(@NotNull(message = "id不能为空") Long id){
+    public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") Long id){
 
         return surchargeService.delSurcharge(id);
     }
@@ -54,9 +53,9 @@ public class SurchargeController {
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增附加费")
-    public ResultUtil<Long> insert( @Validated SurchargeInsertDto surchargeInsertDto){
+    public ResultUtil<Long> add( @Validated SurchargeAddDto surchargeAddDto){
 
-        return surchargeService.addSurcharge(surchargeInsertDto);
+        return surchargeService.addSurcharge(surchargeAddDto);
     }
 
     @PostMapping(value = "/get")

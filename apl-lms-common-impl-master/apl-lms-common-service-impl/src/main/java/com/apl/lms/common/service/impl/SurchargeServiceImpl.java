@@ -51,7 +51,7 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
      */
     @Override
     public ResultUtil<Boolean> delSurcharge(Long id) {
-        Integer integer = baseMapper.delById(id);
+        Integer integer = baseMapper.deleteById(id);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL, false);
         }
@@ -66,7 +66,7 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
     @Override
     public ResultUtil<Boolean> updSurcharge(SurchargeDto surchargeDto) {
 
-        Integer integer = baseMapper.updSurcharge(surchargeDto);
+        Integer integer = baseMapper.updateById(surchargeDto);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, false);
         }
@@ -75,17 +75,17 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
 
     /**
      * 添加附加费
-     * @param surchargeInsertDto
+     * @param surchargeAddDto
      * @return
      */
     @Override
-    public ResultUtil<Long> addSurcharge(SurchargeInsertDto surchargeInsertDto) {
+    public ResultUtil<Long> addSurcharge(SurchargeAddDto surchargeAddDto) {
 
         SurchargeDto surchargeDto = new SurchargeDto();
-        BeanUtils.copyProperties(surchargeInsertDto, surchargeDto);
+        BeanUtils.copyProperties(surchargeAddDto, surchargeDto);
         surchargeDto.setId(SnowflakeIdWorker.generateId());
 
-        Integer integer = baseMapper.addSurcharge(surchargeDto);
+        Integer integer = baseMapper.insert(surchargeDto);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }

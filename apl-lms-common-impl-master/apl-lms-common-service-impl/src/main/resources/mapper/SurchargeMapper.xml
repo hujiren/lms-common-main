@@ -7,6 +7,7 @@
         SELECT
             id,
             charge_name,
+            charge_name_en,
             computing_formula,
             currency,
             code
@@ -19,21 +20,8 @@
         </if>
         <if test="key.keyword != null">
             and locate(#{key.keyword}, charge_name)>0
+            or locate(#{key.keyword}, charge_name_en)>0
         </if>
     </select>
 
-    <!--根据Id删除附加费-->
-    <delete id="delById">
-        delete from surcharge where id = #{id}
-    </delete>
-
-    <!--更新附加费-->
-    <update id="updSurcharge">
-        update surcharge set charge_name = #{po.chargeName}, computing_formula = #{po.computingFormula}, currency = #{po.currency}, code = #{po.code} where id = #{po.id}
-    </update>
-
-    <!--插入附加费-->
-    <insert id="addSurcharge">
-        insert into surcharge(id, charge_name, computing_formula, currency, code) values (#{po.id}, #{po.chargeName}, #{po.computingFormula}, #{po.currency}, #{po.code})
-    </insert>
 </mapper>

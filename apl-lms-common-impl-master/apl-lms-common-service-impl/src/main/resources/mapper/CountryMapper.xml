@@ -9,7 +9,7 @@
 
 
     <!-- 分页查找列表 2020-04-13-->
-    <select id="getListCountryByPage"  resultType="com.apl.lms.common.query.manage.dto.CountryDto">
+    <select id="getListCountryByPage"  resultType="com.apl.lms.common.query.manage.dto.CountryAddDto">
         SELECT
         country_code,
         name_cn,
@@ -52,7 +52,7 @@
     </select>
 
     <!-- 检查记录是否重复 -->
-    <select id="exists" resultType="com.apl.lms.common.query.manage.dto.CountryDto">
+    <select id="exists" resultType="com.apl.lms.common.query.manage.dto.CountryAddDto">
         SELECT
         country_code,
         name_cn,

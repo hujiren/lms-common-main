@@ -1,7 +1,7 @@
 package com.apl.lms.common.service.impl;
 import com.apl.lib.exception.AplException;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.query.manage.dto.AirPortDto;
+import com.apl.lms.common.query.manage.dto.AirPortAddDto;
 import com.apl.lms.common.query.manage.dto.AirPortKeyDto;
 import com.apl.lms.common.query.manage.dto.AirPortUpdDto;
 import com.apl.lms.common.mapper.AirPortMapper;
@@ -30,7 +30,7 @@ import org.springframework.util.CollectionUtils;
  */
 @Service
 @Slf4j
-public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> implements AirPortService {
+public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto> implements AirPortService {
 
     //状态code枚举
     /*enum AirPortServiceCode {
@@ -49,13 +49,13 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> i
     AirPortMapper airPortMapper;
 
     @Override
-    public ResultUtil<String> add(AirPortDto airPortDto){
+    public ResultUtil<String> add(AirPortAddDto airPortAddDto){
 
-        this.exists(null, airPortDto.getPortCode(),  airPortDto.getNameCn(),  airPortDto.getNameEn());
-        Integer flag = baseMapper.insert(airPortDto);
+        this.exists(null, airPortAddDto.getPortCode(),  airPortAddDto.getNameCn(),  airPortAddDto.getNameEn());
+        Integer flag = baseMapper.insert(airPortAddDto);
 
         if(flag > 0){
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortDto.getPortCode());
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortAddDto.getPortCode());
         }
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
 
@@ -66,9 +66,9 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> i
 
         this.exists(airPortUpdDto.getOldCode(),  airPortUpdDto.getPortCode(),  airPortUpdDto.getNameCn(),  airPortUpdDto.getNameEn() );
 
-        AirPortDto apt = new AirPortDto();
+        AirPortAddDto apt = new AirPortAddDto();
         BeanUtils.copyProperties(airPortUpdDto, apt);
-        UpdateWrapper<AirPortDto> wrapper = new UpdateWrapper<>();
+        UpdateWrapper<AirPortAddDto> wrapper = new UpdateWrapper<>();
         wrapper.eq("port_code", airPortUpdDto.getOldCode());
         Integer flag = baseMapper.update(apt, wrapper);
 
@@ -92,11 +92,11 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> i
     }
 
     @Override
-    public ResultUtil<AirPortDto> selectByCode(String portCode){
+    public ResultUtil<AirPortAddDto> selectByCode(String portCode){
 
-        AirPortDto airPortDto = airPortMapper.selectByCode(portCode);
+        AirPortAddDto airPortAddDto = airPortMapper.selectByCode(portCode);
 
-        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, airPortDto);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, airPortAddDto);
 
     }
 
@@ -116,9 +116,9 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortDto> i
 
     void exists(String oldCode, String portCode, String nameCn, String nameEn) {
 
-        List<AirPortDto> list = airPortMapper.exists(portCode,  nameCn,  nameEn );
+        List<AirPortAddDto> list = airPortMapper.exists(portCode,  nameCn,  nameEn );
         if (!CollectionUtils.isEmpty(list)) {
-            for(AirPortDto  airPortInfoVo : list) {
+            for(AirPortAddDto airPortInfoVo : list) {
 
                 if (oldCode == null || !airPortInfoVo.getPortCode().equals(oldCode)) {
                     if(airPortInfoVo.getPortCode().equals(portCode))

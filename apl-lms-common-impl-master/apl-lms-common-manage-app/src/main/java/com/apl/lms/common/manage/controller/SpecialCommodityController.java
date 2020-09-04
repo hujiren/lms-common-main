@@ -2,9 +2,8 @@ package com.apl.lms.common.manage.controller;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.SpecialCommodityDto;
-import com.apl.lms.common.query.manage.dto.SpecialCommodityInsertDto;
+import com.apl.lms.common.query.manage.dto.SpecialCommodityAddDto;
 import com.apl.lms.common.query.manage.dto.SpecialCommodityKeyDto;
-import com.apl.lms.common.query.manage.dto.SurchargeDto;
 import com.apl.lms.common.service.SpecialCommodityService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
@@ -42,23 +41,23 @@ public class SpecialCommodityController {
     @PostMapping(value = "/delete")
     @ApiOperation(value =  "删除" , notes = "根据id删除")
     @ApiImplicitParam(name = "id", value = "特殊物品Id", required = true, paramType = "query")
-    public ResultUtil<Boolean> delete(@NotNull(message = "id不能为空") Long id){
+    public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") Long id){
 
         return specialCommodityService.delSpecialCommodity(id);
     }
 
 //    @PostMapping(value = "/update")
 //    @ApiOperation(value =  "更新" , notes = "根据id更新特殊物品")
-//    public ResultUtil<Boolean> update( @Validated SpecialCommodityDto specialCommodityDto){
+//    public ResultUtil<Boolean> upd( @Validated SpecialCommodityDto specialCommodityDto){
 //
 //        return specialCommodityService.updSpecialCommodity(specialCommodityDto);
 //    }
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增特殊物品")
-    public ResultUtil<String> insert( @Validated SpecialCommodityInsertDto specialCommodityInsertDto){
+    public ResultUtil<String> add( @Validated SpecialCommodityAddDto specialCommodityAddDto){
 
-        return specialCommodityService.addSpecialCommodity(specialCommodityInsertDto);
+        return specialCommodityService.addSpecialCommodity(specialCommodityAddDto);
     }
 
     @PostMapping(value = "/get")

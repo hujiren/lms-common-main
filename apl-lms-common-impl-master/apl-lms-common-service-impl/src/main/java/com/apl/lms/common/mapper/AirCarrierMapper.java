@@ -36,5 +36,5 @@ public interface AirCarrierMapper extends BaseMapper<AirCarrierDto> {
      * @Author: ${cfg.author}
      * @Date: 2020-04-17
      */
-    List<AirCarrierDto> exists(@Param("id") Long id,  @Param("carrierCode") String carrierCode,   @Param("nameCn") String nameCn,   @Param("nameEn") String nameEn );
+    List<AirCarrierDto> exists(@Param("id") Long id, @Param("carrierCode") String carrierCode, @Param("nameCn") String nameCn, @Param("nameEn") String nameEn );
 }

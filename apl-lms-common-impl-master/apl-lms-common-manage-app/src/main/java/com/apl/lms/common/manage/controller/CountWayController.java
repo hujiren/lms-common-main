@@ -46,7 +46,7 @@ public class CountWayController {
 
     @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新",  notes ="")
-    public ResultUtil<Boolean> updById(CountWayDto countWayDto) {
+    public ResultUtil<Boolean> upd(CountWayDto countWayDto) {
         ApiParamValidate.notEmpty("id", countWayDto.getId());
         ApiParamValidate.validate(countWayDto);
 
@@ -57,7 +57,7 @@ public class CountWayController {
     @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "id",value = " id",required = true  , paramType = "query")
-    public ResultUtil<Boolean> delById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+    public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
         ApiParamValidate.notEmpty("id", id);
         return countWayService.delById(id);
     }
@@ -66,7 +66,7 @@ public class CountWayController {
     @PostMapping(value = "/get")
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "id",value = "id",required = true  , paramType = "query")
-    public ResultUtil<CountWayDto> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+    public ResultUtil<CountWayDto> get(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
         ApiParamValidate.notEmpty("id", id);
         return countWayService.selectById(id);
     }

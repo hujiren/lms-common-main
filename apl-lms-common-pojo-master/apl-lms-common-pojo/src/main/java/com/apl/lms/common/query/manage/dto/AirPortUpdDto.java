@@ -21,7 +21,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("air_port")
-@ApiModel(value="AirPortDto 持久化对象", description="机场")
+@ApiModel(value="AirPortAddDto 持久化对象", description="机场")
 public class AirPortUpdDto extends Model<AirPortUpdDto> {
 
     @ApiModelProperty(name = "oldCode" , value = "旧机场简码", required = true)

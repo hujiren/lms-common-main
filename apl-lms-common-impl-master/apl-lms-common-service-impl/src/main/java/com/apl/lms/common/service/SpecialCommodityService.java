@@ -45,7 +45,7 @@ public interface SpecialCommodityService extends IService<SpecialCommodityDto> {
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<String> addSpecialCommodity(SpecialCommodityInsertDto specialCommodityInsertDto);
+    ResultUtil<String> addSpecialCommodity(SpecialCommodityAddDto specialCommodityAddDto);
 
         /**
          * 获取详情

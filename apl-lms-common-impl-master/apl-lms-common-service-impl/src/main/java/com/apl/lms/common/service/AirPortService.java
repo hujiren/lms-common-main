@@ -1,7 +1,7 @@
 package com.apl.lms.common.service;
 import com.apl.lib.utils.ResultUtil;
 
-import com.apl.lms.common.query.manage.dto.AirPortDto;
+import com.apl.lms.common.query.manage.dto.AirPortAddDto;
 import com.apl.lms.common.query.manage.dto.AirPortKeyDto;
 import com.apl.lms.common.query.manage.dto.AirPortUpdDto;
 import com.apl.lms.common.query.manage.vo.AirPortListVo;
@@ -17,14 +17,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author hjr
  * @since 2020-04-13
  */
-public interface AirPortService extends IService<AirPortDto> {
+public interface AirPortService extends IService<AirPortAddDto> {
 
         /**
          * @Desc: 添加一个AirPortPo实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtil<String> add(AirPortDto airPortDto);
+        ResultUtil<String> add(AirPortAddDto airPortAddDto);
 
         /**
          * @Desc: 更新
@@ -45,7 +45,7 @@ public interface AirPortService extends IService<AirPortDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtil<AirPortDto> selectByCode(String portCode);
+        ResultUtil<AirPortAddDto> selectByCode(String portCode);
 
         /**
          * @Desc: 分页查找 AirPortPo 列表

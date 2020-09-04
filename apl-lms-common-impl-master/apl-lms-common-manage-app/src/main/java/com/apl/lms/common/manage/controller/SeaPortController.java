@@ -54,7 +54,7 @@ public class SeaPortController {
     @ApiOperation(value =  "更新",  notes ="CODE_EXIST -> code已经存在\n"+
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
-    public ResultUtil<Boolean> updById(SeaPortDto seaPortDto) {
+    public ResultUtil<Boolean> upd(SeaPortDto seaPortDto) {
         ApiParamValidate.validate(seaPortDto);
         ApiParamValidate.notEmpty("id", seaPortDto.getId());
         String homeCountry = seaPortDto.getHomeCountry().toUpperCase();
@@ -68,7 +68,7 @@ public class SeaPortController {
     @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "id",value = " id",paramType = "query")
-    public ResultUtil<Boolean> delById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+    public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
         ApiParamValidate.notEmpty("id", id);
         return seaPortService.delById(id);
     }
@@ -77,7 +77,7 @@ public class SeaPortController {
     @PostMapping(value = "/get")
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "id",value = "id",required = true  , paramType = "query")
-    public ResultUtil<SeaPortDto> selectById(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+    public ResultUtil<SeaPortDto> get(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
         ApiParamValidate.notEmpty("id", id);
         return seaPortService.selectById(id);
     }

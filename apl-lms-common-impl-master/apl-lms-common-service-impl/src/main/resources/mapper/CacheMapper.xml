@@ -81,7 +81,8 @@
         select
             concat('JOIN_CACHE:special_commodity', #{innerOrgId}, '_', code) as cache_key,
             id,
-            special_commodity_name
+            special_commodity_name,
+            special_commodity_name_en
         from
             special_commodity
         where
@@ -93,6 +94,7 @@
             concat('JOIN_CACHE:surcharge', #{innerOrgId}, '_', code) as cache_key,
             id,
             charge_name,
+            charge_name_en,
             computing_formula,
             currency
         from
@@ -106,6 +108,7 @@
             concat('JOIN_CACHE:weight_way', #{innerOrgId}, '_', code) as cache_key,
             id,
             weight_way_name,
+            weight_way_name_en,
             computing_formula
         from
             weight_way
