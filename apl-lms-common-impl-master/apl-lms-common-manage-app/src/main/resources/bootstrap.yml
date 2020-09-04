@@ -2,12 +2,16 @@ spring:
   application:
     name: apl-lms-common-manage-app
 
-#  main:
-#    allow-bean-definition-overriding:true
-
   profiles:
     include:
       common, apl-lms-common-manage-app
+
+  #  main:
+  #    allow-bean-definition-overriding:true
+
+log4j:
+  logger:
+    com.apl.lms.common.mapper:DEBUG
 
 
 

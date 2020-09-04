@@ -2,12 +2,14 @@ spring:
   application:
     name: apl-lms-common-query-app
 
-  #  main:
-  #    allow-bean-definition-overriding:true
-
   profiles:
     include:
       common, apl-lms-common-query-app
 
+  #  main:
+  #    allow-bean-definition-overriding:true
 
+logging:
+  level:
+    com.apl.lms.common.mapper: debug
 
