@@ -24,9 +24,11 @@
         FROM
            commodity_unit
         <where>
+            1 = 1
+
             <if test="key.keyword != null and key.keyword != ''">
-                (unit_code like concat('%' , #{key.keyword} , '%')
-                or unit_name like concat('%' , #{key.keyword} , '%'))
+                and (unit_code = #{key.upperKeyword} or
+                unit_name like concat('%' , #{key.keyword} , '%'))
             </if>
         </where>
 

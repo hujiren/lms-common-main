@@ -40,8 +40,7 @@
                 sp.home_country = #{key.homeCountry}
             </if>
             <if test="key.keyword != null and key.keyword != ''">
-                and
-                (sp.port_code = #{key.keyword}
+                and (sp.port_code = #{key.upperKeyword}
                 OR sp.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 OR sp.home_country LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 OR sp.alias_name LIKE CONCAT( '%' , #{key.keyword} , '%' )

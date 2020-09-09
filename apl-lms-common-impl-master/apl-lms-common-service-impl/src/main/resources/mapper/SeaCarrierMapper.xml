@@ -27,10 +27,11 @@
         FROM
             sea_carrier
         <where>
+            1 = 1
         <if test="key.keyword != null and key.keyword != ''">
-            (name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
+            and (carrier_code = #{key.upperKeyword}
+            OR name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
             <if test="key.keyword.length()>2">
-            OR carrier_code LIKE CONCAT( '%' , #{key.keyword} , '%' )
             OR name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
             </if>)
         </if>

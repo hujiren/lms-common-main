@@ -35,9 +35,6 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
         Page<WeightWayDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
-        if(null == weightWayKeyDto.getCode() || weightWayKeyDto.getCode() < 0){
-            weightWayKeyDto.setCode(0);
-        }
         List<WeightWayDto> weightWayDtoList = baseMapper.getList(page, weightWayKeyDto);
 
         page.setRecords(weightWayDtoList);

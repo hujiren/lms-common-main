@@ -41,8 +41,9 @@
                 and ap.home_country = #{key.homeCountry}
             </if>
             <if test="key.keyword != null">
-                and (ap.port_code=#{key.keyword}
-                OR ap.home_country = #{key.keyword}
+                and
+                (ap.port_code=#{key.upperKeyword} or
+                ap.home_country = #{key.keyword}
                 OR ap.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 OR ap.alias_name LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 OR co.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )

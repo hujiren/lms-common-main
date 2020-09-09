@@ -14,12 +14,10 @@
             weight_way
         where
             1=1
-        <if test="key.code > 0">
-            and code = #{key.code}
-        </if>
         <if test="key.keyword != null">
             and locate(#{key.keyword}, weight_way_name)>0
             or locate(#{key.keyword}, weight_way_name_en)>0
+            or code = #{key.keyword}
         </if>
     </select>
 

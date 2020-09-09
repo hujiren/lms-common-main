@@ -33,9 +33,6 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
         Page<SpecialCommodityDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
-        if(null == specialCommodityKeyDto.getCode() || specialCommodityKeyDto.getCode() < 0){
-            specialCommodityKeyDto.setCode(0);
-        }
         List<SpecialCommodityDto> specialCommodityDtoList = baseMapper.getList(page, specialCommodityKeyDto);
 
         page.setRecords(specialCommodityDtoList);

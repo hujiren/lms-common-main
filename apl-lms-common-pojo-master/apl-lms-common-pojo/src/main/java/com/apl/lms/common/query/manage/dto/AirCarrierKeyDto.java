@@ -27,6 +27,9 @@ public class AirCarrierKeyDto extends Model<AirCarrierKeyDto> {
     @Length(max = 100, message = "关键词长度不能超过100")
     private String keyword;
 
+    @ApiModelProperty(name = "upperKeyword", value = "大写关键词", hidden = true)
+    private String upperKeyword;
+
     public String getKeyword() {
         if (keyword == null || StringUtils.isEmpty(keyword.trim())){
             return  null;
@@ -34,4 +37,10 @@ public class AirCarrierKeyDto extends Model<AirCarrierKeyDto> {
         return keyword.trim();
     }
 
+    public String getUpperKeyword() {
+        if (keyword == null || StringUtils.isEmpty(keyword.trim())){
+            return  null;
+        }
+        return keyword.toUpperCase().trim();
+    }
 }
