@@ -4,21 +4,21 @@ import com.apl.lib.utils.ResultUtil;
 
 public interface CacheService {
 
-    ResultUtil<Boolean> addCountryCache(String codes);
+    ResultUtil<Boolean> addCountryCache(String keys);
 
-    ResultUtil<Boolean> addAirCarrierCache(String keys, Long minKey, Long maxKey);
+    ResultUtil<Boolean> addAirCarrierCache(String keys);
 
     ResultUtil<Boolean> addAirPortCache(String codes);
 
-    ResultUtil<Boolean> addSeaPortCache(String keys, Long minKey, Long maxKey);
+    ResultUtil<Boolean> addSeaPortCache(String keys);
 
-    ResultUtil<Boolean> addSeaCarrierCache(String keys, Long maxKey, Long minKey);
+    ResultUtil<Boolean> addSeaCarrierCache(String keys);
 
-    ResultUtil<Boolean> addCommodityUnitCache(String keys, Long maxKey, Long minKey);
+    ResultUtil<Boolean> addCommodityUnitCache(String keys);
 
-    ResultUtil<Boolean> addSpecialCommodityCache(String keys, Long maxKey, Long minKey);
+    ResultUtil<Boolean> addSpecialCommodityCache(String keys);
 
-    ResultUtil<Boolean> addSurchargeCache(String keys, Long maxKey, Long minKey);
+    ResultUtil<Boolean> addSurchargeCache(String keys);
 
-    ResultUtil<Boolean> addWeightWayCache(String keys, Long maxKey, Long minKey);
+    ResultUtil<Boolean> addWeightWayCache(String keys);
 }

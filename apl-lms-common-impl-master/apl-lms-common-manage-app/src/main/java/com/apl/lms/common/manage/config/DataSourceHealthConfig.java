@@ -1,5 +1,6 @@
 package com.apl.lms.common.manage.config;
 
+import com.apl.lms.price.exp.pojo.vo.PriceZoneDataListVo;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthContributorAutoConfiguration;
@@ -17,7 +18,6 @@ public class DataSourceHealthConfig extends DataSourceHealthContributorAutoConfi
 
     @Value("${spring.datasource.dbcp2.validation-query:select 1}")
     private String defaultQuery;
-
 
     public DataSourceHealthConfig(Map<String, DataSource> dataSources, ObjectProvider<DataSourcePoolMetadataProvider> metadataProviders) {
         super(dataSources, metadataProviders);

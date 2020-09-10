@@ -2,34 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.apl.lms.common.mapper.CacheMapper">
 
-    <!-- 添加仓库缓存 -->
+    <!-- 添加国家 缓存 -->
     <select id="addCountryCache" resultType="com.apl.lms.common.lib.cache.CountryCacheBo">
         SELECT
-            concat('JOIN_CACHE:country_', #{innerOrgId}, '_', country_code) AS cache_key,
+            concat('JOIN_CACHE:country_', country_code) AS cache_key,
             country_code,
             name_cn,
             name_en
         FROM
             country
         where
-            country_code in(#{codes})
+            country_code in(${keys})
     </select>
 
     <select id="addAirCarrierCache" resultType="com.apl.lms.common.lib.cache.AirCarrierCacheBo">
         select
-            concat('JOIN_CACHE:airCarrier_', #{innerOrgId}, '_', carrier_code) as cache_key,
+            concat('JOIN_CACHE:airCarrier_', carrier_code) as cache_key,
             carrier_code,
             name_cn,
             name_en
         from
             air_carrier
         where
-            id in(#{keys})
+            id in(${keys})
     </select>
 
     <select id="addAirPortCache" resultType="com.apl.lms.common.lib.cache.AirPortCacheBo">
         select
-            concat('JOIN_CACHE:airPort_' , #{innerOrgId}, '_', port_code) as cache_key,
+            concat('JOIN_CACHE:airPort_' , port_code) as cache_key,
             port_code,
             name_cn,
             name_en,
@@ -37,13 +37,13 @@
         from
             air_port
         where
-            port_code in(#{codes})
+            port_code in(${keys})
 
     </select>
 
     <select id="addSeaPortCache" resultType="com.apl.lms.common.lib.cache.SeaPortCacheBo">
         select
-            concat('JOIN_CACHE:seaPort_', #{innerOrgId}, '_', port_code) as cache_key,
+            concat('JOIN_CACHE:seaPort_',port_code) as cache_key,
             port_code,
             name_cn,
             name_en,
@@ -51,47 +51,47 @@
         from
             sea_port
         where
-            id in(#{keys})
+            id in(${keys})
     </select>
 
     <select id="addSeaCarrierCache" resultType="com.apl.lms.common.lib.cache.SeaCarrierCacheBo">
         select
-            concat('JOIN_CACHE:seaCarrier_', #{innerOrgId}, '_', carrier_code) as cache_key,
+            concat('JOIN_CACHE:seaCarrier_',carrier_code) as cache_key,
             carrier_code,
             name_cn,
             name_en
         from
             sea_carrier
         where
-            id in(#{keys})
+            id in(${keys})
     </select>
 
     <select id="addCommodityUnitCache" resultType="com.apl.lms.common.lib.cache.CommodityUnitCacheBo">
         select
-            concat('JOIN_CACHE:commodity_unit', #{innerOrgId}, '_', unit_code) as cache_key,
+            concat('JOIN_CACHE:commodity_unit_',unit_code) as cache_key,
             unit_code,
             unit_name
         from
             commodity_unit
         where
-            id in(#{keys})
+            id in(${keys})
     </select>
 
     <select id="addSpecialCommodityCache" resultType="com.apl.lms.common.lib.cache.SpecialCommodityCacheBo">
         select
-            concat('JOIN_CACHE:special_commodity', #{innerOrgId}, '_', code) as cache_key,
+            concat('JOIN_CACHE:special_commodity_',code) as cache_key,
             id,
             special_commodity_name,
             special_commodity_name_en
         from
             special_commodity
         where
-            id in(#{keys})
+            id in(${keys})
     </select>
 
     <select id="addSurchargeCache" resultType="com.apl.lms.common.lib.cache.SurchargeCacheBo">
         select
-            concat('JOIN_CACHE:surcharge', #{innerOrgId}, '_', code) as cache_key,
+            concat('JOIN_CACHE:surcharge_',code) as cache_key,
             id,
             charge_name,
             charge_name_en,
@@ -100,12 +100,12 @@
         from
             surcharge
         where
-            id in(#{keys})
+            id in(${keys})
     </select>
 
     <select id="addWeightWayCache">
         select
-            concat('JOIN_CACHE:weight_way', #{innerOrgId}, '_', code) as cache_key,
+            concat('JOIN_CACHE:weight_way_',code) as cache_key,
             id,
             weight_way_name,
             weight_way_name_en,
@@ -113,6 +113,6 @@
         from
             weight_way
         where
-            id in(#{keys})
+            id in(${keys})
     </select>
 </mapper>

@@ -45,12 +45,11 @@ public class CacheServiceImpl implements CacheService {
     CacheMapper cacheMapper;
 
 
-    //添加仓库缓存
+    //添加国家缓存
     @Override
-    public ResultUtil<Boolean> addCountryCache(String codes) {
-        codes = codes.toUpperCase();
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, CountryCacheBo> maps = cacheMapper.addCountryCache(codes, securityUser.getInnerOrgId());
+    public ResultUtil<Boolean> addCountryCache(String keys) {
+        keys = keys.toUpperCase();
+        Map<String, CountryCacheBo> maps = cacheMapper.addCountryCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
@@ -59,9 +58,8 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public ResultUtil<Boolean> addAirCarrierCache(String keys, Long minKey, Long maxKey) {
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, AirCarrierCacheBo> maps = cacheMapper.addAirCarrierCache(keys, minKey, maxKey, securityUser.getInnerOrgId());
+    public ResultUtil<Boolean> addAirCarrierCache(String keys) {
+        Map<String, AirCarrierCacheBo> maps = cacheMapper.addAirCarrierCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_SUCCESS, true);
@@ -70,10 +68,9 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public ResultUtil<Boolean> addAirPortCache(String codes) {
-        codes = codes.toUpperCase();
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, AirPortCacheBo> maps = cacheMapper.addAirPortCache(codes, securityUser.getInnerOrgId());
+    public ResultUtil<Boolean> addAirPortCache(String keys) {
+        keys = keys.toUpperCase();
+        Map<String, AirPortCacheBo> maps = cacheMapper.addAirPortCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
@@ -83,9 +80,8 @@ public class CacheServiceImpl implements CacheService {
 
 
     @Override
-    public ResultUtil<Boolean> addSeaPortCache(String keys, Long minKey, Long maxKey) {
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, SeaPortCacheBo> maps = cacheMapper.addSeaPortCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
+    public ResultUtil<Boolean> addSeaPortCache(String keys) {
+        Map<String, SeaPortCacheBo> maps = cacheMapper.addSeaPortCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
@@ -95,9 +91,8 @@ public class CacheServiceImpl implements CacheService {
 
 
     @Override
-    public ResultUtil<Boolean> addSeaCarrierCache(String keys, Long maxKey, Long minKey) {
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, SeaCarrierCacheBo> maps = cacheMapper.addSeaCarrierCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
+    public ResultUtil<Boolean> addSeaCarrierCache(String keys) {
+        Map<String, SeaCarrierCacheBo> maps = cacheMapper.addSeaCarrierCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
@@ -107,9 +102,8 @@ public class CacheServiceImpl implements CacheService {
 
 
     @Override
-    public ResultUtil<Boolean> addCommodityUnitCache(String keys, Long maxKey, Long minKey) {
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, CommodityUnitCacheBo> maps = cacheMapper.addCommodityUnitCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
+    public ResultUtil<Boolean> addCommodityUnitCache(String keys) {
+        Map<String, CommodityUnitCacheBo> maps = cacheMapper.addCommodityUnitCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
@@ -118,9 +112,8 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public ResultUtil<Boolean> addSpecialCommodityCache(String keys, Long maxKey, Long minKey) {
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, SpecialCommodityCacheBo> maps = cacheMapper.addSpecialCommodityCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
+    public ResultUtil<Boolean> addSpecialCommodityCache(String keys) {
+        Map<String, SpecialCommodityCacheBo> maps = cacheMapper.addSpecialCommodityCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
@@ -130,9 +123,8 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public ResultUtil<Boolean> addSurchargeCache(String keys, Long maxKey, Long minKey) {
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, SurchargeCacheBo> maps = cacheMapper.addSurchargeCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
+    public ResultUtil<Boolean> addSurchargeCache(String keys) {
+        Map<String, SurchargeCacheBo> maps = cacheMapper.addSurchargeCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
@@ -141,9 +133,8 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
-    public ResultUtil<Boolean> addWeightWayCache(String keys, Long maxKey, Long minKey) {
-        SecurityUser securityUser = CommonContextHolder.getSecurityUser();
-        Map<String, WeightWayCacheBo> maps = cacheMapper.addWeightWayCache(keys, securityUser.getInnerOrgId(), minKey, maxKey);
+    public ResultUtil<Boolean> addWeightWayCache(String keys) {
+        Map<String, WeightWayCacheBo> maps = cacheMapper.addWeightWayCache(keys);
         if (null != maps && maps.size() > 0) {
             redisTemplate.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
