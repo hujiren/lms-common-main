@@ -1,6 +1,5 @@
 package com.apl.lms.common.manage.config;
 
-import com.apl.lms.price.exp.pojo.vo.PriceZoneDataListVo;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthContributorAutoConfiguration;
@@ -9,7 +8,6 @@ import org.springframework.boot.actuate.jdbc.DataSourceHealthIndicator;
 import org.springframework.boot.jdbc.metadata.DataSourcePoolMetadataProvider;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
-
 import javax.sql.DataSource;
 import java.util.Map;
 
