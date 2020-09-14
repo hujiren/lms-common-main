@@ -12,69 +12,51 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LmsCommonFeignImpl implements LmsCommonFeign {
 
     @Override
-    public ResultUtil<Boolean> addCountryCacheByCode(@RequestParam("keys") String keys,
-                                                      @RequestParam("minKey") Long minKey,
-                                                      @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addCountryCacheByCode(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
 
     @Override
-    public ResultUtil<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys,
-                                                       @RequestParam("minKey") Long minKey,
-                                                       @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
 
     @Override
-    public ResultUtil<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys,
-                                                      @RequestParam("minKey") Long minKey,
-                                                      @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode(), CommonStatusCode.SERVER_INVOKE_FAIL.getMsg(), null);
     }
 
 
     @Override
-    public ResultUtil<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys,
-                                                      @RequestParam("minKey") Long minKey,
-                                                      @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
 
     @Override
-    public ResultUtil<Boolean> addSeaCarrierCacheById(@RequestParam("keys") String keys,
-                                                       @RequestParam("minKey") Long minKey,
-                                                       @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addSeaCarrierCacheById(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
     @Override
-    public ResultUtil<Boolean> addCommodityUnitCacheById(@RequestParam("keys") String keys,
-                                                          @RequestParam("minKey") Long minKey,
-                                                          @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addCommodityUnitCacheById(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
     @Override
-    public ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys,
-                                                        @RequestParam("minKey") Long minKey,
-                                                        @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
     @Override
-    public ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys,
-                                                 @RequestParam("minKey") Long minKey,
-                                                 @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
     @Override
-    public ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys,
-                                                 @RequestParam("minKey") Long minKey,
-                                                 @RequestParam("maxKey") Long maxKey) {
+    public ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 }

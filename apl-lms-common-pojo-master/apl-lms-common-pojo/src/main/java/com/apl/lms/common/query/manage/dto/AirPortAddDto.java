@@ -21,8 +21,8 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("air_port")
-@ApiModel(value="AirPortDto 持久化对象", description="机场")
-public class AirPortDto extends Model<AirPortDto> {
+@ApiModel(value="AirPortAddDto 持久化对象", description="机场")
+public class AirPortAddDto extends Model<AirPortAddDto> {
 
     @ApiModelProperty(name = "portCode" , value = "机场简码", required = true)
     @NotEmpty(message = "机场简码不能为空")

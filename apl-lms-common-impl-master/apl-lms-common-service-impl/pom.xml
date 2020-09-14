@@ -12,13 +12,11 @@
             <artifactId>apl-service-dependency-parent</artifactId>
             <version>1.0.0</version>
         </dependency>
-
         <dependency>
             <groupId>com.apl</groupId>
             <artifactId>apl-lms-common-lib</artifactId>
             <version>1.0.0</version>
         </dependency>
-
         <dependency>
             <groupId>com.apl</groupId>
             <artifactId>apl-lms-common-pojo</artifactId>

@@ -27,36 +27,32 @@ import java.util.Map;
 @Repository
 public interface CacheMapper extends BaseMapper {
 
-    //添加仓库缓存
+    //添加国家缓存
     @MapKey("cacheKey")
-    Map<String, CountryCacheBo> addCountryCache(@Param("codes") String codes, @Param("innerOrgId") Long innerOrgId);
+    Map<String, CountryCacheBo> addCountryCache(@Param("keys") String keys);
 
     @MapKey("cacheKey")
-    Map<String, AirCarrierCacheBo> addAirCarrierCache(@Param("keys") String keys,
-                                                      @Param("minKey") Long minKey, @Param("maxKey") Long maxKey, @Param("innerOrgId") Long innerOrgId);
+    Map<String, AirCarrierCacheBo> addAirCarrierCache(@Param("keys") String keys);
 
     @MapKey("cacheKey")
-    Map<String, AirPortCacheBo> addAirPortCache(@Param("codes") String codes, @Param("innerOrgId") Long innerOrgId);
+    Map<String, AirPortCacheBo> addAirPortCache(@Param("keys") String keys);
 
     @MapKey("cacheKey")
-    Map<String, SeaPortCacheBo> addSeaPortCache(@Param("keys") String keys,
-                                                @Param("innerOrgId") Long innerOrgId, @Param("minKey") Long minKey, @Param("maxKey") Long maxKey);
+    Map<String, SeaPortCacheBo> addSeaPortCache(@Param("keys") String keys);
 
     @MapKey("cacheKey")
-    Map<String, SeaCarrierCacheBo> addSeaCarrierCache(@Param("keys") String keys,
-                                                      @Param("innerOrgId") Long innerOrgId, @Param("minKey") Long minKey, @Param("maxKey") Long maxKey);
+    Map<String, SeaCarrierCacheBo> addSeaCarrierCache(@Param("keys") String keys);
 
     @MapKey("cacheKey")
-    Map<String, CommodityUnitCacheBo> addCommodityUnitCache(@Param("keys") String keys,
-                                                            @Param("innerOrgId") Long innerOrgId, @Param("minKey") Long minKey, @Param("maxKey") Long maxKey);
+    Map<String, CommodityUnitCacheBo> addCommodityUnitCache(@Param("keys") String keys);
+
     @MapKey("cacheKey")
-    Map<String, SpecialCommodityCacheBo> addSpecialCommodityCache(@Param("keys") String keys,
-                                                                  @Param("innerOrgId") Long innerOrgId, @Param("minKey") Long minKey, @Param("maxKey") Long maxKey);
+    Map<String, SpecialCommodityCacheBo> addSpecialCommodityCache(@Param("keys") String keys);
+
     @MapKey("cacheKey")
-    Map<String, SurchargeCacheBo> addSurchargeCache(@Param("keys") String keys,
-                                                    @Param("innerOrgId") Long innerOrgId, @Param("minKey") Long minKey, @Param("maxKey") Long maxKey);
+    Map<String, SurchargeCacheBo> addSurchargeCache(@Param("keys") String keys);
+
     @MapKey("cacheKey")
-    Map<String, WeightWayCacheBo> addWeightWayCache(@Param("keys") String keys,
-                                                    @Param("innerOrgId") Long innerOrgId, @Param("minKey") Long minKey, @Param("maxKey") Long maxKey);
+    Map<String, WeightWayCacheBo> addWeightWayCache(@Param("keys") String keys);
 }
 

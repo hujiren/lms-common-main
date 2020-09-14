@@ -29,24 +29,5 @@ public interface SpecialCommodityMapper extends BaseMapper<SpecialCommodityDto> 
      */
     List<SpecialCommodityDto> getList(Page page, @Param("key") SpecialCommodityKeyDto specialCommodityKeyDto);
 
-    /**
-     * 根据Id删除特殊物品
-     * @param id
-     * @return
-     */
-    Integer delById(@Param("id") Long id);
 
-    /**
-     * 更新特殊物品
-     * @param specialCommodityDto
-     * @return
-     */
-    Integer updSpecialCommodity(@Param("po") SpecialCommodityDto specialCommodityDto);
-
-    /**
-     * 插入特殊物品
-     * @param specialCommodityDto
-     * @return
-     */
-    Integer addSpecialCommodity(@Param("po") SpecialCommodityDto specialCommodityDto);
 }

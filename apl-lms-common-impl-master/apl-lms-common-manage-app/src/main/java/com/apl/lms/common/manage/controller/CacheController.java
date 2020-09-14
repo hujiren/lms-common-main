@@ -22,76 +22,62 @@ public class CacheController {
 
     @PostMapping("/add-country-cache")
     @ApiOperation(value = "添加国家缓存")
-    public ResultUtil<Boolean> addCountryCache(@RequestParam("keys") String codes){
+    public ResultUtil<Boolean> addCountryCache(@RequestParam("keys") String keys){
 
-        return cacheService.addCountryCache(codes);
+        return cacheService.addCountryCache(keys);
     }
 
 
     @PostMapping(value = "/add-air-carrier-cache")
     @ApiOperation(value = "添加航空公司缓存")
-    public ResultUtil<Boolean> addAirCarrierCache(@RequestParam("keys") String keys,
-                                                   @RequestParam("minKey") Long minKey,
-                                                   @RequestParam("maxKey") Long maxKey){
+    public ResultUtil<Boolean> addAirCarrierCache(@RequestParam("keys") String keys){
 
-        return cacheService.addAirCarrierCache(keys, minKey, maxKey);
+        return cacheService.addAirCarrierCache(keys);
     }
 
 
     @PostMapping(value = "/add-air-port-cache")
     @ApiOperation(value = "添加机场缓存")
-    public ResultUtil<Boolean> addAirPortCache(@RequestParam("keys") String codes){
-        return cacheService.addAirPortCache(codes);
+    public ResultUtil<Boolean> addAirPortCache(@RequestParam("keys") String keys){
+        return cacheService.addAirPortCache(keys);
     }
 
 
     @PostMapping(value = "/add-sea-port-cache")
     @ApiOperation(value = "添加港口缓存")
-    public ResultUtil<Boolean> addSeaPortCache(@RequestParam("keys") String keys,
-                                                @RequestParam("minKey") Long minKey,
-                                                @RequestParam("maxKey") Long maxKey){
-        return cacheService.addSeaPortCache(keys, maxKey, minKey);
+    public ResultUtil<Boolean> addSeaPortCache(@RequestParam("keys") String keys){
+        return cacheService.addSeaPortCache(keys);
     }
 
 
     @PostMapping(value = "/add-sea-carrier-cache")
     @ApiOperation(value = "添加船舶公司缓存")
-    public ResultUtil<Boolean> addSeaCarrierCache(@RequestParam("keys") String keys,
-                                                @RequestParam("minKey") Long minKey,
-                                                @RequestParam("maxKey") Long maxKey){
-        return cacheService.addSeaCarrierCache(keys, maxKey, minKey);
+    public ResultUtil<Boolean> addSeaCarrierCache(@RequestParam("keys") String keys){
+        return cacheService.addSeaCarrierCache(keys);
     }
 
 
     @PostMapping(value = "/add-commodity-unit-cache")
     @ApiOperation(value = "添加单位管理缓存")
-    public ResultUtil<Boolean> addCommodityUnitCache(@RequestParam("keys") String keys,
-                                                   @RequestParam("minKey") Long minKey,
-                                                   @RequestParam("maxKey") Long maxKey){
-        return cacheService.addCommodityUnitCache(keys, maxKey, minKey);
+    public ResultUtil<Boolean> addCommodityUnitCache(@RequestParam("keys") String keys){
+        return cacheService.addCommodityUnitCache(keys);
     }
 
     @PostMapping(value = "/add-special-commodity-cache")
     @ApiOperation(value = "添加特殊物品缓存")
-    public ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys,
-                                                     @RequestParam("minKey") Long minKey,
-                                                     @RequestParam("maxKey") Long maxKey){
-        return cacheService.addSpecialCommodityCache(keys, maxKey, minKey);
+    public ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys){
+        return cacheService.addSpecialCommodityCache(keys);
     }
 
     @PostMapping(value = "/add-surcharge-cache")
     @ApiOperation(value = "添加附加费缓存")
-    public ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys,
-                                                        @RequestParam("minKey") Long minKey,
-                                                        @RequestParam("maxKey") Long maxKey){
-        return cacheService.addSurchargeCache(keys, maxKey, minKey);
+    public ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys){
+        return cacheService.addSurchargeCache(keys);
     }
 
     @PostMapping(value = "/add-weight-way-cache")
     @ApiOperation(value = "添加计泡方式缓存")
-    public ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys,
-                                                 @RequestParam("minKey") Long minKey,
-                                                 @RequestParam("maxKey") Long maxKey){
-        return cacheService.addWeightWayCache(keys, maxKey, minKey);
+    public ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys){
+        return cacheService.addWeightWayCache(keys);
     }
 }

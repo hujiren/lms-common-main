@@ -7,32 +7,19 @@
         SELECT
             id,
             weight_way_name,
+            weight_way_name_en,
             computing_formula,
             code
         FROM
             weight_way
         where
             1=1
-        <if test="key.code > 0">
-            and code = #{key.code}
-        </if>
         <if test="key.keyword != null">
             and locate(#{key.keyword}, weight_way_name)>0
+            or locate(#{key.keyword}, weight_way_name_en)>0
+            or code = #{key.keyword}
         </if>
     </select>
 
-    <!--根据Id删除附加费-->
-    <delete id="delById">
-        delete from weight_way where id = #{id}
-    </delete>
 
-    <!--更新附加费-->
-    <update id="updWeightWay">
-        update weight_way set weight_way_name = #{po.weightWayName}, computing_formula = #{po.computingFormula}, code = #{po.code} where id = #{po.id}
-    </update>
-
-    <!--插入附加费-->
-    <insert id="addWeightWay">
-        insert into weight_way (id, weight_way_name, computing_formula, code) values (#{po.id}, #{po.weightWayName}, #{po.computingFormula}, #{po.codes})
-    </insert>
 </mapper>

@@ -1,7 +1,7 @@
 package com.apl.lms.common.manage.controller;
 
 
-import com.apl.lms.common.query.manage.dto.AirPortDto;
+import com.apl.lms.common.query.manage.dto.AirPortAddDto;
 import com.apl.lms.common.query.manage.dto.AirPortKeyDto;
 import com.apl.lms.common.query.manage.dto.AirPortUpdDto;
 import com.apl.lms.common.query.manage.vo.AirPortListVo;
@@ -39,20 +39,20 @@ public class AirPortController {
     @ApiOperation(value =  "添加", notes ="CODE_EXIST -> portCode已经存在\n"+
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
-    public ResultUtil<String> add(AirPortDto airPortDto) {
-        ApiParamValidate.validate(airPortDto);
-        String portCode =  airPortDto.getPortCode().toUpperCase();
-        String homeCountry = airPortDto.getHomeCountry().toUpperCase();
-        airPortDto.setHomeCountry(homeCountry);
-        airPortDto.setPortCode(portCode);
-        return airPortService.add(airPortDto);
+    public ResultUtil<String> add(AirPortAddDto airPortAddDto) {
+        ApiParamValidate.validate(airPortAddDto);
+        String portCode =  airPortAddDto.getPortCode().toUpperCase();
+        String homeCountry = airPortAddDto.getHomeCountry().toUpperCase();
+        airPortAddDto.setHomeCountry(homeCountry);
+        airPortAddDto.setPortCode(portCode);
+        return airPortService.add(airPortAddDto);
     }
 
     @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新",  notes ="CODE_EXIST -> portCode已经存在\n"+
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
-    public ResultUtil<Boolean> updByCode(AirPortUpdDto airPortUpdDto) {
+    public ResultUtil<Boolean> upd(AirPortUpdDto airPortUpdDto) {
         ApiParamValidate.validate(airPortUpdDto);
         String oldCode = airPortUpdDto.getOldCode().toUpperCase();
         String portCode = airPortUpdDto.getPortCode().toUpperCase();
@@ -67,7 +67,7 @@ public class AirPortController {
     @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "portCode",value = " 机场简码", required = true)
-    public ResultUtil<Boolean> delByCode(String portCode) {
+    public ResultUtil<Boolean> del(String portCode) {
         ApiParamValidate.notEmpty("portCode", portCode);
         String s =  portCode.toUpperCase();
         return airPortService.delByCode(s);
@@ -77,7 +77,7 @@ public class AirPortController {
     @PostMapping(value = "/get")
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "portCode",value = "机场简码", required = true)
-    public ResultUtil<AirPortDto> selectByCode(String portCode) {
+    public ResultUtil<AirPortAddDto> get(String portCode) {
         ApiParamValidate.notEmpty("portCode", portCode);
         String s = portCode.toUpperCase();
         return airPortService.selectByCode(s);

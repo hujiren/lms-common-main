@@ -1,7 +1,7 @@
 package com.apl.lms.common.service;
 import com.apl.lib.utils.ResultUtil;
 
-import com.apl.lms.common.query.manage.dto.CountryDto;
+import com.apl.lms.common.query.manage.dto.CountryAddDto;
 import com.apl.lms.common.query.manage.dto.CountryKeyDto;
 import com.apl.lms.common.query.manage.dto.CountryUpdDto;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -16,14 +16,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author hjr
  * @since 2020-04-13
  */
-public interface CountryService extends IService<CountryDto> {
+public interface CountryService extends IService<CountryAddDto> {
 
         /**
          * @Desc: 添加一个CountryPo实体
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtil<String> addCountry(CountryDto countryDto);
+        ResultUtil<String> addCountry(CountryAddDto countryAddDto);
 
 
         /**
@@ -47,6 +47,6 @@ public interface CountryService extends IService<CountryDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtil<Page<CountryDto>>getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto);
+        ResultUtil<Page<CountryAddDto>>getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto);
 
 }

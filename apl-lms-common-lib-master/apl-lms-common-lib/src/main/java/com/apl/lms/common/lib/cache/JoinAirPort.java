@@ -21,13 +21,12 @@ public class JoinAirPort extends JoinBase<AirPortCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "air_port";
         this.joinStyle = joinStyle;
-        this.innerOrgId = AplTenantConfig.tenantIdContextHolder.get();
-        this.cacheKeyNamePrefix = "JOIN_CACHE:" + this.tabName + "_" + this.innerOrgId.toString() + "_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:airPort_";
     }
 
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey) {
-        ResultUtil<Boolean> result = lmsCommonFeign.addAirPortCacheByCode(keys, minKey, maxKey);
+        ResultUtil<Boolean> result = lmsCommonFeign.addAirPortCacheByCode(keys);
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.getCode())){
             return true;
         }

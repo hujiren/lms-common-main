@@ -29,6 +29,9 @@ public class CountryKeyDto extends Model<CountryKeyDto> {
     @Length(max = 100, message = "关键词长度不能超过100")
     private String keyword;
 
+    @ApiModelProperty(name = "upperKeyword", value = "大写关键词", hidden = true)
+    private String upperKeyword;
+
     @ApiModelProperty(name = "type", value = "地区类型")
     @NotEmpty(message = "地区类型不能为空")
     private int type;
@@ -37,10 +40,20 @@ public class CountryKeyDto extends Model<CountryKeyDto> {
     @Length(max = 3, message = "所属国家长度不能超过3")
     private String homeCountry;
 
+    public String getUpperKeyword() {
+        if (keyword == null || StringUtils.isEmpty(keyword.trim())){
+            return  null;
+        }
+
+        return keyword.toUpperCase().trim();
+    }
+    
     public String getKeyword() {
         if (keyword == null || StringUtils.isEmpty(keyword.trim())){
             return  null;
         }
+
+
         return keyword.trim();
     }
     public String getHomeCountry() {

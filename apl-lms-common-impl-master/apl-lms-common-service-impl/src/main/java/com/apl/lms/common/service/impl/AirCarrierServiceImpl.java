@@ -130,7 +130,7 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
 
         List<AirCarrierDto> list = baseMapper.exists(id, carrierCode,  nameCn,  nameEn );
         if (!CollectionUtils.isEmpty(list)) {
-            for(AirCarrierDto  airCarrierDto : list) {
+            for(AirCarrierDto airCarrierDto : list) {
 
                 if(airCarrierDto.getCarrierCode().equals(carrierCode))
                     throw new AplException("CODE_EXIST", "code已经存在");

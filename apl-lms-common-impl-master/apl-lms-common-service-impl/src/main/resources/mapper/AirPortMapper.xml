@@ -5,7 +5,7 @@
 
 
     <!-- 查找详情 2020-04-13-->
-    <select id="selectByCode" resultType="com.apl.lms.common.query.manage.dto.AirPortDto">
+    <select id="selectByCode" resultType="com.apl.lms.common.query.manage.dto.AirPortAddDto">
         SELECT
           port_code,
           name_cn, 
@@ -41,8 +41,9 @@
                 and ap.home_country = #{key.homeCountry}
             </if>
             <if test="key.keyword != null">
-                and (ap.port_code=#{key.keyword}
-                OR ap.home_country = #{key.keyword}
+                and
+                (ap.port_code=#{key.upperKeyword} or
+                ap.home_country = #{key.keyword}
                 OR ap.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 OR ap.alias_name LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 OR co.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
@@ -57,7 +58,7 @@
     </select>
 
     <!-- 检查记录是否重复 -->
-    <select id="exists" resultType="com.apl.lms.common.query.manage.dto.AirPortDto">
+    <select id="exists" resultType="com.apl.lms.common.query.manage.dto.AirPortAddDto">
         SELECT
         port_code,
         name_cn,

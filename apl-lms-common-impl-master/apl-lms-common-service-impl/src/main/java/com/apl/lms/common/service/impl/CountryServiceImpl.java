@@ -4,7 +4,7 @@ import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.exception.AplException;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.query.manage.dto.CountryDto;
+import com.apl.lms.common.query.manage.dto.CountryAddDto;
 import com.apl.lms.common.query.manage.dto.CountryKeyDto;
 import com.apl.lms.common.query.manage.dto.CountryUpdDto;
 import com.apl.lms.common.mapper.CountryMapper;
@@ -31,7 +31,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> implements CountryService {
+public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto> implements CountryService {
 
     //状态code枚举
     /*enum CountryServiceCode {
@@ -50,14 +50,14 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> i
     private CountryMapper countryMapper;
 
     @Override
-    public ResultUtil<String> addCountry(CountryDto countryDto){
+    public ResultUtil<String> addCountry(CountryAddDto countryAddDto){
 
-        this.exists(null, countryDto.getCountryCode(), countryDto.getNameCn(),  countryDto.getNameEn() );
+        this.exists(null, countryAddDto.getCountryCode(), countryAddDto.getNameCn(),  countryAddDto.getNameEn() );
 
-        Integer flag = countryMapper.insert(countryDto);
+        Integer flag = countryMapper.insert(countryAddDto);
 
         if(flag > 0){
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countryDto.getCountryCode());
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countryAddDto.getCountryCode());
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
@@ -68,12 +68,12 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> i
 
         this.exists(countryUpdDto.getOldCode(),  countryUpdDto.getCountryCode(), countryUpdDto.getNameCn(),  countryUpdDto.getNameEn() );
 
-        CountryDto countryDto = new CountryDto();
-        BeanUtils.copyProperties(countryUpdDto, countryDto);
+        CountryAddDto countryAddDto = new CountryAddDto();
+        BeanUtils.copyProperties(countryUpdDto, countryAddDto);
 
-        UpdateWrapper<CountryDto> wrapper = new UpdateWrapper <>();
+        UpdateWrapper<CountryAddDto> wrapper = new UpdateWrapper <>();
         wrapper.eq("country_code", countryUpdDto.getOldCode());
-        Integer flag = countryMapper.update(countryDto, wrapper);
+        Integer flag = countryMapper.update(countryAddDto, wrapper);
 
         if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
@@ -96,13 +96,12 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> i
     }
 
     @Override
-    public ResultUtil<Page<CountryDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto){
+    public ResultUtil<Page<CountryAddDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto){
 
-        Page<CountryDto> page = new Page();
+        Page<CountryAddDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
-
-        List<CountryDto> list = countryMapper.getListCountryByPage(page , keyDto);
+        List<CountryAddDto> list = countryMapper.getListCountryByPage(page , keyDto);
         page.setRecords(list);
 
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS , page);
@@ -111,10 +110,10 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryDto> i
 
     void exists(String oldCode, String countryCode, String nameCn, String nameEn) {
 
-        List<CountryDto> list = baseMapper.exists(countryCode, nameCn,  nameEn);
+        List<CountryAddDto> list = baseMapper.exists(countryCode, nameCn,  nameEn);
 
         if (!CollectionUtils.isEmpty(list)) {
-            for(CountryDto  dto : list) {
+            for(CountryAddDto dto : list) {
 
                 if(oldCode==null || !dto.getCountryCode().equals(oldCode)) {
                     if(dto.getCountryCode().equals(countryCode))

@@ -28,26 +28,7 @@ public interface WeightWayMapper extends BaseMapper<WeightWayDto> {
      */
     List<WeightWayDto> getList(Page page, @Param("key") WeightWayKeyDto weightWayKeyDto);
 
-    /**
-     * 根据Id删除计泡方式
-     * @param id
-     * @return
-     */
-    Integer delById(@Param("id") Long id);
 
-    /**
-     * 更新计泡方式
-     * @param weightWayDto
-     * @return
-     */
-    Integer updWeightWay(@Param("po") WeightWayDto weightWayDto);
-
-    /**
-     * 新增计泡方式
-     * @param weightWayDto
-     * @return
-     */
-    Integer addWeightWay(@Param("po") WeightWayDto weightWayDto);
 
 
 

@@ -23,15 +23,14 @@ public class JoinSeaCarrier extends JoinBase<SeaCarrierCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "sea_carrier";
         this.joinStyle = joinStyle;
-        this.innerOrgId = AplTenantConfig.tenantIdContextHolder.get();
-        this.cacheKeyNamePrefix = "JOIN_CACHE:" + this.tabName + "_" + this.innerOrgId.toString() + "_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:seaCarrier_";
     }
 
 
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey){
 
-        ResultUtil<Boolean> result = lmsCommonFeign.addSeaCarrierCacheById(keys, minKey, maxKey);
+        ResultUtil<Boolean> result = lmsCommonFeign.addSeaCarrierCacheById(keys);
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code))
             return true;
 

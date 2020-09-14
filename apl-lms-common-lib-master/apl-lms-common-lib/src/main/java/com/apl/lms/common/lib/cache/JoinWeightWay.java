@@ -22,14 +22,13 @@ public class JoinWeightWay extends JoinBase<JoinWeightWay> {
         this.cacheUtil = cacheUtil;
         this.tabName = "weight_way";
         this.joinStyle = joinStyle;
-        this.innerOrgId = AplTenantConfig.tenantIdContextHolder.get();
-        this.cacheKeyNamePrefix = "JOIN_CACHE:" + this.tabName + "_" + this.innerOrgId.toString() + "_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:weight_way_";
     }
 
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey){
 
-        ResultUtil<Boolean> result = lmsCommonFeign.addSpecialCommodityCache(keys, minKey, maxKey);
+        ResultUtil<Boolean> result = lmsCommonFeign.addSpecialCommodityCache(keys);
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code))
             return true;
 

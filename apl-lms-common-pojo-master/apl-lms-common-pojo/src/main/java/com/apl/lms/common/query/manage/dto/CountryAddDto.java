@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = false)
 @TableName("country")
 @ApiModel(value="CountryDto实体类对象", description="国家")
-public class CountryDto extends Model<CountryDto> {
+public class CountryAddDto extends Model<CountryAddDto> {
 
     @ApiModelProperty(name = "countryCode" , value = "简码" , required = true)
     @NotEmpty(message = "简码不能为空")

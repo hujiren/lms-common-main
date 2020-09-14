@@ -23,15 +23,14 @@ public class JoinCommodityUnit extends JoinBase<CommodityUnitCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "commodity_unit";
         this.joinStyle = joinStyle;
-        this.innerOrgId = AplTenantConfig.tenantIdContextHolder.get();
-        this.cacheKeyNamePrefix = "JOIN_CACHE:" + this.tabName + "_" + this.innerOrgId.toString() + "_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:commodity_unit_";
     }
 
 
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey){
 
-        ResultUtil<Boolean> result = lmsCommonFeign.addCommodityUnitCacheById(keys, minKey, maxKey);
+        ResultUtil<Boolean> result = lmsCommonFeign.addCommodityUnitCacheById(keys);
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code))
             return true;
 

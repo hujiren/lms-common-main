@@ -22,18 +22,15 @@ public class JoinAirCarrier extends JoinBase<AirCarrierCacheBo> {
         this.cacheUtil = cacheUtil;
         this.joinStyle = joinStyle;
         this.tabName = "air_carrier";
-        this.innerOrgId = AplTenantConfig.tenantIdContextHolder.get();
-        this.cacheKeyNamePrefix = "JOIN_CACHE:" + this.tabName + "_" + this.innerOrgId.toString() + "_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:airCarrier_";
     }
 
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey) {
-        ResultUtil<Boolean> ResultUtil = lmsCommonFeign.addAirCarrierCacheById(keys, minKey, maxKey);
+        ResultUtil<Boolean> ResultUtil = lmsCommonFeign.addAirCarrierCacheById(keys);
         if(ResultUtil.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code)){
             return true;
         }
-
-
         return false;
     }
 }

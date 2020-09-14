@@ -35,9 +35,6 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
         Page<WeightWayDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
-        if(null == weightWayKeyDto.getCode() || weightWayKeyDto.getCode() < 0){
-            weightWayKeyDto.setCode(0);
-        }
         List<WeightWayDto> weightWayDtoList = baseMapper.getList(page, weightWayKeyDto);
 
         page.setRecords(weightWayDtoList);
@@ -51,7 +48,7 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
      */
     @Override
     public ResultUtil<Boolean> delWeightWay(Long id) {
-        Integer integer = baseMapper.delById(id);
+        Integer integer = baseMapper.deleteById(id);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL, false);
         }
@@ -66,7 +63,7 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
     @Override
     public ResultUtil<Boolean>  updWeightWay(WeightWayDto weightWayDto) {
 
-        Integer integer = baseMapper.updWeightWay(weightWayDto);
+        Integer integer = baseMapper.updateById(weightWayDto);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, false);
         }
@@ -75,17 +72,17 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
 
     /**
      * 添加附加费
-     * @param weightWayInsertDto
+     * @param weightWayAddDto
      * @return
      */
     @Override
-    public ResultUtil<String> addWeightWay(WeightWayInsertDto weightWayInsertDto) {
+    public ResultUtil<String> addWeightWay(WeightWayAddDto weightWayAddDto) {
 
         WeightWayDto weightWayDto = new WeightWayDto();
-        BeanUtils.copyProperties(weightWayInsertDto, weightWayDto);
+        BeanUtils.copyProperties(weightWayAddDto, weightWayDto);
         weightWayDto.setId(SnowflakeIdWorker.generateId());
 
-        Integer integer = baseMapper.addWeightWay(weightWayDto);
+        Integer integer = baseMapper.insert(weightWayDto);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }

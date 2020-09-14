@@ -15,51 +15,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface LmsCommonFeign {
 
     @PostMapping("/cache/add-country-cache")
-    ResultUtil<Boolean> addCountryCacheByCode(@RequestParam("keys") String keys,
-                                               @RequestParam("minKey") Long minKey,
-                                               @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addCountryCacheByCode(@RequestParam("keys") String keys);
 
 
     @PostMapping("/cache/add-air-carrier-cache")
-    ResultUtil<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys,
-                                                @RequestParam("minKey") Long minKey,
-                                                @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys);
 
 
     @PostMapping("/cache/add-air-port-code")
-    ResultUtil<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys,
-                                               @RequestParam("minKey") Long minKey,
-                                               @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys);
 
 
     @PostMapping("/cache/add-sea-port-code")
-    ResultUtil<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys,
-                                               @RequestParam("minKey") Long minKey,
-                                               @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys);
 
     @PostMapping("/cache/add-sea-carrier-code")
-    ResultUtil<Boolean> addSeaCarrierCacheById(@RequestParam("keys") String keys,
-                                               @RequestParam("minKey") Long minKey,
-                                               @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addSeaCarrierCacheById(@RequestParam("keys") String keys);
 
     @PostMapping("/cache/add-commodity-unit-code")
-    ResultUtil<Boolean> addCommodityUnitCacheById(@RequestParam("keys") String keys,
-                                               @RequestParam("minKey") Long minKey,
-                                               @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addCommodityUnitCacheById(@RequestParam("keys") String keys);
 
     @PostMapping("/cache/add-special-commodity-cache")
-    ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys,
-                                                  @RequestParam("minKey") Long minKey,
-                                                  @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addSpecialCommodityCache(@RequestParam("keys") String keys);
 
     @PostMapping("/cache/add-surcharge-cache")
-    ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys,
-                                                 @RequestParam("minKey") Long minKey,
-                                                 @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addSurchargeCache(@RequestParam("keys") String keys);
 
     @PostMapping("/cache/add-weight-way-cache")
-    ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys,
-                                          @RequestParam("minKey") Long minKey,
-                                          @RequestParam("maxKey") Long maxKey);
+    ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys);
 }
 

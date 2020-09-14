@@ -9,7 +9,7 @@
 
 
     <!-- 分页查找列表 2020-04-13-->
-    <select id="getListCountryByPage"  resultType="com.apl.lms.common.query.manage.dto.CountryDto">
+    <select id="getListCountryByPage"  resultType="com.apl.lms.common.query.manage.dto.CountryAddDto">
         SELECT
         country_code,
         name_cn,
@@ -22,29 +22,26 @@
         FROM
         country
         <where>
-
+            1 = 1
             <if test="key.type != 0">
-                type = #{key.type}
+                and type = #{key.type}
             </if>
             <if test="key.homeCountry != null and key.homeCountry != ''">
                 <if test="key.type != 0 and key.type != null">
-                    and
+                    and home_country = #{key.homeCountry}
                 </if>
-                home_country = #{key.homeCountry}
             </if>
             <if test="key.keyword != null and key.keyword  != ''">
-
-                <if test="key.type > 0 or (key.homeCountry != null and key.homeCountry != '')">
-                    and
-                </if>
-                (name_cn LIKE CONCAT( '%' ,  #{key.keyword} , '%' )
-                OR start_zip LIKE CONCAT( '%' ,  #{key.keyword} , '%' )
-                OR end_zip LIKE CONCAT( '%' ,  #{key.keyword} , '%' )
-                OR alias_name LIKE CONCAT( '%' ,  #{key.keyword} , '%' )
-                OR home_country LIKE CONCAT( '%' ,  #{key.keyword} , '%' )
+                and (country_code = #{key.upperKeyword}
+                OR name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                OR start_zip LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                OR end_zip LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                OR alias_name LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                OR home_country LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 <if test="key.keyword.length()>2">
-                OR name_en LIKE CONCAT( '%' ,  #{key.keyword} , '%' )
-                </if>)
+                OR name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                </if>
+                )
             </if>
 
         </where>
@@ -52,7 +49,7 @@
     </select>
 
     <!-- 检查记录是否重复 -->
-    <select id="exists" resultType="com.apl.lms.common.query.manage.dto.CountryDto">
+    <select id="exists" resultType="com.apl.lms.common.query.manage.dto.CountryAddDto">
         SELECT
         country_code,
         name_cn,

@@ -39,23 +39,23 @@ public class WeightWayController {
     @PostMapping(value = "/delete")
     @ApiOperation(value =  "删除" , notes = "根据id删除")
     @ApiImplicitParam(name = "id", value = "计泡方式id", required = true, paramType = "query")
-    public ResultUtil<Boolean> delete(@NotNull(message = "id不能为空") Long id){
+    public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") Long id){
 
         return weightWayService.delWeightWay(id);
     }
 
 //    @PostMapping(value = "/update")
 //    @ApiOperation(value =  "更新" , notes = "根据id更新计泡方式")
-//    public ResultUtil<Boolean> update( @Validated WeightWayDto weightWayDto){
+//    public ResultUtil<Boolean> upd( @Validated WeightWayDto weightWayDto){
 //
 //        return weightWayService.updWeightWay(weightWayDto);
 //    }
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增计泡方式")
-    public ResultUtil<String> insert( @Validated WeightWayInsertDto weightWayInsertDto){
+    public ResultUtil<String> add( @Validated WeightWayAddDto weightWayAddDto){
 
-        return weightWayService.addWeightWay(weightWayInsertDto);
+        return weightWayService.addWeightWay(weightWayAddDto);
     }
 
     @PostMapping(value = "/get")
