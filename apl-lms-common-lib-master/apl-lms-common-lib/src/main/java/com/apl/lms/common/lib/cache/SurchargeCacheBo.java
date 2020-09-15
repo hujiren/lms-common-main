@@ -12,7 +12,7 @@ public class SurchargeCacheBo {
 
     private String cacheKey;
 
-    private Long id;
+    private Integer code;
 
     private String computingFormula;
 

@@ -24,7 +24,7 @@
         from
             air_carrier
         where
-            id in(${keys})
+            carrier_code in(${keys})
     </select>
 
     <select id="addAirPortCache" resultType="com.apl.lms.common.lib.cache.AirPortCacheBo">
@@ -51,7 +51,7 @@
         from
             sea_port
         where
-            id in(${keys})
+            port_code in(${keys})
     </select>
 
     <select id="addSeaCarrierCache" resultType="com.apl.lms.common.lib.cache.SeaCarrierCacheBo">
@@ -63,7 +63,7 @@
         from
             sea_carrier
         where
-            id in(${keys})
+            carrier_code in(${keys})
     </select>
 
     <select id="addCommodityUnitCache" resultType="com.apl.lms.common.lib.cache.CommodityUnitCacheBo">
@@ -74,25 +74,25 @@
         from
             commodity_unit
         where
-            id in(${keys})
+            unit_code in(${keys})
     </select>
 
     <select id="addSpecialCommodityCache" resultType="com.apl.lms.common.lib.cache.SpecialCommodityCacheBo">
         select
             concat('JOIN_CACHE:special_commodity_',code) as cache_key,
-            id,
+            code,
             special_commodity_name,
             special_commodity_name_en
         from
             special_commodity
         where
-            id in(${keys})
+            code in(${keys})
     </select>
 
     <select id="addSurchargeCache" resultType="com.apl.lms.common.lib.cache.SurchargeCacheBo">
         select
             concat('JOIN_CACHE:surcharge_',code) as cache_key,
-            id,
+            code,
             charge_name,
             charge_name_en,
             computing_formula,
@@ -100,19 +100,19 @@
         from
             surcharge
         where
-            id in(${keys})
+            code in(${keys})
     </select>
 
     <select id="addWeightWayCache">
         select
             concat('JOIN_CACHE:weight_way_',code) as cache_key,
-            id,
+            code,
             weight_way_name,
             weight_way_name_en,
             computing_formula
         from
             weight_way
         where
-            id in(${keys})
+            code in(${keys})
     </select>
 </mapper>

@@ -12,8 +12,10 @@ public class SpecialCommodityCacheBo {
 
    private String cacheKey;
 
-   private Long id;
+   private Integer code;
 
    private String specialCommodityName;
+
+   private String specialCommodityNameEn;
 
 }
