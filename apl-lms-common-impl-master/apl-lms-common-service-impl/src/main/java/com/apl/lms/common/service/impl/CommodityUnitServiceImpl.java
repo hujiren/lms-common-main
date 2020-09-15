@@ -30,7 +30,9 @@ import java.util.List;
 @Slf4j
 public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, CommodityUnitDto> implements CommodityUnitService {
 
-
+    /**
+     * 新增
+     */
     @Autowired
     CommodityUnitMapper commodityUnitMapper;
     @Override
@@ -49,7 +51,12 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
 
     }
 
-
+    /**
+     * 修改
+     * @param commodityUnitDto
+     * @return
+     * @throws Exception
+     */
     @Override
     public ResultUtil<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception {
 
@@ -64,7 +71,12 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
-
+    /**
+     * 删除
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @Override
     public ResultUtil<Boolean> deleteUnitById(Long id) throws Exception {
 
@@ -76,7 +88,11 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
-
+    /**
+     * 获取详细
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<CommodityUnitDto> selectUnitById(Long id){
 
@@ -85,7 +101,13 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, commodityUnitDto);
     }
 
-
+    /**
+     * 查询列表
+     * @param pageDto
+     * @param keyDto
+     * @return
+     * @throws Exception
+     */
     @Override
     public ResultUtil<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception {
 

@@ -32,19 +32,6 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto> implements AirPortService {
 
-    //状态code枚举
-    /*enum AirPortServiceCode {
-
-        ;
-
-        private String code;
-        private String msg;
-
-        AirPortServiceCode(String code, String msg) {
-             this.code = code;
-             this.msg = msg;
-        }
-    }*/
     @Autowired
     AirPortMapper airPortMapper;
 

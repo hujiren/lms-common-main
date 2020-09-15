@@ -29,21 +29,11 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarrierDto> implements SeaCarrierService {
 
-    //状态code枚举
-    /*enum SeaCarrierServiceCode {
-
-        ;
-
-        private String code;
-        private String msg;
-
-        SeaCarrierServiceCode(String code, String msg) {
-             this.code = code;
-             this.msg = msg;
-        }
-    }*/
-
-
+    /**
+     * 新增
+     * @param seaCarrierDto
+     * @return
+     */
     @Override
     public ResultUtil<Integer> add(SeaCarrierDto seaCarrierDto){
 
@@ -56,7 +46,11 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
-
+    /**
+     * 修改
+     * @param seaCarrierDto
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> updById(SeaCarrierDto seaCarrierDto){
 
@@ -69,7 +63,11 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
-
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
@@ -81,7 +79,11 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
-
+    /**
+     * 获取详细
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<SeaCarrierDto> selectById(Long id){
 
@@ -90,7 +92,12 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, seaCarrierDto);
     }
 
-
+    /**
+     * 查询列表
+     * @param pageDto
+     * @param seaCarrierKeyDto
+     * @return
+     */
     @Override
     public ResultUtil<Page<SeaCarrierDto>> getList(PageDto pageDto, SeaCarrierKeyDto seaCarrierKeyDto){
 

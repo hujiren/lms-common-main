@@ -16,24 +16,20 @@ public class LmsCommonFeignImpl implements LmsCommonFeign {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
 
-
     @Override
     public ResultUtil<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
-
 
     @Override
     public ResultUtil<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode(), CommonStatusCode.SERVER_INVOKE_FAIL.getMsg(), null);
     }
 
-
     @Override
     public ResultUtil<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys) {
         return ResultUtil.APPRESULT(CommonStatusCode.SERVER_INVOKE_FAIL.getCode() , CommonStatusCode.SERVER_INVOKE_FAIL.getMsg() , null);
     }
-
 
     @Override
     public ResultUtil<Boolean> addSeaCarrierCacheById(@RequestParam("keys") String keys) {

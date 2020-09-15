@@ -34,8 +34,8 @@ public class CountWayDto extends Model<CountWayDto> {
     private Integer id;
 
     @ApiModelProperty(name = "wayCode" , value = "代码" , required = true)
-    @NotEmpty(message = "代码不能为空")
-    @Length(max = 50, message = "代码长度不能超过50")
+    @NotEmpty(message = "计件方式代码不能为空")
+    @Length(max = 50, message = "计件方式代码长度不能超过50")
     private String wayCode;
 
     @ApiModelProperty(name = "nameCn" , value = "中文名称" , required = true)
@@ -72,7 +72,7 @@ public class CountWayDto extends Model<CountWayDto> {
     private Float bigCargoCarry;
 
     @ApiModelProperty(name = "minWeight" , value = "最低重量，po无此字段")
-    @Min(value = 0 , message = "最低重量")
+    @Min(value = 0 , message = "最低重量不能小于1")
     private Float minWeight;
 
     @ApiModelProperty(name = "bulkyCode" , value = "计泡代码")

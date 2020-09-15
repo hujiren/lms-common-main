@@ -1,10 +1,8 @@
 package com.apl.lms.common.service.impl;
 
 import com.apl.lib.constants.CommonStatusCode;
-import com.apl.lib.security.SecurityUser;
-import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.lib.cache.*;
+import com.apl.lms.common.lib.cache.bo.*;
 import com.apl.lms.common.mapper.CacheMapper;
 import com.apl.lms.common.service.CacheService;
 import lombok.extern.slf4j.Slf4j;
@@ -119,7 +117,6 @@ public class CacheServiceImpl implements CacheService {
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
-
     }
 
     @Override

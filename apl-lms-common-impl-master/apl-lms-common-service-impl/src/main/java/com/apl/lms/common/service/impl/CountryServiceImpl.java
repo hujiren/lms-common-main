@@ -33,22 +33,14 @@ import java.util.List;
 @Slf4j
 public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto> implements CountryService {
 
-    //状态code枚举
-    /*enum CountryServiceCode {
-
-        ;
-
-        private String code;
-        private String msg;
-
-        CountryServiceCode(String code, String msg) {
-             this.code = code;
-             this.msg = msg;
-        }
-    }*/
     @Autowired
     private CountryMapper countryMapper;
 
+    /**
+     * 新增
+     * @param countryAddDto
+     * @return
+     */
     @Override
     public ResultUtil<String> addCountry(CountryAddDto countryAddDto){
 
@@ -62,7 +54,11 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
-
+    /**
+     * 修改
+     * @param countryUpdDto
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto){
 
@@ -82,7 +78,11 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
-
+    /**
+     * 删除
+     * @param countryCode
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> deleteCountryByCode(String countryCode){
 
@@ -95,6 +95,12 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
+    /**
+     * 获取列表
+     * @param pageDto
+     * @param keyDto
+     * @return
+     */
     @Override
     public ResultUtil<Page<CountryAddDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto){
 

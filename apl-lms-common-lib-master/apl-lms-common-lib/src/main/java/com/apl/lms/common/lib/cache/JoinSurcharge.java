@@ -4,6 +4,7 @@ import com.apl.lib.cachebase.BaseCacheUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
+import com.apl.lms.common.lib.cache.bo.SurchargeCacheBo;
 import com.apl.lms.common.lib.feign.LmsCommonFeign;
 import com.apl.tenant.AplTenantConfig;
 
@@ -12,7 +13,7 @@ import com.apl.tenant.AplTenantConfig;
  * @Classname JoinSpecialCommodity
  * @Date 2020/9/2 9:57
  */
-public class JoinSurcharge extends JoinBase<JoinSurcharge> {
+public class JoinSurcharge extends JoinBase<SurchargeCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 

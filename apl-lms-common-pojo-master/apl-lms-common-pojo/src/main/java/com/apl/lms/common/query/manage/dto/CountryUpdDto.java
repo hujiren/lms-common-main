@@ -27,8 +27,8 @@ import javax.validation.constraints.NotNull;
 public class CountryUpdDto extends Model<CountryUpdDto> {
 
     @ApiModelProperty(name = "oldCode" , value = "旧简码")
-    @NotEmpty(message = "oldCode不能为空")
-    @Length(max=3, message = "oldCode不能超过3")
+    @NotEmpty(message = "简码不能为空")
+    @Length(max=3, message = "简码长度不能超过3")
     private String oldCode;
 
     @ApiModelProperty(name = "countryCode" , value = "简码" , required = true)
@@ -60,11 +60,11 @@ public class CountryUpdDto extends Model<CountryUpdDto> {
     private Integer type;
 
     @ApiModelProperty(name = "aliasName" , value = "别名")
-    @Length(max=200, message = "起始邮编长度不能超过200")
+    @Length(max=200, message = "别名长度不能超过200")
     private String  aliasName;
 
     @ApiModelProperty(name = "homeCountry" , value = "所属国家")
-    @Length(max=3, message = "所属国家(简码)长度不能超过3")
+    @Length(max=3, message = "所属国家长度不能超过3")
     private String  homeCountry;
 
     private static final long serialVersionUID=1L;

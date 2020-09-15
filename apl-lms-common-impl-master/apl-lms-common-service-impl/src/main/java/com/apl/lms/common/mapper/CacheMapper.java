@@ -8,7 +8,7 @@
 package com.apl.lms.common.mapper;
 
 
-import com.apl.lms.common.lib.cache.*;
+import com.apl.lms.common.lib.cache.bo.*;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;

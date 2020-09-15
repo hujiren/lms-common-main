@@ -17,14 +17,11 @@ public interface LmsCommonFeign {
     @PostMapping("/cache/add-country-cache")
     ResultUtil<Boolean> addCountryCacheByCode(@RequestParam("keys") String keys);
 
-
     @PostMapping("/cache/add-air-carrier-cache")
     ResultUtil<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys);
 
-
     @PostMapping("/cache/add-air-port-code")
     ResultUtil<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys);
-
 
     @PostMapping("/cache/add-sea-port-code")
     ResultUtil<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys);

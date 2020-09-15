@@ -25,7 +25,7 @@ import java.util.List;
 public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWayDto> implements WeightWayService {
 
     /**
-     * 分页查找附加费
+     * 查找列表
      * @param weightWayKeyDto
      * @return
      */
@@ -42,7 +42,7 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
     }
 
     /**
-     * 根据id删除附加费
+     * 删除
      * @param id
      * @return
      */
@@ -56,7 +56,7 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
     }
 
     /**
-     * 更新附加费
+     * 更新
      * @param weightWayDto
      * @return
      */
@@ -71,7 +71,7 @@ public class WeightWayServiceImpl extends ServiceImpl<WeightWayMapper, WeightWay
     }
 
     /**
-     * 添加附加费
+     * 新增
      * @param weightWayAddDto
      * @return
      */

@@ -28,22 +28,6 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarrierDto> implements AirCarrierService {
 
-    //状态code枚举
-//    enum AirCarrierServiceCode {
-//
-//
-//        ;
-//
-//        private String code;
-//        private String msg;
-//
-//        AirCarrierServiceCode(String code, String msg) {
-//             this.code = code;
-//             this.msg = msg;
-//        }
-//    }
-
-
     /**
      * 添加
      * @param airCarrierDto
@@ -141,52 +125,4 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
             }
         }
     }
-
-
-
-
-//    private void buttonExport_Click(Object sender, RoutedEventArgs e) {
-//
-//        StiReport report = new StiReport();
-//        report.RegData(dataSet1);
-//
-//        report.Load("..\\" + ((ListBoxItem)lbReports.SelectedItem).Content as string + ".mrt");
-//        report.RenderWithWpf(false);
-//
-////        然后，选择要将报表导出到的文件格式：
-//
-//
-//        String file = ((ListBoxItem)lbReports.SelectedItem).Content as string + ".";
-//
-//        if (rbPdf.IsChecked.GetValueOrDefault())
-//        {
-//            file += "pdf";
-//            report.ExportDocument(StiExportFormat.Pdf, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//        else if (rbHtml.IsChecked.GetValueOrDefault())
-//        {
-//            file += "html";
-//            report.ExportDocument(StiExportFormat.HtmlTable, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//        else if (rbXls.IsChecked.GetValueOrDefault())
-//        {
-//            file += "xls";
-//            report.ExportDocument(StiExportFormat.Excel, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//        else if (rbTxt.IsChecked.GetValueOrDefault())
-//        {
-//            file += "txt";
-//            report.ExportDocument(StiExportFormat.Text, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//        else if (rbRtf.IsChecked.GetValueOrDefault())
-//        {
-//            file += "rtf";
-//            report.ExportDocument(StiExportFormat.RtfTable, file);
-//            System.Diagnostics.Process.Start(file);
-//        }
-//    }
 }
