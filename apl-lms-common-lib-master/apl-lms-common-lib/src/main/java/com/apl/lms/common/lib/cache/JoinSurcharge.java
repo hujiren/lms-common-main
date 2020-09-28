@@ -26,7 +26,7 @@ public class JoinSurcharge extends JoinBase<SurchargeCacheBo> {
         this.joinStyle = joinStyle;
         this.innerOrgId = AplTenantConfig.tenantIdContextHolder.get();
 
-        this.cacheKeyNamePrefix = "JOIN_CACHE:surcharge_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:surcharge:";
     }
 
     @Override

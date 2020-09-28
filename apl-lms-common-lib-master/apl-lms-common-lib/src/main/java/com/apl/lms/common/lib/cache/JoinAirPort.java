@@ -21,7 +21,7 @@ public class JoinAirPort extends JoinBase<AirPortCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "air_port";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:airPort_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:airPort:";
     }
 
     @Override

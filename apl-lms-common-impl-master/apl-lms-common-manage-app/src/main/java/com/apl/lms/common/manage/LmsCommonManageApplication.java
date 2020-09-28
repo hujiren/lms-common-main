@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
                 //"com.apl.shardingjdbc",
                 "com.apl.lms.common"},
         exclude = {AplTenantConfig.class})
-@MapperScan(basePackages = "com.apl.lms.common.mapper")
+@MapperScan("com.apl.lms.common.mapper")
 @EnableSwagger2
 @EnableDiscoveryClient
 public class LmsCommonManageApplication {

@@ -14,7 +14,7 @@
           home_country,
           alias_name
         FROM
-          sea_port
+          common_sea_port
         where
           id = #{id}
     </select>
@@ -31,8 +31,8 @@
            co.name_cn as country_name_cn,
            co.name_en as country_name_en
         FROM
-           sea_port sp
-           INNER JOIN country co ON sp.home_country = co.country_code
+            common_sea_port sp
+           INNER JOIN common_country co ON sp.home_country = co.country_code
         <where>
             1 = 1
             <if test="key.homeCountry != null and key.homeCountry != ''">
@@ -61,7 +61,7 @@
         name_cn,
         name_en
         FROM
-        sea_port
+        common_sea_port
         <where>
             (port_code = #{portCode} OR name_cn = #{nameCn} OR name_en = #{nameEn})
             <if test="id != null and id > 0">

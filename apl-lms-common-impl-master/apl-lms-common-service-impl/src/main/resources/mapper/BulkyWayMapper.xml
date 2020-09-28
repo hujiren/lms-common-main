@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.apl.lms.common.mapper.WeightWayMapper">
+<mapper namespace="com.apl.lms.common.mapper.BulkyWayMapper">
 
     <!-- 查找计泡方式列表-->
-    <select id="getList" resultType="com.apl.lms.common.query.manage.dto.WeightWayDto">
+    <select id="getList" resultType="com.apl.lms.common.query.manage.dto.BulkyWayDto">
         SELECT
             id,
-            weight_way_name,
-            weight_way_name_en,
+            bulky_way_name,
+            bulky_way_name_en,
             computing_formula,
             code
         FROM
-            weight_way
+            common_bulky_way
         where
             1=1
         <if test="key.keyword != null">
-            and locate(#{key.keyword}, weight_way_name)>0
-            or locate(#{key.keyword}, weight_way_name_en)>0
+            and locate(#{key.keyword}, bulky_way_name)>0
+            or locate(#{key.keyword}, bulky_way_name_en)>0
             or code = #{key.keyword}
         </if>
     </select>

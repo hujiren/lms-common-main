@@ -23,7 +23,7 @@ public class JoinSpecialCommodity extends JoinBase<SpecialCommodityCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "special_commodity";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:special_commodity_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:special_commodity:";
     }
 
     @Override

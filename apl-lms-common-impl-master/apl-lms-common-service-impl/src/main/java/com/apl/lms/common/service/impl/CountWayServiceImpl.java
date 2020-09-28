@@ -1,12 +1,15 @@
 package com.apl.lms.common.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.CountWayDto;
 import com.apl.lms.common.mapper.CountWayMapper;
+import com.apl.lms.common.query.manage.po.CountWayPo;
 import com.apl.lms.common.service.CountWayService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,8 +34,6 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
      */
     @Override
     public ResultUtil<Integer> add(CountWayDto countWayDto){
-
-
         Integer flag = baseMapper.insert(countWayDto);
 
         if(flag.equals(1)){

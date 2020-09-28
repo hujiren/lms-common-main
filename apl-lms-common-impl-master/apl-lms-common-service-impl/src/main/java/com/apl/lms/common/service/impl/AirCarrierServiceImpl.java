@@ -38,11 +38,7 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
 
         this.exists(0L, airCarrierDto.getCarrierCode(),  airCarrierDto.getNameCn(),  airCarrierDto.getNameEn() );
         Integer flag = baseMapper.insert(airCarrierDto);
-        if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airCarrierDto.getId());
-        }
-
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
     /**
@@ -55,11 +51,7 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
 
         this.exists(airCarrierDto.getId(), airCarrierDto.getCarrierCode(),  airCarrierDto.getNameCn(),  airCarrierDto.getNameEn() );
         Integer flag = baseMapper.updateById(airCarrierDto);
-        if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
-        }
-
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
     /**
@@ -71,11 +63,8 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
     public ResultUtil<Boolean> delById(Long id){
 
         boolean flag = removeById(id);
-        if(flag){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
-        }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
     /**

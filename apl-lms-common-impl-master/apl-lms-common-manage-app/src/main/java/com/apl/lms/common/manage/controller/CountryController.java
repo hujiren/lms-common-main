@@ -39,12 +39,6 @@ public class CountryController {
             "NAME_EN_EXIST -> nameEn已经存在")
     public ResultUtil<String> add(CountryAddDto countryAddDto) {
         ApiParamValidate.validate(countryAddDto);
-        String countryCode = countryAddDto.getCountryCode().toUpperCase();
-        countryAddDto.setCountryCode(countryCode);
-        if(!StringUtils.isEmpty(countryAddDto.getHomeCountry())) {
-            String homeCountry = countryAddDto.getHomeCountry().toUpperCase();
-            countryAddDto.setHomeCountry(homeCountry);
-        }
         return countryService.addCountry(countryAddDto);
     }
 
@@ -54,11 +48,6 @@ public class CountryController {
             "NAME_EN_EXIST -> nameEn已经存在")
     public ResultUtil<Boolean> upd(CountryUpdDto countryUpdDto) {
         ApiParamValidate.validate(countryUpdDto);
-        countryUpdDto.getOldCode().toUpperCase();
-        countryUpdDto.getCountryCode().toUpperCase();
-        if(!StringUtils.isEmpty(countryUpdDto.getHomeCountry())){
-            countryUpdDto.getHomeCountry().toUpperCase();
-        }
         return countryService.updateCountryByCode(countryUpdDto);
     }
 
@@ -67,8 +56,7 @@ public class CountryController {
     @ApiImplicitParam(name = "countryCode",value = " 国家简码", required = true)
     public ResultUtil<Boolean> del(String countryCode) {
         ApiParamValidate.notEmpty("countryCode", countryCode);
-        String s = countryCode.toUpperCase();
-        return countryService.deleteCountryByCode(s);
+        return countryService.deleteCountryByCode(countryCode);
     }
 
     @PostMapping("/getList-country")

@@ -23,7 +23,7 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("sea_port")
+@TableName("common_sea_port")
 @ApiModel(value="SeaPortDto 持久化对象", description="海港")
 public class SeaPortDto extends Model<SeaPortDto> {
 

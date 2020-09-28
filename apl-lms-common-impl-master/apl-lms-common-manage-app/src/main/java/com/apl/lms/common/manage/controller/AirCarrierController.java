@@ -63,7 +63,7 @@ public class AirCarrierController {
 
     @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "删除")
-    @ApiImplicitParam(name = "id",value = " id",required = true)
+    @ApiImplicitParam(name = "id",value = " id",required = true, paramType = "query")
     public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
         ApiParamValidate.notEmpty("id", id);
         return airCarrierService.delById(id);

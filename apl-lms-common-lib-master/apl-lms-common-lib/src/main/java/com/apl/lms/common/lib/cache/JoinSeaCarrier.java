@@ -23,7 +23,7 @@ public class JoinSeaCarrier extends JoinBase<SeaCarrierCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "sea_carrier";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:seaCarrier_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:seaCarrier:";
     }
 
 

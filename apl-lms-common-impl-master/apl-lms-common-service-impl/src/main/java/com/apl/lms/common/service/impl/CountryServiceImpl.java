@@ -45,7 +45,12 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
     public ResultUtil<String> addCountry(CountryAddDto countryAddDto){
 
         this.exists(null, countryAddDto.getCountryCode(), countryAddDto.getNameCn(),  countryAddDto.getNameEn() );
-
+        if(countryAddDto.getCountryCode() != null){
+            countryAddDto.setCountryCode(countryAddDto.getCountryCode().toUpperCase());
+        }
+        if(countryAddDto.getHomeCountry() != null){
+            countryAddDto.setHomeCountry(countryAddDto.getHomeCountry().toUpperCase());
+        }
         Integer flag = countryMapper.insert(countryAddDto);
 
         if(flag > 0){
@@ -63,7 +68,15 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
     public ResultUtil<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto){
 
         this.exists(countryUpdDto.getOldCode(),  countryUpdDto.getCountryCode(), countryUpdDto.getNameCn(),  countryUpdDto.getNameEn() );
-
+        if(countryUpdDto.getCountryCode() != null){
+            countryUpdDto.setCountryCode(countryUpdDto.getCountryCode().toUpperCase());
+        }
+        if(countryUpdDto.getHomeCountry() != null){
+            countryUpdDto.setHomeCountry(countryUpdDto.getHomeCountry().toUpperCase());
+        }
+        if(countryUpdDto.getOldCode() != null){
+            countryUpdDto.setOldCode(countryUpdDto.getOldCode().toUpperCase());
+        }
         CountryAddDto countryAddDto = new CountryAddDto();
         BeanUtils.copyProperties(countryUpdDto, countryAddDto);
 
@@ -75,7 +88,7 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT("OLD_CODE_IS_NOT_EXISTS","旧简码不存在" , false);
     }
 
     /**
@@ -86,6 +99,7 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
     @Override
     public ResultUtil<Boolean> deleteCountryByCode(String countryCode){
 
+        countryCode = countryCode.toUpperCase();
         Boolean flag = countryMapper.deleteCountryByCode(countryCode);
 
         if(flag){

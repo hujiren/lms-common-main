@@ -10,7 +10,7 @@
             special_commodity_name_en,
             code
         FROM
-            special_commodity
+            common_special_commodity
         where
             1=1
 

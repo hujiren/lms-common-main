@@ -19,14 +19,14 @@ import java.util.List;
  */
 @Mapper
 @Repository
-public interface WeightWayMapper extends BaseMapper<WeightWayDto> {
+public interface BulkyWayMapper extends BaseMapper<BulkyWayDto> {
 
     /**
      * @Desc: 查找计泡方式列表
      * @Author:
      * @Date: 2020-08-08
      */
-    List<WeightWayDto> getList(Page page, @Param("key") WeightWayKeyDto weightWayKeyDto);
+    List<BulkyWayDto> getList(Page page, @Param("key") BulkyWayKeyDto bulkyWayKeyDto);
 
 
 

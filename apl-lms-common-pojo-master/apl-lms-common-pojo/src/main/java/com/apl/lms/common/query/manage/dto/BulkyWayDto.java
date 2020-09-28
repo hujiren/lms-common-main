@@ -18,9 +18,9 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("weight_way")
+@TableName("common_bulky_way")
 @ApiModel(value = "计泡方式持久化对象", description = "计泡方式持久化对象")
-public class WeightWayDto {
+public class BulkyWayDto {
 
     @ApiModelProperty(name = "id", value = "计泡方式Id", required = true)
     @TableId(value = "id", type = IdType.INPUT)
@@ -28,13 +28,13 @@ public class WeightWayDto {
     @NotNull(message = "计泡方式Id不能为空")
     private Long id;
 
-    @ApiModelProperty(name = "weightWayName", value = "计泡方式名称", required = true)
+    @ApiModelProperty(name = "bulkyWayName", value = "计泡方式名称", required = true)
     @NotBlank(message = "计泡方式名称不能为空")
-    private String weightWayName;
+    private String bulkyWayName;
 
-    @ApiModelProperty(name = "weightWayNameEn", value = "计泡方式英文名称", required = true)
+    @ApiModelProperty(name = "bulkyWayNameEn", value = "计泡方式英文名称", required = true)
     @NotBlank(message = "计泡方式英文名称不能为空")
-    private String weightWayNameEn;
+    private String bulkyWayNameEn;
 
     @ApiModelProperty(name = "computingFormula", value = "计算公式", required = true)
     @NotBlank(message = "计算公式不能为空")

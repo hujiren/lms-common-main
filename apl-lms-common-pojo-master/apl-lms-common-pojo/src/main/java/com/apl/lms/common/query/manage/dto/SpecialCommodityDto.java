@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("special_commodity")
+@TableName("common_special_commodity")
 @ApiModel(value = "特殊物品持久化对象", description = "特殊物品持久化对象")
 public class SpecialCommodityDto {
 

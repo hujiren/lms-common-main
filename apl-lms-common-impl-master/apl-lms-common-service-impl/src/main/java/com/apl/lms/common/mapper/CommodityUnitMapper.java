@@ -42,4 +42,5 @@ public interface CommodityUnitMapper extends BaseMapper<CommodityUnitDto> {
      * @Date: 2019-12-19
      */
     List<CommodityUnitDto> exists(@Param("id") Long id,  @Param("unitCode") String unitCode,  @Param("unitName") String unitName);
+
 }

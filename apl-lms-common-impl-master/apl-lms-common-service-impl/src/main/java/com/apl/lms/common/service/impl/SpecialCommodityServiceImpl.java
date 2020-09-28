@@ -47,9 +47,6 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
     @Override
     public ResultUtil<Boolean> delSpecialCommodity(Long id) {
         Integer integer = baseMapper.deleteById(id);
-        if(integer < 1){
-            return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL, false);
-        }
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS, true);
     }
 
@@ -62,9 +59,6 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
     public ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityDto specialCommodityDto) {
 
         Integer integer = baseMapper.updateById(specialCommodityDto);
-        if(integer < 1){
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, false);
-        }
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, true);
     }
 
@@ -80,6 +74,7 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
         specialCommodityDto.setId(SnowflakeIdWorker.generateId());
         specialCommodityDto.setSpecialCommodityName(specialCommodityAddDto.getSpecialCommodityName());
         specialCommodityDto.setSpecialCommodityNameEn(specialCommodityAddDto.getSpecialCommodityNameEn());
+        specialCommodityDto.setCode(specialCommodityAddDto.getCode());
         Integer integer = baseMapper.insert(specialCommodityDto);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
@@ -95,9 +90,6 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
     @Override
     public ResultUtil<SpecialCommodityDto> getSpecialCommodityInfo(Long id) {
         SpecialCommodityDto specialCommodityDto = baseMapper.selectById(id);
-        if(specialCommodityDto == null){
-            return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL, null);
-        }
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, specialCommodityDto);
     }
 }

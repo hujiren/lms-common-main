@@ -8,11 +8,10 @@
             id,
             charge_name,
             charge_name_en,
-            computing_formula,
             currency,
             code
         FROM
-            surcharge
+            common_surcharge
         where
             1=1
         <if test="key.keyword != null">

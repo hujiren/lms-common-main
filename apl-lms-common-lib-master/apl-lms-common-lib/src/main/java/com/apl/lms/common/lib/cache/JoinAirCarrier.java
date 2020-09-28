@@ -22,7 +22,7 @@ public class JoinAirCarrier extends JoinBase<AirCarrierCacheBo> {
         this.cacheUtil = cacheUtil;
         this.joinStyle = joinStyle;
         this.tabName = "air_carrier";
-        this.cacheKeyNamePrefix = "JOIN_CACHE:airCarrier_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:airCarrier:";
     }
 
     @Override

@@ -39,11 +39,7 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
 
         this.exists(0L, seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
         Integer flag = baseMapper.insert(seaCarrierDto);
-        if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaCarrierDto.getId());
-        }
-
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
     /**
@@ -56,11 +52,7 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
 
         this.exists(seaCarrierDto.getId(), seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
         Integer flag = baseMapper.updateById(seaCarrierDto);
-        if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
-        }
-
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
     /**
@@ -72,11 +64,7 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
     public ResultUtil<Boolean> delById(Long id){
 
         boolean flag = removeById(id);
-        if(flag){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
-        }
-
-        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
     /**

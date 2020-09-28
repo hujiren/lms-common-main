@@ -23,7 +23,7 @@ public class JoinCommodityUnit extends JoinBase<CommodityUnitCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "commodity_unit";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:commodity_unit_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:commodity_unit:";
     }
 
 

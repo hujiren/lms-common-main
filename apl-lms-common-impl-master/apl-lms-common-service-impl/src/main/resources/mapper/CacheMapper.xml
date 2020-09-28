@@ -5,37 +5,38 @@
     <!-- 添加国家 缓存 -->
     <select id="addCountryCache" resultType="com.apl.lms.common.lib.cache.bo.CountryCacheBo">
         SELECT
-            concat('JOIN_CACHE:country_', country_code) AS cache_key,
+            concat('JOIN_CACHE:country:', country_code) AS cache_key,
             country_code,
             name_cn,
             name_en
         FROM
-            country
+            common_country
         where
             country_code in(${keys})
+
     </select>
 
     <select id="addAirCarrierCache" resultType="com.apl.lms.common.lib.cache.bo.AirCarrierCacheBo">
         select
-            concat('JOIN_CACHE:airCarrier_', carrier_code) as cache_key,
+            concat('JOIN_CACHE:airCarrier:', carrier_code) as cache_key,
             carrier_code,
             name_cn,
             name_en
         from
-            air_carrier
+            common_air_carrier
         where
             carrier_code in(${keys})
     </select>
 
     <select id="addAirPortCache" resultType="com.apl.lms.common.lib.cache.bo.AirPortCacheBo">
         select
-            concat('JOIN_CACHE:airPort_' , port_code) as cache_key,
+            concat('JOIN_CACHE:airPort:' , port_code) as cache_key,
             port_code,
             name_cn,
             name_en,
             home_country
         from
-            air_port
+            common_air_port
         where
             port_code in(${keys})
 
@@ -43,75 +44,75 @@
 
     <select id="addSeaPortCache" resultType="com.apl.lms.common.lib.cache.bo.SeaPortCacheBo">
         select
-            concat('JOIN_CACHE:seaPort_',port_code) as cache_key,
+            concat('JOIN_CACHE:seaPort:',port_code) as cache_key,
             port_code,
             name_cn,
             name_en,
             home_country
         from
-            sea_port
+            common_sea_port
         where
             port_code in(${keys})
     </select>
 
     <select id="addSeaCarrierCache" resultType="com.apl.lms.common.lib.cache.bo.SeaCarrierCacheBo">
         select
-            concat('JOIN_CACHE:seaCarrier_',carrier_code) as cache_key,
+            concat('JOIN_CACHE:seaCarrier:',carrier_code) as cache_key,
             carrier_code,
             name_cn,
             name_en
         from
-            sea_carrier
+            common_sea_carrier
         where
             carrier_code in(${keys})
     </select>
 
     <select id="addCommodityUnitCache" resultType="com.apl.lms.common.lib.cache.bo.CommodityUnitCacheBo">
         select
-            concat('JOIN_CACHE:commodity_unit_',unit_code) as cache_key,
+            concat('JOIN_CACHE:commodity_unit:',unit_code) as cache_key,
             unit_code,
             unit_name
         from
-            commodity_unit
+            common_commodity_unit
         where
             unit_code in(${keys})
     </select>
 
     <select id="addSpecialCommodityCache" resultType="com.apl.lms.common.lib.cache.bo.SpecialCommodityCacheBo">
         select
-            concat('JOIN_CACHE:special_commodity_',code) as cache_key,
+            concat('JOIN_CACHE:special_commodity:',code) as cache_key,
             code,
             special_commodity_name,
             special_commodity_name_en
         from
-            special_commodity
+            common_special_commodity
         where
             code in(${keys})
     </select>
 
     <select id="addSurchargeCache" resultType="com.apl.lms.common.lib.cache.bo.SurchargeCacheBo">
         select
-            concat('JOIN_CACHE:surcharge_',code) as cache_key,
+            concat('JOIN_CACHE:surcharge:',code) as cache_key,
             code,
             charge_name,
             charge_name_en,
             computing_formula,
             currency
         from
-            surcharge
+            common_surcharge
         where
             code in(${keys})
     </select>
 
-    <select id="addWeightWayCache">
+    <select id="addWeightWayCache" resultType="com.apl.lms.common.lib.cache.bo.WeightWayCacheBo">
         select
-            concat('JOIN_CACHE:weight_way_',code) as cache_key,
+            concat('JOIN_CACHE:weight_way:',code) as cache_key,
             code,
             weight_way_name,
             weight_way_name_en,
             computing_formula
         from
-            weight_way
+            common_weight_way
         where
             code in(${keys})
     </select>

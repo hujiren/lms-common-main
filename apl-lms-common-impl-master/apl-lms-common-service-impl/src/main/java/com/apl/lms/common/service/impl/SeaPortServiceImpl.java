@@ -61,7 +61,7 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT("ID_IS_NOT_EXISTS","id不存在", false);
     }
 
     /**
@@ -73,11 +73,8 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
     public ResultUtil<Boolean> delById(Long id){
 
         boolean flag = removeById(id);
-        if(flag){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
-        }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
     /**

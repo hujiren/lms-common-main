@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("surcharge")
+@TableName("common_surcharge")
 @ApiModel(value = "附加费持久化对象", description = "附加费持久化对象")
 public class SurchargeDto {
 
@@ -35,10 +35,6 @@ public class SurchargeDto {
     @ApiModelProperty(name = "chargeNameEn", value = "附加费英文名称", required = true)
     @NotBlank(message = "附加费英文名称不能为空")
     private String chargeNameEn;
-
-    @ApiModelProperty(name = "computingFormula", value = "计算公式", required = true)
-    @NotBlank(message = "计算公式不能为空")
-    private String computingFormula;
 
     @ApiModelProperty(name = "currency", value = "币制", required = true)
     @NotBlank(message = "币制不能为空")

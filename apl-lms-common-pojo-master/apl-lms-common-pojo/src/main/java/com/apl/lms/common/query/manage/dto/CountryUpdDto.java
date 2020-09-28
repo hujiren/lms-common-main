@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("country")
+@TableName("common_country")
 @ApiModel(value="CountryDto实体类对象", description="国家")
 public class CountryUpdDto extends Model<CountryUpdDto> {
 
@@ -69,4 +69,21 @@ public class CountryUpdDto extends Model<CountryUpdDto> {
 
     private static final long serialVersionUID=1L;
 
+    public String getOldCode() {
+        if(this.oldCode != null && this.oldCode != " ")
+        return oldCode.toUpperCase();
+        return this.oldCode;
+    }
+
+    public String getCountryCode() {
+        if(this.countryCode != null && this.countryCode != "")
+        return this.countryCode.toUpperCase();
+        return this.countryCode;
+    }
+
+    public String getHomeCountry() {
+        if(this.homeCountry != null && this.homeCountry != "")
+            return this.homeCountry.toUpperCase();
+        return this.homeCountry;
+    }
 }

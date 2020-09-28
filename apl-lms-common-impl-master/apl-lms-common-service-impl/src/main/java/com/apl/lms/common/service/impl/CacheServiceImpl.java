@@ -1,5 +1,6 @@
 package com.apl.lms.common.service.impl;
 
+import com.apl.cache.AplCacheUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.lib.cache.bo.*;
@@ -23,21 +24,8 @@ import java.util.Map;
 @Slf4j
 public class CacheServiceImpl implements CacheService {
 
-    //状态code枚举
-    enum CacheServiceServiceCode {
-        SKU_AND_CUSTOMERID_IS_NULL("SKUS_AND_CUSTOMERID_IS_NULL", "SKU和CUSTOMERID不能同时为空"),
-        ;
-        private String code;
-        private String msg;
-
-        CacheServiceServiceCode(String code, String msg) {
-            this.code = code;
-            this.msg = msg;
-        }
-    }
-
     @Autowired
-    RedisTemplate redisTemplate;
+    AplCacheUtil aplCacheUtil;
 
     @Autowired
     CacheMapper cacheMapper;
@@ -49,7 +37,7 @@ public class CacheServiceImpl implements CacheService {
         keys = keys.toUpperCase();
         Map<String, CountryCacheBo> maps = cacheMapper.addCountryCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, false);
@@ -59,7 +47,7 @@ public class CacheServiceImpl implements CacheService {
     public ResultUtil<Boolean> addAirCarrierCache(String keys) {
         Map<String, AirCarrierCacheBo> maps = cacheMapper.addAirCarrierCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_FAIL, false);
@@ -70,7 +58,7 @@ public class CacheServiceImpl implements CacheService {
         keys = keys.toUpperCase();
         Map<String, AirPortCacheBo> maps = cacheMapper.addAirPortCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
@@ -81,7 +69,7 @@ public class CacheServiceImpl implements CacheService {
     public ResultUtil<Boolean> addSeaPortCache(String keys) {
         Map<String, SeaPortCacheBo> maps = cacheMapper.addSeaPortCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
@@ -92,7 +80,7 @@ public class CacheServiceImpl implements CacheService {
     public ResultUtil<Boolean> addSeaCarrierCache(String keys) {
         Map<String, SeaCarrierCacheBo> maps = cacheMapper.addSeaCarrierCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
@@ -103,7 +91,7 @@ public class CacheServiceImpl implements CacheService {
     public ResultUtil<Boolean> addCommodityUnitCache(String keys) {
         Map<String, CommodityUnitCacheBo> maps = cacheMapper.addCommodityUnitCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
@@ -113,7 +101,7 @@ public class CacheServiceImpl implements CacheService {
     public ResultUtil<Boolean> addSpecialCommodityCache(String keys) {
         Map<String, SpecialCommodityCacheBo> maps = cacheMapper.addSpecialCommodityCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
@@ -123,7 +111,7 @@ public class CacheServiceImpl implements CacheService {
     public ResultUtil<Boolean> addSurchargeCache(String keys) {
         Map<String, SurchargeCacheBo> maps = cacheMapper.addSurchargeCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
@@ -133,7 +121,7 @@ public class CacheServiceImpl implements CacheService {
     public ResultUtil<Boolean> addWeightWayCache(String keys) {
         Map<String, WeightWayCacheBo> maps = cacheMapper.addWeightWayCache(keys);
         if (null != maps && maps.size() > 0) {
-            redisTemplate.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().multiSet(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);

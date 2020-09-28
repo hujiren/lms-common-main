@@ -23,7 +23,7 @@ public class JoinWeightWay extends JoinBase<WeightWayCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "weight_way";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:weight_way_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:weight_way:";
     }
 
     @Override

@@ -22,7 +22,7 @@ public class JoinSeaPort extends JoinBase<SeaPortCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "sea_port";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:seaPort_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:seaPort:";
     }
 
 

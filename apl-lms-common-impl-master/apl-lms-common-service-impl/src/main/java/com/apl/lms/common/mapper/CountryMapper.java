@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -15,6 +16,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author cy
  * @since 2020-04-13
  */
+@Repository
 public interface CountryMapper extends BaseMapper<CountryAddDto> {
 
     /**

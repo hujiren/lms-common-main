@@ -10,7 +10,7 @@ import lombok.Data;
  */
 @Data
 @ApiModel(value = "计泡方式查询对象", description = "计泡方式查询对象")
-public class WeightWayKeyDto {
+public class BulkyWayKeyDto {
 
     @ApiModelProperty(name = "keyword", value = "关键字")
     private String keyword;

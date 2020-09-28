@@ -12,14 +12,14 @@
           name_en, 
           home_country
         FROM
-          air_port
+          common_air_port
         where
           port_code = #{portCode}
     </select>
 
     <!-- 删除 2020-04-13-->
     <delete id="delByCode" parameterType="java.lang.String">
-        delete from air_port where port_code = #{portCode}
+        delete from common_air_port where port_code = #{portCode}
     </delete>
 
     <!-- 查找列表 2020-04-13-->
@@ -33,8 +33,8 @@
             co.name_en as country_name_en,
             ap.alias_name
         FROM
-            air_port ap
-        INNER JOIN country co  ON ap.home_country = co.country_code
+            common_air_port ap
+        INNER JOIN common_country co  ON ap.home_country = co.country_code
         <where>
             1=1
             <if test="key.homeCountry != null">
@@ -64,7 +64,7 @@
         name_cn,
         name_en
         FROM
-        air_port
+        common_air_port
         WHERE
         (port_code = #{portCode} OR name_cn = #{nameCn} OR name_en = #{nameEn})
     </select>

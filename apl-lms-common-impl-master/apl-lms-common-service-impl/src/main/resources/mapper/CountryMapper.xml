@@ -4,7 +4,7 @@
 
     <!-- 删除 2020-04-13-->
     <delete id="deleteCountryByCode" parameterType="java.lang.String">
-        delete from country where country_code = #{countryCode};
+        delete from common_country where country_code = #{countryCode};
     </delete>
 
 
@@ -20,18 +20,18 @@
         type,
         alias_name
         FROM
-        country
+        common_country
         <where>
             1 = 1
             <if test="key.type != 0">
                 and type = #{key.type}
             </if>
-            <if test="key.homeCountry != null and key.homeCountry != ''">
+            <if test="key.homeCountry != null">
                 <if test="key.type != 0 and key.type != null">
                     and home_country = #{key.homeCountry}
                 </if>
             </if>
-            <if test="key.keyword != null and key.keyword  != ''">
+            <if test="key.keyword != null">
                 and (country_code = #{key.upperKeyword}
                 OR name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 OR start_zip LIKE CONCAT( '%' , #{key.keyword} , '%' )
@@ -55,7 +55,7 @@
         name_cn,
         name_en
         FROM
-        country
+        common_country
         WHERE
         (country_code = #{countryCode} OR name_cn = #{nameCn} OR name_en = #{nameEn})
     </select>

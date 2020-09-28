@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("country")
+@TableName("common_country")
 @ApiModel(value="CountryDto实体类对象", description="国家")
 public class CountryAddDto extends Model<CountryAddDto> {
 

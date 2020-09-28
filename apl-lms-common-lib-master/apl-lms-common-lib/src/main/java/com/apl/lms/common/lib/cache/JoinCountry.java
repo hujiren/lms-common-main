@@ -22,7 +22,7 @@ public class JoinCountry extends JoinBase<CountryCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "country";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:country_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:country:";
     }
 
 
