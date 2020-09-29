@@ -1,10 +1,11 @@
 package com.apl.lms.common.service;
 
-import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.query.manage.dto.*;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.apl.lms.common.query.manage.po.SurchargePo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,42 +15,28 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author hjr
  * @since 2020-08-08
  */
-public interface SurchargeService extends IService<SurchargeDto> {
+public interface SurchargeService extends IService<SurchargePo> {
 
-        /**
-         * @Desc: 分页查找 附加费列表
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<Page<SurchargeDto>>getList(PageDto pageDto, SurchargeKeyDto surchargeKeyDto);
+    /**
+     * @Desc: 附加费列表
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<List<SurchargePo>> getList();
 
-        /**
-         * 获取详情
-         * @param id
-         * @return
-         */
-        ResultUtil<SurchargeDto> getSurchargeInfo(Long id);
+    /**
+     * @Desc: 根据Id删除附加费
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<Boolean> delSurcharge(Long id);
 
-        /**
-         * @Desc: 根据Id删除附加费
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<Boolean> delSurcharge(Long id);
-
-        /**
-         * @Desc: 更新附加费
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<Boolean> updSurcharge(SurchargeDto surchargeDto);
-
-        /**
-         * @Desc: 新增附加费
-         * @author hjr
-         * @since 2020-08-08
-         */
-        ResultUtil<Long> addSurcharge(SurchargeAddDto surchargeAddDto);
+    /**
+     * @Desc: 批量新增新增附加费
+     * @author hjr
+     * @since 2020-08-08
+     */
+    ResultUtil<Integer> addSurcharge(List<SurchargePo> surchargePoList);
 
 
 }

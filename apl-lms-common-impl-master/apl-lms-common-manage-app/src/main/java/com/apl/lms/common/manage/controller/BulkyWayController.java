@@ -44,12 +44,12 @@ public class BulkyWayController {
         return bulkyWayService.delBulkyWay(id);
     }
 
-//    @PostMapping(value = "/update")
-//    @ApiOperation(value =  "更新" , notes = "根据id更新计泡方式")
-//    public ResultUtil<Boolean> upd( @Validated BulkyWayDto weightWayDto){
-//
-//        return bulkyWayService.updWeightWay(weightWayDto);
-//    }
+    @PostMapping(value = "/update")
+    @ApiOperation(value =  "更新" , notes = "根据id更新计泡方式")
+    public ResultUtil<Boolean> upd( @Validated BulkyWayDto weightWayDto){
+
+        return bulkyWayService.updWeightWay(weightWayDto);
+    }
 
     @PostMapping(value = "/insert")
     @ApiOperation(value =  "新增" , notes = "新增计泡方式")

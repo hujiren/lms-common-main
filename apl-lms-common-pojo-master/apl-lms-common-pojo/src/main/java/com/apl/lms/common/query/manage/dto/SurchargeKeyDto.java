@@ -8,14 +8,14 @@ import lombok.Data;
  * @date 2020/8/8 - 9:17
  */
 @Data
-@ApiModel(value = "附加费查询对象", description = "附加费查询对象")
+@ApiModel(value = "附加费-条件查询对象", description = "附加费-条件查询对象")
 public class SurchargeKeyDto {
 
     @ApiModelProperty(name = "keyword", value = "关键字")
     private String keyword;
 
-//    @ApiModelProperty(name = "code", value = "code")
-//    private Integer code;
+    @ApiModelProperty(name = "code", value = "code")
+    private Integer code;
 
     public String getKeyword() {
         if (keyword != null && keyword.trim().equals(""))
@@ -23,4 +23,5 @@ public class SurchargeKeyDto {
 
         return keyword;
     }
+
 }

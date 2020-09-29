@@ -3,7 +3,7 @@
 <mapper namespace="com.apl.lms.common.mapper.SpecialCommodityMapper">
 
     <!-- 查找特殊物品列表-->
-    <select id="getList" resultType="com.apl.lms.common.query.manage.dto.SpecialCommodityDto">
+    <select id="getList" resultType="com.apl.lms.common.query.manage.po.SpecialCommodityPo">
         SELECT
             id,
             special_commodity_name,
@@ -11,14 +11,6 @@
             code
         FROM
             common_special_commodity
-        where
-            1=1
-
-        <if test="key.keyword != null">
-            and locate(#{key.keyword}, special_commodity_name)>0
-            or locate(#{key.keyword}, special_commodity_name_en)>0
-            or code = #{key.keyword}
-        </if>
     </select>
 
 </mapper>

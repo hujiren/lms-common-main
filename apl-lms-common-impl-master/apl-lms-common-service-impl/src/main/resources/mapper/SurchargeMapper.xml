@@ -3,22 +3,31 @@
 <mapper namespace="com.apl.lms.common.mapper.SurchargeMapper">
 
     <!-- 查找附加费列表-->
-    <select id="getList" resultType="com.apl.lms.common.query.manage.dto.SurchargeDto">
+    <select id="getList" resultType="com.apl.lms.common.query.manage.po.SurchargePo">
         SELECT
-            id,
-            charge_name,
-            charge_name_en,
-            currency,
-            code
+        id,
+        charge_name,
+        charge_name_en,
+        code
         FROM
-            common_surcharge
-        where
-            1=1
-        <if test="key.keyword != null">
-            and locate(#{key.keyword}, charge_name)>0
-            or locate(#{key.keyword}, charge_name_en)>0
-            or code = #{key.keyword}
-        </if>
+        common_surcharge
+
     </select>
+
+    <!--批量插入附加费-->
+    <insert id="addSurcharge">
+        insert into
+        common_surcharge(id, charge_name, charge_name_en, code)
+        values
+
+        <foreach collection="po" index="" separator="," item="row" open="" close="">
+            (#{row.id}, #{row.chargeName}, #{row.chargeNameEn}, #{row.code})
+        </foreach>
+
+    </insert>
+
+    <delete id="delById">
+        delete from common_surcharge where id = #{id}
+    </delete>
 
 </mapper>

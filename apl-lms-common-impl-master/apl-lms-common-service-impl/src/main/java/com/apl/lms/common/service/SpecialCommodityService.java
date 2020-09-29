@@ -1,10 +1,10 @@
 package com.apl.lms.common.service;
 
-import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.query.manage.dto.*;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.apl.lms.common.query.manage.po.SpecialCommodityPo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,15 +14,15 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author hjr
  * @since 2020-08-08
  */
-public interface SpecialCommodityService extends IService<SpecialCommodityDto> {
+public interface SpecialCommodityService extends IService<SpecialCommodityPo> {
 
 
     /**
-     * @Desc: 分页查找 特殊物品 列表
+     * @Desc: 查找 特殊物品 列表
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<Page<SpecialCommodityDto>> getList(PageDto pageDto, SpecialCommodityKeyDto specialCommodityKeyDto);
+    ResultUtil<List<SpecialCommodityPo>> getList();
 
     /**
      * @Desc: 根据Id删除特殊物品
@@ -37,7 +37,7 @@ public interface SpecialCommodityService extends IService<SpecialCommodityDto> {
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityDto specialCommodityDto);
+    ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityPo specialCommodityPo);
 
 
     /**
@@ -45,12 +45,5 @@ public interface SpecialCommodityService extends IService<SpecialCommodityDto> {
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<String> addSpecialCommodity(SpecialCommodityAddDto specialCommodityAddDto);
-
-        /**
-         * 获取详情
-         * @param id
-         * @return
-         */
-    ResultUtil<SpecialCommodityDto> getSpecialCommodityInfo(Long id);
+    ResultUtil<String> addSpecialCommodity(SpecialCommodityPo specialCommodityPo);
 }

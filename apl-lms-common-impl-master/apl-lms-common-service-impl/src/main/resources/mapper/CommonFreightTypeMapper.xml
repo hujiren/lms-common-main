@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apl.lms.common.mapper.CommonFreightTypeMapper">
+
+    <!-- 查找列表 2020-09-29-->
+    <select id="getList" resultType="com.apl.lms.common.query.manage.po.CommonFreightTypePo">
+        SELECT
+           id, 
+           freight_type_name, 
+           auto_add
+        FROM
+           common_freight_type
+    </select>
+
+</mapper>

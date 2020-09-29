@@ -1,13 +1,11 @@
 package com.apl.lms.common.service.impl;
 
 import com.apl.lib.constants.CommonStatusCode;
-import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lib.utils.SnowflakeIdWorker;
 import com.apl.lms.common.mapper.SpecialCommodityMapper;
-import com.apl.lms.common.query.manage.dto.*;
+import com.apl.lms.common.query.manage.po.SpecialCommodityPo;
 import com.apl.lms.common.service.SpecialCommodityService;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,23 +18,29 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMapper, SpecialCommodityDto> implements SpecialCommodityService {
+public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMapper, SpecialCommodityPo> implements SpecialCommodityService {
 
+    enum SpecialCommodityServiceEnum{
+
+        ID_IS_NOT_EXISTS("ID_IS_NOT_EXISTS", "id不存在, 更新失败");
+
+        private String code;
+        private String msg;
+
+        SpecialCommodityServiceEnum(String code, String msg){
+            this.code = code;
+            this.msg = msg;
+        }
+    }
     /**
-     * 分页查找
-     * @param specialCommodityKeyDto
+     * 查找列表
      * @return
      */
     @Override
-    public ResultUtil<Page<SpecialCommodityDto>> getList(PageDto pageDto, SpecialCommodityKeyDto specialCommodityKeyDto) {
+    public ResultUtil<List<SpecialCommodityPo>> getList() {
+        List<SpecialCommodityPo> specialCommodityPoList = baseMapper.getList();
 
-        Page<SpecialCommodityDto> page = new Page();
-        page.setCurrent(pageDto.getPageIndex());
-        page.setSize(pageDto.getPageSize());
-        List<SpecialCommodityDto> specialCommodityDtoList = baseMapper.getList(page, specialCommodityKeyDto);
-
-        page.setRecords(specialCommodityDtoList);
-        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, specialCommodityPoList);
     }
 
     /**
@@ -46,50 +50,35 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
      */
     @Override
     public ResultUtil<Boolean> delSpecialCommodity(Long id) {
-        Integer integer = baseMapper.deleteById(id);
+         baseMapper.deleteById(id);
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS, true);
     }
 
     /**
      * 更新特殊物品
-     * @param specialCommodityDto
+     * @param specialCommodityPo
      * @return
      */
     @Override
-    public ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityDto specialCommodityDto) {
-
-        Integer integer = baseMapper.updateById(specialCommodityDto);
+    public ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityPo specialCommodityPo) {
+        Integer result = baseMapper.updateById(specialCommodityPo);
+        if(result < 1)
+            return ResultUtil.APPRESULT(SpecialCommodityServiceEnum.ID_IS_NOT_EXISTS.code, SpecialCommodityServiceEnum.ID_IS_NOT_EXISTS.msg, false);
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, true);
     }
 
     /**
      * 添加特殊物品
-     * @param specialCommodityAddDto
      * @return
      */
     @Override
-    public ResultUtil<String> addSpecialCommodity(SpecialCommodityAddDto specialCommodityAddDto) {
-
-        SpecialCommodityDto specialCommodityDto = new SpecialCommodityDto();
-        specialCommodityDto.setId(SnowflakeIdWorker.generateId());
-        specialCommodityDto.setSpecialCommodityName(specialCommodityAddDto.getSpecialCommodityName());
-        specialCommodityDto.setSpecialCommodityNameEn(specialCommodityAddDto.getSpecialCommodityNameEn());
-        specialCommodityDto.setCode(specialCommodityAddDto.getCode());
-        Integer integer = baseMapper.insert(specialCommodityDto);
+    public ResultUtil<String> addSpecialCommodity(SpecialCommodityPo specialCommodityPo) {
+        specialCommodityPo.setId(SnowflakeIdWorker.generateId());
+        Integer integer = baseMapper.insert(specialCommodityPo);
         if(integer < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, specialCommodityDto.getId().toString());
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, specialCommodityPo.getId().toString());
     }
 
-    /**
-     * 获取详情
-     * @param id
-     * @return
-     */
-    @Override
-    public ResultUtil<SpecialCommodityDto> getSpecialCommodityInfo(Long id) {
-        SpecialCommodityDto specialCommodityDto = baseMapper.selectById(id);
-        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, specialCommodityDto);
-    }
 }
