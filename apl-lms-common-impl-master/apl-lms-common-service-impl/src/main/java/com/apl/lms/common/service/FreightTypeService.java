@@ -15,7 +15,7 @@ import java.util.List;
  * @author hjr
  * @since 2020-09-29
  */
-public interface CommonFreightTypeService extends IService<CommonFreightTypePo> {
+public interface FreightTypeService extends IService<CommonFreightTypePo> {
 
         /**
          * @Desc: 添加一个CommonFreightTypePo实体

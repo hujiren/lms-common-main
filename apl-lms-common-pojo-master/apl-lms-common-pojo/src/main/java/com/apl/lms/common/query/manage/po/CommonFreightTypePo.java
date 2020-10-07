@@ -30,15 +30,19 @@ import org.hibernate.validator.constraints.Range;
  */
 @Data
 @TableName("common_freight_type")
-@ApiModel(value=" 持久化对象", description=" 持久化对象")
+@ApiModel(value=" 运输类型-持久化对象", description=" 运输类型-持久化对象")
 public class CommonFreightTypePo extends Model<CommonFreightTypePo> {
 
     @NotNull(message = "运输类型id不能为空")
     @ApiModelProperty(name = "id", value = "id", required = true)
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    @TableId(value = "id", type = IdType.UUID)
+    @TableId(value = "id", type = IdType.INPUT)
     @Min(value = 0, message = "运输类型id不能小于0")
     private Long id;
+
+    @ApiModelProperty(name = "code" , value = "编号", required = true)
+    @NotNull(message = "编号不能为空")
+    private Integer code;
 
     @ApiModelProperty(name = "freightTypeName" , value = "运输类型名称" , required = true)
     @NotBlank(message = "运输类型名称不能为空")

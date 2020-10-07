@@ -32,7 +32,7 @@ public class SpecialCommodityController {
         return specialCommodityService.getList();
     }
 
-    @PostMapping(value = "/delete")
+    @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "根据id删除")
     @ApiImplicitParam(name = "id", value = "特殊物品Id", required = true, paramType = "query")
     public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") Long id){
@@ -40,14 +40,14 @@ public class SpecialCommodityController {
         return specialCommodityService.delSpecialCommodity(id);
     }
 
-    @PostMapping(value = "/update")
+    @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新" , notes = "根据id更新特殊物品")
     public ResultUtil<Boolean> upd( @Validated SpecialCommodityPo specialCommodityPo){
 
         return specialCommodityService.updSpecialCommodity(specialCommodityPo);
     }
 
-    @PostMapping(value = "/insert")
+    @PostMapping(value = "/add")
     @ApiOperation(value =  "新增" , notes = "新增特殊物品")
     public ResultUtil<String> add( @Validated SpecialCommodityPo specialCommodityPo){
 

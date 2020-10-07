@@ -33,7 +33,7 @@ public class CountryController {
 
     // /country/add-country
     // /country/add
-    @PostMapping(value = "/add-country")
+    @PostMapping(value = "/add")
     @ApiOperation(value =  "添加", notes ="CODE_EXIST -> countryCode已经存在\n"+
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
@@ -42,7 +42,7 @@ public class CountryController {
         return countryService.addCountry(countryAddDto);
     }
 
-    @PostMapping(value = "/update-country")
+    @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新",  notes ="CODE_EXIST -> countryCode已经存在\n"+
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
@@ -51,7 +51,7 @@ public class CountryController {
         return countryService.updateCountryByCode(countryUpdDto);
     }
 
-    @PostMapping(value = "/delete-country")
+    @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "countryCode",value = " 国家简码", required = true)
     public ResultUtil<Boolean> del(String countryCode) {
@@ -59,7 +59,7 @@ public class CountryController {
         return countryService.deleteCountryByCode(countryCode);
     }
 
-    @PostMapping("/getList-country")
+    @PostMapping("/get-List")
     @ApiOperation(value =  "国家分页查找" , notes = "国家分页查找")
     public ResultUtil<Page<CountryAddDto>> getList(PageDto pageDto, CountryKeyDto keyDto) {
         return countryService.getListCountryByPage(pageDto, keyDto);

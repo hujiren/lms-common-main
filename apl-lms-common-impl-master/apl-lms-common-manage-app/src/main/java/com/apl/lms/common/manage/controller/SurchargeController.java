@@ -33,7 +33,7 @@ public class SurchargeController {
         return surchargeService.getList();
     }
 
-    @PostMapping(value = "/delete")
+    @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "根据id删除")
     @ApiImplicitParam(name = "id", value = "附加费Id", required = true, paramType = "query")
     public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") Long id){

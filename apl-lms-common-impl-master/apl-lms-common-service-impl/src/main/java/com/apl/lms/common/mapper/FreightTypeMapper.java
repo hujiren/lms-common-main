@@ -15,7 +15,7 @@ import java.util.List;
  * @since 2020-09-29
  */
 @Repository
-public interface CommonFreightTypeMapper extends BaseMapper<CommonFreightTypePo> {
+public interface FreightTypeMapper extends BaseMapper<CommonFreightTypePo> {
 
 
     /**

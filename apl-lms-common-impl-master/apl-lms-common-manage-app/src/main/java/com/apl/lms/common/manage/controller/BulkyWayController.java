@@ -36,7 +36,7 @@ public class BulkyWayController {
         return bulkyWayService.getList(pageDto, bulkyWayKeyDto);
     }
 
-    @PostMapping(value = "/delete")
+    @PostMapping(value = "/del")
     @ApiOperation(value =  "删除" , notes = "根据id删除")
     @ApiImplicitParam(name = "id", value = "计泡方式id", required = true, paramType = "query")
     public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") Long id){
@@ -44,14 +44,14 @@ public class BulkyWayController {
         return bulkyWayService.delBulkyWay(id);
     }
 
-    @PostMapping(value = "/update")
+    @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新" , notes = "根据id更新计泡方式")
     public ResultUtil<Boolean> upd( @Validated BulkyWayDto weightWayDto){
 
         return bulkyWayService.updWeightWay(weightWayDto);
     }
 
-    @PostMapping(value = "/insert")
+    @PostMapping(value = "/add")
     @ApiOperation(value =  "新增" , notes = "新增计泡方式")
     public ResultUtil<String> add( @Validated BulkyWayAddDto bulkyWayAddDto){
 

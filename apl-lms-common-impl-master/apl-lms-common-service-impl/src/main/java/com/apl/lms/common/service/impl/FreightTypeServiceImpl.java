@@ -1,9 +1,10 @@
 package com.apl.lms.common.service.impl;
 
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.mapper.CommonFreightTypeMapper;
+import com.apl.lib.utils.SnowflakeIdWorker;
+import com.apl.lms.common.mapper.FreightTypeMapper;
 import com.apl.lms.common.query.manage.po.CommonFreightTypePo;
-import com.apl.lms.common.service.CommonFreightTypeService;
+import com.apl.lms.common.service.FreightTypeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class CommonFreightTypeServiceImpl extends ServiceImpl<CommonFreightTypeMapper, CommonFreightTypePo> implements CommonFreightTypeService {
+public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, CommonFreightTypePo> implements FreightTypeService {
 
     //状态code枚举
     /*enum CommonFreightTypeServiceCode {
@@ -41,8 +42,8 @@ public class CommonFreightTypeServiceImpl extends ServiceImpl<CommonFreightTypeM
 
     @Override
     public ResultUtil<Long> add(CommonFreightTypePo commonFreightTypePo){
-
-
+        Long snowId = SnowflakeIdWorker.generateId();
+        commonFreightTypePo.setId(snowId);
         Integer flag = baseMapper.insert(commonFreightTypePo);
         if(flag.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , commonFreightTypePo.getId());
@@ -69,11 +70,8 @@ public class CommonFreightTypeServiceImpl extends ServiceImpl<CommonFreightTypeM
     public ResultUtil<Boolean> delById(Long id){
 
         Integer flag = baseMapper.deleteById(id);
-        if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
-        }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
 
