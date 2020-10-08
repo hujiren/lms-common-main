@@ -46,6 +46,6 @@ public interface FreightTypeService extends IService<CommonFreightTypePo> {
          * @author hjr
          * @since 2020-09-29
          */
-        ResultUtil<List<CommonFreightTypePo>>getList();
+        List<CommonFreightTypePo> getList();
 
 }

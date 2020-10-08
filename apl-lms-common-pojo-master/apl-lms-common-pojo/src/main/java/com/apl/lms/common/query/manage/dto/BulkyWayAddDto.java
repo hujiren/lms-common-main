@@ -25,7 +25,7 @@ public class BulkyWayAddDto {
     @ApiModelProperty(name = "computingFormula", value = "计算公式", required = true)
     @NotBlank(message = "计算公式不能为空")
     private String computingFormula;
-
+    
     @ApiModelProperty(name = "code", value = "计泡方式代码", required = true)
     @NotNull(message = "计泡方式代码不能为空")
     private Integer code;

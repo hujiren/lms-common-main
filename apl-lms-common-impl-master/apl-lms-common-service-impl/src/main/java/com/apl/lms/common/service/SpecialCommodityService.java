@@ -22,7 +22,7 @@ public interface SpecialCommodityService extends IService<SpecialCommodityPo> {
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<List<SpecialCommodityPo>> getList();
+    List<SpecialCommodityPo> getList();
 
     /**
      * @Desc: 根据Id删除特殊物品

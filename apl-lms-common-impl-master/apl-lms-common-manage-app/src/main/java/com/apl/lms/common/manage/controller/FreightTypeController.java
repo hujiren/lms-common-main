@@ -1,5 +1,6 @@
 package com.apl.lms.common.manage.controller;
 
+import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lms.common.query.manage.po.CommonFreightTypePo;
 import com.apl.lms.common.service.FreightTypeService;
 import io.swagger.annotations.Api;
@@ -64,8 +65,8 @@ public class FreightTypeController {
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "查找列表" , notes = "查找列表")
     public ResultUtil<List<CommonFreightTypePo>> getList() {
-
-        return freightTypeService.getList();
+        List<CommonFreightTypePo> list = freightTypeService.getList();
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS,list);
     }
 
 }

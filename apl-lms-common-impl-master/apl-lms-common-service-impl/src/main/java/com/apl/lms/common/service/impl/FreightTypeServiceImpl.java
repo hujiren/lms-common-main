@@ -26,9 +26,9 @@ import java.util.List;
 public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, CommonFreightTypePo> implements FreightTypeService {
 
     //状态code枚举
-    /*enum CommonFreightTypeServiceCode {
+    enum CommonFreightTypeServiceCode {
 
-            ;
+        DATA_CANNOT_BE_ADDED_REPEATEDLY("DATA_CANNOT_BE_ADDED_REPEATEDLY", "该数据已经存在");
 
             private String code;
             private String msg;
@@ -37,11 +37,28 @@ public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, Commo
                  this.code = code;
                  this.msg = msg;
             }
-        }*/
+        }
 
 
     @Override
     public ResultUtil<Long> add(CommonFreightTypePo commonFreightTypePo){
+
+        List<CommonFreightTypePo> resultList = getList();
+
+            if(null != resultList && resultList.size() > 0){
+                for (CommonFreightTypePo freightTypePo : resultList) {
+                    if(freightTypePo.getFreightTypeName().equals(commonFreightTypePo.getFreightTypeName())){
+                        return ResultUtil.APPRESULT(CommonFreightTypeServiceCode.DATA_CANNOT_BE_ADDED_REPEATEDLY.code,
+                                CommonFreightTypeServiceCode.DATA_CANNOT_BE_ADDED_REPEATEDLY.msg + " " +freightTypePo.getFreightTypeName(), null);
+                    }
+                    if(freightTypePo.getCode().equals(commonFreightTypePo.getCode())){
+                        return ResultUtil.APPRESULT(CommonFreightTypeServiceCode.DATA_CANNOT_BE_ADDED_REPEATEDLY.code,
+                                CommonFreightTypeServiceCode.DATA_CANNOT_BE_ADDED_REPEATEDLY.msg + " " +freightTypePo.getCode().toString(), null);
+                    }
+                }
+
+            }
+
         Long snowId = SnowflakeIdWorker.generateId();
         commonFreightTypePo.setId(snowId);
         Integer flag = baseMapper.insert(commonFreightTypePo);
@@ -76,11 +93,11 @@ public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, Commo
 
 
     @Override
-    public ResultUtil<List<CommonFreightTypePo>> getList(){
+    public List<CommonFreightTypePo> getList(){
 
         List<CommonFreightTypePo> list = baseMapper.getList();
 
-        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS , list);
+        return list;
     }
 
 

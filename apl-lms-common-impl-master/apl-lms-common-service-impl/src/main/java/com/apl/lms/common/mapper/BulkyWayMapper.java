@@ -26,7 +26,7 @@ public interface BulkyWayMapper extends BaseMapper<BulkyWayDto> {
      * @Author:
      * @Date: 2020-08-08
      */
-    List<BulkyWayDto> getList(Page page, @Param("key") BulkyWayKeyDto bulkyWayKeyDto);
+    List<BulkyWayDto> getList();
 
 
 

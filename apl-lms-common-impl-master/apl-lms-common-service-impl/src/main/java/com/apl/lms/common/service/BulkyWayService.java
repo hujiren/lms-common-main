@@ -6,6 +6,8 @@ import com.apl.lms.common.query.manage.dto.*;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 航空公司 service接口
@@ -21,7 +23,7 @@ public interface BulkyWayService extends IService<BulkyWayDto> {
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<Page<BulkyWayDto>> getList(PageDto pageDto, BulkyWayKeyDto bulkyWayKeyDto);
+    List<BulkyWayDto> getList();
 
     /**
      * @Desc: 根据Id删除计泡方式
@@ -43,11 +45,4 @@ public interface BulkyWayService extends IService<BulkyWayDto> {
      * @since 2020-08-08
      */
     ResultUtil<String> addBulkyWay(BulkyWayAddDto bulkyWayAddDto);
-
-        /**
-         * 获取详情
-         * @param id
-         * @return
-         */
-    ResultUtil<BulkyWayDto> getBulkyWayInfo(Long id);
 }

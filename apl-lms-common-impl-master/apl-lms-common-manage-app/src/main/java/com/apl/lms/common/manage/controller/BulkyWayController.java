@@ -1,9 +1,8 @@
 package com.apl.lms.common.manage.controller;
-import com.apl.lib.pojo.dto.PageDto;
+import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.*;
 import com.apl.lms.common.service.BulkyWayService;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -12,9 +11,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @author hjr start
@@ -31,9 +29,9 @@ public class BulkyWayController {
 
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "分页获取计泡方式列表" , notes = "根据关键字来查询")
-    public ResultUtil<Page<BulkyWayDto>> getList(PageDto pageDto ,
-                                                 @Validated BulkyWayKeyDto bulkyWayKeyDto){
-        return bulkyWayService.getList(pageDto, bulkyWayKeyDto);
+    public ResultUtil<List<BulkyWayDto>> getList(){
+        List<BulkyWayDto> list = bulkyWayService.getList();
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, list);
     }
 
     @PostMapping(value = "/del")
@@ -58,11 +56,4 @@ public class BulkyWayController {
         return bulkyWayService.addBulkyWay(bulkyWayAddDto);
     }
 
-    @PostMapping(value = "/get")
-    @ApiOperation(value =  "获取计泡方式详细" , notes = "获取计泡方式详细")
-    @ApiImplicitParam(name = "id", value = "计泡方式Id", required = true, paramType = "query")
-    public ResultUtil<BulkyWayDto> get(@NotNull(message = "id不能为空") @Min(value = 1, message = "id不能小于1") Long id){
-
-        return bulkyWayService.getBulkyWayInfo(id);
-    }
 }
