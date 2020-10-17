@@ -3,6 +3,7 @@ import com.apl.lib.cachebase.BaseCacheUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
+import com.apl.lms.common.lib.cache.bo.SpecialCommodityCacheBo;
 import com.apl.lms.common.lib.feign.LmsCommonFeign;
 import com.apl.tenant.AplTenantConfig;
 
@@ -11,7 +12,7 @@ import com.apl.tenant.AplTenantConfig;
  * @Classname JoinSpecialCommodity
  * @Date 2020/9/2 9:57
  */
-public class JoinSpecialCommodity extends JoinBase<JoinSpecialCommodity> {
+public class JoinSpecialCommodity extends JoinBase<SpecialCommodityCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
@@ -22,7 +23,7 @@ public class JoinSpecialCommodity extends JoinBase<JoinSpecialCommodity> {
         this.cacheUtil = cacheUtil;
         this.tabName = "special_commodity";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:special_commodity_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:special_commodity:";
     }
 
     @Override

@@ -2,9 +2,9 @@ package com.apl.lms.common.query.controller;
 
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
-import com.apl.lms.common.query.manage.dto.WeightWayDto;
-import com.apl.lms.common.query.manage.dto.WeightWayKeyDto;
-import com.apl.lms.common.service.WeightWayService;
+import com.apl.lms.common.query.manage.dto.BulkyWayDto;
+import com.apl.lms.common.query.manage.dto.BulkyWayKeyDto;
+import com.apl.lms.common.service.BulkyWayService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,13 +25,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class WeightWayController {
 
     @Autowired
-    WeightWayService weightWayService;
+    BulkyWayService bulkyWayService;
 
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "分页获取计泡方式列表" , notes = "根据关键字来查询")
-    public ResultUtil<Page<WeightWayDto>> getList(PageDto pageDto ,
-                                                  @Validated WeightWayKeyDto weightWayKeyDto){
-        return weightWayService.getList(pageDto, weightWayKeyDto);
+    public ResultUtil<Page<BulkyWayDto>> getList(PageDto pageDto ,
+                                                 @Validated BulkyWayKeyDto bulkyWayKeyDto){
+        return bulkyWayService.getList(pageDto, bulkyWayKeyDto);
     }
 
 }

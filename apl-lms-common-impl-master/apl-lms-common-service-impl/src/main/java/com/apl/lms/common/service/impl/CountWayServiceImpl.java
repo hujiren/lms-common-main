@@ -1,12 +1,15 @@
 package com.apl.lms.common.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.CountWayDto;
 import com.apl.lms.common.mapper.CountWayMapper;
+import com.apl.lms.common.query.manage.po.CountWayPo;
 import com.apl.lms.common.service.CountWayService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,26 +27,13 @@ import java.util.List;
 @Slf4j
 public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto> implements CountWayService {
 
-    //状态code枚举
-    /*enum CountWayServiceCode {
-
-        ;
-
-        private String code;
-        private String msg;
-
-        CountWayServiceCode(String code, String msg) {
-             this.code = code;
-             this.msg = msg;
-        }
-    }*/
-
-
-
+    /**
+     * 新增
+     * @param countWayDto
+     * @return
+     */
     @Override
     public ResultUtil<Integer> add(CountWayDto countWayDto){
-
-
         Integer flag = baseMapper.insert(countWayDto);
 
         if(flag.equals(1)){
@@ -53,7 +43,11 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
-
+    /**
+     * 修改
+     * @param countWayDto
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> updById(CountWayDto countWayDto){
 
@@ -66,7 +60,11 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
-
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
@@ -78,7 +76,11 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
-
+    /**
+     * 获取详细
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<CountWayDto> selectById(Long id){
 
@@ -87,7 +89,10 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, countWayDto);
     }
 
-
+    /**
+     * 查询列表
+     * @return
+     */
     @Override
     public ResultUtil<List<CountWayDto>> getList(){
 

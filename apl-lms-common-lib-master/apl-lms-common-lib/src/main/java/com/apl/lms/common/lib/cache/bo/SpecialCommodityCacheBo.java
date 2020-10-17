@@ -1,4 +1,4 @@
-package com.apl.lms.common.lib.cache;
+package com.apl.lms.common.lib.cache.bo;
 
 import lombok.Data;
 

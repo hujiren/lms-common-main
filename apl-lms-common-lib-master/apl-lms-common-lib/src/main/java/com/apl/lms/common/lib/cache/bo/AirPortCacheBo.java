@@ -1,13 +1,13 @@
-package com.apl.lms.common.lib.cache;
+package com.apl.lms.common.lib.cache.bo;
 
 import lombok.Data;
 
 /**
  * @author hjr start
- * @date 2020/4/22 - 11:39
+ * @date 2020/4/22 - 9:25
  */
 @Data
-public class SeaPortCacheBo {
+public class AirPortCacheBo {
 
     private String cacheKey;
 

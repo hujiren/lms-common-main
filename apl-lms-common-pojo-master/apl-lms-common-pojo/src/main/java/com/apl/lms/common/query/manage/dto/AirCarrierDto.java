@@ -23,7 +23,7 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("air_carrier")
+@TableName("common_air_carrier")
 @ApiModel(value="AirCarrierDto 持久化对象", description="航空公司")
 public class AirCarrierDto extends Model<AirCarrierDto> {
 

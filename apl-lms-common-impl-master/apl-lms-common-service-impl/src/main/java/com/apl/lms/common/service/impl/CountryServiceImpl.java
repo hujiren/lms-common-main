@@ -33,27 +33,24 @@ import java.util.List;
 @Slf4j
 public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto> implements CountryService {
 
-    //状态code枚举
-    /*enum CountryServiceCode {
-
-        ;
-
-        private String code;
-        private String msg;
-
-        CountryServiceCode(String code, String msg) {
-             this.code = code;
-             this.msg = msg;
-        }
-    }*/
     @Autowired
     private CountryMapper countryMapper;
 
+    /**
+     * 新增
+     * @param countryAddDto
+     * @return
+     */
     @Override
     public ResultUtil<String> addCountry(CountryAddDto countryAddDto){
 
         this.exists(null, countryAddDto.getCountryCode(), countryAddDto.getNameCn(),  countryAddDto.getNameEn() );
-
+        if(countryAddDto.getCountryCode() != null){
+            countryAddDto.setCountryCode(countryAddDto.getCountryCode().toUpperCase());
+        }
+        if(countryAddDto.getHomeCountry() != null){
+            countryAddDto.setHomeCountry(countryAddDto.getHomeCountry().toUpperCase());
+        }
         Integer flag = countryMapper.insert(countryAddDto);
 
         if(flag > 0){
@@ -62,12 +59,24 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
-
+    /**
+     * 修改
+     * @param countryUpdDto
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> updateCountryByCode(CountryUpdDto countryUpdDto){
 
         this.exists(countryUpdDto.getOldCode(),  countryUpdDto.getCountryCode(), countryUpdDto.getNameCn(),  countryUpdDto.getNameEn() );
-
+        if(countryUpdDto.getCountryCode() != null){
+            countryUpdDto.setCountryCode(countryUpdDto.getCountryCode().toUpperCase());
+        }
+        if(countryUpdDto.getHomeCountry() != null){
+            countryUpdDto.setHomeCountry(countryUpdDto.getHomeCountry().toUpperCase());
+        }
+        if(countryUpdDto.getOldCode() != null){
+            countryUpdDto.setOldCode(countryUpdDto.getOldCode().toUpperCase());
+        }
         CountryAddDto countryAddDto = new CountryAddDto();
         BeanUtils.copyProperties(countryUpdDto, countryAddDto);
 
@@ -79,13 +88,18 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT("OLD_CODE_IS_NOT_EXISTS","旧简码不存在" , false);
     }
 
-
+    /**
+     * 删除
+     * @param countryCode
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> deleteCountryByCode(String countryCode){
 
+        countryCode = countryCode.toUpperCase();
         Boolean flag = countryMapper.deleteCountryByCode(countryCode);
 
         if(flag){
@@ -95,6 +109,12 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
+    /**
+     * 获取列表
+     * @param pageDto
+     * @param keyDto
+     * @return
+     */
     @Override
     public ResultUtil<Page<CountryAddDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto){
 

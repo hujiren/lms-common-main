@@ -17,7 +17,7 @@
           big_cargo_carry, 
           bulky_code
         FROM
-          count_way
+          common_count_way
         where
           id = #{id}
     </select>
@@ -36,7 +36,7 @@
            big_cargo_carry, 
            bulky_code
         FROM
-           count_way
+           common_count_way
         where
         1 = 1
         order by id desc

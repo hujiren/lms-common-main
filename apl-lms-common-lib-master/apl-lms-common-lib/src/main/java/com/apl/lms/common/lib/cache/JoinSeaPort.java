@@ -3,8 +3,8 @@ import com.apl.lib.cachebase.BaseCacheUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
+import com.apl.lms.common.lib.cache.bo.SeaPortCacheBo;
 import com.apl.lms.common.lib.feign.LmsCommonFeign;
-import com.apl.tenant.AplTenantConfig;
 
 /**
  * @author hjr start
@@ -22,7 +22,7 @@ public class JoinSeaPort extends JoinBase<SeaPortCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "sea_port";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:seaPort_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:seaPort:";
     }
 
 

@@ -32,19 +32,6 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto> implements AirPortService {
 
-    //状态code枚举
-    /*enum AirPortServiceCode {
-
-        ;
-
-        private String code;
-        private String msg;
-
-        AirPortServiceCode(String code, String msg) {
-             this.code = code;
-             this.msg = msg;
-        }
-    }*/
     @Autowired
     AirPortMapper airPortMapper;
 
@@ -54,10 +41,7 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto
         this.exists(null, airPortAddDto.getPortCode(),  airPortAddDto.getNameCn(),  airPortAddDto.getNameEn());
         Integer flag = baseMapper.insert(airPortAddDto);
 
-        if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortAddDto.getPortCode());
-        }
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
 
     }
 
@@ -72,10 +56,7 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto
         wrapper.eq("port_code", airPortUpdDto.getOldCode());
         Integer flag = baseMapper.update(apt, wrapper);
 
-        if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
-        }
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
 
     }
 
@@ -83,12 +64,7 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto
     public ResultUtil<Boolean> delByCode(String portCode){
 
         Integer flag = airPortMapper.delByCode(portCode);
-
-        if(flag > 0){
-            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
-        }else{
-            return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
-        }
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
     }
 
     @Override

@@ -20,7 +20,7 @@ import javax.validation.constraints.NotEmpty;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("air_port")
+@TableName("common_air_port")
 @ApiModel(value="AirPortAddDto 持久化对象", description="机场")
 public class AirPortUpdDto extends Model<AirPortUpdDto> {
 
@@ -29,7 +29,7 @@ public class AirPortUpdDto extends Model<AirPortUpdDto> {
     @Length(max = 3, message = "旧简码长度不能超过3")
     private String oldCode;
 
-    @ApiModelProperty(name = "portCode" , value = "新机场简码", required = true)
+    @ApiModelProperty(name = "portCode" , value = "机场简码", required = true)
     @NotEmpty(message = "机场简码不能为空")
     @Length(max = 3 , message = "机场简码长度不能超过3")
     private String portCode;

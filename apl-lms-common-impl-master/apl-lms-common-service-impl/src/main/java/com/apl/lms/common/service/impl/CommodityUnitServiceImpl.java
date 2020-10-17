@@ -30,14 +30,18 @@ import java.util.List;
 @Slf4j
 public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, CommodityUnitDto> implements CommodityUnitService {
 
-
+    /**
+     * 新增
+     */
     @Autowired
     CommodityUnitMapper commodityUnitMapper;
     @Override
     public ResultUtil<Integer> add(CommodityUnitDto commodityUnitDto) {
 
 
-        this.exists(0L, commodityUnitDto.getUnitCode(),  commodityUnitDto.getUnitName() );
+        ResultUtil<Boolean> exists = this.exists(0L, commodityUnitDto.getUnitCode(), commodityUnitDto.getUnitName());
+        if(!exists.getData())
+            return ResultUtil.APPRESULT(exists.getCode(), exists.getMsg(), null);
 
         Integer flag = commodityUnitMapper.insert(commodityUnitDto);
         if(flag.equals(1)){
@@ -46,37 +50,48 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
 
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
 
-
     }
 
-
+    /**
+     * 修改
+     * @param commodityUnitDto
+     * @return
+     * @throws Exception
+     */
     @Override
     public ResultUtil<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception {
-
-        this.exists(commodityUnitDto.getId(), commodityUnitDto.getUnitCode(),  commodityUnitDto.getUnitName() );
-
+        ResultUtil<Boolean> exists = this.exists(commodityUnitDto.getId(), commodityUnitDto.getUnitCode(), commodityUnitDto.getUnitName());
+        if(!exists.getData()){
+            return exists;
+        }
         Integer flag = commodityUnitMapper.updateById(commodityUnitDto);
 
         if(flag.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT("ID_IS_NOT_EXISTS","id不存在", false);
     }
 
-
+    /**
+     * 删除
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @Override
     public ResultUtil<Boolean> deleteUnitById(Long id) throws Exception {
 
         Integer flag = commodityUnitMapper.deleteById(id);
 
-        if(flag > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
-        }
-        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
-
+    /**
+     * 获取详细
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<CommodityUnitDto> selectUnitById(Long id){
 
@@ -85,7 +100,13 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, commodityUnitDto);
     }
 
-
+    /**
+     * 查询列表
+     * @param pageDto
+     * @param keyDto
+     * @return
+     * @throws Exception
+     */
     @Override
     public ResultUtil<Page<CommodityUnitDto>> getUnitByPage(PageDto pageDto, CommodityUnitKeyDto keyDto) throws Exception {
 
@@ -99,17 +120,18 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
     }
 
 
-    void exists(Long id,  String unitCode,   String unitName ) {
+    ResultUtil<Boolean> exists(Long id,  String unitCode, String unitName) {
 
         List<CommodityUnitDto> list = baseMapper.exists(id, unitCode,  unitName );
         if (!CollectionUtils.isEmpty(list)) {
             for(CommodityUnitDto  commodityUnitDto : list) {
 
                 if(commodityUnitDto.getUnitCode().equals(unitCode))
-                    throw new AplException("UNIT_CODE_EXIST", "unitCode已经存在");
+                    return ResultUtil.APPRESULT("UNIT_CODE_EXIST", "unitCode已经存在", false);
                 if(commodityUnitDto.getUnitName().equals(unitName))
-                    throw new AplException("UNIT_NAME_EXIST", "unitName已经存在");
+                    return ResultUtil.APPRESULT("UNIT_NAME_EXIST", "unitName已经存在", false);
             }
         }
+        return ResultUtil.APPRESULT("", "", true);
     }
 }

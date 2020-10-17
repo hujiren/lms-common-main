@@ -1,10 +1,13 @@
 package com.apl.lms.common.lib.feign;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.lib.feign.impl.LmsCommonFeignImpl;
+import com.apl.lms.common.query.manage.po.CommonCarrierPo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @author hjr start
@@ -17,14 +20,11 @@ public interface LmsCommonFeign {
     @PostMapping("/cache/add-country-cache")
     ResultUtil<Boolean> addCountryCacheByCode(@RequestParam("keys") String keys);
 
-
     @PostMapping("/cache/add-air-carrier-cache")
     ResultUtil<Boolean> addAirCarrierCacheById(@RequestParam("keys") String keys);
 
-
     @PostMapping("/cache/add-air-port-code")
     ResultUtil<Boolean> addAirPortCacheByCode(@RequestParam("keys") String keys);
-
 
     @PostMapping("/cache/add-sea-port-code")
     ResultUtil<Boolean> addSeaPortCacheById(@RequestParam("keys") String keys);
@@ -43,5 +43,8 @@ public interface LmsCommonFeign {
 
     @PostMapping("/cache/add-weight-way-cache")
     ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys);
+
+    @PostMapping("/common-carrier/get-list")
+    ResultUtil<List<CommonCarrierPo>> getList();
 }
 

@@ -3,8 +3,8 @@ import com.apl.lib.cachebase.BaseCacheUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
+import com.apl.lms.common.lib.cache.bo.AirCarrierCacheBo;
 import com.apl.lms.common.lib.feign.LmsCommonFeign;
-import com.apl.tenant.AplTenantConfig;
 
 /**
  * @author hjr start
@@ -22,7 +22,7 @@ public class JoinAirCarrier extends JoinBase<AirCarrierCacheBo> {
         this.cacheUtil = cacheUtil;
         this.joinStyle = joinStyle;
         this.tabName = "air_carrier";
-        this.cacheKeyNamePrefix = "JOIN_CACHE:airCarrier_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:airCarrier:";
     }
 
     @Override

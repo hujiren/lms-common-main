@@ -10,7 +10,7 @@
           unit_code,
           unit_name
         FROM
-          commodity_unit
+          common_commodity_unit
         where
           id = #{id}
     </select>
@@ -18,11 +18,11 @@
     <!-- 查找列表 2019-12-19-->
     <select id="getList" resultType="com.apl.lms.common.query.manage.dto.CommodityUnitDto">
         SELECT
-           id, 
-           unit_code, 
+           id,
+           unit_code,
            unit_name
         FROM
-           commodity_unit
+            common_commodity_unit
         <where>
             1 = 1
 
@@ -41,7 +41,7 @@
         unit_code,
         unit_name
         FROM
-        commodity_unit
+        common_commodity_unit
         <where>
             (unit_code = #{unitCode} OR unit_name = #{unitName})
             <if test="id != null and id > 0">

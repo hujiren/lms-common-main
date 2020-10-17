@@ -12,7 +12,7 @@
           name_cn, 
           name_en
         FROM
-          sea_carrier
+          common_sea_carrier
         where
           id = #{id}
     </select>
@@ -25,7 +25,7 @@
            name_cn, 
            name_en
         FROM
-            sea_carrier
+        common_sea_carrier
         <where>
             1 = 1
         <if test="key.keyword != null and key.keyword != ''">
@@ -47,7 +47,7 @@
         name_cn,
         name_en
         FROM
-        sea_carrier
+        common_sea_carrier
         WHERE
         (carrier_code = #{carrierCode} OR name_cn = #{nameCn} OR name_en = #{nameEn})
         <if test="id != null and id > 0">

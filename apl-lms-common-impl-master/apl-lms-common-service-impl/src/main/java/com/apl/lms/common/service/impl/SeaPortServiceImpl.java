@@ -30,21 +30,11 @@ import org.springframework.util.CollectionUtils;
 @Slf4j
 public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> implements SeaPortService {
 
-    //状态code枚举
-    /*enum SeaPortServiceCode {
-
-        ;
-
-        private String code;
-        private String msg;
-
-        SeaPortServiceCode(String code, String msg) {
-             this.code = code;
-             this.msg = msg;
-        }
-    }*/
-
-
+    /**
+     * 新增
+     * @param seaPortDto
+     * @return
+     */
     @Override
     public ResultUtil<Integer> add(SeaPortDto seaPortDto){
 
@@ -57,7 +47,11 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
-
+    /**
+     * 修改
+     * @param seaPortDto
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> updById(SeaPortDto seaPortDto){
 
@@ -67,22 +61,27 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
+        return ResultUtil.APPRESULT("ID_IS_NOT_EXISTS","id不存在", false);
     }
 
-
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
         boolean flag = removeById(id);
-        if(flag){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
-        }
 
-        return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL , false);
     }
 
-
+    /**
+     * 获取详细
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<SeaPortDto> selectById(Long id){
 
@@ -91,7 +90,12 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, seaPortDto);
     }
 
-
+    /**
+     * 查询列表
+     * @param pageDto
+     * @param seaPortKeyDto
+     * @return
+     */
     @Override
     public ResultUtil<Page<SeaPortListVo>> getList(PageDto pageDto, SeaPortKeyDto seaPortKeyDto){
 

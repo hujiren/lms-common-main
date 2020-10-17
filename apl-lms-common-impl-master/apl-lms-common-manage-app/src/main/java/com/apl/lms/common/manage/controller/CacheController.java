@@ -80,4 +80,5 @@ public class CacheController {
     public ResultUtil<Boolean> addWeightWayCache(@RequestParam("keys") String keys){
         return cacheService.addWeightWayCache(keys);
     }
+
 }

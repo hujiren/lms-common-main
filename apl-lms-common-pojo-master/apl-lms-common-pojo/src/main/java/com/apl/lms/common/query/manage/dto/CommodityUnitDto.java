@@ -23,7 +23,7 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("commodity_unit")
+@TableName("common_commodity_unit")
 @ApiModel(value="CommodityUnitPo实体对象", description="商品单位")
 public class CommodityUnitDto extends Model<CommodityUnitDto> {
 
@@ -48,4 +48,9 @@ public class CommodityUnitDto extends Model<CommodityUnitDto> {
         return this.id;
     }
 
+    public String getUnitCode() {
+        if(this.unitCode != null && this.unitCode != "")
+        return this.unitCode.toUpperCase();
+        return this.unitCode;
+    }
 }

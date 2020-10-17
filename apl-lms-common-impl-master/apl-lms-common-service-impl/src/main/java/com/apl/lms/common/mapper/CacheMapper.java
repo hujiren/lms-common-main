@@ -1,16 +1,9 @@
-/*
- * Copyright © 2018 BDHub Software
- * Shenzhen BDHub Software Co., Ltd.
- * http://www.bdhubware.com/
- * All rights reserved.
- */
-
 package com.apl.lms.common.mapper;
 
-
-import com.apl.lms.common.lib.cache.*;
+import com.apl.lms.common.lib.cache.bo.*;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.MapKey;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +18,7 @@ import java.util.Map;
  * @since 2019-10-14
  */
 @Repository
+@Mapper
 public interface CacheMapper extends BaseMapper {
 
     //添加国家缓存

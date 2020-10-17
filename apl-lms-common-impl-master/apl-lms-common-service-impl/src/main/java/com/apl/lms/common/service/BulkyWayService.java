@@ -6,6 +6,8 @@ import com.apl.lms.common.query.manage.dto.*;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 航空公司 service接口
@@ -14,40 +16,33 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author hjr
  * @since 2020-08-08
  */
-public interface WeightWayService extends IService<WeightWayDto> {
+public interface BulkyWayService extends IService<BulkyWayDto> {
 
     /**
      * @Desc: 分页查找 计泡方式列表
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<Page<WeightWayDto>> getList(PageDto pageDto, WeightWayKeyDto weightWayKeyDto);
+    List<BulkyWayDto> getList();
 
     /**
      * @Desc: 根据Id删除计泡方式
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<Boolean> delWeightWay(Long id);
+    ResultUtil<Boolean> delBulkyWay(Long id);
 
     /**
      * @Desc: 更新计泡方式
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<Boolean> updWeightWay(WeightWayDto weightWayDto);
+    ResultUtil<Boolean> updWeightWay(BulkyWayDto bulkyWayDto);
 
     /**
      * @Desc: 新增计泡方式
      * @author hjr
      * @since 2020-08-08
      */
-    ResultUtil<String> addWeightWay(WeightWayAddDto weightWayAddDto);
-
-        /**
-         * 获取详情
-         * @param id
-         * @return
-         */
-    ResultUtil<WeightWayDto> getWeightWayInfo(Long id);
+    ResultUtil<String> addBulkyWay(BulkyWayAddDto bulkyWayAddDto);
 }

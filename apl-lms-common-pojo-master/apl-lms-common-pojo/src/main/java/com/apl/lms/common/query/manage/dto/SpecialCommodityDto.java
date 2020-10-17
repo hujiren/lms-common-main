@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,8 +16,7 @@ import javax.validation.constraints.NotNull;
  * @date 2020/8/8 - 9:17
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@TableName("special_commodity")
+@TableName("common_special_commodity")
 @ApiModel(value = "特殊物品持久化对象", description = "特殊物品持久化对象")
 public class SpecialCommodityDto {
 

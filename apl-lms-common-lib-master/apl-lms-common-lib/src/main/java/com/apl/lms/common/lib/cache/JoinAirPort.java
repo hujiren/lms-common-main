@@ -4,8 +4,8 @@ import com.apl.lib.cachebase.BaseCacheUtil;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.join.JoinBase;
 import com.apl.lib.utils.ResultUtil;
+import com.apl.lms.common.lib.cache.bo.AirPortCacheBo;
 import com.apl.lms.common.lib.feign.LmsCommonFeign;
-import com.apl.tenant.AplTenantConfig;
 
 /**
  * @author hjr start
@@ -21,7 +21,7 @@ public class JoinAirPort extends JoinBase<AirPortCacheBo> {
         this.cacheUtil = cacheUtil;
         this.tabName = "air_port";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:airPort_";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:airPort:";
     }
 
     @Override
