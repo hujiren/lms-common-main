@@ -17,16 +17,14 @@ public class JoinSurcharge extends JoinBase<SurchargeCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
-    private Long customerId;
-
     public JoinSurcharge(int joinStyle, LmsCommonFeign lmsCommonFeign, BaseCacheUtil cacheUtil) {
         this.lmsCommonFeign = lmsCommonFeign;
         this.cacheUtil = cacheUtil;
-        this.tabName = "surcharge";
+        this.tabName = "common_surcharge";
         this.joinStyle = joinStyle;
         this.innerOrgId = AplTenantConfig.tenantIdContextHolder.get();
 
-        this.cacheKeyNamePrefix = "JOIN_CACHE:surcharge:";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:common_surcharge:";
     }
 
     @Override

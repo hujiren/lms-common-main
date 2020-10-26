@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2020/4/17 - 17:33
  */
 @Component
-@FeignClient(name = "apl-lms-common-manage-app" , path = "lms-common-manage", fallback = LmsCommonFeignImpl.class)
+@FeignClient(name = "apl-lms-common-manage-app", path = "lms-common-manage", fallback = LmsCommonFeignImpl.class)
 public interface LmsCommonFeign {
 
     @PostMapping("/cache/add-country-cache")

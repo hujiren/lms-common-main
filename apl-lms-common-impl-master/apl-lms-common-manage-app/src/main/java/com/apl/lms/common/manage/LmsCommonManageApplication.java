@@ -18,6 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
                 //"com.apl.db.adb", // adb数据库操作助手
                 "com.apl.cache", // redis代理
                 //"com.apl.shardingjdbc",
+                "com.apl.lms.net",
                 "com.apl.lms.common"},
         exclude = {AplTenantConfig.class})
 @MapperScan("com.apl.lms.common.mapper")

@@ -15,15 +15,12 @@ public class JoinCommodityUnit extends JoinBase<CommodityUnitCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
-    private Long customerId;
-
-
     public JoinCommodityUnit(int joinStyle, LmsCommonFeign lmsCommonFeign, BaseCacheUtil cacheUtil) {
         this.lmsCommonFeign = lmsCommonFeign;
         this.cacheUtil = cacheUtil;
-        this.tabName = "commodity_unit";
+        this.tabName = "common_commodity_unit";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:commodity_unit:";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:common_commodity_unit:";
     }
 
 

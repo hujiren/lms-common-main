@@ -16,14 +16,12 @@ public class JoinWeightWay extends JoinBase<WeightWayCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
-    private Long customerId;
-
     public JoinWeightWay(int joinStyle, LmsCommonFeign lmsCommonFeign, BaseCacheUtil cacheUtil) {
         this.lmsCommonFeign = lmsCommonFeign;
         this.cacheUtil = cacheUtil;
-        this.tabName = "weight_way";
+        this.tabName = "common_weight_way";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:weight_way:";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:common_weight_way:";
     }
 
     @Override
