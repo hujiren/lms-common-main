@@ -14,15 +14,13 @@ public class JoinSeaPort extends JoinBase<SeaPortCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
-    private Long customerId;
-
 
     public JoinSeaPort(int joinStyle, LmsCommonFeign lmsCommonFeign, BaseCacheUtil cacheUtil) {
         this.lmsCommonFeign = lmsCommonFeign;
         this.cacheUtil = cacheUtil;
-        this.tabName = "sea_port";
+        this.tabName = "common_sea_port";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:seaPort:";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:common_sea_port:";
     }
 
 

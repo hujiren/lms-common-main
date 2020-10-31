@@ -14,14 +14,13 @@ import com.apl.lms.common.lib.feign.LmsCommonFeign;
 public class JoinAirPort extends JoinBase<AirPortCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
-    private Long customerId;
 
     public JoinAirPort(int joinStyle, LmsCommonFeign lmsCommonFeign, BaseCacheUtil cacheUtil){
         this.lmsCommonFeign = lmsCommonFeign;
         this.cacheUtil = cacheUtil;
-        this.tabName = "air_port";
+        this.tabName = "common_air_port";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:airPort:";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:common_air_port:";
     }
 
     @Override

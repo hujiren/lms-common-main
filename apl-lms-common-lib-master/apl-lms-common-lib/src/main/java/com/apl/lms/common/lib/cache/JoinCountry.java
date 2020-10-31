@@ -14,15 +14,12 @@ public class JoinCountry extends JoinBase<CountryCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
-    private Long customerId;
-
-
     public JoinCountry(int joinStyle, LmsCommonFeign lmsCommonFeign, BaseCacheUtil cacheUtil) {
         this.lmsCommonFeign = lmsCommonFeign;
         this.cacheUtil = cacheUtil;
-        this.tabName = "country";
+        this.tabName = "common_country";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:country:";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:common_country:";
     }
 
 

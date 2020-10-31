@@ -16,14 +16,12 @@ public class JoinSpecialCommodity extends JoinBase<SpecialCommodityCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
-    private Long customerId;
-
     public JoinSpecialCommodity(int joinStyle, LmsCommonFeign lmsCommonFeign, BaseCacheUtil cacheUtil) {
         this.lmsCommonFeign = lmsCommonFeign;
         this.cacheUtil = cacheUtil;
-        this.tabName = "special_commodity";
+        this.tabName = "common_special_commodity";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:special_commodity:";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:common_special_commodity:";
     }
 
     @Override

@@ -31,8 +31,7 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
-    // /country/add-country
-    // /country/add
+
     @PostMapping(value = "/add")
     @ApiOperation(value =  "添加", notes ="CODE_EXIST -> countryCode已经存在\n"+
             "NAME_CN_EXIST -> nameCn已经存在\n"+

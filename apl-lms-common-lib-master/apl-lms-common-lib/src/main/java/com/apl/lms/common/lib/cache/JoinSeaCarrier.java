@@ -15,15 +15,13 @@ public class JoinSeaCarrier extends JoinBase<SeaCarrierCacheBo> {
 
     private LmsCommonFeign lmsCommonFeign;
 
-    private Long customerId;
-
 
     public JoinSeaCarrier(int joinStyle, LmsCommonFeign lmsCommonFeign, BaseCacheUtil cacheUtil) {
         this.lmsCommonFeign = lmsCommonFeign;
         this.cacheUtil = cacheUtil;
-        this.tabName = "sea_carrier";
+        this.tabName = "common_sea_carrier";
         this.joinStyle = joinStyle;
-        this.cacheKeyNamePrefix = "JOIN_CACHE:seaCarrier:";
+        this.cacheKeyNamePrefix = "JOIN_CACHE:common_sea_carrier:";
     }
 
 
