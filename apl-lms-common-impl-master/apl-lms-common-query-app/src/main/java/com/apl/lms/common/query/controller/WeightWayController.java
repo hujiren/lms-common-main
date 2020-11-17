@@ -1,5 +1,6 @@
 package com.apl.lms.common.query.controller;
 
+import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.dto.BulkyWayDto;
@@ -13,6 +14,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author hjr start
@@ -29,9 +32,9 @@ public class WeightWayController {
 
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "分页获取计泡方式列表" , notes = "根据关键字来查询")
-    public ResultUtil<Page<BulkyWayDto>> getList(PageDto pageDto ,
-                                                 @Validated BulkyWayKeyDto bulkyWayKeyDto){
-        return bulkyWayService.getList(pageDto, bulkyWayKeyDto);
+    public ResultUtil<Page<BulkyWayDto>> getList(){
+        List<BulkyWayDto> list = bulkyWayService.getList();
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, list);
     }
 
 }

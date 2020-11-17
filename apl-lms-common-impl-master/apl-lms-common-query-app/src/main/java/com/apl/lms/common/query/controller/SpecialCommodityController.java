@@ -1,4 +1,5 @@
 package com.apl.lms.common.query.controller;
+import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.query.manage.po.SpecialCommodityPo;
 import com.apl.lms.common.service.SpecialCommodityService;
@@ -28,7 +29,8 @@ public class SpecialCommodityController {
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "分页获取特殊物品列表" , notes = "根据关键字来查询")
     public ResultUtil<List<SpecialCommodityPo>> getList(){
-        return specialCommodityService.getList();
+        List<SpecialCommodityPo> list = specialCommodityService.getList();
+        return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS,list);
     }
 
 }

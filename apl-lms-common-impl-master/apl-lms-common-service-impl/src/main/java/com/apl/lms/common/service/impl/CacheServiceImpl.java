@@ -8,8 +8,9 @@ import com.apl.lms.common.mapper.CacheMapper;
 import com.apl.lms.common.service.CacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -30,100 +31,121 @@ public class CacheServiceImpl implements CacheService {
     @Autowired
     CacheMapper cacheMapper;
 
+    enum CacheServiceEnum{
+
+        CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND("CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND", "缓存失败,没有找打对应的数据");
+
+        private String code;
+        private String msg;
+
+        CacheServiceEnum(String code, String msg){
+            this.code = code;
+            this.msg = msg;
+        }
+    }
 
     //添加国家缓存
     @Override
-    public ResultUtil<Boolean> addCountryCache(String keys) {
+    public ResultUtil<Boolean> addCountryCache(String keys) throws IOException {
         keys = keys.toUpperCase();
         Map<String, CountryCacheBo> maps = cacheMapper.addCountryCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 
     @Override
-    public ResultUtil<Boolean> addAirCarrierCache(String keys) {
+    public ResultUtil<Boolean> addAirCarrierCache(String keys) throws IOException {
         Map<String, AirCarrierCacheBo> maps = cacheMapper.addAirCarrierCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 
     @Override
-    public ResultUtil<Boolean> addAirPortCache(String keys) {
+    public ResultUtil<Boolean> addAirPortCache(String keys) throws IOException {
         keys = keys.toUpperCase();
         Map<String, AirPortCacheBo> maps = cacheMapper.addAirPortCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 
 
     @Override
-    public ResultUtil<Boolean> addSeaPortCache(String keys) {
+    public ResultUtil<Boolean> addSeaPortCache(String keys) throws IOException {
         Map<String, SeaPortCacheBo> maps = cacheMapper.addSeaPortCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 
 
     @Override
-    public ResultUtil<Boolean> addSeaCarrierCache(String keys) {
+    public ResultUtil<Boolean> addSeaCarrierCache(String keys) throws IOException {
         Map<String, SeaCarrierCacheBo> maps = cacheMapper.addSeaCarrierCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 
 
     @Override
-    public ResultUtil<Boolean> addCommodityUnitCache(String keys) {
+    public ResultUtil<Boolean> addCommodityUnitCache(String keys) throws IOException {
         Map<String, CommodityUnitCacheBo> maps = cacheMapper.addCommodityUnitCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 
     @Override
-    public ResultUtil<Boolean> addSpecialCommodityCache(String keys) {
+    public ResultUtil<Boolean> addSpecialCommodityCache(String keys) throws IOException {
         Map<String, SpecialCommodityCacheBo> maps = cacheMapper.addSpecialCommodityCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 
     @Override
-    public ResultUtil<Boolean> addSurchargeCache(String keys) {
+    public ResultUtil<Boolean> addSurchargeCache(String keys) throws IOException {
         Map<String, SurchargeCacheBo> maps = cacheMapper.addSurchargeCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 
     @Override
-    public ResultUtil<Boolean> addWeightWayCache(String keys) {
+    public ResultUtil<Boolean> addWeightWayCache(String keys) throws IOException {
         Map<String, WeightWayCacheBo> maps = cacheMapper.addWeightWayCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().multiSet(maps);
+            aplCacheUtil.opsForValue().set(maps);
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_FAIL, false);
+        return ResultUtil.APPRESULT(CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.code,
+                CacheServiceEnum.CACHING_FAILURE_NO_CORRESPONDING_DATA_WAS_FOUND.msg,false);
     }
 }

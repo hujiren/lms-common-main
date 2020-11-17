@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lms.common.query.manage.po.CommonCarrierPo;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +49,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
     private static final String CACHE_KEY = "carrier";
 
     @Override
-    public ResultUtil<Long> add(CommonCarrierPo commonCarrierPo) {
+    public ResultUtil<Long> add(CommonCarrierPo commonCarrierPo) throws IOException {
 
         commonCarrierPo.setId(SnowflakeIdWorker.generateId());
         Integer flag = baseMapper.insert(commonCarrierPo);
@@ -62,7 +63,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
 
 
     @Override
-    public ResultUtil<Boolean> updById(CommonCarrierPo commonCarrierPo) {
+    public ResultUtil<Boolean> updById(CommonCarrierPo commonCarrierPo) throws IOException {
 
         Integer flag = baseMapper.updateById(commonCarrierPo);
         if (flag > 0) {
@@ -88,7 +89,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
 
 
     @Override
-    public List<CommonCarrierPo> getList() {
+    public List<CommonCarrierPo> getList() throws IOException {
         Boolean hasKey = aplCacheUtil.hasKey(CACHE_KEY);
         if (!hasKey) {
             List<CommonCarrierPo> carrierCacheList = updCache();
@@ -102,12 +103,12 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
      * 更新缓存
      * @return
      */
-    public List<CommonCarrierPo> updCache() {
+    public List<CommonCarrierPo> updCache() throws IOException {
 
         List<CommonCarrierPo> carrierList = baseMapper.getList();
         Map<String, List<CommonCarrierPo>> carrierCacheMap = new HashMap<>();
         carrierCacheMap.put(CACHE_KEY, carrierList);
-        aplCacheUtil.opsForValue().multiSet(carrierCacheMap);
+        aplCacheUtil.opsForValue().set(carrierCacheMap);
         return carrierList;
     }
 }

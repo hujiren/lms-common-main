@@ -1,5 +1,6 @@
 package com.apl.lms.common.manage;
 
+import com.apl.lib.interceptor.FeignHeaderInterceptor;
 import com.apl.tenant.AplTenantConfig;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
@@ -28,7 +29,10 @@ public class LmsCommonManageApplication {
 
     public static void main(String[] args) {
 //        com.apl.shardingjdbc.mybatis.ShardingJdbcMybatisConfig
+
         SpringApplication.run(LmsCommonManageApplication.class , args);
+
+
     }
 
     @Primary
