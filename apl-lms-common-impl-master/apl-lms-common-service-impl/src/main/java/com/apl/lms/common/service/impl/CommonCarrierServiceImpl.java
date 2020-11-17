@@ -1,5 +1,6 @@
 package com.apl.lms.common.service.impl;
 
+import com.apl.cache.AplCacheHelper;
 import com.apl.cache.AplCacheUtil;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lib.utils.SnowflakeIdWorker;
@@ -45,6 +46,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
         }
     @Autowired
     AplCacheUtil aplCacheUtil;
+
 
     private static final String CACHE_KEY = "carrier";
 
