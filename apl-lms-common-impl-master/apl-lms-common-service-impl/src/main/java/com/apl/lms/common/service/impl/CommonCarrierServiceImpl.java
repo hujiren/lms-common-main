@@ -76,7 +76,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
 
 
     @Override
-    public ResultUtil<Boolean> delById(Long id) {
+    public ResultUtil<Boolean> delById(Long id) throws IOException {
 
         Integer result = baseMapper.deleteById(id);
         if (result > 0) {

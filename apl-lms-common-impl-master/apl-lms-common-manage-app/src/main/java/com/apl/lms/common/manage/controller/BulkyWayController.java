@@ -30,7 +30,7 @@ public class BulkyWayController {
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "分页获取计泡方式列表" , notes = "根据关键字来查询")
     public ResultUtil<List<BulkyWayDto>> getList(){
-        List<BulkyWayDto> list = bulkyWayService.getList(pageDto, bulkyWayKeyDto);
+        List<BulkyWayDto> list = bulkyWayService.getList();
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, list);
     }
 

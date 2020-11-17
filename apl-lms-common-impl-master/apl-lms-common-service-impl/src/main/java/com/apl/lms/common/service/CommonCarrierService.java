@@ -39,7 +39,7 @@ public interface CommonCarrierService extends IService<CommonCarrierPo> {
          * @author hjr
          * @since 2020-10-07
          */
-        ResultUtil<Boolean> delById(Long id);
+        ResultUtil<Boolean> delById(Long id) throws IOException;
 
 
         /**
