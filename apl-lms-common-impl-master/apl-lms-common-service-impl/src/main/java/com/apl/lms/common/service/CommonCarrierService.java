@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public interface CommonCarrierService extends IService<CommonCarrierPo> {
          * @author hjr
          * @since 2020-10-07
          */
-        ResultUtil<Long> add(CommonCarrierPo commonCarrierPo);
+        ResultUtil<Long> add(CommonCarrierPo commonCarrierPo) throws IOException;
 
 
         /**
@@ -30,7 +31,7 @@ public interface CommonCarrierService extends IService<CommonCarrierPo> {
          * @author hjr
          * @since 2020-10-07
          */
-        ResultUtil<Boolean> updById(CommonCarrierPo commonCarrierPo);
+        ResultUtil<Boolean> updById(CommonCarrierPo commonCarrierPo) throws IOException;
 
 
         /**
@@ -46,6 +47,6 @@ public interface CommonCarrierService extends IService<CommonCarrierPo> {
          * @author hjr
          * @since 2020-10-07
          */
-        List<CommonCarrierPo>getList();
+        List<CommonCarrierPo>getList() throws IOException;
 
 }

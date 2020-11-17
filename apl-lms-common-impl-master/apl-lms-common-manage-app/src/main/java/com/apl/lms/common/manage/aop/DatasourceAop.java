@@ -1,9 +1,11 @@
 package com.apl.lms.common.manage.aop;
 import com.apl.cache.AplCacheUtil;
+import com.apl.cache.jedis.JedisConnect;
 import com.apl.lib.constants.CommonAplConstants;
+import com.apl.lib.interceptor.FeignHeaderInterceptor;
 import com.apl.lib.security.SecurityUser;
 import com.apl.lib.utils.CommonContextHolder;
-import com.apl.lms.net.NetUtil;
+import com.apl.lms.net.SecurityUserNetService;
 import com.apl.tenant.AplTenantConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -41,7 +43,7 @@ public class DatasourceAop {
             if(null!=token && token.length()>0)
                 securityUser = CommonContextHolder.getSecurityUser(aplCacheUtil, token);
             else
-                securityUser = NetUtil.getSecurityUser(aplCacheUtil);
+                securityUser = SecurityUserNetService.getSecurityUser(aplCacheUtil);
 
             CommonContextHolder.securityUserContextHolder.set(securityUser);
 
@@ -50,6 +52,9 @@ public class DatasourceAop {
 
             Object[] args = pjp.getArgs();
             proceed = pjp.proceed(args);
+
+            //释放当前线程的redis连接池
+            JedisConnect.close();
 
         } catch (Throwable e) {
             throw e;
