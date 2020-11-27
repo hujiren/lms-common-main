@@ -31,7 +31,7 @@ import org.hibernate.validator.constraints.Range;
 @Data
 @TableName("common_freight_type")
 @ApiModel(value=" 运输类型-持久化对象", description=" 运输类型-持久化对象")
-public class CommonFreightTypePo extends Model<CommonFreightTypePo> {
+public class CommonFreightTypePo extends Model<CommonFreightTypePo> implements Serializable{
 
     @NotNull(message = "运输类型id不能为空")
     @ApiModelProperty(name = "id", value = "id", required = true)

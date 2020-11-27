@@ -92,7 +92,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
 
     @Override
     public List<CommonCarrierPo> getList() throws IOException {
-        Boolean hasKey = aplCacheUtil.hasKey(CACHE_KEY);
+        Boolean hasKey = aplCacheUtil.opsForKey().hasKey(CACHE_KEY);
         if (!hasKey) {
             List<CommonCarrierPo> carrierCacheList = updCache();
             return carrierCacheList;

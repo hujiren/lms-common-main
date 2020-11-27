@@ -1,5 +1,6 @@
 package com.apl.lms.common.service.impl;
 
+import com.apl.cache.AplCacheHelper;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.exception.AplException;
 import com.apl.lib.pojo.dto.PageDto;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -35,6 +37,9 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
 
     @Autowired
     private CountryMapper countryMapper;
+
+    @Autowired
+    AplCacheHelper aplCacheHelper;
 
     /**
      * 新增
@@ -116,8 +121,7 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
      * @return
      */
     @Override
-    public ResultUtil<Page<CountryAddDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto){
-
+    public ResultUtil<Page<CountryAddDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto) throws IOException {
         Page<CountryAddDto> page = new Page();
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());

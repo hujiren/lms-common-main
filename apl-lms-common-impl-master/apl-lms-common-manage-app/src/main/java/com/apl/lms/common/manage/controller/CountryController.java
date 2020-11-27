@@ -16,6 +16,8 @@ import com.apl.lib.pojo.dto.PageDto;
 import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
+import java.io.IOException;
+
 /**
  *
  * @author
@@ -60,7 +62,7 @@ public class CountryController {
 
     @PostMapping("/get-List")
     @ApiOperation(value =  "国家分页查找" , notes = "国家分页查找")
-    public ResultUtil<Page<CountryAddDto>> getList(PageDto pageDto, CountryKeyDto keyDto) {
+    public ResultUtil<Page<CountryAddDto>> getList(PageDto pageDto, CountryKeyDto keyDto) throws IOException {
         return countryService.getListCountryByPage(pageDto, keyDto);
     }
 

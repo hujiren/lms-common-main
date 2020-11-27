@@ -39,7 +39,7 @@ public class DatasourceAop {
             if(null==token || token.length()==0){
                 token = CommonContextHolder.getRequest().getParameter("token");
             }
-
+            //com.apl.cache.AplCacheUtil
             if(null!=token && token.length()>0)
                 securityUser = CommonContextHolder.getSecurityUser(aplCacheUtil, token);
             else
@@ -53,14 +53,15 @@ public class DatasourceAop {
             Object[] args = pjp.getArgs();
             proceed = pjp.proceed(args);
 
-            //释放当前线程的redis连接池
-            JedisConnect.close();
 
         } catch (Throwable e) {
             throw e;
         } finally {
             CommonContextHolder.securityUserContextHolder.remove();
             CommonContextHolder.tokenContextHolder.remove();
+
+            //释放当前线程的redis连接池
+            JedisConnect.close();
         }
 
         return proceed;

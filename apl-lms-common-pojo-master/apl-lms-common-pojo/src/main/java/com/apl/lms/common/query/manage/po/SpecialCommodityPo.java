@@ -13,6 +13,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * @author hjr start
@@ -22,7 +23,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_special_commodity")
 @ApiModel(value = "特殊物品持久化对象", description = "特殊物品持久化对象")
-public class SpecialCommodityPo extends Model<SpecialCommodityPo> {
+public class SpecialCommodityPo extends Model<SpecialCommodityPo> implements Serializable {
 
     @ApiModelProperty(name = "id", value = "特殊物品id", required = true)
     @TableId(value = "id", type = IdType.INPUT)

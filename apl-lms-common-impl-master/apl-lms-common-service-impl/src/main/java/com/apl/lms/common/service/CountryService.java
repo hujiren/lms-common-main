@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
+import java.io.IOException;
+
 /**
  * <p>
  * 国家 service接口
@@ -47,6 +49,6 @@ public interface CountryService extends IService<CountryAddDto> {
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtil<Page<CountryAddDto>>getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto);
+        ResultUtil<Page<CountryAddDto>>getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto) throws IOException;
 
 }
