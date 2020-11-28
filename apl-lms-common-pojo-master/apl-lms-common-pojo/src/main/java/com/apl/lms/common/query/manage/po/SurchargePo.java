@@ -19,7 +19,7 @@ import java.io.Serializable;
  */
 @Data
 @TableName("surcharge")
-@ApiModel(value = "附加费-持久化对象", description = "附加费-持久化对象")
+@ApiModel(value = "附加费 持久化对象", description = "附加费 持久化对象")
 public class SurchargePo extends Model<SurchargePo> implements Serializable {
 
     @TableId("id")

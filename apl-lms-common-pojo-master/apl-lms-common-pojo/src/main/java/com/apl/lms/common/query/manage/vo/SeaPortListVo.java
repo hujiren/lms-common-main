@@ -1,13 +1,11 @@
 package com.apl.lms.common.query.manage.vo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 /**
  * <p>
  * 海港 持久化对象
@@ -18,7 +16,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="SeaPortDto 持久化对象", description="海港")
+@ApiModel(value="海港 列表返回对象", description="海港 列表返回对象")
 public class SeaPortListVo extends Model<SeaPortListVo> {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)

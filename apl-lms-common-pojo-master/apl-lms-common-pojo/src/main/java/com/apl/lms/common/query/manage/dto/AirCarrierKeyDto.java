@@ -20,7 +20,7 @@ import org.springframework.util.StringUtils;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("air_carrier")
-@ApiModel(value="AirCarrierKeyDto 分页对象", description="航空公司")
+@ApiModel(value="航空公司 分页对象", description="航空公司 分页对象")
 public class AirCarrierKeyDto extends Model<AirCarrierKeyDto> {
 
     @ApiModelProperty(name = "keyword", value = "关键词")

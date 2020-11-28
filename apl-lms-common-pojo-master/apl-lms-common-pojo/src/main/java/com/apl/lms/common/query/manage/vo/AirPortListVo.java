@@ -15,7 +15,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 机场 持久化对象
+ * 机场
  * </p>
  *
  * @author hjr
@@ -24,7 +24,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_air_port")
-@ApiModel(value="AirPortAddDto 持久化对象", description="机场")
+@ApiModel(value="机场 列表返回对象", description="机场 列表返回对象")
 public class AirPortListVo extends Model<AirPortListVo> {
 
 

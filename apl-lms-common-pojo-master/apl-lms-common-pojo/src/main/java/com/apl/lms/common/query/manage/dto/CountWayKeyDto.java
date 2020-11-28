@@ -19,7 +19,7 @@ import org.springframework.util.StringUtils;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("count_way")
-@ApiModel(value="CountWayKeyDto 分页对象", description="计件方式")
+@ApiModel(value="计件方式 分页对象", description="计件方式 分页对象")
 public class CountWayKeyDto extends Model<CountWayKeyDto> {
 
     @ApiModelProperty(name = "keyword", value = "关键词")

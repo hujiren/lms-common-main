@@ -29,7 +29,7 @@ import org.hibernate.validator.constraints.Length;
  */
 @Data
 @TableName("common_carrier")
-@ApiModel(value=" 公共运输方-持久化对象", description="公共运输方-持久化对象")
+@ApiModel(value=" 公共运输方 持久化对象", description="公共运输方 持久化对象")
 public class CommonCarrierPo extends Model<CommonCarrierPo> implements Serializable{
 
     @ApiModelProperty(name = "id", value = "id", required = true)

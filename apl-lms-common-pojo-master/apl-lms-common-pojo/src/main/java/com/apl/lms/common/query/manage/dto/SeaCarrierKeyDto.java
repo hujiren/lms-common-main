@@ -19,7 +19,7 @@ import org.springframework.util.StringUtils;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sea_carrier")
-@ApiModel(value="SeaCarrierKeyDto 分页对象", description="般公司")
+@ApiModel(value="船公司 分页对象", description="般公司 分页对象")
 public class SeaCarrierKeyDto extends Model<SeaCarrierKeyDto> {
 
     @ApiModelProperty(name = "keyword", value = "关键词")

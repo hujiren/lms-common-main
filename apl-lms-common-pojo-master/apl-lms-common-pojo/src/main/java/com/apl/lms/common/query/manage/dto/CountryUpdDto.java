@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_country")
-@ApiModel(value="CountryDto实体类对象", description="国家")
+@ApiModel(value="国家 更新对象", description="国家 更新对象")
 public class CountryUpdDto extends Model<CountryUpdDto> {
 
     @ApiModelProperty(name = "oldCode" , value = "旧简码")

@@ -19,7 +19,7 @@ import org.springframework.util.StringUtils;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("commodity_unit")
-@ApiModel(value="CommodityUnitKeyDto查询对象", description="商品单位")
+@ApiModel(value="商品单位 查询对象", description="商品单位 查询对象")
 public class CommodityUnitKeyDto extends Model<CommodityUnitKeyDto> {
 
     @ApiModelProperty(name = "keyword", value = "关键词")

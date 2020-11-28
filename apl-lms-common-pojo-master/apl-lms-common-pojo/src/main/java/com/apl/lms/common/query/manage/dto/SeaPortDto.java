@@ -24,7 +24,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_sea_port")
-@ApiModel(value="SeaPortDto 持久化对象", description="海港")
+@ApiModel(value="海港 交互对象", description="海港 交互对象")
 public class SeaPortDto extends Model<SeaPortDto> {
 
     @TableId(value = "id", type = IdType.AUTO)

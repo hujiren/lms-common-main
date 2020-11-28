@@ -27,7 +27,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_count_way")
-@ApiModel(value=" CountWayDto 持久化对象", description="计件方式")
+@ApiModel(value=" 计件方式 交互对象", description="计件方式 交互对象")
 public class CountWayDto extends Model<CountWayDto> {
 
 

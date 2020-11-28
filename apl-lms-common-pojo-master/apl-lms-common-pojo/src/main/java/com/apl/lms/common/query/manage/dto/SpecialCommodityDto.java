@@ -12,12 +12,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
+ * 特殊物品
  * @author hjr start
  * @date 2020/8/8 - 9:17
  */
 @Data
 @TableName("common_special_commodity")
-@ApiModel(value = "特殊物品持久化对象", description = "特殊物品持久化对象")
+@ApiModel(value = "特殊物品 交互对象", description = "特殊物品 交互对象")
 public class SpecialCommodityDto {
 
     @ApiModelProperty(name = "id", value = "特殊物品id", required = true)

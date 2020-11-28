@@ -22,7 +22,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_special_commodity")
-@ApiModel(value = "特殊物品持久化对象", description = "特殊物品持久化对象")
+@ApiModel(value = "特殊物品 持久化对象", description = "特殊物品 持久化对象")
 public class SpecialCommodityPo extends Model<SpecialCommodityPo> implements Serializable {
 
     @ApiModelProperty(name = "id", value = "特殊物品id", required = true)

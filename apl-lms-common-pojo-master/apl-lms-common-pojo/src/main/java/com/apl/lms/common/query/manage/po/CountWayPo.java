@@ -24,7 +24,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("count_way")
-@ApiModel(value=" 计件方式  持久化对象", description="计件方式 持久化对象")
+@ApiModel(value=" 计件方式 持久化对象", description="计件方式 持久化对象")
 public class CountWayPo extends Model<CountWayPo> implements Serializable{
 
 
