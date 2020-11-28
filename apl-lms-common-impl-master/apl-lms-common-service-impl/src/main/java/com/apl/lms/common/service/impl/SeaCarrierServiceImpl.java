@@ -38,7 +38,7 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
     public ResultUtil<Integer> add(SeaCarrierDto seaCarrierDto){
 
         this.exists(0L, seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
-        Integer flag = baseMapper.insert(seaCarrierDto);
+        Integer resultNum = baseMapper.insert(seaCarrierDto);
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaCarrierDto.getId());
     }
 
@@ -51,7 +51,7 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
     public ResultUtil<Boolean> updById(SeaCarrierDto seaCarrierDto){
 
         this.exists(seaCarrierDto.getId(), seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
-        Integer flag = baseMapper.updateById(seaCarrierDto);
+        Integer resultNum = baseMapper.updateById(seaCarrierDto);
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
     }
 
@@ -63,7 +63,7 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
-        boolean flag = removeById(id);
+        boolean resultNum = removeById(id);
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
     }
 
@@ -93,17 +93,17 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
         page.setCurrent(pageDto.getPageIndex());
         page.setSize(pageDto.getPageSize());
 
-        List<SeaCarrierDto> list = baseMapper.getList(page , seaCarrierKeyDto);
-        page.setRecords(list);
+        List<SeaCarrierDto> seaCarrierList = baseMapper.getList(page , seaCarrierKeyDto);
+        page.setRecords(seaCarrierList);
 
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, page);
     }
 
     void exists(Long id,  String carrierCode,   String nameCn,   String nameEn ) {
 
-        List<SeaCarrierDto> list = baseMapper.exists(id, carrierCode, nameCn, nameEn);
-        if (!CollectionUtils.isEmpty(list)) {
-            for(SeaCarrierDto  seaCarrierDto : list) {
+        List<SeaCarrierDto> seaCarrierList = baseMapper.exists(id, carrierCode, nameCn, nameEn);
+        if (!CollectionUtils.isEmpty(seaCarrierList)) {
+            for(SeaCarrierDto  seaCarrierDto : seaCarrierList) {
 
                 if(seaCarrierDto.getCarrierCode().equals(carrierCode))
                     throw new AplException("CODE_EXIST", "code已经存在");

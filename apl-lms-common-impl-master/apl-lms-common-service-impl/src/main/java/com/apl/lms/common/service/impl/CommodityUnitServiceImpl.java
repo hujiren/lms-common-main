@@ -43,8 +43,8 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
         if(!exists.getData())
             return ResultUtil.APPRESULT(exists.getCode(), exists.getMsg(), null);
 
-        Integer flag = commodityUnitMapper.insert(commodityUnitDto);
-        if(flag.equals(1)){
+        Integer resultNum = commodityUnitMapper.insert(commodityUnitDto);
+        if(resultNum.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, commodityUnitDto.getId());
         }
 
@@ -64,9 +64,9 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
         if(!exists.getData()){
             return exists;
         }
-        Integer flag = commodityUnitMapper.updateById(commodityUnitDto);
+        Integer resultNum = commodityUnitMapper.updateById(commodityUnitDto);
 
-        if(flag.equals(1)){
+        if(resultNum.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
@@ -82,7 +82,7 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
     @Override
     public ResultUtil<Boolean> deleteUnitById(Long id) throws Exception {
 
-        Integer flag = commodityUnitMapper.deleteById(id);
+        Integer resultNum = commodityUnitMapper.deleteById(id);
 
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
     }

@@ -19,7 +19,7 @@ import java.util.List;
 public interface CommonCarrierService extends IService<CommonCarrierPo> {
 
         /**
-         * @Desc: 添加一个CommonCarrierPo实体
+         * @Desc: 添加公共运输方
          * @author hjr
          * @since 2020-10-07
          */
@@ -27,7 +27,7 @@ public interface CommonCarrierService extends IService<CommonCarrierPo> {
 
 
         /**
-         * @Desc: 根据id 更新一个CommonCarrierPo 实体
+         * @Desc: 更新公共运输方
          * @author hjr
          * @since 2020-10-07
          */
@@ -35,7 +35,7 @@ public interface CommonCarrierService extends IService<CommonCarrierPo> {
 
 
         /**
-         * @Desc: 根据id 查找一个CommonCarrierPo 实体
+         * @Desc: 删除
          * @author hjr
          * @since 2020-10-07
          */
@@ -43,7 +43,7 @@ public interface CommonCarrierService extends IService<CommonCarrierPo> {
 
 
         /**
-         * @Desc: 分页查找 CommonCarrierPo 列表
+         * @Desc: 查找列表
          * @author hjr
          * @since 2020-10-07
          */

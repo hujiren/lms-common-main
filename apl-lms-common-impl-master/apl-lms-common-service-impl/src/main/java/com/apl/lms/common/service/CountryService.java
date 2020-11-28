@@ -21,7 +21,7 @@ import java.io.IOException;
 public interface CountryService extends IService<CountryAddDto> {
 
         /**
-         * @Desc: 添加一个CountryPo实体
+         * @Desc: 添加
          * @author cy
          * @since 2020-04-13
          */
@@ -29,7 +29,7 @@ public interface CountryService extends IService<CountryAddDto> {
 
 
         /**
-         * @Desc: 根据id 更新一个CountryPo 实体
+         * @Desc: 更新
          * @author cy
          * @since 2020-04-13
          */
@@ -37,7 +37,7 @@ public interface CountryService extends IService<CountryAddDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个CountryPo 实体
+         * @Desc: 删除
          * @author cy
          * @since 2020-04-13
          */
@@ -45,7 +45,7 @@ public interface CountryService extends IService<CountryAddDto> {
 
 
         /**
-         * @Desc: 分页查找 CountryPo 列表
+         * @Desc: 分页查找列表
          * @author cy
          * @since 2020-04-13
          */

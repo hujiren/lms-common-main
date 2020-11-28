@@ -31,14 +31,10 @@ public class AirCarrierController {
     @Autowired
     public AirCarrierService airCarrierService;
 
-
-
     @PostMapping("/get-list")
     @ApiOperation(value =  "分页查找" , notes = "分页查找")
     public ResultUtil<Page<AirCarrierDto>> getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto) {
         return airCarrierService.getList(pageDto , airCarrierKeyDto);
     }
-
-
 
 }

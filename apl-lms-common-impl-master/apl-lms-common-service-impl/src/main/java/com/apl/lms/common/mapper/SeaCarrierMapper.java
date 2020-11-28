@@ -22,7 +22,7 @@ public interface SeaCarrierMapper extends BaseMapper<SeaCarrierDto> {
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
-    public SeaCarrierDto getById(@Param("id" ) Long id);
+    SeaCarrierDto getById(@Param("id" ) Long id);
 
     /**
      * @Desc: 查找列表

@@ -20,35 +20,35 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 public interface AirPortService extends IService<AirPortAddDto> {
 
         /**
-         * @Desc: 添加一个AirPortPo实体
+         * @Desc: 添加机场
          * @author cy
          * @since 2020-04-13
          */
         ResultUtil<String> add(AirPortAddDto airPortAddDto);
 
         /**
-         * @Desc: 更新
+         * @Desc: 更新机场
          * @author cy
          * @since 2020-04-13
          */
-        public ResultUtil<Boolean> updByCode(AirPortUpdDto airPortUpdDto);
+        ResultUtil<Boolean> updByCode(AirPortUpdDto airPortUpdDto);
 
         /**
-         * @Desc: 根据id 查找一个AirPortPo 实体
+         * @Desc: 删除
          * @author cy
          * @since 2020-04-13
          */
         ResultUtil<Boolean> delByCode(String portCode);
 
         /**
-         * @Desc: 根据id 查找一个 AirPortPo 实体
+         * @Desc: 获取详细
          * @author cy
          * @since 2020-04-13
          */
         ResultUtil<AirPortAddDto> selectByCode(String portCode);
 
         /**
-         * @Desc: 分页查找 AirPortPo 列表
+         * @Desc: 分页查找列表
          * @author cy
          * @since 2020-04-13
          */

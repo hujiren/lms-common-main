@@ -56,9 +56,9 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
         if(countryAddDto.getHomeCountry() != null){
             countryAddDto.setHomeCountry(countryAddDto.getHomeCountry().toUpperCase());
         }
-        Integer flag = countryMapper.insert(countryAddDto);
+        Integer resultNum = countryMapper.insert(countryAddDto);
 
-        if(flag > 0){
+        if(resultNum > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countryAddDto.getCountryCode());
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
@@ -87,9 +87,9 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
 
         UpdateWrapper<CountryAddDto> wrapper = new UpdateWrapper <>();
         wrapper.eq("country_code", countryUpdDto.getOldCode());
-        Integer flag = countryMapper.update(countryAddDto, wrapper);
+        Integer resultNum = countryMapper.update(countryAddDto, wrapper);
 
-        if(flag > 0){
+        if(resultNum > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
@@ -105,9 +105,8 @@ public class CountryServiceImpl extends ServiceImpl<CountryMapper, CountryAddDto
     public ResultUtil<Boolean> deleteCountryByCode(String countryCode){
 
         countryCode = countryCode.toUpperCase();
-        Boolean flag = countryMapper.deleteCountryByCode(countryCode);
-
-        if(flag){
+        Boolean resultNum = countryMapper.deleteCountryByCode(countryCode);
+        if(resultNum){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }
 

@@ -39,7 +39,11 @@ public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, Commo
             }
         }
 
-
+    /**
+     * 添加
+     * @param commonFreightTypePo
+     * @return
+     */
     @Override
     public ResultUtil<Long> add(CommonFreightTypePo commonFreightTypePo){
 
@@ -61,42 +65,51 @@ public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, Commo
 
         Long snowId = SnowflakeIdWorker.generateId();
         commonFreightTypePo.setId(snowId);
-        Integer flag = baseMapper.insert(commonFreightTypePo);
-        if(flag.equals(1)){
+        Integer resultNum = baseMapper.insert(commonFreightTypePo);
+        if(resultNum.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , commonFreightTypePo.getId());
         }
-
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
-
+    /**
+     * 修改
+     * @param commonFreightTypePo
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> updById(CommonFreightTypePo commonFreightTypePo){
 
 
-        Integer flag = baseMapper.updateById(commonFreightTypePo);
-        if(flag.equals(1)){
+        Integer resultNum = baseMapper.updateById(commonFreightTypePo);
+        if(resultNum.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , false);
     }
 
-
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
-        Integer flag = baseMapper.deleteById(id);
+        Integer resultNum = baseMapper.deleteById(id);
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
 
     }
 
-
+    /**
+     * 获取列表
+     * @return
+     */
     @Override
     public List<CommonFreightTypePo> getList(){
 
         List<CommonFreightTypePo> list = baseMapper.getList();
-
         return list;
     }
 

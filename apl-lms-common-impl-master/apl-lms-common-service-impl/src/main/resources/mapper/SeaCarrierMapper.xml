@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.apl.lms.common.mapper.SeaCarrierMapper">
 
-
-
     <!-- 查找详情 2020-04-13-->
     <select id="getById" resultType="com.apl.lms.common.query.manage.dto.SeaCarrierDto">
         SELECT

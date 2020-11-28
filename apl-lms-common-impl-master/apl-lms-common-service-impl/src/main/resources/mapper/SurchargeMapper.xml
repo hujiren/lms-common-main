@@ -26,6 +26,7 @@
 
     </insert>
 
+    <!--删除-->
     <delete id="delById">
         delete from common_surcharge where id = #{id}
     </delete>

@@ -18,7 +18,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 public interface SeaPortService extends IService<SeaPortDto> {
 
         /**
-         * @Desc: 添加一个SeaPortPo实体
+         * @Desc: 添加
          * @author cy
          * @since 2020-04-13
          */
@@ -26,7 +26,7 @@ public interface SeaPortService extends IService<SeaPortDto> {
 
 
         /**
-         * @Desc: 根据id 更新一个SeaPortPo 实体
+         * @Desc: 更新
          * @author cy
          * @since 2020-04-13
          */
@@ -34,7 +34,7 @@ public interface SeaPortService extends IService<SeaPortDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个SeaPortPo 实体
+         * @Desc: 删除
          * @author cy
          * @since 2020-04-13
          */
@@ -42,7 +42,7 @@ public interface SeaPortService extends IService<SeaPortDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个 SeaPortPo 实体
+         * @Desc: 获取详细
          * @author cy
          * @since 2020-04-13
          */
@@ -50,7 +50,7 @@ public interface SeaPortService extends IService<SeaPortDto> {
 
 
         /**
-         * @Desc: 分页查找 SeaPortPo 列表
+         * @Desc: 分页查找列表
          * @author cy
          * @since 2020-04-13
          */

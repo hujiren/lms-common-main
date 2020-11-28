@@ -17,7 +17,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 public interface SeaCarrierService extends IService<SeaCarrierDto> {
 
         /**
-         * @Desc: 添加一个SeaCarrierPo实体
+         * @Desc: 添加
          * @author cy
          * @since 2020-04-13
          */
@@ -25,7 +25,7 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
 
 
         /**
-         * @Desc: 根据id 更新一个SeaCarrierPo 实体
+         * @Desc: 更新
          * @author cy
          * @since 2020-04-13
          */
@@ -33,7 +33,7 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个SeaCarrierPo 实体
+         * @Desc: 删除
          * @author cy
          * @since 2020-04-13
          */
@@ -41,7 +41,7 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个 SeaCarrierPo 实体
+         * @Desc: 获取详细
          * @author cy
          * @since 2020-04-13
          */
@@ -49,7 +49,7 @@ public interface SeaCarrierService extends IService<SeaCarrierDto> {
 
 
         /**
-         * @Desc: 分页查找 SeaCarrierPo 列表
+         * @Desc: 获取列表
          * @author cy
          * @since 2020-04-13
          */

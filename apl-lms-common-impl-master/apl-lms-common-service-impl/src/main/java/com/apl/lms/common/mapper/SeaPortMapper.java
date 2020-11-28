@@ -23,7 +23,7 @@ public interface SeaPortMapper extends BaseMapper<SeaPortDto> {
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
-    public SeaPortDto getById(@Param("id" ) Long id);
+    SeaPortDto getById(@Param("id" ) Long id);
 
     /**
      * @Desc: 查找列表

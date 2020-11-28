@@ -84,10 +84,5 @@ public class AirCarrierController {
         return airCarrierService.getList(pageDto , airCarrierKeyDto);
     }
 
-    @GetMapping("/print")
-    @ApiOperation(value =  "print")
-    public void print() throws Exception {
-        //airCarrierService.print();
-    }
 
 }
