@@ -41,9 +41,6 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
      */
     @Override
     public ResultUtil<List<SurchargePo>> getList() {
-//        if(null == surchargeKeyDto.getCode() || surchargeKeyDto.getCode() < 0){
-//            surchargeKeyDto.setCode(0);
-//        }
         List<SurchargePo> surchargeUpdDtoList = baseMapper.getList();
 
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, surchargeUpdDtoList);
@@ -56,8 +53,8 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
      */
     @Override
     public ResultUtil<Boolean> delSurcharge(Long id) {
-        Integer integer = baseMapper.delById(id);
-        if(integer < 1){
+        Integer resultNum = baseMapper.delById(id);
+        if(resultNum < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL.code, SurchargeServiceCode.ID_DOES_NOT_EXITS.msg, false);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS, true);
@@ -76,10 +73,10 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
             surchargeDtoList.setId(SnowflakeIdWorker.generateId());
         }
 
-        Integer integer = baseMapper.addSurcharge(surchargePoList);
-        if(integer < 1){
+        Integer resultNum = baseMapper.addSurcharge(surchargePoList);
+        if(resultNum < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, integer);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, resultNum);
     }
 }

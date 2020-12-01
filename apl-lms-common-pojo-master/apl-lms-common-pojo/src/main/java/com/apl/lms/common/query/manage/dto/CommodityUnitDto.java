@@ -24,7 +24,7 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_commodity_unit")
-@ApiModel(value="CommodityUnitPo实体对象", description="商品单位")
+@ApiModel(value="商品单位 交互对象", description="商品单位 交互对象")
 public class CommodityUnitDto extends Model<CommodityUnitDto> {
 
     private static final long serialVersionUID=1L;

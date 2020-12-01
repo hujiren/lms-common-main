@@ -34,9 +34,8 @@ public class CountWayController {
     @Autowired
     public CountWayService countWayService;
 
-
     @PostMapping(value = "/add")
-    @ApiOperation(value =  "添加", notes ="")
+    @ApiOperation(value =  "添加", notes ="添加")
     public ResultUtil<Integer> add(CountWayDto countWayDto) {
         ApiParamValidate.validate(countWayDto);
 
@@ -45,7 +44,7 @@ public class CountWayController {
 
 
     @PostMapping(value = "/upd")
-    @ApiOperation(value =  "更新",  notes ="")
+    @ApiOperation(value =  "更新",  notes ="更新")
     public ResultUtil<Boolean> upd(CountWayDto countWayDto) {
         ApiParamValidate.notEmpty("id", countWayDto.getId());
         ApiParamValidate.validate(countWayDto);

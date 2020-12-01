@@ -9,7 +9,7 @@ import lombok.Data;
  * @date 2020/8/8 - 9:17
  */
 @Data
-@ApiModel(value = "计泡方式查询对象", description = "计泡方式查询对象")
+@ApiModel(value = "计泡方式 分页对象", description = "计泡方式 查询对象")
 public class BulkyWayKeyDto {
 
     @ApiModelProperty(name = "keyword", value = "关键字")

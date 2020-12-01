@@ -10,8 +10,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotEmpty;
-
 /**
  * <p>
  *   计件方式 持久化对象
@@ -23,7 +21,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("count_way")
-@ApiModel(value=" CountWayDto 持久化对象", description="计件方式")
+@ApiModel(value="计件方式 列表返回对象", description="计件方式 列表返回对象")
 public class CountWayListVo extends Model<CountWayListVo> {
 
 

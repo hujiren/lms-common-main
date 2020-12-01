@@ -24,9 +24,8 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_air_carrier")
-@ApiModel(value="AirCarrierDto 持久化对象", description="航空公司")
+@ApiModel(value="航空公司-交互对象", description="航空公司-交互对象")
 public class AirCarrierDto extends Model<AirCarrierDto> {
-
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
@@ -47,7 +46,6 @@ public class AirCarrierDto extends Model<AirCarrierDto> {
     private String nameEn;
 
     private static final long serialVersionUID=1L;
-
 
     @Override
     protected Serializable pkVal() {

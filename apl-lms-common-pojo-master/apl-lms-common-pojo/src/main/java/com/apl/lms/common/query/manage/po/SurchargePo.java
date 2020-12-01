@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * @author hjr start
@@ -18,8 +19,8 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @TableName("surcharge")
-@ApiModel(value = "附加费-持久化对象", description = "附加费-持久化对象")
-public class SurchargePo extends Model<SurchargePo> {
+@ApiModel(value = "附加费 持久化对象", description = "附加费 持久化对象")
+public class SurchargePo extends Model<SurchargePo> implements Serializable {
 
     @TableId("id")
     @ApiModelProperty(name = "id", value = "附加费Id", hidden = true)

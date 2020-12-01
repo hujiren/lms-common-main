@@ -69,8 +69,8 @@ public class AirPortController {
     @ApiImplicitParam(name = "portCode",value = " 机场简码", required = true)
     public ResultUtil<Boolean> del(String portCode) {
         ApiParamValidate.notEmpty("portCode", portCode);
-        String s =  portCode.toUpperCase();
-        return airPortService.delByCode(s);
+        String portCodeStr =  portCode.toUpperCase();
+        return airPortService.delByCode(portCodeStr);
     }
 
 
@@ -79,8 +79,8 @@ public class AirPortController {
     @ApiImplicitParam(name = "portCode",value = "机场简码", required = true)
     public ResultUtil<AirPortAddDto> get(String portCode) {
         ApiParamValidate.notEmpty("portCode", portCode);
-        String s = portCode.toUpperCase();
-        return airPortService.selectByCode(s);
+        String portCodeStr = portCode.toUpperCase();
+        return airPortService.selectByCode(portCodeStr);
     }
 
 

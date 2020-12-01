@@ -20,7 +20,7 @@ import org.springframework.util.StringUtils;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sea_port")
-@ApiModel(value="SeaPortKeyDto 持久化对象", description="海港")
+@ApiModel(value="海港 查询对象", description="海港 查询对象")
 public class SeaPortKeyDto extends Model<SeaPortKeyDto> {
 
     @ApiModelProperty(name = "keyword", value = "关键词")

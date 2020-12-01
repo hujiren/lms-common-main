@@ -67,8 +67,8 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
      */
     @Override
     public ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityPo specialCommodityPo) {
-        Integer result = baseMapper.updateById(specialCommodityPo);
-        if (result < 1)
+        Integer resultNum = baseMapper.updateById(specialCommodityPo);
+        if (resultNum < 1)
             return ResultUtil.APPRESULT(SpecialCommodityServiceEnum.ID_IS_NOT_EXISTS.code, SpecialCommodityServiceEnum.ID_IS_NOT_EXISTS.msg, false);
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, true);
     }
@@ -97,8 +97,8 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
 
         }
         specialCommodityPo.setId(SnowflakeIdWorker.generateId());
-        Integer integer = baseMapper.insert(specialCommodityPo);
-        if (integer < 1) {
+        Integer resultNum = baseMapper.insert(specialCommodityPo);
+        if (resultNum < 1) {
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, specialCommodityPo.getId().toString());

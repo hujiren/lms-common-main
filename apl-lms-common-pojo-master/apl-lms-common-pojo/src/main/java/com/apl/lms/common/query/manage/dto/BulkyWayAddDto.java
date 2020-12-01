@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
  * @date 2020/8/8 - 9:17
  */
 @Data
-@ApiModel(value = "计泡方式插入对象", description = "计泡方式插入对象")
+@ApiModel(value = "计泡方式 添加对象", description = "计泡方式 添加对象")
 public class BulkyWayAddDto {
 
     @ApiModelProperty(name = "bulkyWayName", value = "计泡方式名称", required = true)

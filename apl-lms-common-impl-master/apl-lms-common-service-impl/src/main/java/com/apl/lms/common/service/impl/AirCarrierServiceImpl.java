@@ -37,7 +37,7 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
     public ResultUtil<Integer> add(AirCarrierDto airCarrierDto){
 
         this.exists(0L, airCarrierDto.getCarrierCode(),  airCarrierDto.getNameCn(),  airCarrierDto.getNameEn() );
-        Integer flag = baseMapper.insert(airCarrierDto);
+        Integer resultNum = baseMapper.insert(airCarrierDto);
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airCarrierDto.getId());
     }
 
@@ -50,7 +50,7 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
     public ResultUtil<Boolean> updById(AirCarrierDto airCarrierDto){
 
         this.exists(airCarrierDto.getId(), airCarrierDto.getCarrierCode(),  airCarrierDto.getNameCn(),  airCarrierDto.getNameEn() );
-        Integer flag = baseMapper.updateById(airCarrierDto);
+        Integer resultNum = baseMapper.updateById(airCarrierDto);
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
     }
 
@@ -62,7 +62,7 @@ public class AirCarrierServiceImpl extends ServiceImpl<AirCarrierMapper, AirCarr
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
-        boolean flag = removeById(id);
+        boolean resultNum = removeById(id);
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
 
     }

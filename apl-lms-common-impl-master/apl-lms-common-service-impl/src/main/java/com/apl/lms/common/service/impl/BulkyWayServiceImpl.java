@@ -53,7 +53,7 @@ public class BulkyWayServiceImpl extends ServiceImpl<BulkyWayMapper, BulkyWayDto
      */
     @Override
     public ResultUtil<Boolean> delBulkyWay(Long id) {
-        Integer integer = baseMapper.deleteById(id);
+        Integer resultNum = baseMapper.deleteById(id);
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS, true);
     }
 
@@ -65,8 +65,8 @@ public class BulkyWayServiceImpl extends ServiceImpl<BulkyWayMapper, BulkyWayDto
     @Override
     public ResultUtil<Boolean>  updWeightWay(BulkyWayDto bulkyWayDto) {
 
-        Integer integer = baseMapper.updateById(bulkyWayDto);
-        if(integer > 0)
+        Integer resultNum = baseMapper.updateById(bulkyWayDto);
+        if(resultNum > 0)
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, true);
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, false);
 
@@ -97,7 +97,7 @@ public class BulkyWayServiceImpl extends ServiceImpl<BulkyWayMapper, BulkyWayDto
         BeanUtils.copyProperties(bulkyWayAddDto, bulkyWayDto);
         bulkyWayDto.setId(SnowflakeIdWorker.generateId());
 
-        Integer integer = baseMapper.insert(bulkyWayDto);
+        Integer resultNum = baseMapper.insert(bulkyWayDto);
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, bulkyWayDto.getId().toString());
     }
 }

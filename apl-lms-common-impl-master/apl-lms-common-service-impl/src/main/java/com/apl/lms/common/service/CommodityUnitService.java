@@ -18,7 +18,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface CommodityUnitService extends IService<CommodityUnitDto> {
 
         /**
-         * @Desc: 添加一个CommodityUnitPo实体
+         * @Desc: 添加
          * @author cy
          * @since 2019-12-19
          */
@@ -26,7 +26,7 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
 
 
         /**
-         * @Desc: 根据id 更新一个CommodityUnitPo 实体
+         * @Desc: 更新
          * @author cy
          * @since 2019-12-19
          */
@@ -34,7 +34,7 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个CommodityUnitPo 实体
+         * @Desc: 删除
          * @author cy
          * @since 2019-12-19
          */
@@ -42,7 +42,7 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个 CommodityUnitPo 实体
+         * @Desc: 获取详细
          * @author cy
          * @since 2019-12-19
          */
@@ -50,7 +50,7 @@ public interface CommodityUnitService extends IService<CommodityUnitDto> {
 
 
         /**
-         * @Desc: 分页查找 CommodityUnitPo 列表
+         * @Desc: 分页查找列表
          * @author cy
          * @since 2019-12-19
          */

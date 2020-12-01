@@ -18,7 +18,7 @@ import java.util.List;
 public interface BulkyWayService extends IService<BulkyWayDto> {
 
     /**
-     * @Desc: 分页查找 计泡方式列表
+     * 获取计泡方式列表
      * @author hjr
      * @since 2020-08-08
      */

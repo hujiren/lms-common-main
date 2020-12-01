@@ -1,6 +1,5 @@
 package com.apl.lms.common.service;
 import com.apl.lib.utils.ResultUtil;
-
 import com.apl.lms.common.query.manage.dto.AirCarrierDto;
 import com.apl.lms.common.query.manage.dto.AirCarrierKeyDto;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -18,7 +17,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 public interface AirCarrierService extends IService<AirCarrierDto> {
 
         /**
-         * @Desc: 添加一个AirCarrierPo实体
+         * @Desc: 添加航空公司
          * @author cy
          * @since 2020-04-13
          */
@@ -26,7 +25,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
 
 
         /**
-         * @Desc: 根据id 更新一个AirCarrierPo 实体
+         * @Desc: 根据id 更新航空公司
          * @author cy
          * @since 2020-04-13
          */
@@ -34,7 +33,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个AirCarrierPo 实体
+         * @Desc: 根据id 删除航空公司
          * @author cy
          * @since 2020-04-13
          */
@@ -42,7 +41,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个 AirCarrierPo 实体
+         * @Desc: 获取详细
          * @author cy
          * @since 2020-04-13
          */
@@ -50,7 +49,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
 
 
         /**
-         * @Desc: 分页查找 AirCarrierPo 列表
+         * @Desc: 分页查找 航空公司
          * @author cy
          * @since 2020-04-13
          */

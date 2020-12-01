@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 /**
  *
  * @author
@@ -33,7 +35,7 @@ public class CountryController {
 
     @PostMapping("/getList-country")
     @ApiOperation(value =  "国家分页查找" , notes = "国家分页查找")
-    public ResultUtil<Page<CountryAddDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto) {
+    public ResultUtil<Page<CountryAddDto>> getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto) throws IOException {
         return countryService.getListCountryByPage(pageDto, keyDto);
     }
 

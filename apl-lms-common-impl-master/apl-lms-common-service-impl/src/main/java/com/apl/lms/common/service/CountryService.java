@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
+import java.io.IOException;
+
 /**
  * <p>
  * 国家 service接口
@@ -19,7 +21,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 public interface CountryService extends IService<CountryAddDto> {
 
         /**
-         * @Desc: 添加一个CountryPo实体
+         * @Desc: 添加
          * @author cy
          * @since 2020-04-13
          */
@@ -27,7 +29,7 @@ public interface CountryService extends IService<CountryAddDto> {
 
 
         /**
-         * @Desc: 根据id 更新一个CountryPo 实体
+         * @Desc: 更新
          * @author cy
          * @since 2020-04-13
          */
@@ -35,7 +37,7 @@ public interface CountryService extends IService<CountryAddDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个CountryPo 实体
+         * @Desc: 删除
          * @author cy
          * @since 2020-04-13
          */
@@ -43,10 +45,10 @@ public interface CountryService extends IService<CountryAddDto> {
 
 
         /**
-         * @Desc: 分页查找 CountryPo 列表
+         * @Desc: 分页查找列表
          * @author cy
          * @since 2020-04-13
          */
-        ResultUtil<Page<CountryAddDto>>getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto);
+        ResultUtil<Page<CountryAddDto>>getListCountryByPage(PageDto pageDto, CountryKeyDto keyDto) throws IOException;
 
 }

@@ -39,8 +39,8 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
     public ResultUtil<Integer> add(SeaPortDto seaPortDto){
 
         this.exists(0L, seaPortDto.getPortCode(),  seaPortDto.getNameCn(),  seaPortDto.getNameEn() );
-        Integer flag = baseMapper.insert(seaPortDto);
-        if(flag > 0){
+        Integer resultNum = baseMapper.insert(seaPortDto);
+        if(resultNum > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaPortDto.getId());
         }
 
@@ -56,8 +56,8 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
     public ResultUtil<Boolean> updById(SeaPortDto seaPortDto){
 
         this.exists(seaPortDto.getId(), seaPortDto.getPortCode(),  seaPortDto.getNameCn(),  seaPortDto.getNameEn() );
-        Integer flag = baseMapper.updateById(seaPortDto);
-        if(flag > 0){
+        Integer resultNum = baseMapper.updateById(seaPortDto);
+        if(resultNum > 0){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
@@ -72,8 +72,8 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
-        boolean flag = removeById(id);
-            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+        boolean resultNum = removeById(id);
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
 
     }
 

@@ -17,7 +17,7 @@ import java.util.List;
 public interface CountWayService extends IService<CountWayDto> {
 
         /**
-         * @Desc: 添加一个CountWayPo实体
+         * @Desc: 添加
          * @author arran
          * @since 2020-03-30
          */
@@ -25,7 +25,7 @@ public interface CountWayService extends IService<CountWayDto> {
 
 
         /**
-         * @Desc: 根据id 更新一个CountWayPo 实体
+         * @Desc: 更新
          * @author arran
          * @since 2020-03-30
          */
@@ -33,7 +33,7 @@ public interface CountWayService extends IService<CountWayDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个CountWayPo 实体
+         * @Desc: 删除
          * @author arran
          * @since 2020-03-30
          */
@@ -41,7 +41,7 @@ public interface CountWayService extends IService<CountWayDto> {
 
 
         /**
-         * @Desc: 根据id 查找一个 CountWayPo 实体
+         * @Desc: 获取详细
          * @author arran
          * @since 2020-03-30
          */
@@ -49,7 +49,7 @@ public interface CountWayService extends IService<CountWayDto> {
 
 
         /**
-         * @Desc: CountWayPo 列表
+         * @Desc: 获取列表
          * @author arran
          * @since 2020-03-30
          */

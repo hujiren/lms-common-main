@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * <p>
+ *     运输类型
  *  service接口
  * </p>
  *
@@ -18,7 +19,7 @@ import java.util.List;
 public interface FreightTypeService extends IService<CommonFreightTypePo> {
 
         /**
-         * @Desc: 添加一个CommonFreightTypePo实体
+         * @Desc: 添加
          * @author hjr
          * @since 2020-09-29
          */
@@ -26,7 +27,7 @@ public interface FreightTypeService extends IService<CommonFreightTypePo> {
 
 
         /**
-         * @Desc: 根据id 更新一个CommonFreightTypePo 实体
+         * @Desc: 更新
          * @author hjr
          * @since 2020-09-29
          */
@@ -34,7 +35,7 @@ public interface FreightTypeService extends IService<CommonFreightTypePo> {
 
 
         /**
-         * @Desc: 根据id 查找一个CommonFreightTypePo 实体
+         * @Desc: 删除
          * @author hjr
          * @since 2020-09-29
          */
@@ -42,7 +43,7 @@ public interface FreightTypeService extends IService<CommonFreightTypePo> {
 
 
         /**
-         * @Desc: 分页查找 CommonFreightTypePo 列表
+         * @Desc:获取列表
          * @author hjr
          * @since 2020-09-29
          */

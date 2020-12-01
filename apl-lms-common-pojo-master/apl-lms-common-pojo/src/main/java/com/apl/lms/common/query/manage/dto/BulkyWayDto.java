@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("common_bulky_way")
-@ApiModel(value = "计泡方式持久化对象", description = "计泡方式持久化对象")
+@ApiModel(value = "计泡方式 交互对象", description = "计泡方式 交互对象")
 public class BulkyWayDto {
 
     @ApiModelProperty(name = "id", value = "计泡方式Id", required = true)

@@ -34,9 +34,9 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
      */
     @Override
     public ResultUtil<Integer> add(CountWayDto countWayDto){
-        Integer flag = baseMapper.insert(countWayDto);
+        Integer resultNum = baseMapper.insert(countWayDto);
 
-        if(flag.equals(1)){
+        if(resultNum.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , countWayDto.getId());
         }
 
@@ -51,9 +51,8 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
     @Override
     public ResultUtil<Boolean> updById(CountWayDto countWayDto){
 
-
-        Integer flag = baseMapper.updateById(countWayDto);
-        if(flag.equals(1)){
+        Integer resultNum = baseMapper.updateById(countWayDto);
+        if(resultNum.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
         }
 
@@ -68,8 +67,8 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
-        boolean flag = removeById(id);
-        if(flag){
+        boolean resultNum = removeById(id);
+        if(resultNum){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
         }
 
@@ -97,7 +96,6 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
     public ResultUtil<List<CountWayDto>> getList(){
 
         List<CountWayDto> list = baseMapper.getList();
-
 
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, list);
     }

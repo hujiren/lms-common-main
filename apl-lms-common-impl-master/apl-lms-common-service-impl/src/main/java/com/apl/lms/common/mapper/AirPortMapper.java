@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -16,18 +17,18 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
  * @author cy
  * @since 2020-04-13
  */
-
+@Repository
 public interface AirPortMapper extends BaseMapper<AirPortAddDto> {
 
     /**
-     * @Desc: 根据code查找详情
+     * @Desc: 获取详情
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
     public AirPortAddDto selectByCode(@Param("portCode") String portCode);
 
     /**
-     * @Desc: 根据code 删除
+     * @Desc: 删除
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
@@ -36,7 +37,7 @@ public interface AirPortMapper extends BaseMapper<AirPortAddDto> {
 
 
     /**
-     * @Desc: 查找列表
+     * @Desc: 分页查找列表
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */

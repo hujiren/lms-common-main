@@ -35,38 +35,58 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto
     @Autowired
     AirPortMapper airPortMapper;
 
+    /**
+     * 添加
+     * @param airPortAddDto
+     * @return
+     */
     @Override
     public ResultUtil<String> add(AirPortAddDto airPortAddDto){
 
         this.exists(null, airPortAddDto.getPortCode(),  airPortAddDto.getNameCn(),  airPortAddDto.getNameEn());
-        Integer flag = baseMapper.insert(airPortAddDto);
+        Integer resultNum = baseMapper.insert(airPortAddDto);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortAddDto.getPortCode());
 
     }
 
+    /**
+     * 更新
+     * @param airPortUpdDto
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> updByCode(AirPortUpdDto airPortUpdDto){
 
         this.exists(airPortUpdDto.getOldCode(),  airPortUpdDto.getPortCode(),  airPortUpdDto.getNameCn(),  airPortUpdDto.getNameEn() );
 
-        AirPortAddDto apt = new AirPortAddDto();
-        BeanUtils.copyProperties(airPortUpdDto, apt);
+        AirPortAddDto airPortDto = new AirPortAddDto();
+        BeanUtils.copyProperties(airPortUpdDto, airPortDto);
         UpdateWrapper<AirPortAddDto> wrapper = new UpdateWrapper<>();
         wrapper.eq("port_code", airPortUpdDto.getOldCode());
-        Integer flag = baseMapper.update(apt, wrapper);
+        Integer resultNum = baseMapper.update(airPortDto, wrapper);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
 
     }
 
+    /**
+     * 删除
+     * @param portCode
+     * @return
+     */
     @Override
     public ResultUtil<Boolean> delByCode(String portCode){
 
-        Integer flag = airPortMapper.delByCode(portCode);
+        Integer resultNum = airPortMapper.delByCode(portCode);
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
     }
 
+    /**
+     * 获取详细
+     * @param portCode
+     * @return
+     */
     @Override
     public ResultUtil<AirPortAddDto> selectByCode(String portCode){
 
@@ -76,6 +96,12 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto
 
     }
 
+    /**
+     * 分页查找列表
+     * @param pageDto
+     * @param airPortKeyDto
+     * @return
+     */
     @Override
     public ResultUtil<Page<AirPortListVo>> getList(PageDto pageDto, AirPortKeyDto airPortKeyDto){
 
