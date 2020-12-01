@@ -31,6 +31,15 @@ public interface SeaCarrierMapper extends BaseMapper<SeaCarrierDto> {
      */
     List<SeaCarrierDto> getList(Page page, @Param("key" ) SeaCarrierKeyDto seaCarrierKeyDto);
 
+
+    /**
+     * 校验是否存在
+     * @param id
+     * @param carrierCode
+     * @param nameCn
+     * @param nameEn
+     * @return
+     */
     List<SeaCarrierDto> exists(@Param("id") Long id,  @Param("carrierCode") String carrierCode,   @Param("nameCn") String nameCn,   @Param("nameEn") String nameEn );
 
 }

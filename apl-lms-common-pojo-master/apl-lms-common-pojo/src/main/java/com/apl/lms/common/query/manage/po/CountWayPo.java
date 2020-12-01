@@ -27,7 +27,6 @@ import java.io.Serializable;
 @ApiModel(value=" 计件方式 持久化对象", description="计件方式 持久化对象")
 public class CountWayPo extends Model<CountWayPo> implements Serializable{
 
-
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 

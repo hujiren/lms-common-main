@@ -27,7 +27,6 @@ import java.io.Serializable;
 @ApiModel(value="船公司 交互对象", description="船公司 交互对象")
 public class SeaCarrierDto extends Model<SeaCarrierDto> {
 
-
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 

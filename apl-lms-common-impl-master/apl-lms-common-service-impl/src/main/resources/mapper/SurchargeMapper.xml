@@ -5,23 +5,24 @@
     <!-- 查找附加费列表-->
     <select id="getList" resultType="com.apl.lms.common.query.manage.po.SurchargePo">
         SELECT
-        id,
-        charge_name,
-        charge_name_en,
-        code
+            id,
+            charge_name,
+            charge_name_en,
+            code
         FROM
-        common_surcharge
+            common_surcharge
 
     </select>
 
     <!--批量插入附加费-->
     <insert id="addSurcharge">
         insert into
-        common_surcharge(id, charge_name, charge_name_en, code)
+            common_surcharge(id, charge_name, charge_name_en, code)
         values
-
         <foreach collection="po" index="" separator="," item="row" open="" close="">
-            (#{row.id}, #{row.chargeName}, #{row.chargeNameEn}, #{row.code})
+            (
+                #{row.id}, #{row.chargeName}, #{row.chargeNameEn}, #{row.code}
+            )
         </foreach>
 
     </insert>

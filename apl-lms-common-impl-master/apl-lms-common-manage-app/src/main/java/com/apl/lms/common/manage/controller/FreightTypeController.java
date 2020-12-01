@@ -37,6 +37,7 @@ public class FreightTypeController {
     @PostMapping(value = "/add")
     @ApiOperation(value =  "添加", notes ="添加")
     public ResultUtil<Long> add(@Validated CommonFreightTypePo commonFreightTypePo) {
+
         ApiParamValidate.validate(commonFreightTypePo);
 
         return freightTypeService.add(commonFreightTypePo);
@@ -46,6 +47,7 @@ public class FreightTypeController {
     @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新",  notes ="更新")
     public ResultUtil<Boolean> updById(@Validated CommonFreightTypePo commonFreightTypePo) {
+
         ApiParamValidate.notEmpty("id", commonFreightTypePo.getId());
         ApiParamValidate.validate(commonFreightTypePo);
 
@@ -65,8 +67,11 @@ public class FreightTypeController {
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "查找列表" , notes = "查找列表")
     public ResultUtil<List<CommonFreightTypePo>> getList() {
+
         List<CommonFreightTypePo> list = freightTypeService.getList();
+
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS,list);
+
     }
 
 }

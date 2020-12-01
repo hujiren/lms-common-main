@@ -32,6 +32,13 @@ public interface SeaPortMapper extends BaseMapper<SeaPortDto> {
      */
     List<SeaPortListVo> getList(Page page, @Param("key" ) SeaPortKeyDto seaPortKeyDto);
 
-
+    /**
+     * 校验是否存在
+     * @param id
+     * @param portCode
+     * @param nameCn
+     * @param nameEn
+     * @return
+     */
     List<SeaPortDto> exists(@Param("id") Long id,  @Param("portCode") String portCode,   @Param("nameCn") String nameCn,   @Param("nameEn") String nameEn );
 }

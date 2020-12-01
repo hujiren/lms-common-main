@@ -72,7 +72,7 @@ public class SeaPortServiceImpl extends ServiceImpl<SeaPortMapper, SeaPortDto> i
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
-        boolean resultNum = removeById(id);
+        removeById(id);
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
 
     }

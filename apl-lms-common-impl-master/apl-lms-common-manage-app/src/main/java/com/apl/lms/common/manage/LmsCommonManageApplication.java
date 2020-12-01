@@ -1,6 +1,5 @@
 package com.apl.lms.common.manage;
 
-import com.apl.lib.interceptor.FeignHeaderInterceptor;
 import com.apl.tenant.AplTenantConfig;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
@@ -28,18 +27,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class LmsCommonManageApplication {
 
     public static void main(String[] args) {
-//        com.apl.shardingjdbc.mybatis.ShardingJdbcMybatisConfig
 
         SpringApplication.run(LmsCommonManageApplication.class , args);
-
 
     }
 
     @Primary
     @Bean
     public PaginationInterceptor paginationInterceptor() {
+
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
         paginationInterceptor.setDialectType("mysql");
+
         return paginationInterceptor;
     }
 }

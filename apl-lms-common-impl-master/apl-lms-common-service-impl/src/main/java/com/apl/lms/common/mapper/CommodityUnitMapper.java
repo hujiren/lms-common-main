@@ -1,13 +1,11 @@
 package com.apl.lms.common.mapper;
 
-
 import com.apl.lms.common.query.manage.dto.CommodityUnitDto;
 import com.apl.lms.common.query.manage.dto.CommodityUnitKeyDto;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 /**
@@ -26,7 +24,7 @@ public interface CommodityUnitMapper extends BaseMapper<CommodityUnitDto> {
      * @Author: ${cfg.author}
      * @Date: 2019-12-19
      */
-    public CommodityUnitDto getById(@Param("id") Long id);
+    CommodityUnitDto getById(@Param("id") Long id);
 
     /**
      * @Desc: 查找列表

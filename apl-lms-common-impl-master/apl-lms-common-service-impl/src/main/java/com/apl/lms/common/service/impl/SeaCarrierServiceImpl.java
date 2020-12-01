@@ -38,8 +38,9 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
     public ResultUtil<Integer> add(SeaCarrierDto seaCarrierDto){
 
         this.exists(0L, seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
-        Integer resultNum = baseMapper.insert(seaCarrierDto);
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaCarrierDto.getId());
+        baseMapper.insert(seaCarrierDto);
+
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , seaCarrierDto.getId());
     }
 
     /**
@@ -51,8 +52,9 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
     public ResultUtil<Boolean> updById(SeaCarrierDto seaCarrierDto){
 
         this.exists(seaCarrierDto.getId(), seaCarrierDto.getCarrierCode(),  seaCarrierDto.getNameCn(),  seaCarrierDto.getNameEn() );
-        Integer resultNum = baseMapper.updateById(seaCarrierDto);
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
+        baseMapper.updateById(seaCarrierDto);
+
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
     }
 
     /**
@@ -63,8 +65,9 @@ public class SeaCarrierServiceImpl extends ServiceImpl<SeaCarrierMapper, SeaCarr
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
-        boolean resultNum = removeById(id);
-            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+        removeById(id);
+
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
     }
 
     /**

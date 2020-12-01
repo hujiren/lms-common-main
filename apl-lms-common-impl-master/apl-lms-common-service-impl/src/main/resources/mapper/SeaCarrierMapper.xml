@@ -23,15 +23,21 @@
            name_cn, 
            name_en
         FROM
-        common_sea_carrier
+            common_sea_carrier
         <where>
             1 = 1
         <if test="key.keyword != null and key.keyword != ''">
-            and (carrier_code = #{key.upperKeyword}
-            OR name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
-            <if test="key.keyword.length()>2">
-            OR name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
-            </if>)
+            and
+                (
+                    carrier_code = #{key.upperKeyword}
+                OR
+                    name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
+
+                <if test="key.keyword.length()>2">
+                OR
+                    name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                </if>
+                )
         </if>
         </where>
             order by carrier_code
@@ -40,16 +46,24 @@
     <!-- 检查记录是否重复 -->
     <select id="exists" resultType="com.apl.lms.common.query.manage.dto.SeaCarrierDto">
         SELECT
-        id,
-        carrier_code,
-        name_cn,
-        name_en
+            id,
+            carrier_code,
+            name_cn,
+            name_en
         FROM
-        common_sea_carrier
+            common_sea_carrier
         WHERE
-        (carrier_code = #{carrierCode} OR name_cn = #{nameCn} OR name_en = #{nameEn})
+            (
+                carrier_code = #{carrierCode}
+            OR
+                name_cn = #{nameCn}
+            OR
+                name_en = #{nameEn}
+            )
+
         <if test="id != null and id > 0">
             AND id !=  #{id}
         </if>
     </select>
+
 </mapper>

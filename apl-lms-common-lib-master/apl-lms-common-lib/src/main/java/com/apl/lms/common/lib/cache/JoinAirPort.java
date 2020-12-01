@@ -25,10 +25,13 @@ public class JoinAirPort extends JoinBase<AirPortCacheBo> {
 
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey) {
+
         ResultUtil<Boolean> result = lmsCommonFeign.addAirPortCacheByCode(keys);
+
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.getCode())){
             return true;
         }
+
         return false;
     }
 }

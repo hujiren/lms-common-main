@@ -34,6 +34,7 @@ public class CountWayServiceImpl extends ServiceImpl<CountWayMapper, CountWayDto
      */
     @Override
     public ResultUtil<Integer> add(CountWayDto countWayDto){
+
         Integer resultNum = baseMapper.insert(countWayDto);
 
         if(resultNum.equals(1)){

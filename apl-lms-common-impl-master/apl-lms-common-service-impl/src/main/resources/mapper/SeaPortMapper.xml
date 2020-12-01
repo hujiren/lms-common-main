@@ -5,48 +5,60 @@
     <!-- 查找详情 2020-04-13-->
     <select id="getById" resultType="com.apl.lms.common.query.manage.dto.SeaPortDto">
         SELECT
-          id, 
-          port_code,
-          name_cn, 
-          name_en, 
-          home_country,
-          alias_name
+            id,
+            port_code,
+            name_cn,
+            name_en,
+            home_country,
+            alias_name
         FROM
-          common_sea_port
+            common_sea_port
         where
-          id = #{id}
+            id = #{id}
     </select>
 
     <!-- 查找列表 2020-04-13-->
     <select id="getList" resultType="com.apl.lms.common.query.manage.vo.SeaPortListVo">
         SELECT
-           sp.id,
-           sp.port_code,
-           sp.name_cn,
-           sp.name_en,
-           sp.home_country,
-           sp.alias_name,
-           co.name_cn as country_name_cn,
-           co.name_en as country_name_en
+             sp.id,
+             sp.port_code,
+             sp.name_cn,
+             sp.name_en,
+             sp.home_country,
+             sp.alias_name,
+             co.name_cn as country_name_cn,
+             co.name_en as country_name_en
         FROM
-            common_sea_port sp
-           INNER JOIN common_country co ON sp.home_country = co.country_code
+              common_sea_port sp
+        INNER JOIN
+              common_country co
+        ON
+              sp.home_country = co.country_code
         <where>
             1 = 1
             <if test="key.homeCountry != null and key.homeCountry != ''">
                 and
-                sp.home_country = #{key.homeCountry}
+                    sp.home_country = #{key.homeCountry}
             </if>
             <if test="key.keyword != null and key.keyword != ''">
-                and (sp.port_code = #{key.upperKeyword}
-                OR sp.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                OR sp.home_country LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                OR sp.alias_name LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                OR co.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                and
+                (
+                    sp.port_code = #{key.upperKeyword}
+                OR
+                    sp.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                OR
+                    p.home_country LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                OR
+                    sp.alias_name LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                OR
+                    co.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
                 <if test="key.keyword.length()>2">
-                OR sp.name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                OR co.name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                </if>)
+                OR
+                    sp.name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                OR
+                    co.name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                </if>
+                )
             </if>
         </where>
     </select>
@@ -54,18 +66,26 @@
     <!-- 检查记录是否重复 -->
     <select id="exists" resultType="com.apl.lms.common.query.manage.dto.SeaPortDto">
         SELECT
-        id,
-        port_code,
-        name_cn,
-        name_en
+            id,
+            port_code,
+            name_cn,
+            name_en
         FROM
-        common_sea_port
+            common_sea_port
+
         <where>
-            (port_code = #{portCode} OR name_cn = #{nameCn} OR name_en = #{nameEn})
+            (
+                port_code = #{portCode}
+            OR
+                name_cn = #{nameCn}
+            OR
+                name_en = #{nameEn}
+            )
             <if test="id != null and id > 0">
                 AND id !=  #{id}
             </if>
         </where>
+
             order by port_code
     </select>
 </mapper>
