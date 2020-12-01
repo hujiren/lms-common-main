@@ -19,7 +19,6 @@ import com.apl.lib.pojo.dto.PageDto;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.util.CollectionUtils;
 
-
 /**
  * <p>
  * 机场 service实现类
@@ -44,9 +43,9 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto
     public ResultUtil<String> add(AirPortAddDto airPortAddDto){
 
         this.exists(null, airPortAddDto.getPortCode(),  airPortAddDto.getNameCn(),  airPortAddDto.getNameEn());
-        Integer resultNum = baseMapper.insert(airPortAddDto);
+        baseMapper.insert(airPortAddDto);
 
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortAddDto.getPortCode());
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , airPortAddDto.getPortCode());
 
     }
 
@@ -64,9 +63,9 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto
         BeanUtils.copyProperties(airPortUpdDto, airPortDto);
         UpdateWrapper<AirPortAddDto> wrapper = new UpdateWrapper<>();
         wrapper.eq("port_code", airPortUpdDto.getOldCode());
-        Integer resultNum = baseMapper.update(airPortDto, wrapper);
+        baseMapper.update(airPortDto, wrapper);
 
-            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , true);
 
     }
 
@@ -78,7 +77,8 @@ public class AirPortServiceImpl extends ServiceImpl<AirPortMapper, AirPortAddDto
     @Override
     public ResultUtil<Boolean> delByCode(String portCode){
 
-        Integer resultNum = airPortMapper.delByCode(portCode);
+        airPortMapper.delByCode(portCode);
+
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
     }
 

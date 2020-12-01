@@ -38,6 +38,7 @@ public class CarrierController {
     @PostMapping(value = "/add")
     @ApiOperation(value =  "添加", notes ="添加")
     public ResultUtil<Long> add(@Validated CommonCarrierPo commonCarrierPo) throws IOException {
+
         ApiParamValidate.validate(commonCarrierPo);
 
         return commonCarrierService.add(commonCarrierPo);
@@ -46,6 +47,7 @@ public class CarrierController {
     @PostMapping(value = "/upd")
     @ApiOperation(value =  "更新",  notes ="更新")
     public ResultUtil<Boolean> updById(@Validated CommonCarrierPo commonCarrierPo) throws IOException {
+
         ApiParamValidate.notEmpty("id", commonCarrierPo.getId());
         ApiParamValidate.validate(commonCarrierPo);
 
@@ -63,7 +65,9 @@ public class CarrierController {
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "查找列表" , notes = "查找列表")
     public ResultUtil<List<CommonCarrierPo>> getList() throws IOException {
+
         List<CommonCarrierPo> list = commonCarrierService.getList();
+
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, list);
     }
 

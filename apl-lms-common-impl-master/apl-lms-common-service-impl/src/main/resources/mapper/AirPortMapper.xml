@@ -7,14 +7,14 @@
     <!-- 查找详情 2020-04-13-->
     <select id="selectByCode" resultType="com.apl.lms.common.query.manage.dto.AirPortAddDto">
         SELECT
-          port_code,
-          name_cn, 
-          name_en, 
-          home_country
+            port_code,
+            name_cn,
+            name_en,
+            home_country
         FROM
-          common_air_port
+            common_air_port
         where
-          port_code = #{portCode}
+            port_code = #{portCode}
     </select>
 
     <!-- 删除 2020-04-13-->
@@ -34,23 +34,34 @@
             ap.alias_name
         FROM
             common_air_port ap
-        INNER JOIN common_country co  ON ap.home_country = co.country_code
+        INNER JOIN
+            common_country co
+        ON
+            ap.home_country = co.country_code
         <where>
             1=1
             <if test="key.homeCountry != null">
                 and ap.home_country = #{key.homeCountry}
             </if>
+
             <if test="key.keyword != null">
                 and
-                (ap.port_code=#{key.upperKeyword} or
-                ap.home_country = #{key.keyword}
-                OR ap.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                OR ap.alias_name LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                OR co.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                <if test="key.keyword.length()>2">
-                    OR ap.name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                    OR co.name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
-                </if>
+                (
+                        ap.port_code=#{key.upperKeyword}
+                    OR
+                        ap.home_country = #{key.keyword}
+                    OR
+                        ap.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                    OR
+                        ap.alias_name LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                    OR
+                        co.name_cn LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                    <if test="key.keyword.length()>2">
+                        OR
+                            ap.name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                        OR
+                            co.name_en LIKE CONCAT( '%' , #{key.keyword} , '%' )
+                    </if>
                 )
             </if>
         </where>
@@ -60,12 +71,18 @@
     <!-- 检查记录是否重复 -->
     <select id="exists" resultType="com.apl.lms.common.query.manage.dto.AirPortAddDto">
         SELECT
-        port_code,
-        name_cn,
-        name_en
+            port_code,
+            name_cn,
+            name_en
         FROM
-        common_air_port
+            common_air_port
         WHERE
-        (port_code = #{portCode} OR name_cn = #{nameCn} OR name_en = #{nameEn})
+            (
+                port_code = #{portCode}
+            OR
+                name_cn = #{nameCn}
+            OR
+                name_en = #{nameEn}
+            )
     </select>
 </mapper>

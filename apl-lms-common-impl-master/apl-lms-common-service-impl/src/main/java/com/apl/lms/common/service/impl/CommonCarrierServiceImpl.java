@@ -47,7 +47,6 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
     @Autowired
     AplCacheUtil aplCacheUtil;
 
-
     private static final String CACHE_KEY = "carrier";
 
     /**
@@ -101,6 +100,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
             updCache();
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS, true);
         }
+
         return ResultUtil.APPRESULT(CommonCarrierServiceCode.NO_CORRESPONDING_DATA.code,
                 CommonCarrierServiceCode.NO_CORRESPONDING_DATA.msg, false);
     }

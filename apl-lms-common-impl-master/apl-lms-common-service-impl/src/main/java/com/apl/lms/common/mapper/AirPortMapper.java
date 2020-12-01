@@ -25,16 +25,14 @@ public interface AirPortMapper extends BaseMapper<AirPortAddDto> {
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
-    public AirPortAddDto selectByCode(@Param("portCode") String portCode);
+    AirPortAddDto selectByCode(@Param("portCode") String portCode);
 
     /**
      * @Desc: 删除
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
-    public Integer delByCode(@Param("portCode") String portCode);
-
-
+    Integer delByCode(@Param("portCode") String portCode);
 
     /**
      * @Desc: 分页查找列表
@@ -43,6 +41,13 @@ public interface AirPortMapper extends BaseMapper<AirPortAddDto> {
      */
     List<AirPortListVo> getList(Page page, @Param("key") AirPortKeyDto airPortKeyDto);
 
+    /**
+     * 校验是否存在
+     * @param portCode
+     * @param nameCn
+     * @param nameEn
+     * @return
+     */
     List<AirPortAddDto> exists(@Param("portCode") String portCode, @Param("nameCn") String nameCn, @Param("nameEn") String nameEn );
 
 

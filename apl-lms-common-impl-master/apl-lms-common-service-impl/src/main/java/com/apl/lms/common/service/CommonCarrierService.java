@@ -2,9 +2,7 @@ package com.apl.lms.common.service;
 
 import com.apl.lms.common.query.manage.po.CommonCarrierPo;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.apl.lib.pojo.dto.PageDto;
 import com.apl.lib.utils.ResultUtil;
-
 import java.io.IOException;
 import java.util.List;
 
