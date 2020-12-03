@@ -42,7 +42,9 @@ public class BulkyWayServiceImpl extends ServiceImpl<BulkyWayMapper, BulkyWayDto
      */
     @Override
     public List<BulkyWayDto> getList() {
+
         List<BulkyWayDto> bulkyWayDtoList = baseMapper.getList();
+
         return bulkyWayDtoList;
     }
 
@@ -53,7 +55,9 @@ public class BulkyWayServiceImpl extends ServiceImpl<BulkyWayMapper, BulkyWayDto
      */
     @Override
     public ResultUtil<Boolean> delBulkyWay(Long id) {
-        Integer resultNum = baseMapper.deleteById(id);
+
+        baseMapper.deleteById(id);
+
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS, true);
     }
 
@@ -66,10 +70,11 @@ public class BulkyWayServiceImpl extends ServiceImpl<BulkyWayMapper, BulkyWayDto
     public ResultUtil<Boolean>  updWeightWay(BulkyWayDto bulkyWayDto) {
 
         Integer resultNum = baseMapper.updateById(bulkyWayDto);
-        if(resultNum > 0)
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, true);
-        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, false);
 
+        if(resultNum > 0)
+            return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, true);
+
+        return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, false);
     }
 
     /**
@@ -93,11 +98,13 @@ public class BulkyWayServiceImpl extends ServiceImpl<BulkyWayMapper, BulkyWayDto
                 }
             }
         }
+
         BulkyWayDto bulkyWayDto = new BulkyWayDto();
         BeanUtils.copyProperties(bulkyWayAddDto, bulkyWayDto);
         bulkyWayDto.setId(SnowflakeIdWorker.generateId());
 
-        Integer resultNum = baseMapper.insert(bulkyWayDto);
+        baseMapper.insert(bulkyWayDto);
+
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, bulkyWayDto.getId().toString());
     }
 }

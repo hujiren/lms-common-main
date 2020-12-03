@@ -22,7 +22,7 @@ public interface AirCarrierMapper extends BaseMapper<AirCarrierDto> {
      * @Author: ${cfg.author}
      * @Date: 2020-04-13
      */
-    public AirCarrierDto getById(@Param("id" ) Long id);
+    AirCarrierDto getById(@Param("id" ) Long id);
 
     /**
      * @Desc: 查找列表

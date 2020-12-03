@@ -24,10 +24,13 @@ public class JoinAirCarrier extends JoinBase<AirCarrierCacheBo> {
 
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey) {
+
         ResultUtil<Boolean> ResultUtil = lmsCommonFeign.addAirCarrierCacheById(keys);
+
         if(ResultUtil.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code)){
             return true;
         }
+
         return false;
     }
 }

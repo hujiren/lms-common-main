@@ -29,6 +29,7 @@ public class JoinSeaCarrier extends JoinBase<SeaCarrierCacheBo> {
     public Boolean addCache(String keys, Long minKey, Long maxKey){
 
         ResultUtil<Boolean> result = lmsCommonFeign.addSeaCarrierCacheById(keys);
+
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code))
             return true;
 

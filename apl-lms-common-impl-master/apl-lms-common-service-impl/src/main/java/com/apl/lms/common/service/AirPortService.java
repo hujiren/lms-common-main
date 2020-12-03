@@ -20,14 +20,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 public interface AirPortService extends IService<AirPortAddDto> {
 
         /**
-         * @Desc: 添加机场
+         * @Desc: 添加
          * @author cy
          * @since 2020-04-13
          */
         ResultUtil<String> add(AirPortAddDto airPortAddDto);
 
         /**
-         * @Desc: 更新机场
+         * @Desc: 更新
          * @author cy
          * @since 2020-04-13
          */

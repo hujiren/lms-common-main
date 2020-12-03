@@ -42,6 +42,7 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
      */
     @Override
     public List<SpecialCommodityPo> getList() {
+
         List<SpecialCommodityPo> specialCommodityPoList = baseMapper.getList();
 
         return specialCommodityPoList;
@@ -55,7 +56,9 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
      */
     @Override
     public ResultUtil<Boolean> delSpecialCommodity(Long id) {
+
         baseMapper.deleteById(id);
+
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS, true);
     }
 
@@ -67,9 +70,12 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
      */
     @Override
     public ResultUtil<Boolean> updSpecialCommodity(SpecialCommodityPo specialCommodityPo) {
+
         Integer resultNum = baseMapper.updateById(specialCommodityPo);
+
         if (resultNum < 1)
             return ResultUtil.APPRESULT(SpecialCommodityServiceEnum.ID_IS_NOT_EXISTS.code, SpecialCommodityServiceEnum.ID_IS_NOT_EXISTS.msg, false);
+
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, true);
     }
 
@@ -98,9 +104,11 @@ public class SpecialCommodityServiceImpl extends ServiceImpl<SpecialCommodityMap
         }
         specialCommodityPo.setId(SnowflakeIdWorker.generateId());
         Integer resultNum = baseMapper.insert(specialCommodityPo);
+
         if (resultNum < 1) {
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }
+
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, specialCommodityPo.getId().toString());
     }
 

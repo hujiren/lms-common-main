@@ -25,7 +25,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
 
 
         /**
-         * @Desc: 根据id 更新航空公司
+         * @Desc: 更新航空公司
          * @author cy
          * @since 2020-04-13
          */
@@ -33,7 +33,7 @@ public interface AirCarrierService extends IService<AirCarrierDto> {
 
 
         /**
-         * @Desc: 根据id 删除航空公司
+         * @Desc: 删除航空公司
          * @author cy
          * @since 2020-04-13
          */

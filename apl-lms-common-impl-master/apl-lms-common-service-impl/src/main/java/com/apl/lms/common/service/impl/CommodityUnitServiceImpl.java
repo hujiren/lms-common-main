@@ -30,11 +30,13 @@ import java.util.List;
 @Slf4j
 public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, CommodityUnitDto> implements CommodityUnitService {
 
+
+    @Autowired
+    CommodityUnitMapper commodityUnitMapper;
+
     /**
      * 新增
      */
-    @Autowired
-    CommodityUnitMapper commodityUnitMapper;
     @Override
     public ResultUtil<Integer> add(CommodityUnitDto commodityUnitDto) {
 
@@ -59,7 +61,8 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
      * @throws Exception
      */
     @Override
-    public ResultUtil<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto) throws Exception {
+    public ResultUtil<Boolean> updateUnitById(CommodityUnitDto commodityUnitDto){
+
         ResultUtil<Boolean> exists = this.exists(commodityUnitDto.getId(), commodityUnitDto.getUnitCode(), commodityUnitDto.getUnitName());
         if(!exists.getData()){
             return exists;
@@ -80,11 +83,11 @@ public class CommodityUnitServiceImpl extends ServiceImpl<CommodityUnitMapper, C
      * @throws Exception
      */
     @Override
-    public ResultUtil<Boolean> deleteUnitById(Long id) throws Exception {
+    public ResultUtil<Boolean> deleteUnitById(Long id){
 
-        Integer resultNum = commodityUnitMapper.deleteById(id);
+        commodityUnitMapper.deleteById(id);
 
-            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
     }
 
     /**

@@ -69,6 +69,7 @@ public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, Commo
         if(resultNum.equals(1)){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS , commonFreightTypePo.getId());
         }
+
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL , null);
     }
 
@@ -79,7 +80,6 @@ public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, Commo
      */
     @Override
     public ResultUtil<Boolean> updById(CommonFreightTypePo commonFreightTypePo){
-
 
         Integer resultNum = baseMapper.updateById(commonFreightTypePo);
         if(resultNum.equals(1)){
@@ -97,8 +97,9 @@ public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, Commo
     @Override
     public ResultUtil<Boolean> delById(Long id){
 
-        Integer resultNum = baseMapper.deleteById(id);
-            return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
+        baseMapper.deleteById(id);
+
+        return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS , true);
 
     }
 
@@ -110,6 +111,7 @@ public class FreightTypeServiceImpl extends ServiceImpl<FreightTypeMapper, Commo
     public List<CommonFreightTypePo> getList(){
 
         List<CommonFreightTypePo> list = baseMapper.getList();
+
         return list;
     }
 

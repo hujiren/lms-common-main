@@ -40,12 +40,15 @@ public class AirPortController {
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
     public ResultUtil<String> add(AirPortAddDto airPortAddDto) {
+
         ApiParamValidate.validate(airPortAddDto);
         String portCode =  airPortAddDto.getPortCode().toUpperCase();
         String homeCountry = airPortAddDto.getHomeCountry().toUpperCase();
         airPortAddDto.setHomeCountry(homeCountry);
         airPortAddDto.setPortCode(portCode);
+
         return airPortService.add(airPortAddDto);
+
     }
 
     @PostMapping(value = "/upd")
@@ -53,6 +56,7 @@ public class AirPortController {
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
     public ResultUtil<Boolean> upd(AirPortUpdDto airPortUpdDto) {
+
         ApiParamValidate.validate(airPortUpdDto);
         String oldCode = airPortUpdDto.getOldCode().toUpperCase();
         String portCode = airPortUpdDto.getPortCode().toUpperCase();
@@ -60,7 +64,9 @@ public class AirPortController {
         airPortUpdDto.setHomeCountry(homeCountry);
         airPortUpdDto.setOldCode(oldCode);
         airPortUpdDto.setPortCode(portCode);
+
         return airPortService.updByCode(airPortUpdDto);
+
     }
 
 
@@ -68,9 +74,12 @@ public class AirPortController {
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "portCode",value = " 机场简码", required = true)
     public ResultUtil<Boolean> del(String portCode) {
+
         ApiParamValidate.notEmpty("portCode", portCode);
         String portCodeStr =  portCode.toUpperCase();
+
         return airPortService.delByCode(portCodeStr);
+
     }
 
 
@@ -78,16 +87,21 @@ public class AirPortController {
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "portCode",value = "机场简码", required = true)
     public ResultUtil<AirPortAddDto> get(String portCode) {
+
         ApiParamValidate.notEmpty("portCode", portCode);
         String portCodeStr = portCode.toUpperCase();
+
         return airPortService.selectByCode(portCodeStr);
+
     }
 
 
     @PostMapping("/get-list")
     @ApiOperation(value =  "分页查找" , notes = "分页查找")
     public ResultUtil<Page<AirPortListVo>> getList(PageDto pageDto, @Validated AirPortKeyDto airPortKeyDto) {
+
         return airPortService.getList(pageDto , airPortKeyDto);
+
     }
 
 }

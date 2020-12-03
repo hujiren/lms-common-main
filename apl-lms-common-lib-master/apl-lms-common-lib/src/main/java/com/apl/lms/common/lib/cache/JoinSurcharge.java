@@ -31,6 +31,7 @@ public class JoinSurcharge extends JoinBase<SurchargeCacheBo> {
     public Boolean addCache(String keys, Long minKey, Long maxKey){
 
         ResultUtil<Boolean> result = lmsCommonFeign.addSurchargeCache(keys);
+
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code))
             return true;
 

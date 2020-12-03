@@ -41,6 +41,7 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
      */
     @Override
     public ResultUtil<List<SurchargePo>> getList() {
+
         List<SurchargePo> surchargeUpdDtoList = baseMapper.getList();
 
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, surchargeUpdDtoList);
@@ -53,10 +54,13 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
      */
     @Override
     public ResultUtil<Boolean> delSurcharge(Long id) {
+
         Integer resultNum = baseMapper.delById(id);
+
         if(resultNum < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.DEL_FAIL.code, SurchargeServiceCode.ID_DOES_NOT_EXITS.msg, false);
         }
+
         return ResultUtil.APPRESULT(CommonStatusCode.DEL_SUCCESS, true);
     }
 
@@ -74,9 +78,11 @@ public class SurchargeServiceImpl extends ServiceImpl<SurchargeMapper, Surcharge
         }
 
         Integer resultNum = baseMapper.addSurcharge(surchargePoList);
+
         if(resultNum < 1){
             return ResultUtil.APPRESULT(CommonStatusCode.SAVE_FAIL, null);
         }
+
         return ResultUtil.APPRESULT(CommonStatusCode.SAVE_SUCCESS, resultNum);
     }
 }

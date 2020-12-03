@@ -27,6 +27,7 @@ public class JoinCountry extends JoinBase<CountryCacheBo> {
     public Boolean addCache(String keys, Long minKey, Long maxKey){
 
         ResultUtil<Boolean> result = lmsCommonFeign.addCountryCacheByCode(keys);
+
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code))
             return true;
 

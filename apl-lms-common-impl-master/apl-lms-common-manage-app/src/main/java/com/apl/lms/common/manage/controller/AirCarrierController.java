@@ -1,6 +1,5 @@
 package com.apl.lms.common.manage.controller;
 
-
 import com.apl.lms.common.query.manage.dto.AirCarrierDto;
 import com.apl.lms.common.query.manage.dto.AirCarrierKeyDto;
 import com.apl.lms.common.service.AirCarrierService;
@@ -83,6 +82,5 @@ public class AirCarrierController {
     public ResultUtil<Page<AirCarrierDto>> getList(PageDto pageDto, AirCarrierKeyDto airCarrierKeyDto) {
         return airCarrierService.getList(pageDto , airCarrierKeyDto);
     }
-
 
 }

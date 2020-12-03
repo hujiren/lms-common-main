@@ -30,8 +30,11 @@ public class BulkyWayController {
     @PostMapping(value = "/get-list")
     @ApiOperation(value =  "获取计泡方式列表" , notes = "根据关键字来查询")
     public ResultUtil<List<BulkyWayDto>> getList(){
+
         List<BulkyWayDto> bulkyWayList = bulkyWayService.getList();
+
         return ResultUtil.APPRESULT(CommonStatusCode.GET_SUCCESS, bulkyWayList);
+
     }
 
     @PostMapping(value = "/del")
@@ -40,6 +43,7 @@ public class BulkyWayController {
     public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") Long id){
 
         return bulkyWayService.delBulkyWay(id);
+
     }
 
     @PostMapping(value = "/upd")
@@ -47,6 +51,7 @@ public class BulkyWayController {
     public ResultUtil<Boolean> upd( @Validated BulkyWayDto weightWayDto){
 
         return bulkyWayService.updWeightWay(weightWayDto);
+
     }
 
     @PostMapping(value = "/add")
@@ -54,6 +59,7 @@ public class BulkyWayController {
     public ResultUtil<String> add( @Validated BulkyWayAddDto bulkyWayAddDto){
 
         return bulkyWayService.addBulkyWay(bulkyWayAddDto);
+
     }
 
 }

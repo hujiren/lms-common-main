@@ -28,6 +28,7 @@ public class JoinSpecialCommodity extends JoinBase<SpecialCommodityCacheBo> {
     public Boolean addCache(String keys, Long minKey, Long maxKey){
 
         ResultUtil<Boolean> result = lmsCommonFeign.addSpecialCommodityCache(keys);
+
         if(result.getCode().equals(CommonStatusCode.SYSTEM_SUCCESS.code))
             return true;
 

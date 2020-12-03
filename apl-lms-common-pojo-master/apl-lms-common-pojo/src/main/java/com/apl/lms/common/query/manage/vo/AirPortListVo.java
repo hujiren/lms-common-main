@@ -27,7 +27,6 @@ import java.io.Serializable;
 @ApiModel(value="机场 列表返回对象", description="机场 列表返回对象")
 public class AirPortListVo extends Model<AirPortListVo> {
 
-
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 

@@ -6,29 +6,32 @@
     <!-- 查找详情 2019-12-19-->
     <select id="getById" resultType="com.apl.lms.common.query.manage.dto.CommodityUnitDto">
         SELECT
-          id,
-          unit_code,
-          unit_name
+            id,
+            unit_code,
+            unit_name
         FROM
-          common_commodity_unit
+            common_commodity_unit
         where
-          id = #{id}
+            id = #{id}
     </select>
 
     <!-- 查找列表 2019-12-19-->
     <select id="getList" resultType="com.apl.lms.common.query.manage.dto.CommodityUnitDto">
         SELECT
-           id,
-           unit_code,
-           unit_name
+             id,
+             unit_code,
+             unit_name
         FROM
-            common_commodity_unit
+             common_commodity_unit
         <where>
             1 = 1
-
             <if test="key.keyword != null and key.keyword != ''">
-                and (unit_code = #{key.upperKeyword} or
-                unit_name like concat('%' , #{key.keyword} , '%'))
+                and
+                (
+                    unit_code = #{key.upperKeyword}
+                or
+                    unit_name like concat('%' , #{key.keyword} , '%')
+                )
             </if>
         </where>
 
@@ -37,16 +40,19 @@
 
     <select id="exists" resultType="com.apl.lms.common.query.manage.dto.CommodityUnitDto">
         SELECT
-        id,
-        unit_code,
-        unit_name
+            id,
+            unit_code,
+            unit_name
         FROM
-        common_commodity_unit
+            common_commodity_unit
         <where>
-            (unit_code = #{unitCode} OR unit_name = #{unitName})
+            (
+                unit_code = #{unitCode} OR unit_name = #{unitName}
+            )
             <if test="id != null and id > 0">
                 AND id !=  #{id}
             </if>
+
         </where>
         order by unit_code
     </select>

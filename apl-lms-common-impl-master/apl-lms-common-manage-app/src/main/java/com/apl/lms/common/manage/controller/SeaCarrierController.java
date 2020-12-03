@@ -40,9 +40,11 @@ public class SeaCarrierController {
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
     public ResultUtil<Integer> add(SeaCarrierDto seaCarrierDto) {
+
         ApiParamValidate.validate(seaCarrierDto);
         String carrierCode = seaCarrierDto.getCarrierCode().toUpperCase();
         seaCarrierDto.setCarrierCode(carrierCode);
+
         return seaCarrierService.add(seaCarrierDto);
     }
 
@@ -52,6 +54,7 @@ public class SeaCarrierController {
             "NAME_CN_EXIST -> nameCn已经存在\n"+
             "NAME_EN_EXIST -> nameEn已经存在")
     public ResultUtil<Boolean> upd(SeaCarrierDto seaCarrierDto) {
+
         ApiParamValidate.validate(seaCarrierDto);
         ApiParamValidate.notEmpty("id", seaCarrierDto.getId());
         String carrierCode = seaCarrierDto.getCarrierCode().toUpperCase();
@@ -65,7 +68,9 @@ public class SeaCarrierController {
     @ApiOperation(value =  "删除" , notes = "删除")
     @ApiImplicitParam(name = "id",value = " id",required = true  , paramType = "query")
     public ResultUtil<Boolean> del(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+
         ApiParamValidate.notEmpty("id", id);
+
         return seaCarrierService.delById(id);
     }
 
@@ -74,7 +79,9 @@ public class SeaCarrierController {
     @ApiOperation(value =  "获取详细" , notes = "获取详细")
     @ApiImplicitParam(name = "id",value = "id",required = true  , paramType = "query")
     public ResultUtil<SeaCarrierDto> get(@NotNull(message = "id不能为空") @Min(value = 1 , message = "id不能小于1") Long id) {
+
         ApiParamValidate.notEmpty("id", id);
+
         return seaCarrierService.selectById(id);
     }
 
@@ -82,6 +89,7 @@ public class SeaCarrierController {
     @PostMapping("/get-list")
     @ApiOperation(value =  "分页查找" , notes = "分页查找")
     public ResultUtil<Page<SeaCarrierDto>> getList(PageDto pageDto, @Validated SeaCarrierKeyDto seaCarrierKeyDto) {
+
         return seaCarrierService.getList(pageDto , seaCarrierKeyDto);
     }
 
