@@ -5,8 +5,8 @@ spring:
   profiles:
     include:
       common, wms-base-service
-  cloud:
-    consul:
-      config:
-        fail-fast: false
+
+log4j:
+  logger:
+    com.apl.lms.common.mapper:DEBUG
 

@@ -6,8 +6,10 @@ spring:
     include:
       common, apl-lms-common-query-app
 
-  mainw:
-    allow-bean-definition-overriding:true
+  #  main:
+  #    allow-bean-definition-overriding:true
 
-
+logging:
+  level:
+    com.apl.lms.common.mapper: debug
 

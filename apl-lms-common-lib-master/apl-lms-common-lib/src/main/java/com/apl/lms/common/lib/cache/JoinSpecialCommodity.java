@@ -24,6 +24,7 @@ public class JoinSpecialCommodity extends JoinBase<SpecialCommodityCacheBo> {
         this.cacheKeyNamePrefix = "JOIN_CACHE:common_special_commodity:";
     }
 
+
     @Override
     public Boolean addCache(String keys, Long minKey, Long maxKey){
 
@@ -34,4 +35,5 @@ public class JoinSpecialCommodity extends JoinBase<SpecialCommodityCacheBo> {
 
         return false;
     }
+
 }

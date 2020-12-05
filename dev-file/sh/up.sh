@@ -1,13 +1,13 @@
+#!/bin/bash
 
-#项目绝对路径
-MYPATH="/Volumes/data/java/apl-lms/apl-lms-common-java"
+read -t 30 -p "Please choose host 1、192.168.1.185    2、8.129.236.174:" hostIndex
 
-# mybatis mpper
- scp  $MYPATH/apl-lms-common-impl-master/apl-lms-common-service-impl/src/main/resources/mapper/*.xml  root@192.168.1.185:/usr/local/java/basic/resource/mapper/lms-common
+echo "Please input your password:"
+read -t 30 -s password
 
 
-# 公共模块管理
- scp  $MYPATH/apl-lms-common-impl-master/apl-lms-common-manage-app/target/apl-lms-common-manage-app-1.0.0.jar  root@192.168.1.185:/usr/local/java/basic/
+source ./up-start.sh  "apl-lms-common-impl-master/apl-lms-common-service-impl/src/main/resources/mapper" "/*.xml"  "resources/mapper/lms-common"
 
-# 公共模块查询
-# scp  $MYPATH/apl-lms-common-impl-master/apl-lms-common-query-app/target/apl-lms-common-query-app-1.0.0.jar root@192.168.1.185:/usr/local/java/basic/
+source ./up-start.sh  "apl-lms-common-impl-master/apl-lms-common-manage-app/target/" "apl-lms-common-manage-app-1.0.0.jar" ""
+
+source ./up-start.sh  "apl-lms-common-impl-master/apl-lms-common-query-app/target/"  "apl-lms-common-query-app-1.0.0.jar"   ""
