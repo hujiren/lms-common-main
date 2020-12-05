@@ -6,6 +6,13 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>com.apl</groupId>
+        <artifactId>apl-lms-common-pojo-master</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+
 
     <dependencies>
 
