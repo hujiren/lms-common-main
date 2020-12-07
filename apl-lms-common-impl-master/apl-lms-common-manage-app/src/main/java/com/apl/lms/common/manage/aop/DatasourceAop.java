@@ -1,4 +1,5 @@
 package com.apl.lms.common.manage.aop;
+import com.apl.cache.AplCacheHelper;
 import com.apl.cache.AplCacheUtil;
 import com.apl.cache.jedis.JedisConnect;
 import com.apl.lib.constants.CommonAplConstants;
@@ -22,7 +23,7 @@ public class DatasourceAop {
 
 
     @Autowired
-    AplCacheUtil aplCacheUtil;
+    AplCacheHelper aplCacheHelper;
 
     @Pointcut("execution(public * com.apl.lms.common.manage.controller.*.* (..))")
     public void datasourceAop() {
@@ -41,10 +42,10 @@ public class DatasourceAop {
                 token = CommonContextHolder.getRequest().getParameter("token");
             }
 
-            if(null!=token && token.length()>0)
-                securityUser = CommonContextHolder.getSecurityUser(aplCacheUtil, token);
+            if(null !=token && token.length()>0 && token.indexOf("net_")!=0)
+                securityUser = CommonContextHolder.getSecurityUser(aplCacheHelper, token);
             else
-                securityUser = SecurityUserNetService.getSecurityUser(aplCacheUtil);
+                securityUser = SecurityUserNetService.getSecurityUser(aplCacheHelper, 1, token);
 
             CommonContextHolder.securityUserContextHolder.set(securityUser);
 

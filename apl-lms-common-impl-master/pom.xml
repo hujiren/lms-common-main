@@ -12,6 +12,12 @@
         <module>apl-lms-common-query-app</module>
     </modules>
 
+    <parent>
+        <groupId>com.apl</groupId>
+        <artifactId>apl-dependency-management</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
     <properties>
         <apl-service-dependency-parent.version>1.0.0</apl-service-dependency-parent.version>
         <apl-sys-net.version>1.0.0</apl-sys-net.version>
