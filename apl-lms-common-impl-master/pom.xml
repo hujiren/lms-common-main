@@ -12,50 +12,6 @@
         <module>apl-lms-common-query-app</module>
     </modules>
 
-    <parent>
-        <groupId>com.apl</groupId>
-        <artifactId>apl-dependency-management</artifactId>
-        <version>1.0.0</version>
-    </parent>
-
-    <properties>
-        <apl-service-dependency-parent.version>1.0.0</apl-service-dependency-parent.version>
-        <apl-sys-net.version>1.0.0</apl-sys-net.version>
-        <apl-lms-common-lib.version>1.0.0</apl-lms-common-lib.version>
-        <apl-lms-common-pojo.version>1.0.0</apl-lms-common-pojo.version>
-    </properties>
-
-    <dependencyManagement>
-    <dependencies>
-
-
-        <dependency>
-            <groupId>com.apl</groupId>
-            <artifactId>apl-service-dependency-parent</artifactId>
-            <version>${apl-service-dependency-parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.apl</groupId>
-            <artifactId>apl-sys-net</artifactId>
-            <version>${apl-sys-net.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.apl</groupId>
-            <artifactId>apl-lms-common-lib</artifactId>
-            <version>${apl-lms-common-lib.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.apl</groupId>
-            <artifactId>apl-lms-common-pojo</artifactId>
-            <version>${apl-lms-common-pojo.version}</version>
-        </dependency>
-
-    </dependencies>
-    </dependencyManagement>
-
     <build>
         <pluginManagement>
             <plugins>

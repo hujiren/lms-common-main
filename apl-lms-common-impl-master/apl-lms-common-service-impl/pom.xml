@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>com.apl</groupId>
-        <artifactId>apl-lms-common-impl-master</artifactId>
+        <artifactId>apl-dependency-management</artifactId>
         <version>1.0.0</version>
     </parent>
 
@@ -25,10 +25,12 @@
         <dependency>
             <groupId>com.apl</groupId>
             <artifactId>apl-lms-common-lib</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.apl</groupId>
             <artifactId>apl-lms-common-pojo</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
     </dependencies>
