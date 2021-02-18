@@ -1,9 +1,7 @@
 package com.apl.lms.common.manage.aop;
 import com.apl.cache.AplCacheHelper;
-import com.apl.cache.AplCacheUtil;
 import com.apl.cache.jedis.JedisConnect;
 import com.apl.lib.constants.CommonAplConstants;
-import com.apl.lib.interceptor.FeignHeaderInterceptor;
 import com.apl.lib.security.SecurityUser;
 import com.apl.lib.utils.CommonContextHolder;
 import com.apl.lms.net.SecurityUserNetService;

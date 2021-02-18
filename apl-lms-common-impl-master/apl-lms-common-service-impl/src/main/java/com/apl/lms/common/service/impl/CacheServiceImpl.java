@@ -1,6 +1,6 @@
 package com.apl.lms.common.service.impl;
 
-import com.apl.cache.AplCacheUtil;
+import com.apl.cache.AplCacheHelper;
 import com.apl.lib.constants.CommonStatusCode;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lms.common.lib.cache.bo.*;
@@ -26,7 +26,7 @@ import java.util.Map;
 public class CacheServiceImpl implements CacheService {
 
     @Autowired
-    AplCacheUtil aplCacheUtil;
+    AplCacheHelper aplCacheHelper;
 
     @Autowired
     CacheMapper cacheMapper;
@@ -56,7 +56,7 @@ public class CacheServiceImpl implements CacheService {
         keys = keys.toUpperCase();
         Map<String, CountryCacheBo> maps = cacheMapper.addCountryCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
@@ -77,7 +77,7 @@ public class CacheServiceImpl implements CacheService {
 
         Map<String, AirCarrierCacheBo> maps = cacheMapper.addAirCarrierCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.GET_FAIL.SYSTEM_SUCCESS, true);
         }
@@ -99,7 +99,7 @@ public class CacheServiceImpl implements CacheService {
         keys = keys.toUpperCase();
         Map<String, AirPortCacheBo> maps = cacheMapper.addAirPortCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
@@ -120,7 +120,7 @@ public class CacheServiceImpl implements CacheService {
 
         Map<String, SeaPortCacheBo> maps = cacheMapper.addSeaPortCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
@@ -141,7 +141,7 @@ public class CacheServiceImpl implements CacheService {
 
         Map<String, SeaCarrierCacheBo> maps = cacheMapper.addSeaCarrierCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
@@ -162,7 +162,7 @@ public class CacheServiceImpl implements CacheService {
 
         Map<String, CommodityUnitCacheBo> maps = cacheMapper.addCommodityUnitCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
@@ -183,7 +183,7 @@ public class CacheServiceImpl implements CacheService {
 
         Map<String, SpecialCommodityCacheBo> maps = cacheMapper.addSpecialCommodityCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
@@ -204,7 +204,7 @@ public class CacheServiceImpl implements CacheService {
 
         Map<String, SurchargeCacheBo> maps = cacheMapper.addSurchargeCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }
@@ -225,7 +225,7 @@ public class CacheServiceImpl implements CacheService {
 
         Map<String, WeightWayCacheBo> maps = cacheMapper.addWeightWayCache(keys);
         if (null != maps && maps.size() > 0) {
-            aplCacheUtil.opsForValue().set(maps);
+            aplCacheHelper.opsForValue().set(maps);
 
             return ResultUtil.APPRESULT(CommonStatusCode.SYSTEM_SUCCESS, true);
         }

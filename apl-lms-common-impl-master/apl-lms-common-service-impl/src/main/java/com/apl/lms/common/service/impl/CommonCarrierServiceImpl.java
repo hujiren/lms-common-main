@@ -1,7 +1,5 @@
 package com.apl.lms.common.service.impl;
-
 import com.apl.cache.AplCacheHelper;
-import com.apl.cache.AplCacheUtil;
 import com.apl.lib.utils.ResultUtil;
 import com.apl.lib.utils.SnowflakeIdWorker;
 import com.apl.lms.common.mapper.CommonCarrierMapper;
@@ -45,7 +43,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
             }
         }
     @Autowired
-    AplCacheUtil aplCacheUtil;
+    AplCacheHelper aplCacheHelper;
 
     private static final String CACHE_KEY = "carrier";
 
@@ -112,12 +110,12 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
      */
     @Override
     public List<CommonCarrierPo> getList() throws IOException {
-        Boolean hasKey = aplCacheUtil.opsForKey().hasKey(CACHE_KEY);
+        Boolean hasKey = aplCacheHelper.opsForKey().hasKey(CACHE_KEY);
         if (!hasKey) {
             List<CommonCarrierPo> carrierCacheList = updCache();
             return carrierCacheList;
         }
-        List<CommonCarrierPo> carrierCacheList = (List<CommonCarrierPo>) aplCacheUtil.opsForValue().get(CACHE_KEY);
+        List<CommonCarrierPo> carrierCacheList = (List<CommonCarrierPo>) aplCacheHelper.opsForValue().get(CACHE_KEY);
         return carrierCacheList;
     }
 
@@ -130,7 +128,7 @@ public class CommonCarrierServiceImpl extends ServiceImpl<CommonCarrierMapper, C
         List<CommonCarrierPo> carrierList = baseMapper.getList();
         Map<String, List<CommonCarrierPo>> carrierCacheMap = new HashMap<>();
         carrierCacheMap.put(CACHE_KEY, carrierList);
-        aplCacheUtil.opsForValue().set(carrierCacheMap);
+        aplCacheHelper.opsForValue().set(carrierCacheMap);
         return carrierList;
     }
 }
